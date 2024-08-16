@@ -1,0 +1,133 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version = 2
+
+
+# TODO: I'm not too fond of this placement, consider left hand side. Also, consider transient?
+[[blocks]]
+  type = 'rprompt'
+  overflow = 'hidden'
+
+  [[blocks.segments]]
+    type = 'executiontime'
+    style = 'plain'
+    foreground = 'yellow'
+    background = 'transparent'
+    template = '{{ .FormattedMs }} '
+
+    [blocks.segments.properties]
+      threshold = 1500
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    # Visible when user is root/elevated shell
+    type = 'root'
+    style = 'plain'
+    template = '[root] <#aaa>in</> '
+    background = ''
+    foreground = '#E06C75'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+  [[blocks.segments]]
+    type = 'path'
+    style = 'plain'
+    template = '{{ .Path }} '
+    background = ''
+    foreground = '#4ca4ff'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      style = 'full'
+
+  [[blocks.segments]]
+    # Display git context
+    type = 'git'
+    style = 'plain'
+    template = '<#aaa>on</> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
+    background = ''
+    foreground = '#ef5cf8'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      fetch_status = true
+
+  [[blocks.segments]]
+    # Display node version when in node project
+    type = 'node'
+    style = 'plain'
+    template = '<#aaa>via</>  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} '
+    background = ''
+    foreground = '#00c471'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      fetch_version = true
+
+  [[blocks.segments]]
+    # Displays the last known status code and/or the reason that the last command failed.
+    type = 'status'
+    style = 'plain'
+    template = '{{if eq .Code 0}}✔{{ else }}x {{ .String }} {{end}}'
+    background = ''
+    foreground = 'p:error'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    # [blocks.segments.properties]
+    #   always_enabled = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  # Vi mode indicator
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    background = 'transparent'
+    foreground = '#FF79C6'
+    template = '[{{ .Env.VIM_MODE }}] '
+
+  [[blocks.segments]]
+    # Text entry
+    type = 'text'
+    style = 'plain'
+    foreground_templates = [
+      "{{if gt .Code 0}}red{{end}}",
+      "{{if eq .Code 0}}#63F08C{{end}}",
+    ]
+    template = '➜ '
+    background = 'transparent'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+
+[transient_prompt]
+  foreground_templates = [
+  "{{if gt .Code 0}}red{{end}}",
+  "{{if eq .Code 0}}magenta{{end}}",
+  ]
+  background = "transparent"
+  template = '➜ '
+
+[secondary_prompt]
+  foreground = '#888'
+  template = '➜➜'
+
+[palette]
+  error = "#C94A16"
