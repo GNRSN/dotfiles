@@ -1,0 +1,7 @@
+*.zwc
+
+.zsh_sessions
+.zcompdump*
+.zsh_history
+
+work.zsh
