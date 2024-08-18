@@ -44,9 +44,6 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 # DOC: fzf-tab needs to be loaded after compinit,
 # but before plugins which will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
 
-ZVM_VI_HIGHLIGHT_FOREGROUND=#008800           # Hex value
-ZVM_VI_HIGHLIGHT_BACKGROUND=#ff0000           # Hex value
-ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold,underline    # bold and underline
 
 # function zvm_after_init() {
 #   echo 'zvm after init'
@@ -64,6 +61,11 @@ function zvm_config() {
 
   # Append your custom color for your cursor
   ZVM_NORMAL_MODE_CURSOR=$ncur'\e\e]12;#FF79C6\a'
+
+
+  # ZVM_VI_HIGHLIGHT_FOREGROUND=#008800           # Hex value
+  ZVM_VI_HIGHLIGHT_BACKGROUND=#743563           # Hex value
+  # ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold,underline    # bold and underline
 }
 
 # The plugin will auto execute this zvm_after_select_vi_mode function
