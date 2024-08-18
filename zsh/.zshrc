@@ -68,6 +68,16 @@ function zvm_config() {
   # ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold,underline    # bold and underline
 }
 
+zvm_before_init_commands=("echo 'zvm before init'")
+
+function reset_posh_on_zvm_init() {
+  local precmd
+    for precmd in $precmd_functions; do
+        $precmd
+    done
+}
+zvm_after_init_commands+=(reset_posh_on_zvm_init)
+
 # The plugin will auto execute this zvm_after_select_vi_mode function
 function zvm_after_select_vi_mode() {
   case $ZVM_MODE in
@@ -92,7 +102,7 @@ function zvm_after_select_vi_mode() {
     for precmd in $precmd_functions; do
         $precmd
     done
-  zle reset-prompt
+  # zle reset-prompt
 }
 zvm_after_select_vi_mode_commands+=(zvm_after_select_vi_mode)
 
