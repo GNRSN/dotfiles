@@ -1,8 +1,7 @@
 if vim.g.vscode then
   -- VSCode extension
-  require("vscode")
+  require("vscode-nvim")
 else
-  -- ordinary Neovim
   -- bootstrap lazy-loader
   local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
   if not vim.loop.fs_stat(lazypath) then
