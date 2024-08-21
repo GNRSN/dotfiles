@@ -51,7 +51,7 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 #   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }
 # zvm_after_init_commands+=(my_init)
-#
+
 # This doesn't seem to work with wezterm
 ZVM_CURSOR_STYLE_ENABLED=false
 
@@ -68,15 +68,13 @@ function zvm_config() {
   # ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold,underline    # bold and underline
 }
 
-zvm_before_init_commands=("echo 'zvm before init'")
-
-function reset_posh_on_zvm_init() {
-  local precmd
-    for precmd in $precmd_functions; do
-        $precmd
-    done
+function refresh_omp() {
+  if typeset -f _omp_precmd > /dev/null; then
+    _omp_precmd
+  fi
 }
-zvm_after_init_commands+=(reset_posh_on_zvm_init)
+
+zvm_after_init_commands+=(refresh_omp)
 
 # The plugin will auto execute this zvm_after_select_vi_mode function
 function zvm_after_select_vi_mode() {
@@ -98,13 +96,8 @@ function zvm_after_select_vi_mode() {
     ;;
   esac
 
-  local precmd
-    for precmd in $precmd_functions; do
-        $precmd
-    done
-  # zle reset-prompt
+  refresh_omp 
 }
-zvm_after_select_vi_mode_commands+=(zvm_after_select_vi_mode)
 
 
 # REVIEW: loading zvm like this broke atuin, enter/tab just wouldn't insert anything
@@ -125,11 +118,11 @@ zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \
       Aloxaf/fzf-tab \
       zdharma-continuum/fast-syntax-highlighting \
+      jeffreytse/zsh-vi-mode \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
-      jeffreytse/zsh-vi-mode \
       atuinsh/atuin \
       OMZP::colored-man-pages \
   # as"completion" \
@@ -178,5 +171,4 @@ source "$ZDOTDIR/alias.zsh"
 # NOTE: Should be called at end of config
 # DOC: ...must be added after compinit is called
 eval "$(zoxide init zsh --cmd cd)"
-
 
