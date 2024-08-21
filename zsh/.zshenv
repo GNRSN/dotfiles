@@ -11,7 +11,9 @@ export EDITOR="$VISUAL"
 export GIT_EDITOR="$VISUAL"
 
 # === Rust ===
-. "$HOME/.cargo/env"
+export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+export CARGO_HOME=$XDG_DATA_HOME/cargo
+. "/Users/egunnarsson/.local/share/cargo/env"
 
 # === Neovide ===
 
