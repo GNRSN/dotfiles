@@ -3,5 +3,6 @@
 .zsh_sessions
 .zcompdump*
 .zsh_history
+.zcompcache
 
 work.zsh
