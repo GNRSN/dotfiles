@@ -33,8 +33,6 @@ fi
 function set_poshcontext() {
   if [[ $ZVM_MODE ]]; then
     export VIM_MODE=$ZVM_MODE
-  else
-    # export VIM_MODE="i"
   fi
 }
 
