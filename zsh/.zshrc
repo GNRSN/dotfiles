@@ -44,7 +44,6 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 # DOC: fzf-tab needs to be loaded after compinit,
 # but before plugins which will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
 
-
 # function zvm_after_init() {
 #   echo 'zvm after init'
 #   # DOC: Load fzf after zvm to prevent overwriting keybinds
@@ -54,6 +53,7 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 
 # This doesn't seem to work with wezterm
 ZVM_CURSOR_STYLE_ENABLED=false
+ZVM_VI_HIGHLIGHT_BACKGROUND=#743563           
 
 function zvm_config() {
   # Retrieve default cursor styles
@@ -63,9 +63,7 @@ function zvm_config() {
   ZVM_NORMAL_MODE_CURSOR=$ncur'\e\e]12;#FF79C6\a'
 
 
-  # ZVM_VI_HIGHLIGHT_FOREGROUND=#008800           # Hex value
-  ZVM_VI_HIGHLIGHT_BACKGROUND=#743563           # Hex value
-  # ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold,underline    # bold and underline
+  ZVM_VI_HIGHLIGHT_BACKGROUND=#743563           
 }
 
 function refresh_omp() {
@@ -75,6 +73,27 @@ function refresh_omp() {
 }
 
 zvm_after_init_commands+=(refresh_omp)
+
+# REVIEW: Do I want atuin through zinit or separate install?
+
+# If autin is installed, enable it.
+# if command -v atuin &> /dev/null; then
+#     # Note: Since zsh-vi-mode lazy-loads keybinds, it will overwrite
+#     # Some of the keybinds set by atuin. The following creates a 'callback'
+#     # that loads atuin after zsh-vi-mode has applied all keymaps.
+#     function atuin_init() {
+#         eval "$(atuin init zsh --disable-up-arrow)"
+#     }
+#     zvm_after_init_commands+=(atuin_init)
+# fi
+
+# line 1: `atuin` binary as command, from github release, only look at .tar.gz files, use the `atuin` file from the extracted archive
+# line 2: setup at clone(create init.zsh, completion)
+# line 3: pull behavior same as clone, source init.zsh
+zinit ice wait lucid as"command" from"gh-r" bpick"atuin-*.tar.gz" mv"atuin*/atuin -> atuin" \
+    atclone"./atuin init zsh > init.zsh; ./atuin gen-completions --shell zsh > _atuin" \
+    atpull"%atclone" src"init.zsh" 
+zinit load atuinsh/atuin
 
 # The plugin will auto execute this zvm_after_select_vi_mode function
 function zvm_after_select_vi_mode() {
@@ -99,34 +118,38 @@ function zvm_after_select_vi_mode() {
   refresh_omp 
 }
 
+zinit load zdharma-continuum/fast-syntax-highlighting
+# NOTE: Without loading fast-syntax-highlighting before zvm the vi mode var -> omp on mode change breaks
+# I assume fast-syntax-highlighting calls something in zsh during load that we would need to call ourselves?
+# REVIEW: Ideally fast-syntax-highlighting should be called after
+zinit load jeffreytse/zsh-vi-mode
 
-# REVIEW: loading zvm like this broke atuin, enter/tab just wouldn't insert anything
-# I likely need to understand zinit better
-#
-# zinit ice depth=1
-# zinit light jeffreytse/zsh-vi-mode
+zinit ice wait lucid atinit'zicompinit; zicdreplay'
+zinit load Aloxaf/fzf-tab
 
-# line 1: `atuin` binary as command, from github release, only look at .tar.gz files, use the `atuin` file from the extracted archive
-# line 2: setup at clone(create init.zsh, completion)
-# line 3: pull behavior same as clone, source init.zsh
-zinit ice as"command" from"gh-r" bpick"atuin-*.tar.gz" mv"atuin*/atuin -> atuin" \
-    atclone"./atuin init zsh > init.zsh; ./atuin gen-completions --shell zsh > _atuin" \
-    atpull"%atclone" src"init.zsh"
-zinit light atuinsh/atuin
+zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit load zsh-users/zsh-autosuggestions
 
-zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \
-      Aloxaf/fzf-tab \
-      zdharma-continuum/fast-syntax-highlighting \
-      jeffreytse/zsh-vi-mode \
-  atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions \
-      atuinsh/atuin \
-      OMZP::colored-man-pages \
-  # as"completion" \
-  #       OMZP::docker/_docker
+zinit ice wait lucid blockf atpull'zinit creinstall -q .'
+zinit load zsh-users/zsh-completions
+
+zinit ice wait lucid blockf atpull'zinit creinstall -q .'
+zinit snippet OMZP::colored-man-pages
+
+# Install brew completion
+# DOC: This must be done before compinit is called.
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  # autoload -Uz compinit
+  # compinit
+fi
+
+# zinit gui
+# DOC: https://github.com/zdharma-continuum/zinit-crasis
+zinit load zdharma-continuum/zui
+zinit load zdharma-continuum/zinit-crasis
 
 
 # Zsh-autosuggestions settings
