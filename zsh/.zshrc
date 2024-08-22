@@ -113,7 +113,7 @@ function zvm_after_select_vi_mode() {
     ;;
   esac
 
-  refresh_omp 
+  refresh_omp
 }
 
 zinit load zdharma-continuum/fast-syntax-highlighting
@@ -148,6 +148,9 @@ fi
 # DOC: https://github.com/zdharma-continuum/zinit-crasis
 zinit load zdharma-continuum/zui
 zinit load zdharma-continuum/zinit-crasis
+
+# zsh linter
+zinit param'zs_set_path' for @psprint/zsh-sweep
 
 
 # Zsh-autosuggestions settings
