@@ -2,18 +2,25 @@
 
 version = 2
 
-
-# TODO: I'm not too fond of this placement, consider left hand side. Also, consider transient?
 [[blocks]]
-  type = 'rprompt'
-  overflow = 'hidden'
+  type = 'prompt'
+  alignment = 'left'
+  
+  # Newline = true only works for the first block, but if it's empty it doesn't work at all
+  [[blocks.segments]]
+    alias = 'BlankLine'
+    type = 'text'
+    style = 'plain'
+    template = """ """
 
   [[blocks.segments]]
+    alias = 'ExecutionTime'
     type = 'executiontime'
     style = 'plain'
     foreground = 'yellow'
     background = 'transparent'
-    template = '{{ .FormattedMs }} '
+    template = """  {{ .FormattedMs }}
+"""
 
     [blocks.segments.properties]
       threshold = 1500
@@ -35,6 +42,7 @@ version = 2
     NameLength = 0
 
   [[blocks.segments]]
+    alias = 'Path'
     type = 'path'
     style = 'plain'
     template = '{{ .Path }} '
@@ -75,20 +83,6 @@ version = 2
     [blocks.segments.properties]
       fetch_version = true
 
-  [[blocks.segments]]
-    # Displays the last known status code and/or the reason that the last command failed.
-    type = 'status'
-    style = 'plain'
-    template = '{{if eq .Code 0}}✔{{ else }}x {{ .String }} {{end}}'
-    background = ''
-    foreground = 'p:error'
-    Text = ''
-    Duration = 0
-    NameLength = 0
-
-    # [blocks.segments.properties]
-    #   always_enabled = true
-
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
@@ -106,10 +100,7 @@ version = 2
     # Text entry
     type = 'text'
     style = 'plain'
-    foreground_templates = [
-      "{{if gt .Code 0}}red{{end}}",
-      "{{if eq .Code 0}}#63F08C{{end}}",
-    ]
+    foreground = '#63F08C'
     template = '➜ '
     background = 'transparent'
     Text = ''
@@ -118,12 +109,10 @@ version = 2
 
 
 [transient_prompt]
-  foreground_templates = [
-  "{{if gt .Code 0}}red{{end}}",
-  "{{if eq .Code 0}}magenta{{end}}",
-  ]
   background = "transparent"
-  template = '➜ '
+  template = """{{ if .Segments.ExecutionTime.FormattedMs}} <#999> {{ .Segments.ExecutionTime.FormattedMs }}</>
+{{end}}
+ <#FF79C6>➜</> """
 
 [secondary_prompt]
   foreground = '#888'
