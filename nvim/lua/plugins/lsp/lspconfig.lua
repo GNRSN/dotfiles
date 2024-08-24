@@ -234,5 +234,7 @@ return {
         },
       },
     })
+    -- Nix language server
+    require("lspconfig").nil_ls.setup({})
   end,
 }

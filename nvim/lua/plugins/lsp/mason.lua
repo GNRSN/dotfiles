@@ -41,6 +41,7 @@ return {
         "mdx_analyzer",
         -- Broken (for nvim 9?) see https://www.reddit.com/r/neovim/comments/1cp8cvw/eslint_is_not_displaying_errors_in_diagnostics/
         "eslint@4.8.0",
+        "nil_ls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
