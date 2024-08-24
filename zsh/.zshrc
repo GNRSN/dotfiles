@@ -2,9 +2,13 @@
 # @see https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout
 
 #   ---------------------
-### enable vi mode 
+### options
 #   ---------------------
+
+# Enable Vi mode
 set -o vi
+# Enable detailed prompts
+setopt promptsubst
 
 #   ---------------------
 ### zinit Package manager
@@ -133,6 +137,11 @@ zinit load zsh-users/zsh-completions
 
 zinit ice wait lucid blockf atpull'zinit creinstall -q .'
 zinit snippet OMZP::colored-man-pages
+
+# Nix completions, unsure if works?
+# TODO: Compare to manual install
+zinit ice wait lucid blockf atpull'zinit creinstall -q .'
+zinit load nix-community/nix-zsh-completions
 
 # Install brew completion
 # DOC: This must be done before compinit is called.
