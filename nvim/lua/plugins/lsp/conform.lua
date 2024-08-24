@@ -23,6 +23,7 @@ return {
           graphql = { "prettierd" },
           lua = { "stylua" },
           python = { "isort", "black" },
+          nix = { "nixfmt" },
         },
         format_on_save = function()
           if vim.g.format_on_save then
