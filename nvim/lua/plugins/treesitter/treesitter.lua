@@ -42,6 +42,7 @@ return {
           "luap", -- Lua patterns
           "markdown",
           "markdown_inline",
+          "nix",
           "prisma",
           "query", -- This is the Treesitter query lang
           "regex",
