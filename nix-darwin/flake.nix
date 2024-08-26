@@ -1,7 +1,9 @@
 {
-  description = "Example Darwin system flake";
+  description = "@GNRSN Darwin configuration";
 
   inputs = {
+    # REVIEW: Do I really want to follow unstable or use the latest stable? -24.05
+    # Since stable channels are release about every 6 months I assume this is a date?
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -21,18 +23,32 @@
           # $ nix-env -qaP | grep wget
           environment.systemPackages = [
             pkgs.vim
+            pkgs.direnv
           ];
 
           # Auto upgrade nix package and the daemon service.
           services.nix-daemon.enable = true;
-          # nix.package = pkgs.nix;
 
-          # Necessary for using flakes on this system.
-          nix.settings.experimental-features = "nix-command flakes";
+          # Set the version of nix we want to use
+          nix.package = pkgs.nixVersions.nix_2_24;
+
+          # Write directly into the nix.conf, try to replicate what NixInstaller left there
+          # Some discrepancies between installer and NixDarwin
+          # @see https://github.com/LnL7/nix-darwin/issues/889#issuecomment-2002505165
+          nix.settings = {
+            extra-nix-path = "nixpkgs=flake:nixpkgs";
+            experimental-features = "nix-command flakes";
+            # REVIEW: This was added by installer but isn't allowed by validation,
+            # @see https://github.com/LnL7/nix-darwin/issues/864
+            #
+            upgrade-nix-store-path-url = "https://install.determinate.systems/nix-upgrade/stable/universal";
+          };
 
           # Create /etc/zshrc that loads the nix-darwin environment.
           programs.zsh.enable = true; # default shell on catalina
-          # programs.fish.enable = true;
+
+          # This property defines the version of nix to use, defaults to something pretty reasonable
+          # system.nixpkgsRelease = 
 
           # Set Git commit hash for darwin-version.
           system.configurationRevision = self.rev or self.dirtyRev or null;
