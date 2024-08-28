@@ -1,12 +1,18 @@
 {
-  description = "@GNRSN Darwin configuration";
+  description = "@GNRSN Nix configuration";
 
   inputs = {
-    # REVIEW: Do I really want to follow unstable or use the latest stable? -24.05
-    # Since stable channels are release about every 6 months I assume this is a date?
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    # stable.url = "github:nixos/nixpkgs/nixos-24.05";
+
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -14,6 +20,7 @@
       self,
       nix-darwin,
       nixpkgs,
+      home-manager,
     }:
     let
       configuration =
@@ -59,13 +66,41 @@
 
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
+
+          nix.configureBuildUsers = true;
+          nix.useDaemon = true;
+
+          users.users.egunnarsson.home = "/Users/egunnarsson";
+          home-manager.backupFileExtension = "before-home-manager";
+
+          # Nice to have
+          # Touch id for sudo
+          security.pam.enableSudoTouchIdAuth = true;
+
+          # Remap caps to ctrl
+          system.keyboard.enableKeyMapping = true;
+          system.keyboard.remapCapsLockToControl = true;
+
+          # Disable press and hold for diacritics.
+          # I want to be able to press and hold j and k
+          # in VSCode with vim keys to move around.
+          system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
         };
     in
     {
       # Since this isn't the same as our hostname we need to specify the config name during switch:
       # darwin-rebuild switch --flake .#GNRSN/MacBook-aarch64-darwin
       darwinConfigurations."GNRSN/MacBook-aarch64-darwin" = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
+        system = "aarch64-darwin";
+        modules = [
+          configuration
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.egunnarsson = import ./home.nix;
+          }
+        ];
       };
 
       # Expose the package set, including overlays, for convenience.
