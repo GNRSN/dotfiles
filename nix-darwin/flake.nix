@@ -28,10 +28,54 @@
         {
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
+          # TODO: Should I move some to home-manager config?
           environment.systemPackages = [
-            pkgs.vim
+            # Better cat, colors etc
+            pkgs.bat
+            # Manage nix-envs based on directory
             pkgs.direnv
+            # Better ls
+            pkgs.eza
+            # Better find
+            pkgs.fd
+            # Fuzzy finder
+            pkgs.fzf
+            # Scan for secrets in git commits/history
+            pkgs.gitleaks
+            # Github cli
+            pkgs.gh
+            # Graphite cli
+            pkgs.graphite-cli
+            # json processor/query tool
+            pkgs.jq
+            # jq TUI playground
+            pkgs.jqp
+            # Git TUI
+            pkgs.lazygit
+            # Cross platform prompt
+            pkgs.oh-my-posh
+            # Automatic checks before committing
+            pkgs.pre-commit
+            # Faster grep
+            pkgs.ripgrep
+            # Hotkey daemon
+            pkgs.skhd
+            # Easy symlinks for dotfiles
+            pkgs.stow
+            # Turso cli
+            pkgs.turso-cli
+            # Vi improved
+            pkgs.vim
+            # Better cd
+            pkgs.zoxide
           ];
+
+          # Whitelist packages with restrictive licenses
+          nixpkgs.config.allowUnfreePredicate =
+            pkg:
+            builtins.elem (pkgs.lib.getName pkg) [
+              "graphite-cli"
+            ];
 
           # Auto upgrade nix package and the daemon service.
           services.nix-daemon.enable = true;
