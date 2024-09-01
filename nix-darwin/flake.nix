@@ -26,9 +26,12 @@
       configuration =
         { pkgs, ... }:
         {
+          # Remaining:
+          # Rust/rustup
+
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
-          # TODO: Should I move some to home-manager config?
+          # TODO: move most to home-manager config
           environment.systemPackages = [
             # Better cat, colors etc
             pkgs.bat
@@ -52,6 +55,12 @@
             pkgs.jqp
             # Git TUI
             pkgs.lazygit
+            # Better Vim
+            pkgs.neovim
+            # Neovim gui
+            pkgs.neovide
+            # Nix-dsl formatter
+            pkgs.nixfmt-rfc-style
             # Cross platform prompt
             pkgs.oh-my-posh
             # Automatic checks before committing
@@ -59,6 +68,7 @@
             # Faster grep
             pkgs.ripgrep
             # Hotkey daemon
+            # REVIEW: Does this actually work? I just read nix doesn't start up daemons?
             pkgs.skhd
             # Easy symlinks for dotfiles
             pkgs.stow
@@ -96,7 +106,10 @@
           };
 
           # Create /etc/zshrc that loads the nix-darwin environment.
-          programs.zsh.enable = true; # default shell on catalina
+          programs.zsh = {
+            # default shell on catalina
+            enable = true;
+          };
 
           # This property defines the version of nix to use, defaults to something pretty reasonable
           # system.nixpkgsRelease = 
