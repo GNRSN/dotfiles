@@ -99,10 +99,8 @@
           nix.settings = {
             extra-nix-path = "nixpkgs=flake:nixpkgs";
             experimental-features = "nix-command flakes";
-            # REVIEW: This was added by installer but isn't allowed by validation,
-            # @see https://github.com/LnL7/nix-darwin/issues/864
-            #
             upgrade-nix-store-path-url = "https://install.determinate.systems/nix-upgrade/stable/universal";
+            allowed-users = [ "*" ];
           };
 
           # Create /etc/zshrc that loads the nix-darwin environment.
