@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 
+# TODO: I think it was possible to run standalone home-manager as a flake instead of adding a channel like I did now?
+
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -9,6 +11,8 @@
 
   home.username = "egunnarsson";
 
+  home.homeDirectory = "/Users/egunnarsson";
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -16,14 +20,66 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.stateVersion = "24.05";
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
+  # Whitelist packages with restrictive licenses
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
+      "graphite-cli"
+    ];
+
   home.packages = [
-    # Adds the 'hello' command to your environment. It prints a friendly
-    # "Hello, world!" when run.
-    pkgs.hello
+    # Debug, Adds the 'hello' command to your environment.
+    # pkgs.hello
+
+    # Better cat, colors etc
+    pkgs.bat
+    # Better ls
+    pkgs.eza
+    # Better find
+    pkgs.fd
+    # Fuzzy finder
+    pkgs.fzf
+    # Scan for secrets in git commits/history
+    pkgs.gitleaks
+    # Github cli
+    pkgs.gh
+    # Graphite cli
+    pkgs.graphite-cli
+    # json processor/query tool
+    pkgs.jq
+    # jq TUI playground
+    pkgs.jqp
+    # Git TUI
+    pkgs.lazygit
+    # Better Vim
+    pkgs.neovim
+    # Neovim gui
+    pkgs.neovide
+    # Nix-dsl formatter
+    pkgs.nixfmt-rfc-style
+    # Cross platform prompt
+    pkgs.oh-my-posh
+    # Automatic checks before committing
+    pkgs.pre-commit
+    # Faster grep
+    pkgs.ripgrep
+    # Hotkey daemon
+    # REVIEW: Does this actually work? I just read nix doesn't start up daemons?
+    pkgs.skhd
+    # Easy symlinks for dotfiles
+    pkgs.stow
+    # Turso cli
+    pkgs.turso-cli
+    # Better cd
+    pkgs.zoxide
+
+    # === WORK ===
+
+    # Pinned version of go for work
+    # TODO: Experiment with direnv
+    pkgs.go_1_21
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -52,6 +108,13 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    # ".zshrc".source = ~/dotfiles/zsh/.zshrc;
+    # ".config/wezterm".source = ~/dotfiles/wezterm;
+    # ".config/skhd".source = ~/dotfiles/skhd;
+    # ".config/nvim".source = ~/dotfiles/nvim;
+    # ".config/nix".source = ~/dotfiles/nix;
+    # ".config/nix-darwin".source = ~/dotfiles/nix-darwin;
   };
 
   # You can also manage environment variables but you will have to manually
@@ -68,4 +131,22 @@
     # EDITOR = "emacs";
   };
 
+  programs.zsh = {
+    # REVIEW: I probably don't want to manage zsh through nix? 
+    enable = false;
+    # but I do want a .zshenv in $HOME defining my $ZDOTDIR, this has no effect when it isn't managed though
+    # it would be nice to replace stow with nix, I do want my config files to still be mutable through which may 
+    # be fundamentally incompatible with nix?
+    dotDir = ".config/zsh";
+    # Home manager stand alone install requires sourcing this
+    initExtra = ''
+      # Add any additional configurations here
+      export PATH=/run/current-system/sw/bin:$HOME/.nix-profile/bin:$PATH
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+
+      source
+    '';
+  };
 }

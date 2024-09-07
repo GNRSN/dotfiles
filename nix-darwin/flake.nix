@@ -23,6 +23,8 @@
       home-manager,
     }:
     let
+      system = "aarch64-darwin";
+      lib = nixpkgs.lib;
       configuration =
         { pkgs, ... }:
         {
@@ -33,59 +35,11 @@
           # $ nix-env -qaP | grep wget
           # TODO: move most to home-manager config
           environment.systemPackages = [
-            # Better cat, colors etc
-            pkgs.bat
             # Manage nix-envs based on directory
             pkgs.direnv
-            # Better ls
-            pkgs.eza
-            # Better find
-            pkgs.fd
-            # Fuzzy finder
-            pkgs.fzf
-            # Scan for secrets in git commits/history
-            pkgs.gitleaks
-            # Github cli
-            pkgs.gh
-            # Graphite cli
-            pkgs.graphite-cli
-            # json processor/query tool
-            pkgs.jq
-            # jq TUI playground
-            pkgs.jqp
-            # Git TUI
-            pkgs.lazygit
-            # Better Vim
-            pkgs.neovim
-            # Neovim gui
-            pkgs.neovide
-            # Nix-dsl formatter
-            pkgs.nixfmt-rfc-style
-            # Cross platform prompt
-            pkgs.oh-my-posh
-            # Automatic checks before committing
-            pkgs.pre-commit
-            # Faster grep
-            pkgs.ripgrep
-            # Hotkey daemon
-            # REVIEW: Does this actually work? I just read nix doesn't start up daemons?
-            pkgs.skhd
-            # Easy symlinks for dotfiles
-            pkgs.stow
-            # Turso cli
-            pkgs.turso-cli
             # Vi improved
             pkgs.vim
-            # Better cd
-            pkgs.zoxide
           ];
-
-          # Whitelist packages with restrictive licenses
-          nixpkgs.config.allowUnfreePredicate =
-            pkg:
-            builtins.elem (pkgs.lib.getName pkg) [
-              "graphite-cli"
-            ];
 
           # Auto upgrade nix package and the daemon service.
           services.nix-daemon.enable = true;
@@ -103,11 +57,8 @@
             allowed-users = [ "*" ];
           };
 
-          # Create /etc/zshrc that loads the nix-darwin environment.
-          programs.zsh = {
-            # default shell on catalina
-            enable = true;
-          };
+          # default shell on catalina
+          programs.zsh.enable = true;
 
           # This property defines the version of nix to use, defaults to something pretty reasonable
           # system.nixpkgsRelease = 
@@ -120,13 +71,13 @@
           system.stateVersion = 4;
 
           # The platform the configuration will be used on.
-          nixpkgs.hostPlatform = "aarch64-darwin";
+          nixpkgs.hostPlatform = system;
 
           nix.configureBuildUsers = true;
           nix.useDaemon = true;
 
+          # TODO: Is this still required? try without
           users.users.egunnarsson.home = "/Users/egunnarsson";
-          home-manager.backupFileExtension = "before-home-manager";
 
           # Nice to have
           # Touch id for sudo
@@ -146,19 +97,18 @@
       # Since this isn't the same as our hostname we need to specify the config name during switch:
       # darwin-rebuild switch --flake .#GNRSN/MacBook-aarch64-darwin
       darwinConfigurations."GNRSN/MacBook-aarch64-darwin" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
+        inherit system;
         modules = [
           configuration
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.egunnarsson = import ./home.nix;
-          }
         ];
       };
 
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."GNRSN/MacBook-aarch64-darwin".pkgs;
+
+      homeConfigurations."GNRSN" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./home.nix ];
+      };
     };
 }
