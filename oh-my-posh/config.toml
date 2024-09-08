@@ -103,9 +103,6 @@ version = 2
     foreground = '#63F08C'
     template = '➜ '
     background = 'transparent'
-    Text = ''
-    Duration = 0
-    NameLength = 0
 
 
 [transient_prompt]
