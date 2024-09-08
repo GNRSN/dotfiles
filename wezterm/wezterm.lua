@@ -13,7 +13,9 @@ config.font = wez.font_with_fallback({
 })
 
 -- Cursor
-config.default_cursor_style = "BlinkingBar"
+-- NOTE: From what I understand, this actually overrides the default block style, so setting this to anything else
+-- then BlinkingBlock makes us unable to achieve BlinkingBlock at all
+config.default_cursor_style = "BlinkingBlock"
 -- IMO better scaling on macbook display since it accounts for window dpi
 config.cursor_thickness = "1pt"
 

@@ -37,6 +37,19 @@ fi
 function set_poshcontext() {
   if [[ $ZVM_MODE ]]; then
     export VIM_MODE=$ZVM_MODE
+
+    # # I could not get a prompt segment to not escape escape-sequences (ironic, right?)
+    # # but we can leverage that this func will/needs to run every time we change ZVM_MODE 
+    if [ $ZVM_MODE = $ZVM_MODE_INSERT ]; then
+      # Set blinking bar cursor
+      printf "\033[5 q"
+    elif [ $ZVM_MODE = $ZVM_MODE_REPLACE ]; then
+      # Set blinking underline cursor
+      printf "\033[3 q"
+    else
+      # Set default cursor (should be blinking block unless overridden in terminal emulator)
+      printf "\033[0 q"
+    fi
   fi
 }
 
