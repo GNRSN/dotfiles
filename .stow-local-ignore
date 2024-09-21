@@ -3,4 +3,10 @@
 
 \.DS_Store
 
+\.stowrc
+\.pre-commit-config.yaml
+
 \README.md
+
+\nix-darwin
+
