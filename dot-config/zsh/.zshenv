@@ -5,6 +5,9 @@ export XDG_DATA_HOME=$HOME/.local/share
 
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
+# Default path for stow
+export STOW_DIR=$HOME/dotfiles
+
 # === Default editor ===
 export VISUAL="neovim"
 export EDITOR="$VISUAL"
