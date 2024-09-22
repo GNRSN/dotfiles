@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
-
-# TODO: I think it was possible to run standalone home-manager as a flake instead of adding a channel like I did now?
+# Note the double lambda, home manager expects a function so to pass custom args we need a function returning a function
+{ nodejs-20-14-0_pkgs }:
+{ pkgs, ... }:
 
 {
   # Let Home Manager install and manage itself.
@@ -80,6 +80,9 @@
     # Pinned version of go for work
     # TODO: Experiment with direnv
     pkgs.go_1_21
+    # NodeJS, pinned version for work
+    # pkgs.nodejs_20
+    nodejs-20-14-0_pkgs.nodejs_20
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

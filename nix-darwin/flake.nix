@@ -13,6 +13,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nodejs-20-14-0_pkgs = {
+      url = "https://github.com/NixOS/nixpkgs/archive/05bbf675397d5366259409139039af8077d695ce.tar.gz";
+    };
   };
 
   outputs =
@@ -21,11 +25,12 @@
       nix-darwin,
       nixpkgs,
       home-manager,
+      nodejs-20-14-0_pkgs,
     }:
     let
       system = "aarch64-darwin";
-      lib = nixpkgs.lib;
-      configuration =
+
+      darwinConfig =
         { pkgs, ... }:
         {
           # Remaining:
@@ -40,6 +45,10 @@
             # Vi improved
             pkgs.vim
           ];
+
+          # TODO: How does this work? Should I remove it from systemPackages
+          # see https://daiderd.com/nix-darwin/manual/index.html#opt-programs.direnv.enable
+          # programs.direnv.enable = true;
 
           # Auto upgrade nix package and the daemon service.
           services.nix-daemon.enable = true;
@@ -76,12 +85,32 @@
           nix.configureBuildUsers = true;
           nix.useDaemon = true;
 
-          # TODO: Is this still required? try without
-          users.users.egunnarsson.home = "/Users/egunnarsson";
+          users.users = {
+            # TODO: Replace with gnrsn
+            egunnarsson = {
+              home = "/Users/egunnarsson";
+            };
+          };
 
-          # Nice to have
+          homebrew.enable = true;
+          homebrew.casks = [
+            # Font of choice
+            # REVIEW: Consider installing with nix instead
+            "font-hack-nerd-font"
+            # For testing
+            "google-chrome"
+            # Modern Keepass
+            "keepassxc"
+            # I still use this for merge conflicts (ashamed)
+            "visual-studio-code"
+            # Terminal emulator of choice
+            "wezterm"
+          ];
+
           # Touch id for sudo
           security.pam.enableSudoTouchIdAuth = true;
+
+          # === Keyboard
 
           # Remap caps to ctrl
           system.keyboard.enableKeyMapping = true;
@@ -91,7 +120,42 @@
           # I want to be able to press and hold j and k
           # in VSCode with vim keys to move around.
           system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+
+          # === Dock ===
+
+          # Hide dock unless hovered
+          system.defaults.dock.autohide = true;
+
+          # Prevent re-arranging spaces based on recently used,
+          # weird that this option is under dock but w/e
+          system.defaults.dock.mru-spaces = false;
+
+          # Least obtrusive IMO
+          system.defaults.dock.orientation = "left";
+
+          # Default is null, 
+          # REVIEW: hopefully this results in none?
+          system.defaults.dock.persistent-apps = [ ];
+
+          # I want it to be as empty as possible :P
+          system.defaults.dock.show-recents = false;
+          system.defaults.dock.static-only = true;
+
+          # === Finder ===
+          # Show file extensions
+          system.defaults.finder.AppleShowAllExtensions = true;
+
+          # Breadcrumbs for path
+          system.defaults.finder.ShowPathbar = true;
+
+          # Status bar
+          system.defaults.finder.ShowStatusBar = true;
+
+          # === Screen capture ===
+          #system.defaults.screencapture.location = 
+
         };
+
     in
     {
       # Since this isn't the same as our hostname we need to specify the config name during switch:
@@ -99,7 +163,7 @@
       darwinConfigurations."GNRSN/MacBook-aarch64-darwin" = nix-darwin.lib.darwinSystem {
         inherit system;
         modules = [
-          configuration
+          darwinConfig
         ];
       };
 
@@ -108,7 +172,11 @@
 
       homeConfigurations."GNRSN" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
-        modules = [ ./home.nix ];
+        modules = [
+          (import ./home.nix {
+            nodejs-20-14-0_pkgs = nodejs-20-14-0_pkgs.legacyPackages.${system};
+          })
+        ];
       };
     };
 }
