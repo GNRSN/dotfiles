@@ -3,3 +3,6 @@
 
 # Trannsforms `dot-` file prefix to `.`
 --dotfiles
+
+# Detailed logs
+--verbose
