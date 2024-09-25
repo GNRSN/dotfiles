@@ -84,6 +84,8 @@
     # pkgs.nodejs_20
     nodejs-20-14-0_pkgs.nodejs_20
 
+    nodejs-20-14-0_pkgs.nodePackages.yarn
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
