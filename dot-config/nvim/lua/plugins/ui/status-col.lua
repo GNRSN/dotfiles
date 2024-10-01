@@ -19,6 +19,7 @@ return {
           "spectre_panel",
           "octo",
           "DiffviewFiles",
+          "aerial",
         },
         segments = {
           {
