@@ -14,6 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # This tool can be used to search for nixpkgs-versions containing specfic package-versions
+    # https://lazamar.co.uk/nix-versions/?package=nodejs
+    # NOTE: Package name is not the same as specified name for importing the package,
+    # it is listed in a separate field on https://search.nixos.org
     nodejs-20-14-0_pkgs = {
       url = "https://github.com/NixOS/nixpkgs/archive/05bbf675397d5366259409139039af8077d695ce.tar.gz";
     };
@@ -110,7 +114,21 @@
           # Touch id for sudo
           security.pam.enableSudoTouchIdAuth = true;
 
-          # === Keyboard
+          # === UI ===
+
+          # Dark mode
+          system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
+          system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = false;
+
+          # Show scrollbars
+          system.defaults.NSGlobalDomain.AppleShowScrollBars = "Always";
+
+          # === Input
+
+          # Control key repeat speed
+          # Values based on https://apple.stackexchange.com/questions/261163/default-value-for-nsglobaldomain-initialkeyrepeat
+          system.defaults.NSGlobalDomain.InitialKeyRepeat = 15;
+          system.defaults.NSGlobalDomain.KeyRepeat = 2;
 
           # Remap caps to ctrl
           system.keyboard.enableKeyMapping = true;
@@ -121,7 +139,25 @@
           # in VSCode with vim keys to move around.
           system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
 
+          # Disable swipe left triggering "back"
+          system.defaults.NSGlobalDomain.AppleEnableSwipeNavigateWithScrolls = false;
+
+          # Click on scrollbar jumps to where clicked instead of just moving in direction
+          system.defaults.NSGlobalDomain.AppleScrollerPagingBehavior = true;
+
+          # Disable clicking on desktop hides all windows
+          system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
+
+          # Disable hot corners, 1 is disabled
+          system.defaults.dock.wvous-bl-corner = 1;
+          system.defaults.dock.wvous-br-corner = 1;
+          system.defaults.dock.wvous-tl-corner = 1;
+          system.defaults.dock.wvous-tr-corner = 1;
+
           # === Dock ===
+
+          # Dock icon size
+          system.defaults.dock.tilesize = 16;
 
           # Hide dock unless hovered
           system.defaults.dock.autohide = true;
@@ -142,8 +178,15 @@
           system.defaults.dock.static-only = true;
 
           # === Finder ===
+
           # Show file extensions
           system.defaults.finder.AppleShowAllExtensions = true;
+
+          # Sort folders first
+          system.defaults.finder._FXSortFoldersFirst = true;
+
+          # Show path in title
+          system.defaults.finder._FXShowPosixPathInTitle = true;
 
           # Breadcrumbs for path
           system.defaults.finder.ShowPathbar = true;
@@ -152,7 +195,7 @@
           system.defaults.finder.ShowStatusBar = true;
 
           # === Screen capture ===
-          #system.defaults.screencapture.location = 
+          system.defaults.screencapture.location = "~/screen-capture";
 
         };
 
