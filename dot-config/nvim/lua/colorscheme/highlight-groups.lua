@@ -262,6 +262,8 @@ function M.setup()
     ["@lsp.typemod.variable.definition"] = { fg = palette.blue },
 
     ["@lsp.mod.deprecated"] = { strikethrough = true },
+    ["@lsp.typemod.struct.builtin"] = { fg = palette.blue_green },
+    ["@lsp.mod.builtin"] = { fg = palette.blue },
 
     -- scss
     ["@character.special.scss"] = { fg = palette.yellow_sunflower },
