@@ -258,6 +258,9 @@ function M.setup()
     ["@lsp.type.typeParameter"] = { fg = palette.number_green },
     ["@lsp.type.variable"] = {},
 
+    ["@lsp.typemod.variable.unresolved"] = { fg = palette.error_dark },
+    ["@lsp.typemod.variable.definition"] = { fg = palette.blue },
+
     ["@lsp.mod.deprecated"] = { strikethrough = true },
 
     -- scss
