@@ -7,7 +7,11 @@ return {
     lazy = false,
     priority = 9001,
     config = function()
-      require("neoconf").setup({})
+      require("neoconf").setup({
+        import = {
+          vscode = true,
+        },
+      })
       local format_on_save = require("util.format-on-save")
       format_on_save.init()
     end,
