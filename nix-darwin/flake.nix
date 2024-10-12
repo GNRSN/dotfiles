@@ -94,9 +94,8 @@
           nix.useDaemon = true;
 
           users.users = {
-            # TODO: Replace with gnrsn
-            egunnarsson = {
-              home = "/Users/egunnarsson";
+            gnrsn = {
+              home = "/Users/gnrsn";
             };
           };
 
@@ -211,8 +210,9 @@
     in
     {
       # Since this isn't the same as our hostname we need to specify the config name during switch:
-      # darwin-rebuild switch --flake .#GNRSN/MacBook-aarch64-darwin
-      darwinConfigurations."GNRSN/MacBook-aarch64-darwin" = nix-darwin.lib.darwinSystem {
+      # darwin-rebuild switch --flake .#GNRSN/MacBook
+      # Bootstrap: nix run [darwin]/main -- switch --flake .#GNRSN/MacBook
+      darwinConfigurations."GNRSN/MacBook" = nix-darwin.lib.darwinSystem {
         inherit system;
         modules = [
           darwinConfig
@@ -220,8 +220,9 @@
       };
 
       # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations."GNRSN/MacBook-aarch64-darwin".pkgs;
+      darwinPackages = self.darwinConfigurations."GNRSN/MacBook".pkgs;
 
+      # Bootstrap: nix run home-manager/master -- switch --flake .#GNRSN
       homeConfigurations."GNRSN" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
