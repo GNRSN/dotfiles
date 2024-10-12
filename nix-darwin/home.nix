@@ -35,12 +35,16 @@
 
     # Better cat, colors etc
     pkgs.bat
+    # GNU utils, MacOS only ships with a subset + keep versions fresh
+    pkgs.coreutils
     # Better ls
     pkgs.eza
     # Better find
     pkgs.fd
     # Fuzzy finder
     pkgs.fzf
+    # Keep version fresh, xcode updates slowly
+    pkgs.git
     # Scan for secrets in git commits/history
     pkgs.gitleaks
     # Github cli
@@ -65,11 +69,15 @@
     pkgs.pre-commit
     # Faster grep
     pkgs.ripgrep
+    # Rust toolchain
+    pkgs.rustup
     # Hotkey daemon
     # REVIEW: Does this actually work? I just read nix doesn't start up daemons?
     pkgs.skhd
     # Easy symlinks for dotfiles
     pkgs.stow
+    # Libsql, better sqlite
+    pkgs.sqld
     # Turso cli
     pkgs.turso-cli
     # Better cd
