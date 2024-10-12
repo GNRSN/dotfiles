@@ -191,7 +191,8 @@
           system.defaults.finder.AppleShowAllExtensions = true;
 
           # Sort folders first
-          system.defaults.finder._FXSortFoldersFirst = true;
+          # TODO: caused error, config option didn't exist
+          #system.defaults.finder._FXSortFoldersFirst = true;
 
           # Show path in title
           system.defaults.finder._FXShowPosixPathInTitle = true;
