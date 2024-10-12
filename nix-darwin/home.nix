@@ -77,7 +77,18 @@
     # Easy symlinks for dotfiles
     pkgs.stow
     # Libsql, better sqlite
-    pkgs.sqld
+    # TODO: Errors during build:
+    #
+    # Message:
+    # note: ld: framework not found SystemConfiguration
+    # clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
+    #
+    # The internet says that https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/darwin/apple-sdk/frameworks.nix
+    # is missing during build as its performed in a sandbox, should be able to define it as a build input somehow
+    # @see https://stackoverflow.com/questions/51161225/how-can-i-make-macos-frameworks-available-to-clang-in-a-nix-environment
+    #
+    # pkgs.sqld
+
     # Turso cli
     pkgs.turso-cli
     # Better cd
