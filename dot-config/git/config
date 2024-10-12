@@ -1,0 +1,6 @@
+[user]
+name="GNRSN"
+email="9020004+GNRSN@users.noreply.github.com"
+
+[pull]
+rebase=true
