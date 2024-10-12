@@ -45,8 +45,6 @@
           environment.systemPackages = with pkgs; [
             # Manage nix-envs based on directory
             direnv
-            # Vi improved
-            vim
           ];
 
           fonts.packages = with pkgs; [
@@ -101,10 +99,14 @@
 
           homebrew.enable = true;
           homebrew.casks = [
-            # For testing
+            # Browser of choice
+            "arc"
+            # For frontend development
             "google-chrome"
-            # Modern Keepass
+            # Modern Keepass UI
             "keepassxc"
+            # MacOS command pallette (spotlight replacement)
+            "raycast"
             # I still use this for merge conflicts (ashamed)
             "visual-studio-code"
             # Terminal emulator of choice
