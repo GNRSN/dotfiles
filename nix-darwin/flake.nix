@@ -42,12 +42,16 @@
 
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
-          # TODO: move most to home-manager config
-          environment.systemPackages = [
+          environment.systemPackages = with pkgs; [
             # Manage nix-envs based on directory
-            pkgs.direnv
+            direnv
             # Vi improved
-            pkgs.vim
+            vim
+          ];
+
+          fonts.packages = with pkgs; [
+            # REVIEW: Consider narrowing to only install used fonts
+            nerdfonts
           ];
 
           # TODO: How does this work? Should I remove it from systemPackages
@@ -98,9 +102,6 @@
 
           homebrew.enable = true;
           homebrew.casks = [
-            # Font of choice
-            # REVIEW: Consider installing with nix instead
-            "font-hack-nerd-font"
             # For testing
             "google-chrome"
             # Modern Keepass
