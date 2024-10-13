@@ -2,9 +2,9 @@
 
 ## 🚧 WIP: Setup
 
-- Clone this repo to `~/dotfiles` (note: This path is expected)
+- Prerequisite: Install homebrew
 
-- Install homebrew
+- Clone this repo to `~/dotfiles` (note: This path is expected)
 
 - Install nix (multi user installation) through the determinate systems nix installer
 
