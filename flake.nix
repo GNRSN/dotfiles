@@ -233,7 +233,7 @@
       homeConfigurations."GNRSN" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
-          (import ./home.nix {
+          (import ./modules/home.nix {
             nodejs-20-14-0_pkgs = nodejs-20-14-0_pkgs.legacyPackages.${system};
           })
         ];
