@@ -131,6 +131,8 @@
           # - Disable ctrl+space defaulting to switching input device
           # - Disable spotlight shortcut (makes it hard to start raycast for the first time though?)
           # - Change dictation shortcut from double tapping ctrl to mic icon (idk what button that is)
+          # - Spotlight show in menu bar: false
+          # - Sound: always show in the menu bar
 
           # Control key repeat speed
           # Values based on https://apple.stackexchange.com/questions/261163/default-value-for-nsglobaldomain-initialkeyrepeat
