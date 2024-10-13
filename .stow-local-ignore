@@ -3,4 +3,11 @@
 
 \.DS_Store
 
-\README.md
+\.stowrc
+\.pre-commit-config.yaml
+
+README.md
+
+flake.*
+modules
+

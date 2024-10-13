@@ -1,2 +1,8 @@
---target=~/.config
---ignore=.stowrc
+# Defaults to parent directory but specify for clarity
+--target=~/
+
+# Trannsforms `dot-` file prefix to `.`
+--dotfiles
+
+# Detailed logs
+--verbose
