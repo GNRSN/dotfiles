@@ -1,39 +1,47 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
+  keys = {
+    {
+      "<leader>?",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Buffer Local Keymaps (which-key)",
+    },
+  },
   config = function()
     local wk = require("which-key")
     wk.setup({
-      triggers_blacklist = {
-        -- n = { "v" },
-        i = { "j", "k" },
-        v = { "j", "k" },
+      triggers = {
+        -- Default option, auto trigger
+        { "<auto>", mode = "nxso" },
       },
-      window = {
+      win = {
         -- border = "shadow",
-        winblend = vim.o.winblend,
+        wo = {
+          winblend = vim.o.winblend,
+        },
       },
     })
-    local keymaps = {
-      mode = { "n", "v" },
-      ["g"] = { name = "Goto" },
-      ["]"] = { name = "Next" },
-      ["["] = { name = "Prev" },
-      ["gp"] = { name = "Preview" },
-      ["<leader>"] = { name = "Leader" },
-      ["<leader>c"] = { name = "Code" },
-      ["<leader>d"] = { name = "Debugger" },
-      ["<leader>f"] = { name = "File/find" },
-      ["<leader>g"] = { name = "Git" },
-      ["<leader>h"] = { name = "Harpoon" },
-      ["<leader>s"] = { name = "Search" },
-      ["<leader>t"] = { name = "Testing" },
-      ["<leader>T"] = { name = "Tabs" },
-      ["<leader>u"] = { name = "Ui" },
-      ["<leader>w"] = { name = "Windows" },
-      ["<leader>x"] = { name = "Diagnostics/quickfix/todos" },
-    }
 
-    wk.register(keymaps)
+    wk.add({
+      { "g", group = "Go to ..." },
+      { "]", group = "Next ..." },
+      { "[", group = "Prev ..." },
+      { "gp", group = "Preview" },
+      { "<leader>", group = "Leader" },
+      { "<leader>c", group = "Code" },
+      { "<leader>d", group = "Debugger" },
+      { "<leader>f", group = "File/find" },
+      { "<leader>g", group = "Git" },
+      { "<leader>h", group = "Harpoon" },
+      { "<leader>s", group = "Search" },
+      { "<leader>t", group = "Testing" },
+      { "<leader>T", group = "Tabs" },
+      { "<leader>u", group = "Ui" },
+      { "<leader>w", group = "Windows" },
+      { "<leader>x", group = "Diagnostics/quickfix/todos" },
+    })
   end,
 }

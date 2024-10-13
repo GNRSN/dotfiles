@@ -52,8 +52,8 @@ return {
       end, { desc = string.format("Navigate to harpoon (%s)", i) })
 
       -- Hide from which-key
-      wk.register({
-        [key] = "which_key_ignore",
+      wk.add({
+        { key, hidden = true },
       })
     end
 
