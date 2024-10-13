@@ -1,4 +1,15 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 
+disableStartupPopups: true
+
 gui:
   nerdFontsVersion: "3"
+
+git:
+  disableForcePushing: true
+
+keybinding:
+  universal:
+    # I often do this by accident and it risks "loosing" commits from working copy of branch.
+    # If this isn't noticed its a pain to restore later
+    pullFiles: <disabled>
