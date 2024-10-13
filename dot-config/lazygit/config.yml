@@ -13,3 +13,5 @@ keybinding:
     # I often do this by accident and it risks "loosing" commits from working copy of branch.
     # If this isn't noticed its a pain to restore later
     pullFiles: <disabled>
+    # This opens on <c-p> which I find annoying since I also use that to page
+    createPatchOptionsMenu: <disabled>
