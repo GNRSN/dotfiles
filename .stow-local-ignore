@@ -6,7 +6,8 @@
 \.stowrc
 \.pre-commit-config.yaml
 
-\README.md
+README.md
 
-\nix-darwin
+flake.*
+modules
 
