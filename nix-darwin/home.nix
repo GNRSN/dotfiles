@@ -98,12 +98,12 @@
 
     # Pinned version of go for work
     # TODO: Experiment with direnv
-    pkgs.go_1_21
+    pkgs.go_1_22
     # NodeJS, pinned version for work
     # pkgs.nodejs_20
-    nodejs-20-14-0_pkgs.nodejs_20
+    pkgs.nodejs_20
 
-    nodejs-20-14-0_pkgs.nodePackages.yarn
+    pkgs.nodePackages.yarn
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

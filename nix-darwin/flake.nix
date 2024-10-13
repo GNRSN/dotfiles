@@ -18,6 +18,7 @@
     # https://lazamar.co.uk/nix-versions/?package=nodejs
     # NOTE: Package name is not the same as specified name for importing the package,
     # it is listed in a separate field on https://search.nixos.org
+    # TODO: We no longer need this because we've caught up to latest stable at work. Keeping here through since I may need to re-use this method again
     nodejs-20-14-0_pkgs = {
       url = "https://github.com/NixOS/nixpkgs/archive/05bbf675397d5366259409139039af8077d695ce.tar.gz";
     };
