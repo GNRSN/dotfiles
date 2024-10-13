@@ -42,8 +42,5 @@ See discussion in `https://github.com/omerxx/dotfiles/issues/10`
 ### Rust
 
 Requires to be installed for dependencies that compile from source.
-Rustup manages the rust entire rust toolchain, installing versioned cargo through nix seemed overkill for now. This approach requires installing the toolchain manually through:
-
-```
-rustup default stable
-```
+Rustup manages the rust entire rust toolchain, installing versioned cargo through nix seemed overkill for now.
+This approach requires installing the toolchain manually through: `rustup default stable`
