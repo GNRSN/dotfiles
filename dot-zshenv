@@ -1,3 +1,4 @@
 # Root .zshenv defining our zsh config path
 export ZDOTDIR=$HOME/.config/zsh
+source $ZDOTDIR/.zshenv
 
