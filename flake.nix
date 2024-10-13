@@ -106,6 +106,8 @@
             "google-chrome"
             # Modern Keepass UI
             "keepassxc"
+            # Note-taking app
+            "obsidian"
             # MacOS command pallette (spotlight replacement)
             "raycast"
             # I still use this for merge conflicts (ashamed)
