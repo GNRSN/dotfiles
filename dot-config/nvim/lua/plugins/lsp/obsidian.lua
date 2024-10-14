@@ -22,16 +22,14 @@ return {
     opts = {
       workspaces = {
         {
-          name = "personal",
-          path = "~/vaults/personal",
+          name = "Personal",
+          path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Personal",
         },
         {
-          name = "work",
-          path = "~/vaults/work",
+          name = "Work",
+          path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Work",
         },
       },
-
-      -- see below for full list of options 👇
     },
   },
 }
