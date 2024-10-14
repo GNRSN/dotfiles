@@ -49,6 +49,8 @@
     pkgs.gitleaks
     # Github cli
     pkgs.gh
+    # Markdown renderer
+    pkgs.glow
     # Graphite cli
     pkgs.graphite-cli
     # json processor/query tool
