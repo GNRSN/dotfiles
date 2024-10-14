@@ -104,6 +104,7 @@
   # - Change dictation shortcut from double tapping ctrl to mic icon (idk what button that is)
   # - Spotlight show in menu bar: false
   # - Sound: always show in the menu bar
+  # - Remove keyboard shortcuts for mission control
 
   # Control key repeat speed
   # Values based on https://apple.stackexchange.com/questions/261163/default-value-for-nsglobaldomain-initialkeyrepeat
