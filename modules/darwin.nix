@@ -63,7 +63,11 @@
   };
 
   homebrew.enable = true;
+  # Uninstall anything not specified in nix, leaves associated files
+  homebrew.onActivation.cleanup = "uninstall";
   homebrew.casks = [
+    # Tiling window manager
+    "nikitabobko/tap/aerospace"
     # Browser of choice
     "arc"
     # For frontend development
