@@ -652,6 +652,14 @@ function M.setup()
     -- GlanceFoldIcon
     -- GlanceIndent
     -- GlanceBorderTop
+
+    -- Render-markdown.nvim
+    -- RenderMarkdownH1Bg = {  },
+    -- RenderMarkdownH2Bg = {  },
+    RenderMarkdownH3Bg = { bg = palette.border },
+    -- RenderMarkdownH4Bg = {  },
+    -- RenderMarkdownH5Bg = {  },
+    -- RenderMarkdownH6Bg = {  },
   }
 end
 
