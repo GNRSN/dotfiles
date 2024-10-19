@@ -63,7 +63,11 @@
   };
 
   homebrew.enable = true;
+  # Uninstall anything not specified in nix, leaves associated files
+  homebrew.onActivation.cleanup = "uninstall";
   homebrew.casks = [
+    # Tiling window manager
+    "nikitabobko/tap/aerospace"
     # Browser of choice
     "arc"
     # For frontend development
@@ -100,6 +104,7 @@
   # - Change dictation shortcut from double tapping ctrl to mic icon (idk what button that is)
   # - Spotlight show in menu bar: false
   # - Sound: always show in the menu bar
+  # - Remove keyboard shortcuts for mission control
 
   # Control key repeat speed
   # Values based on https://apple.stackexchange.com/questions/261163/default-value-for-nsglobaldomain-initialkeyrepeat
