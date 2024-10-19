@@ -17,7 +17,7 @@
 - Symlink dotfiles into .config using
   `cd ~/dotfiles && stow .`
 
-## Outline
+## Docs
 
 ### Nix
 
