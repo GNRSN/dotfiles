@@ -85,7 +85,7 @@ map("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word
 map("n", "<leader>ul", function() Util.toggle("relativenumber", true) Util.toggle("number") end, { desc = "Toggle Line Numbers" })
 map("n", "<leader>ud", function() Util.toggle_diagnostics() end, { desc = "Toggle Diagnostics" })
 
-local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
+local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 2
 map("n", "<leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 
 local function refresh_git ()
