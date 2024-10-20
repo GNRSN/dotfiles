@@ -14,6 +14,16 @@ return {
         .. vim.fn.expand("~")
         .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/**/*.md",
       "BufNewFile " .. vim.fn.expand("~") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/**/*.md",
+      -- TODO: Load if cwd matches obsidian vault
+    },
+    keys = {
+      { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "New note" },
+      { "<leader>os", "<cmd>ObsidianFollowLink vsplit<cr>", desc = "Open (vsplit)" },
+      { "<leader>oS", "<cmd>ObsidianFollowLink hsplit<cr>", desc = "Open (hsplit)" },
+      { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Backlinks" },
+      { "<leader>ot", "<cmd>ObsidianToday<cr>", desc = "Open daily note" },
+      { "<leader>op", "<cmd>ObsidianWorkspace Personal<cr>", desc = "Workspace: Personal" },
+      { "<leader>ow", "<cmd>ObsidianWorkspace Work<cr>", desc = "Workspace: Work" },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
