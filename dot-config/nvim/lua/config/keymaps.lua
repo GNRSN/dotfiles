@@ -85,7 +85,7 @@ map("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word
 map("n", "<leader>ul", function() Util.toggle("relativenumber", true) Util.toggle("number") end, { desc = "Toggle Line Numbers" })
 map("n", "<leader>ud", function() Util.toggle_diagnostics() end, { desc = "Toggle Diagnostics" })
 
-local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
+local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 2
 map("n", "<leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 
 local function refresh_git ()
@@ -97,8 +97,8 @@ local function refresh_git ()
 end
 
 -- lazygit
-map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root() }, { onClose = refresh_git }) end, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, nil, { onClose = refresh_git }) end, { desc = "Lazygit (cwd)" })
+-- map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root() }, { onClose = refresh_git }) end, { desc = "Lazygit (root dir)" })
+-- map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, nil, { onClose = refresh_git }) end, { desc = "Lazygit (cwd)" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
