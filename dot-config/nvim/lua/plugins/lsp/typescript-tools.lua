@@ -9,6 +9,7 @@ end
 
 return {
   -- Bespoke tsserver wrapper for better TS performance, "native" lua wrapper communicating through the tsserver protocol which predates lsp
+  -- LATER: Get rid of some options from lsp code actions that I never use, they just clutter it
   {
     "pmizio/typescript-tools.nvim",
     dependencies = {
