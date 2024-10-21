@@ -36,6 +36,7 @@ return {
       { "<leader>f", group = "File/find" },
       { "<leader>g", group = "Git" },
       { "<leader>h", group = "Harpoon" },
+      { "<leader>o", group = "Obsidian" },
       { "<leader>s", group = "Search" },
       { "<leader>t", group = "Testing" },
       { "<leader>T", group = "Tabs" },
