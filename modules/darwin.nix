@@ -98,13 +98,14 @@
 
   # === Input
 
-  # TODO: Lessons from fresh install
+  # LATER: Lessons from fresh install
   # - Disable ctrl+space defaulting to switching input device
   # - Disable spotlight shortcut (makes it hard to start raycast for the first time though?)
   # - Change dictation shortcut from double tapping ctrl to mic icon (idk what button that is)
   # - Spotlight show in menu bar: false
   # - Sound: always show in the menu bar
   # - Remove keyboard shortcuts for mission control
+  # - Disable displays have separate spaces https://nikitabobko.github.io/AeroSpace/guide#a-note-on-displays-have-separate-spaces
 
   # Control key repeat speed
   # Values based on https://apple.stackexchange.com/questions/261163/default-value-for-nsglobaldomain-initialkeyrepeat
