@@ -97,8 +97,8 @@ local function refresh_git ()
 end
 
 -- lazygit
--- map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root() }, { onClose = refresh_git }) end, { desc = "Lazygit (root dir)" })
--- map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, nil, { onClose = refresh_git }) end, { desc = "Lazygit (cwd)" })
+map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root() }, { onClose = refresh_git }) end, { desc = "Lazygit (root dir)" })
+map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, nil, { onClose = refresh_git }) end, { desc = "Lazygit (cwd)" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
