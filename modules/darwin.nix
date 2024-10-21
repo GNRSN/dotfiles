@@ -105,7 +105,8 @@
   # - Spotlight show in menu bar: false
   # - Sound: always show in the menu bar
   # - Remove keyboard shortcuts for mission control
-  # - Disable displays have separate spaces https://nikitabobko.github.io/AeroSpace/guide#a-note-on-displays-have-separate-spaces
+  # - Mission control group windows by application (defaults write com.apple.dock expose-group-apps -bool true)
+  # - Disable displays have separate spaces (defaults write com.apple.spaces spans-displays -bool true)
 
   # Control key repeat speed
   # Values based on https://apple.stackexchange.com/questions/261163/default-value-for-nsglobaldomain-initialkeyrepeat
