@@ -70,6 +70,8 @@
     "nikitabobko/tap/aerospace"
     # Browser of choice
     "arc"
+    # Still the best AI
+    "chatgpt"
     # For frontend development
     "google-chrome"
     # Modern Keepass UI
