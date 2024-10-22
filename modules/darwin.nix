@@ -68,6 +68,8 @@
   homebrew.casks = [
     # Tiling window manager
     "nikitabobko/tap/aerospace"
+    # Focus follows mouse, essential for multi monitor work
+    "dimentium/autoraise/autoraiseapp"
     # Browser of choice
     "arc"
     # Still the best AI
