@@ -16,6 +16,8 @@ return {
           ["markdown.mdx"] = { "prettierd" },
           svelte = { "prettierd" },
           css = { "prettierd" },
+          scss = { "prettierd" },
+          less = { "prettierd" },
           html = { "prettierd" },
           json = { "prettierd" },
           yaml = { "prettierd" },

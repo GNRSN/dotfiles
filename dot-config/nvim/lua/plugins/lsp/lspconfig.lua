@@ -90,6 +90,10 @@ return {
     lspconfig["cssls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      init_options = {
+        -- We'll use prettier for formatting instead
+        provideFormatter = false,
+      },
     })
 
     local util = require("lspconfig.util")
