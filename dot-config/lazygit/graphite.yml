@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+
+# Custom config overriding commands with graphite equivalents
+
+customCommands:
+  - key: c
+    description: Graphite create stack
+    command: 'graphite create -m "{{index .PromptResponses 0}}"'
+    context: "files"
+    prompts:
+      - type: "input"
+        title: "Commit Message"
+        initialValue: ""
+    loadingText: "creating stack..."
+
+  - key: P
+    description: Graphite submit stack
+    command: "graphite submit --stack --web=false"
+    context: global
