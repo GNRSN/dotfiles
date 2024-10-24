@@ -5,6 +5,12 @@
 [core]
   excludesFile = ~/.config/git/ignore.config
 
+[pull]
+  rebase = true
+
+[rebase]
+  updateRefs = true
+
 ; Specify config for work that lives outside personal dotfiles
 [includeIf "gitdir:~/Yolean/"]
   path = ~/Yolean/.gitconfig
