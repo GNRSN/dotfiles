@@ -4,10 +4,30 @@ disableStartupPopups: true
 
 gui:
   nerdFontsVersion: "3"
+  skipStashWarning: true
+  expandFocusedSidePanel: true
+  expandedSidePanelWeight: 3
+  timeFormat: 2024-10-24
+  shortTimeFormat: 18:22
+  commandLogSize: 5
+  filterMode: fuzzy
+  spinner:
+    rate: 50
+    frames:
+      - "◜"
+      - "◠"
+      - "◝"
+      - "◞"
+      - "◡"
+      - "◟"
+  statusPanelView: allBranchesLog
 
 git:
   disableForcePushing: true
 
+# promptToReturnFromSubprocess: false
+
+# TODO: Disable tab/shift tab to cycle module.
 keybinding:
   universal:
     # I often do this by accident and it risks "loosing" commits from working copy of branch.
@@ -15,3 +35,13 @@ keybinding:
     pullFiles: <disabled>
     # This opens on <c-p> which I find annoying since I also use that to page
     createPatchOptionsMenu: <disabled>
+
+    prevBlock: <disabled>
+    nextBlock: <disabled>
+    prevBlock-alt: <disabled>
+    nextBlock-alt: <disabled>
+    prevBlock-alt2: <disabled>
+    nextBlock-alt2: <disabled>
+
+    prevTab: h
+    nextTab: l
