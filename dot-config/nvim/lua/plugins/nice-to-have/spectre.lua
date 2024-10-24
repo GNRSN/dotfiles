@@ -1,5 +1,5 @@
 return {
-  -- Search and replace panel
+  -- Search and replace from panel ui
   -- NOTE: Default requires ripgrep and sed or oxi installed
   {
     "nvim-pack/nvim-spectre",
@@ -7,6 +7,11 @@ return {
       "nvim-lua/plenary.nvim",
       { "noib3/nvim-oxi" },
     },
+    -- The build script relies on nvim-oxi to build an oxi-spectre module that is used by the plugin
+    -- NOTE: Requires rust toolchain in environment
+    -- NOTE: I think this means that updating nvim-oxi only will require a manual run of the script for the updates
+    -- to actually effect anything since it's just a build depencency
+    build = "./build.sh",
     keys = {
       {
         "<leader>R",
