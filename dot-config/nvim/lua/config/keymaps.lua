@@ -1,4 +1,6 @@
 local Util = require("util")
+local lazygit = require("util.git-tui").lazygit
+local lazygit_graphite = require("util.git-tui").lazygit_graphite
 
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
@@ -88,17 +90,9 @@ map("n", "<leader>ud", function() Util.toggle_diagnostics() end, { desc = "Toggl
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 2
 map("n", "<leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 
-local function refresh_git ()
-  -- Refresh git signs buffers
-  require("gitsigns").refresh()
-  -- Refresh neo-tree
-  local neo_tree_events = require("neo-tree.events")
-  neo_tree_events.fire_event(neo_tree_events.GIT_EVENT)
-end
-
 -- lazygit
-map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root() }, { onClose = refresh_git }) end, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, nil, { onClose = refresh_git }) end, { desc = "Lazygit (cwd)" })
+map("n", "<leader>gg", function() lazygit:toggle() end, { desc = "Lazygit (root dir)" })
+map("n", "<leader>gr", function() lazygit_graphite:toggle() end, { desc = "Lazygit with Graphite config (root dir)" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
