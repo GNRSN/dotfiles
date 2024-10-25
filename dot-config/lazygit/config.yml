@@ -2,6 +2,10 @@
 
 disableStartupPopups: true
 
+notARepository: skip
+
+promptToReturnFromSubprocess: false
+
 gui:
   nerdFontsVersion: "3"
   skipStashWarning: true
@@ -25,8 +29,6 @@ gui:
 git:
   disableForcePushing: true
 
-# promptToReturnFromSubprocess: false
-
 # TODO: Disable tab/shift tab to cycle module.
 keybinding:
   universal:
@@ -45,3 +47,11 @@ keybinding:
 
     prevTab: h
     nextTab: l
+
+customCommands:
+  - key: "P"
+    description: "Push a specific commit (and any preceding)"
+    command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
+    context: "commits"
+    loadingText: "Pushing commit..."
+    stream: true
