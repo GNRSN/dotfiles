@@ -654,12 +654,12 @@ function M.setup()
     -- GlanceBorderTop
 
     -- Render-markdown.nvim
-    -- RenderMarkdownH1Bg = {  },
-    -- RenderMarkdownH2Bg = {  },
-    RenderMarkdownH3Bg = { bg = palette.border },
-    -- RenderMarkdownH4Bg = {  },
-    -- RenderMarkdownH5Bg = {  },
-    -- RenderMarkdownH6Bg = {  },
+    RenderMarkdownH1Bg = { bg = "#666666" },
+    RenderMarkdownH2Bg = { bg = "#555555" },
+    RenderMarkdownH3Bg = { bg = "#444444" },
+    RenderMarkdownH4Bg = { bg = "#333333" },
+    RenderMarkdownH5Bg = { bg = "#222222" },
+    RenderMarkdownH6Bg = { bg = "#111111" },
   }
 end
 
