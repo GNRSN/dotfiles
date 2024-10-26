@@ -9,7 +9,7 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export STOW_DIR=$HOME/dotfiles
 
 # === Default editor ===
-export VISUAL="neovim"
+export VISUAL="nvim"
 export EDITOR="$VISUAL"
 export GIT_EDITOR="$VISUAL"
 
