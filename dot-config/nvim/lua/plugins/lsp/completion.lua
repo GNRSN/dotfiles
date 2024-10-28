@@ -29,6 +29,7 @@ return {
         require("cmp-npm").setup({})
       end,
     },
+    "Exafunction/codeium.nvim",
   },
   config = function()
     -- Disable native completion
