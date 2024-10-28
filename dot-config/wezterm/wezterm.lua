@@ -73,6 +73,8 @@ config.colors.visual_bell = "#202020"
 -- Misc
 -- ===
 
+config.scrollback_lines = 9999
+
 -- Fix issues with Swedish keyboard
 -- https://www.reddit.com/r/wezterm/comments/1bdmufm/cant_write_out_curly_brackets_in_wezterm/
 config.send_composed_key_when_left_alt_is_pressed = true
