@@ -8,6 +8,8 @@ return {
       local conform = require("conform")
 
       conform.setup({
+        notify_on_error = true,
+        notify_no_formatters = true,
         formatters_by_ft = {
           javascript = { "prettierd" },
           typescript = { "prettierd" },
@@ -38,13 +40,7 @@ return {
             return nil
           end
         end,
-        -- REVIEW: I still want prettier at work though
         formatters = {
-          -- prettierd = {
-          --   env = {
-          --     PRETTIERD_LOCAL_PRETTIER_ONLY = true,
-          --   },
-          -- },
         },
       })
 
