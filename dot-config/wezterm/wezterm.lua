@@ -3,7 +3,9 @@ local config = wez.config_builder()
 
 -- config.term = "wezterm"
 
+-- ===
 -- Font
+-- ===
 config.font = wez.font_with_fallback({
   "Hack Nerd Font Mono",
   {
@@ -12,14 +14,18 @@ config.font = wez.font_with_fallback({
   },
 })
 
+-- ===
 -- Cursor
+-- ===
 -- NOTE: From what I understand, this actually overrides the default block style, so setting this to anything else
 -- then BlinkingBlock makes us unable to achieve BlinkingBlock at all
 config.default_cursor_style = "BlinkingBlock"
 -- IMO better scaling on macbook display since it accounts for window dpi
 config.cursor_thickness = "1pt"
 
+-- ===
 -- Colors
+-- ===
 config.color_scheme = "Dark+"
 config.window_background_opacity = 0.60
 config.macos_window_background_blur = 44
@@ -63,7 +69,9 @@ config.visual_bell = {
 
 config.colors.visual_bell = "#202020"
 
--- === Misc ===
+-- ===
+-- Misc
+-- ===
 
 -- Fix issues with Swedish keyboard
 -- https://www.reddit.com/r/wezterm/comments/1bdmufm/cant_write_out_curly_brackets_in_wezterm/
