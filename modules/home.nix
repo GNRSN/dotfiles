@@ -53,6 +53,8 @@
     pkgs.glow
     # Graphite cli
     pkgs.graphite-cli
+    # MacOS border for active window
+    pkgs.jankyborders
     # json processor/query tool
     pkgs.jq
     # jq TUI playground
