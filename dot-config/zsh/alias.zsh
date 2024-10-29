@@ -5,6 +5,7 @@ alias lz=lazygit
 alias nv=nvim
 alias pn=pnpm
 alias l='eza -l'
+alias tree='eza -T'
 alias nvide="neovide --frame=transparent --title-hidden"
 alias llama="ollama run llama3.1:latest"
 alias gr='graphite'
