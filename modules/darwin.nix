@@ -72,8 +72,10 @@
     "dimentium/autoraise/autoraiseapp"
     # Browser of choice
     "arc"
-    # Still the best AI
+    # Still the best AI(?)
     "chatgpt"
+    # Translation
+    "deepl"
     # For frontend development
     "google-chrome"
     # Modern Keepass UI
