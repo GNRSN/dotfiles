@@ -29,6 +29,8 @@ return {
         "ts_ls",
         "html",
         "cssls",
+        "css_variables",
+        "cssmodules_ls",
         "tailwindcss",
         "svelte",
         "lua_ls",
@@ -39,8 +41,7 @@ return {
         "yamlls",
         "jsonls",
         "mdx_analyzer",
-        -- Broken (for nvim 9?) see https://www.reddit.com/r/neovim/comments/1cp8cvw/eslint_is_not_displaying_errors_in_diagnostics/
-        "eslint@4.8.0",
+        "eslint",
         "nil_ls",
       },
       -- auto-install configured servers (with lspconfig)
