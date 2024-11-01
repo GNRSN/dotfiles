@@ -1,5 +1,4 @@
 local Util = require("util")
-local lazygit = require("util.git-tui").lazygit
 local lazygit_graphite = require("util.git-tui").lazygit_graphite
 
 local function map(mode, lhs, rhs, opts)
@@ -91,7 +90,7 @@ local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 2
 map("n", "<leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 
 -- lazygit
-map("n", "<leader>gg", function() lazygit:toggle() end, { desc = "Lazygit (root dir)" })
+map("n", "<leader>gg", require('util.git-tui').utils.lazygit_smart_open, { desc = "Lazygit (root dir)" })
 map("n", "<leader>gr", function() lazygit_graphite:toggle() end, { desc = "Lazygit with Graphite config (root dir)" })
 
 -- highlights under cursor
