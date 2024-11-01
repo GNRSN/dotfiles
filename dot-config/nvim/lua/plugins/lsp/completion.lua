@@ -30,6 +30,7 @@ return {
       end,
     },
     "Exafunction/codeium.nvim",
+    "folke/lazydev.nvim",
   },
   config = function()
     -- Disable native completion
@@ -249,6 +250,7 @@ return {
             luasnip = "Snip",
             codeium = "🤖",
             npm = "npm",
+            lazydev = "DEV",
           }
           local function getMappedMenu(entry)
             return MENU_MAPPER[entry.source.name] or entry.source.name or "??"
