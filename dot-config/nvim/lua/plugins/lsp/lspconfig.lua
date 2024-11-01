@@ -96,6 +96,16 @@ return {
       },
     })
 
+    lspconfig["css_variables"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig["cssmodules_ls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
     local util = require("lspconfig.util")
 
     -- TODO: Move to typescript utils
