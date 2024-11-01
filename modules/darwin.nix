@@ -76,6 +76,8 @@
     "chatgpt"
     # Translation
     "deepl"
+    # Keyboard remapping
+    "hhkb"
     # For frontend development
     "google-chrome"
     # Modern Keepass UI
