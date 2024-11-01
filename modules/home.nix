@@ -69,6 +69,8 @@
     pkgs.nixfmt-rfc-style
     # Cross platform prompt
     pkgs.oh-my-posh
+    # Npm but better, faster, stronger...
+    pkgs.pnpm
     # Automatic checks before committing
     pkgs.pre-commit
     # Faster grep
