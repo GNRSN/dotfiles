@@ -47,6 +47,7 @@
   "middleclass": { "branch": "master", "commit": "9fab4d5bca67262614960960ca35c4740eb2be2c" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "a77af2e764c5ed4038d27d1c463fa49cd4794e07" },
   "neoconf.nvim": { "branch": "main", "commit": "c32fd1d852e45cc03ed0729a2f5bec040ff9f065" },
+  "neogit": { "branch": "master", "commit": "001f43f50d9589d837cec59004fd92486ab06870" },
   "neotest": { "branch": "master", "commit": "6d3d22cdad49999ef774ebe1bc250a4994038964" },
   "neotest-mocha": { "branch": "main", "commit": "8239023d299a692784176f202f6a4a5e0a698ad2" },
   "neotest-vitest": { "branch": "main", "commit": "9e30dca989a2287cf3fde86b3e138ea7fa4de935" },
