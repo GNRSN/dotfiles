@@ -14,6 +14,7 @@ return {
           "neotest-summary",
           "neotest-output-panel",
           "Trouble",
+          "trouble",
           "noice",
           "undotree",
           "spectre_panel",
