@@ -74,6 +74,8 @@
     "arc"
     # Still the best AI(?)
     "chatgpt"
+    # I want to try out the experience
+    "cursor"
     # Translation
     "deepl"
     # Keyboard remapping
