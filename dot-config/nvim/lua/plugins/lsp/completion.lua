@@ -30,6 +30,7 @@ return {
       end,
     },
     "folke/lazydev.nvim",
+    "supermaven-inc/supermaven-nvim",
   },
   config = function()
     -- Disable native completion
@@ -76,6 +77,7 @@ return {
         },
         { name = "npm", keyword_length = 4 },
         { name = "nvim_lsp_signature_help" },
+        { name = "supermaven" },
         { name = "codeium" },
         { name = "path" },
         { name = "nvim_lua" },
@@ -248,6 +250,7 @@ return {
             path = "Path",
             luasnip = "Snip",
             codeium = "🤖",
+            supermaven = "🦸",
             npm = "npm",
             lazydev = "DEV",
           }
