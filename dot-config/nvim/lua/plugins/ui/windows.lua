@@ -1,3 +1,19 @@
+local BLACKLIST = {
+  "neo-tree",
+  "neotest",
+  "neotest-summary",
+  "neotest-output-panel",
+  "Trouble",
+  "noice",
+  "undotree",
+  "spectre_panel",
+  "octo",
+  "DiffviewFiles",
+  "aerial",
+  "Avante",
+  "AvanteInput",
+}
+
 return {
   {
     -- "Zoom" splits, including animations
@@ -16,19 +32,7 @@ return {
           buftype = {
             "quickfix",
           },
-          filetype = {
-            "neo-tree",
-            "neotest",
-            "neotest-summary",
-            "neotest-output-panel",
-            "Trouble",
-            "noice",
-            "undotree",
-            "spectre_panel",
-            "octo",
-            "DiffviewFiles",
-            "aerial",
-          },
+          filetype = BLACKLIST,
         },
       })
     end,
