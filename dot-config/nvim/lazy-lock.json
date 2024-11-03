@@ -22,6 +22,7 @@
   "cspell.nvim": { "branch": "main", "commit": "2c29bf573292c8f5053383d1be4ab908f4ecfc47" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dressing.nvim": { "branch": "master", "commit": "1b7921eecc65af1baf8ac1dc06f0794934cbcfb2" },
+  "fastaction.nvim": { "branch": "main", "commit": "77ae921e6fa6a8e2705768fa89b89b0e45840b94" },
   "flit.nvim": { "branch": "main", "commit": "1ef72de6a02458d31b10039372c8a15ab8989e0d" },
   "friendly-snippets": { "branch": "main", "commit": "de8fce94985873666bd9712ea3e49ee17aadb1ed" },
   "fzf-lua": { "branch": "main", "commit": "ce1e24f2a48089b65deefcb0a71a9856839002b5" },
