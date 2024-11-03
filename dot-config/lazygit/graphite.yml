@@ -6,14 +6,20 @@ customCommands:
   - key: c
     description: Graphite create stack
     command: 'graphite create -m "{{index .PromptResponses 0}}"'
-    context: "files"
+    context: files
     prompts:
-      - type: "input"
+      - type: input
         title: "Commit Message"
         initialValue: ""
-    loadingText: "creating stack..."
+    loadingText: creating stack...
 
   - key: P
     description: Graphite submit stack
     command: "graphite submit --stack --web=false"
     context: global
+    loadingText: "submitting stack..."
+
+  - key: A
+    description: Graphite modify commit
+    command: graphite modify
+    context: commits
