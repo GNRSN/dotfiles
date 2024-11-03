@@ -3,7 +3,8 @@ return {
   -- Displays current scope at top of buffer, good for long files
   {
     "nvim-treesitter/nvim-treesitter-context",
-    -- TODO: Disable until https://github.com/neovide/neovide/issues/2353 is merged
+    -- TODO: Disabled until stable or revert updates
+    cond = false,
     event = { "BufReadPre", "BufNewFile" },
     keys = {
       { "<leader>uc", "<Cmd>TSContextToggle<CR>", desc = "Toggle context ui" },
