@@ -36,18 +36,7 @@ M.lazygit_graphite = Terminal:new(vim.tbl_extend("force", base_config, {
 }))
 
 function M.utils.lazygit_smart_open()
-  -- LATER: Get from neoconf
-  local graphite_dirs = {
-    vim.env.HOME .. "/dotfiles",
-  }
-  local is_graphite_cwd = false
-
-  for _, v in pairs(graphite_dirs) do
-    if vim.fn.getcwd() == v then
-      is_graphite_cwd = true
-      break
-    end
-  end
+  local is_graphite_cwd = require("util.local-config").is_allowed_path("graphite")
 
   if is_graphite_cwd then
     M.lazygit_graphite:toggle()
