@@ -29,7 +29,6 @@ return {
         require("cmp-npm").setup({})
       end,
     },
-    "Exafunction/codeium.nvim",
     "folke/lazydev.nvim",
   },
   config = function()
