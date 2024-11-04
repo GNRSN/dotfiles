@@ -3,7 +3,7 @@
   email="9020004+GNRSN@users.noreply.github.com"
 
 [core]
-  excludesFile = ~/.config/git/ignore.config
+  excludesFile=~/.config/git/ignore
 
 [pull]
   rebase = true
