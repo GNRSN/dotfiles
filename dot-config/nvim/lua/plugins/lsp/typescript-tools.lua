@@ -42,6 +42,9 @@ return {
   },
   {
     "dmmulroy/ts-error-translator.nvim",
+    -- LATER: I have not been very impressed with error translator
+    -- I'd like to activate it with some keybind or something since it often just adds extra text for nothing
+    cond = false,
     config = function()
       require("ts-error-translator").setup()
     end,
