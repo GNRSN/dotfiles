@@ -41,6 +41,20 @@ return {
     end,
   },
   {
+    "dmmulroy/tsc.nvim",
+    dependencies = {
+      "rcarriga/nvim-notify",
+      "folke/trouble.nvim",
+    },
+    cmd = {
+      "TSC",
+    },
+    opts = {
+      use_trouble_qflist = true,
+    },
+  },
+
+  {
     "dmmulroy/ts-error-translator.nvim",
     -- LATER: I have not been very impressed with error translator
     -- I'd like to activate it with some keybind or something since it often just adds extra text for nothing
