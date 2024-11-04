@@ -18,12 +18,14 @@ gui:
   spinner:
     rate: 50
     frames:
-      - "◜"
-      - "◠"
-      - "◝"
-      - "◞"
-      - "◡"
-      - "◟"
+      - ⣾
+      - ⣽
+      - ⣻
+      - ⢿
+      - ⡿
+      - ⣟
+      - ⣯
+      - ⣷
   statusPanelView: allBranchesLog
 
 git:
