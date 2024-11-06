@@ -3,6 +3,11 @@ return {
   {
     "nvimdev/lspsaga.nvim",
     event = "BufRead",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+      --Please make sure you install markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" },
+    },
     config = function()
       require("lspsaga").setup({
         lightbulb = {
@@ -29,19 +34,16 @@ return {
         },
         symbol_in_winbar = {
           enable = false,
+          expand = "",
+          collapse = "",
         },
       })
     end,
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons" },
-      --Please make sure you install markdown and markdown_inline parser
-      { "nvim-treesitter/nvim-treesitter" },
-    },
     keys = {
       -- Default keymap but adding this directly overrides K for keywordprg
       -- TODO: Update mapping for vim docs?
       { "K", "<cmd>Lspsaga hover_doc<cr>", desc = "Hover documentation" },
-      { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Code actions", mode = { "n", "v" } },
+      -- { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Code actions", mode = { "n", "v" } },
       { "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<cr>", desc = "Line diagnostics" },
       -- { "<leader>cr", "<cmd>Lspsaga rename<cr>", desc = "Rename variable" },
       -- { "<leader>ci", "<cmd>Lspsaga incomming_calls<cr>", desc = "Incomming calls" },
