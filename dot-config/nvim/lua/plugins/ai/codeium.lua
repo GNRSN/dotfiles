@@ -1,6 +1,9 @@
 return {
   {
     "Exafunction/codeium.nvim",
+    cond = function()
+      return not require("util.local-config").is_allowed_path("ai")
+    end,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
