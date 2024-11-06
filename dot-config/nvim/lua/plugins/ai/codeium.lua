@@ -2,7 +2,7 @@ return {
   {
     "Exafunction/codeium.nvim",
     cond = function()
-      return not require("util.local-config").is_allowed_path("ai")
+      return require("util.local-config").is_work_dir()
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -10,11 +10,9 @@ return {
     },
     event = { "InsertEnter", "CmdlineEnter" },
     cmd = { "Codeium" },
-    config = function()
-      require("codeium").setup({
-        enable_chat = true,
-        enable_cmp_source = true,
-      })
-    end,
+    opts = {
+      enable_chat = true,
+      enable_cmp_source = true,
+    },
   },
 }

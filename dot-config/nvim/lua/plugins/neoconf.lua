@@ -12,8 +12,7 @@ return {
           vscode = true,
         },
       })
-      local format_on_save = require("util.format-on-save")
-      format_on_save.init()
+      require("util.local-config").init()
     end,
   },
 }
