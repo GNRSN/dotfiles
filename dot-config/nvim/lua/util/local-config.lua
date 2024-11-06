@@ -33,4 +33,12 @@ function M.is_allowed_path(key)
   return false
 end
 
+function M.get_tsdk_from_config()
+  local neoconf = require("neoconf")
+  -- REVIEW: This is a bit scary, vscode forces opt in per project since it's a security risk. Consider something similar
+  local vscodeConfig = neoconf.get("vscode.typescript.tsdk") or neoconf.get("typescript.tsdk")
+
+  return vscodeConfig or nil
+end
+
 return M

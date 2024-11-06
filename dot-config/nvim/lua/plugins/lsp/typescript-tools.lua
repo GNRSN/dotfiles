@@ -1,5 +1,5 @@
 local function get_ts_server_path()
-  local tsdk = require("util.typescript").get_tsdk_from_config()
+  local tsdk = require("util.local-config").get_tsdk_from_config()
 
   if tsdk then
     -- Typescript-tools expect path to tsserver.js, tsserver lsp config only refers to the folder
@@ -9,7 +9,7 @@ end
 
 return {
   -- Bespoke tsserver wrapper for better TS performance, "native" lua wrapper communicating through the tsserver protocol which predates lsp
-  -- LATER: Get rid of some options from lsp code actions that I never use, they just clutter it
+  -- TODO: Get rid of some options from lsp code actions that I never use, they just clutter it
   {
     "pmizio/typescript-tools.nvim",
     dependencies = {
@@ -19,7 +19,6 @@ return {
       "marilari88/twoslash-queries.nvim",
     },
     config = function()
-      -- REVIEW: This is a bit scary, vscode forces opt in per project since it's a security risk. Consider something similar
       local tsserver_path = get_ts_server_path()
       if tsserver_path then
         vim.notify("Typescript-tools running with custom project tsserver found at: " .. tsserver_path)
