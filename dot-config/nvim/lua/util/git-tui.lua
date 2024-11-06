@@ -36,9 +36,9 @@ M.lazygit_graphite = Terminal:new(vim.tbl_extend("force", base_config, {
 }))
 
 function M.utils.lazygit_smart_open()
-  local is_graphite_cwd = require("util.local-config").is_allowed_path("graphite")
+  local project_uses_graphite = require("util.local-config").get_workspace_config().graphite
 
-  if is_graphite_cwd then
+  if project_uses_graphite then
     M.lazygit_graphite:toggle()
   else
     M.lazygit:toggle()

@@ -61,7 +61,3 @@ vim.api.nvim_create_user_command("FormatOnSaveDisable", format_on_save.disable, 
 vim.api.nvim_create_user_command("FormatOnSaveToggle", format_on_save.toggle, {
   desc = "Toggle format-on-save",
 })
-
-vim.api.nvim_create_user_command("FormatOnSaveInit", format_on_save.init, {
-  desc = "Toggle format-on-save",
-})

@@ -1,3 +1,5 @@
 # Mac
 .DS_Store
 
+# Global ignore neoconf for personal config
+.neoconf.json

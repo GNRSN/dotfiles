@@ -1,44 +1,54 @@
 local M = {}
 
--- List of allowed paths
--- LATER: Get this from neoconf
-local whitelist = {
-  -- Experiment with experience in non-work dirs before considering security implications
-  ai = {
-    "~/dotfiles",
-  },
-  graphite = {
-    "~/dotfiles",
-  },
+M.defaults = {
+  format_on_save = true,
+  use_project_tsdk = false,
+  graphite = false,
 }
 
-function M.get_whitelist(key)
-  return whitelist[key]
-end
+M.is_init = false
 
--- Compare current working directory against a given path
-function M.is_cwd_match(path)
-  return vim.fn.getcwd() == vim.fn.expand(path)
-end
-
--- Check if current working directory is in allowed paths
---- @param key string
-function M.is_allowed_path(key)
-  local allowed_paths = M.get_whitelist(key)
-  for _, path in ipairs(allowed_paths) do
-    if M.is_cwd_match(path) then
-      return true
-    end
+function M.get_workspace_config()
+  if not M.is_init then
+    error("workspace_config not parsed yet")
   end
-  return false
+  return require("neoconf").get("workspace-config", M.defaults)
+end
+
+function M.init()
+  if M.is_init then
+    error("local-config: Already initialized")
+  end
+
+  require("neoconf.plugins").register({
+    name = "workspace-config",
+    on_schema = function(schema)
+      -- this call will create a json schema based on the lua types of your default settings
+      schema:import("workspace-config", M.defaults)
+    end,
+  })
+
+  M.is_init = true
+
+  local workspace_config = M.get_workspace_config()
+
+  vim.g.format_on_save = workspace_config.format_on_save
 end
 
 function M.get_tsdk_from_config()
   local neoconf = require("neoconf")
-  -- REVIEW: This is a bit scary, vscode forces opt in per project since it's a security risk. Consider something similar
   local vscodeConfig = neoconf.get("vscode.typescript.tsdk") or neoconf.get("typescript.tsdk")
 
   return vscodeConfig or nil
+end
+
+function M.is_work_dir()
+  local work_dir = vim.env.WORK_DIR
+  if not work_dir then
+    vim.notify("env.WORK_DIR not set")
+    return true
+  end
+  return vim.fn.getcwd():find(work_dir, 1, true) ~= nil
 end
 
 return M

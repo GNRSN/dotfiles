@@ -2,7 +2,7 @@ return {
   {
     "supermaven-inc/supermaven-nvim",
     cond = function()
-      return require("util.local-config").is_allowed_path("ai")
+      return not require("util.local-config").is_work_dir()
     end,
     opts = {
       keymaps = {

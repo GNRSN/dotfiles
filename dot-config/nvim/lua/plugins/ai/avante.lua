@@ -2,17 +2,12 @@ return {
   -- Cursor-eqsue AI interactions from nvim
   {
     "yetone/avante.nvim",
-    -- Only if cwd is dotfiles to start with
-    cond = function()
-      return require("util.local-config").is_allowed_path("ai")
-    end,
     event = "VeryLazy",
     lazy = true,
+    cond = function()
+      return not require("util.local-config").is_work_dir()
+    end,
     version = false,
-    opts = {
-      -- add any opts here
-    },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -42,5 +37,6 @@ return {
         "MeanderingProgrammer/render-markdown.nvim",
       },
     },
+    opts = {},
   },
 }
