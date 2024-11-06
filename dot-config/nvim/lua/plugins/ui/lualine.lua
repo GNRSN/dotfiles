@@ -77,6 +77,14 @@ local diagnostics_segment = {
   },
 }
 
+local BLACKLIST = {
+  "neo-tree",
+  "spectre_panel",
+  "DiffviewFiles",
+  "Avante",
+  "AvanteInput",
+}
+
 return {
   -- Customizable status line
   {
@@ -93,11 +101,7 @@ return {
           component_separators = "|",
           section_separators = "",
           disabled_filetypes = {
-            statusline = {
-              "neo-tree",
-              "spectre_panel",
-              "DiffviewFiles",
-            },
+            statusline = BLACKLIST,
             winbar = {},
           },
           ignore_focus = {},

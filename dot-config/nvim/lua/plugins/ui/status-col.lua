@@ -21,6 +21,8 @@ return {
           "octo",
           "DiffviewFiles",
           "aerial",
+          "Avante",
+          "AvanteInput",
         },
         segments = {
           {
