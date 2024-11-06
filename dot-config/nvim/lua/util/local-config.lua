@@ -7,6 +7,9 @@ local whitelist = {
   ai = {
     "~/dotfiles",
   },
+  graphite = {
+    "~/dotfiles",
+  },
 }
 
 function M.get_whitelist(key)
