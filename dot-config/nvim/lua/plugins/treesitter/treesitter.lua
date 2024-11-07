@@ -5,6 +5,8 @@ return {
     dependencies = {
       -- Smarter % matching lua keywords denoting scopes
       "andymass/vim-matchup",
+      -- Automatically inserts "end" keyword to close scopes in languages like lua
+      "RRethy/nvim-treesitter-endwise",
     },
     build = ":TSUpdate",
     opts = { -- enable syntax highlighting
@@ -16,7 +18,11 @@ return {
         enable = true,
       },
       autotag = {
+        -- This is supposed to surpress the warning but i'm still seeing it?
         enable = false,
+      },
+      endwise = {
+        enable = true,
       },
       matchup = {
         enable = true,
