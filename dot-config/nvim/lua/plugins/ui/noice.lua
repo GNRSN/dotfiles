@@ -1,5 +1,7 @@
 local CONCEAL_CMD = false
 
+-- TODO: Pipe undo message to bottom right
+
 return {
   -- Noice is multiple things, but foremost its an event/message router,
   -- it allows filtering/mapping messages to different UIs,
