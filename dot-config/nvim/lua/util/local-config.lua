@@ -40,7 +40,7 @@ function M.get_tsdk_from_config()
 
   if not M.get_workspace_config().allow_project_tsdk then
     if vscodeConfig then
-      vim.notify("Project configuration contains custom typescript.tsdk but ")
+      vim.notify("Project configuration contains custom typescript.tsdk but allow_project_tsdk isn't set")
     end
     return nil
   end
