@@ -2,7 +2,7 @@ local M = {}
 
 M.defaults = {
   format_on_save = true,
-  use_project_tsdk = false,
+  allow_project_tsdk = false,
   graphite = false,
 }
 
@@ -36,8 +36,14 @@ function M.init()
 end
 
 function M.get_tsdk_from_config()
-  local neoconf = require("neoconf")
-  local vscodeConfig = neoconf.get("vscode.typescript.tsdk") or neoconf.get("typescript.tsdk")
+  local vscodeConfig = require("neoconf").get("vscode.typescript.tsdk")
+
+  if not M.get_workspace_config().allow_project_tsdk then
+    if vscodeConfig then
+      vim.notify("Project configuration contains custom typescript.tsdk but ")
+    end
+    return nil
+  end
 
   return vscodeConfig or nil
 end
