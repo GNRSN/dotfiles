@@ -20,9 +20,6 @@ return {
     },
     config = function()
       local tsserver_path = get_ts_server_path()
-      if tsserver_path then
-        vim.notify("Typescript-tools running with custom project tsserver found at: " .. tsserver_path)
-      end
 
       require("typescript-tools").setup({
         on_attach = function(client, bufnr)
