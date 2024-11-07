@@ -100,3 +100,14 @@ map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 map({ "n", "x", "o" }, "€", "$", { desc = "End of line"})
 map({ "n", "x", "o" }, "ö", "[", { desc = "["})
 map({ "n", "x", "o" }, "ä", "]", { desc = "]"})
+
+-- Unmap K in visual mode to avoid annoying message if fumbled
+map({ "v" }, "K", "<nop>", { silent = true })
+-- Create a buffler local mapping in help docs for gd to keywordprg
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "help" },
+  callback = function()
+    -- K maps to keywordprg in this filetype
+    vim.keymap.set("n", "gd", "K", { buffer = 0 })
+  end,
+})
