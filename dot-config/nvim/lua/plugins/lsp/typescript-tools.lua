@@ -29,10 +29,22 @@ return {
           tsserver_path = tsserver_path,
 
           jsx_close_tag = {
-            -- REVIEW: May interfer with other autotag plugins
+            -- REVIEW: May interfere with other autotag plugins
             enable = true,
             filetypes = { "javascriptreact", "typescriptreact" },
           },
+        },
+        -- LATER: Try to implement custom handler to filter out worthless refactoring actions
+        handlers = {
+          -- LSP Handler should vim.notify dump list of available actions
+          ["textDocument/codeAction"] = function(err, result, ctx, config)
+            vim.notify("custom textDocument/codeAction handler")
+            vim.notify(vim.inspect(result))
+          end,
+          -- ["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+          --   vim.notify("custom textDocument/publishDiagnostics handler")
+          --   vim.notify(vim.inspect(result))
+          -- end,
         },
       })
     end,
