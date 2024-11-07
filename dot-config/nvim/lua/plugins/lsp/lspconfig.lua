@@ -17,6 +17,9 @@ return {
     },
     -- Adds $schema support to .json
     "b0o/schemastore.nvim",
+
+    -- Neoconf populates configs for us so needs to load first
+    "folke/neoconf.nvim",
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -195,26 +198,9 @@ return {
       on_attach = on_attach,
     })
 
-    -- configure lua server (with special settings), similar to neodev but it's
-    -- always nice to have lsp when using :lua
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = { -- custom settings for lua
-        Lua = {
-          -- make the language server recognize "vim" global
-          diagnostics = {
-            globals = { "vim" },
-          },
-          workspace = {
-            -- make language server aware of runtime files
-            library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true,
-            },
-          },
-        },
-      },
     })
 
     -- configure json server
