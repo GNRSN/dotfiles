@@ -31,13 +31,6 @@ return {
     local on_attach = function(_, bufnr)
       opts.buffer = bufnr
 
-      -- set keybinds
-      opts.desc = "Show documentation for what is under cursor"
-      -- keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-      -- TODO: Dont trigger manual from shift k because it's easy to fumble
-      --
-      -- keymap.del({ "n", "v" }, "K")
-
       opts.desc = "Go to declaration"
       keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
@@ -49,19 +42,10 @@ return {
 
       keymap.set("n", "gt", "<cmd>Glance type_definitions<CR>", { desc = "Show LSP type definitions" })
 
-      -- opts.desc = "See available code actions"
-      -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-      --
       opts.desc = "Lsp rename"
       keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts) -- smart rename
-      --
-      -- opts.desc = "Show line diagnostics"
-      -- keymap.set("n", "<leader>cd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
-      opts.desc = "Show buffer diagnostics"
-      keymap.set("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-
-      -- REVIEW: These overlap with trouble?
+      -- LATER: These overlap with trouble?
       opts.desc = "Go to previous diagnostic"
       keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
 
@@ -233,6 +217,17 @@ return {
       },
     })
     -- Nix language server
-    require("lspconfig").nil_ls.setup({})
+    -- LATER: Consider evaluating nixd instead
+    lspconfig["nil_ls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- Treesitter query language
+    -- LATER: Not yet installable through mason or any other easy-to-use installer
+    -- lspconfig["ts_query_ls"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
   end,
 }
