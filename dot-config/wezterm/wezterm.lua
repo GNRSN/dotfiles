@@ -123,42 +123,37 @@ end
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
 
 config.keys = {
-  {
+  { -- Split pane horizontally
     key = "d",
     mods = "CMD",
     action = wez.action.SplitHorizontal({}),
   },
-  {
+  { -- Split pane vertically
     key = "D",
     mods = "CMD",
     action = wez.action.SplitVertical({}),
   },
-  {
+  { -- Close pane
     key = "w",
     mods = "CMD",
     action = wez.action.CloseCurrentPane({ confirm = true }),
-  },
-  { -- Maximize pane
-    mods = "LEADER",
-    key = "m",
-    action = wez.action.TogglePaneZoomState,
   },
   { -- Activate copy mode or vim mode
     key = "Enter",
     mods = "LEADER",
     action = wez.action.ActivateCopyMode,
   },
-  {
+  { -- Open command pallete
     key = "p",
     mods = "CMD",
     action = wez.action.ActivateCommandPalette,
   },
-  {
+  { -- Maximize pane
     key = "m",
     mods = "CMD",
     action = wez.action.TogglePaneZoomState,
   },
-  {
+  { -- Clear scrollback
     key = "l",
     mods = "CMD",
     action = wez.action.Multiple({
