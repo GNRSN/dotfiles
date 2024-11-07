@@ -33,7 +33,7 @@ return {
 
       -- set keybinds
       opts.desc = "Show documentation for what is under cursor"
-      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+      -- keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
       -- TODO: Dont trigger manual from shift k because it's easy to fumble
       --
       -- keymap.del({ "n", "v" }, "K")
