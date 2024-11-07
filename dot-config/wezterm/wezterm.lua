@@ -161,6 +161,11 @@ config.keys = {
       wez.action.SendKey({ key = "l", mods = "CTRL" }),
     }),
   },
+  {
+    key = "+",
+    mods = "CMD",
+    action = wez.action.IncreaseFontSize,
+  },
   -- move between split panes
   split_nav("move", "h"),
   split_nav("move", "j"),
