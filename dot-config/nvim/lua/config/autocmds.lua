@@ -45,17 +45,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
-
--- Format on save
-local format_on_save = require("util.format-on-save")
-
--- Add commands to enable/disable format on save
-vim.api.nvim_create_user_command("FormatOnSaveEnable", format_on_save.enable, {
-  desc = "Enable format-on-save",
-})
-vim.api.nvim_create_user_command("FormatOnSaveDisable", format_on_save.disable, {
-  desc = "Disable format-on-save",
-})
-vim.api.nvim_create_user_command("FormatOnSaveToggle", format_on_save.toggle, {
-  desc = "Toggle format-on-save",
-})
