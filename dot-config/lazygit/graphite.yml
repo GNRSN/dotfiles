@@ -6,6 +6,7 @@ customCommands:
   - key: c
     description: Graphite create stack
     command: 'graphite create -m "{{index .PromptResponses 0}}"'
+    # I can't find how to trigger this while in the staging view
     context: files
     prompts:
       - type: input
@@ -13,6 +14,7 @@ customCommands:
         initialValue: ""
     loadingText: creating stack...
 
+  # TODO: Breaks when stack contains merged PRs -> triggers prompt in cli -> triggers prompt in cli
   - key: P
     description: Graphite submit stack
     command: "graphite submit --stack --web=false"
