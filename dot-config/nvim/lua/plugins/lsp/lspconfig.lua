@@ -17,6 +17,9 @@ return {
     },
     -- Adds $schema support to .json
     "b0o/schemastore.nvim",
+
+    -- Neoconf populates configs for us so needs to load first
+    "folke/neoconf.nvim",
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -108,12 +111,6 @@ return {
 
     local util = require("lspconfig.util")
 
-    -- TODO: Move to typescript utils
-    local function get_typescript_server_path(root_dir)
-      local project_root = util.find_node_modules_ancestor(root_dir)
-      return project_root and (util.path.join(project_root, "node_modules", "typescript", "lib")) or ""
-    end
-
     lspconfig["eslint"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -126,6 +123,11 @@ return {
       },
     })
 
+    local function get_typescript_server_path(root_dir)
+      local project_root = util.find_node_modules_ancestor(root_dir)
+      return project_root and (util.path.join(project_root, "node_modules", "typescript", "lib")) or ""
+    end
+
     lspconfig["mdx_analyzer"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -134,10 +136,8 @@ return {
       },
       on_new_config = function(new_config, new_root_dir)
         if vim.tbl_get(new_config.init_options, "typescript") and not new_config.init_options.typescript.tsdk then
-          -- LATER: Support custom typescript lib
-          --
-          -- local tsdk = require("util.typescript").get_tsdk_from_config() or get_typescript_server_path(new_root_dir)
-          new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+          new_config.init_options.typescript.tsdk = require("util.local-config").get_tsdk_from_config()
+            or get_typescript_server_path(new_root_dir)
         end
       end,
     })
@@ -198,26 +198,9 @@ return {
       on_attach = on_attach,
     })
 
-    -- configure lua server (with special settings), similar to neodev but it's
-    -- always nice to have lsp when using :lua
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = { -- custom settings for lua
-        Lua = {
-          -- make the language server recognize "vim" global
-          diagnostics = {
-            globals = { "vim" },
-          },
-          workspace = {
-            -- make language server aware of runtime files
-            library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true,
-            },
-          },
-        },
-      },
     })
 
     -- configure json server
