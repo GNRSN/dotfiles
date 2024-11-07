@@ -3,6 +3,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
+      -- Smarter % matching lua keywords denoting scopes
+      "andymass/vim-matchup",
     },
     build = ":TSUpdate",
     opts = { -- enable syntax highlighting
@@ -15,6 +17,9 @@ return {
       },
       autotag = {
         enable = false,
+      },
+      matchup = {
+        enable = true,
       },
       -- ensure these language parsers are installed
       ensure_installed = {
