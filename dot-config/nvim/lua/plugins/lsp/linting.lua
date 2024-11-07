@@ -1,10 +1,12 @@
 return {
   -- Allows running lsp-ish tools with an lsp server,
   -- pretty much only needed for cspell now
+  -- TODO: Consider replacing cspell with vim native spellchecking
 
   ---@type LazyPluginSpec
   {
     "nvimtools/none-ls.nvim",
+    cond = false,
     dependencies = {
       -- NOTE: even with cpell.nvim, spellchecking isn't as good as with the official vscode extension.
       -- It seems to be bundled with dictionaries or does some language based magic?
