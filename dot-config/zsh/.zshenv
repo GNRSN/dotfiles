@@ -20,6 +20,13 @@ else
   echo "pass is not available, secrets have not been loaded into env"
 fi
 
+# === Nix ===
+# NOTE: I'm not sure if this is necessary but I see it being done a bunch
+export PATH=/run/current-system/sw/bin:$HOME/.nix-profile/bin:$PATH
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
 # === Rust ===
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export CARGO_HOME=$XDG_DATA_HOME/cargo
