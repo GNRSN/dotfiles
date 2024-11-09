@@ -13,6 +13,13 @@ export VISUAL="nvim"
 export EDITOR="$VISUAL"
 export GIT_EDITOR="$VISUAL"
 
+# === Secrets ===
+if command -v pass > /dev/null 2>&1; then
+  export ANTHROPIC_API_KEY=$(pass show anthropic/api-key/personal)
+else
+  echo "pass is not available, secrets have not been loaded into env"
+fi
+
 # === Rust ===
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export CARGO_HOME=$XDG_DATA_HOME/cargo
