@@ -1,0 +1,6 @@
+Host *
+  # Mac specific value, results in config error unless ignored
+  IgnoreUnknown UseKeychain
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
