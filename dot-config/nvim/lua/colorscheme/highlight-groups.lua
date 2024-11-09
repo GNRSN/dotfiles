@@ -116,7 +116,7 @@ function M.setup()
     Search = { fg = palette.bg, bg = palette.bright_green },
     IncSearch = { fg = palette.bg, bg = palette.bright_green },
     LineNr = { fg = palette.fade },
-    MatchParen = { fg = palette.fg, bg = palette.blue_medium },
+    MatchParen = { bg = palette.cursor_word_blue },
     NonText = { fg = palette.nontext },
     Pmenu = { fg = palette.white, bg = palette.menu },
     PmenuSel = { fg = palette.white, bg = palette.visual_bg },
