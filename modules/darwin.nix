@@ -65,11 +65,19 @@
   homebrew.enable = true;
   # Uninstall anything not specified in nix, leaves associated files
   homebrew.onActivation.cleanup = "uninstall";
+
+  homebrew.brews = [
+    {
+      # Focus follows mouse, essential for multi monitor work
+      # NOTE: The cask versions option for starting at login did not work
+      name = "dimentium/autoraise/autoraise";
+      restart_service = "changed";
+    }
+  ];
+
   homebrew.casks = [
     # Tiling window manager
     "nikitabobko/tap/aerospace"
-    # Focus follows mouse, essential for multi monitor work
-    "dimentium/autoraise/autoraiseapp"
     # Browser of choice
     "arc"
     # Still the best AI(?)
