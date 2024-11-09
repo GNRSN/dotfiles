@@ -28,6 +28,7 @@ return {
           lua = { "stylua" },
           python = { "isort", "black" },
           nix = { "nixfmt" },
+          sh = { "shfmt" },
         },
         format_on_save = function()
           if vim.g.format_on_save then
@@ -40,8 +41,7 @@ return {
             return nil
           end
         end,
-        formatters = {
-        },
+        formatters = {},
       })
 
       -- Register :Format command
