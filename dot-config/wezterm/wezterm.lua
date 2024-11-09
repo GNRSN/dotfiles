@@ -14,6 +14,8 @@ config.font = wez.font_with_fallback({
   },
 })
 
+config.font_size = 14
+
 -- ===
 -- Cursor
 -- ===
