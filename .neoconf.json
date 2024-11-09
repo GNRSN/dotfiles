@@ -1,0 +1,7 @@
+{
+  "workspace-config": {
+    "format_on_save": true,
+    "allow_project_tsdk": true,
+    "graphite": true
+  }
+}
