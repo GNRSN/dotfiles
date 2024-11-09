@@ -51,6 +51,8 @@
     pkgs.gh
     # Markdown renderer
     pkgs.glow
+    # GNU Privacy guard, "backend" for password-store
+    pkgs.gnupg
     # Graphite cli
     pkgs.graphite-cli
     # MacOS border for active window
@@ -69,6 +71,8 @@
     pkgs.nixfmt-rfc-style
     # Cross platform prompt
     pkgs.oh-my-posh
+    # GNU password-store (key manager)
+    pkgs.pass
     # Npm but better, faster, stronger...
     pkgs.pnpm
     # Automatic checks before committing
