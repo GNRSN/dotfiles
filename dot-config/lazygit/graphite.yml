@@ -14,10 +14,9 @@ customCommands:
         initialValue: ""
     loadingText: creating stack...
 
-  # TODO: Breaks when stack contains merged PRs -> triggers prompt in cli -> triggers prompt in cli
   - key: P
     description: Graphite submit stack
-    command: "graphite submit --stack --web=false"
+    command: "gt submit --stack --web=false --no-interactive --publish"
     context: global
     loadingText: "submitting stack..."
 
