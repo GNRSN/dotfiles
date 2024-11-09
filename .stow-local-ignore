@@ -5,6 +5,7 @@
 
 \.stowrc
 \.pre-commit-config.yaml
+\.neoconf.json
 
 README.md
 
