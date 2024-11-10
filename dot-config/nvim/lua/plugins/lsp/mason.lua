@@ -56,6 +56,7 @@ return {
         "isort", -- python formatter
         "black", -- python formatter
         "pylint", -- python linter
+        "shfmt", -- shell formatter
       },
     })
   end,
