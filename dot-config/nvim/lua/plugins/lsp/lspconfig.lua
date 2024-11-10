@@ -160,22 +160,12 @@ return {
       filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
     })
 
-    -- LATER: Spams completion, must be context aware to re-enable
-    --
-    -- lspconfig["emmet_ls"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    --   filetypes = {
-    --     "html",
-    --     "typescriptreact",
-    --     "javascriptreact",
-    --     "css",
-    --     "sass",
-    --     "scss",
-    --     "less",
-    --     "svelte",
-    --   },
-    -- })
+    -- LATER: See if https://github.com/olrtg/nvim-emmet is interesting
+    -- LATER: I'd like this to only trigger completions in relevant scopes, and only for full completion matches
+    lspconfig["emmet_language_server"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
 
     lspconfig["pyright"].setup({
       capabilities = capabilities,
