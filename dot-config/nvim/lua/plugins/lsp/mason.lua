@@ -28,6 +28,7 @@ return {
       ensure_installed = {
         "ts_ls",
         "html",
+        "bashls",
         "cssls",
         "css_variables",
         "cssmodules_ls",
