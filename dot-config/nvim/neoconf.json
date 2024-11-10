@@ -1,0 +1,5 @@
+{
+  // https://dev.to/jaga/disable-vscode-typescript-alias-in-rename-refactoring-27kh
+  "typescript.preferences.renameShorthandProperties": false,
+  "javascript.preferences.renameShorthandProperties": false,
+}
