@@ -215,6 +215,7 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       sorting = {
         comparators = {
+          require("util.emmet").emmet_comparator,
           cmp.config.compare.offset,
           cmp.config.compare.exact,
           cmp.config.compare.score,
