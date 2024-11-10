@@ -20,15 +20,19 @@ return {
       local ls = require("luasnip")
 
       -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({
+        exclude = {
+          "all",
+          "javascript",
+          "javascriptreact",
+          "jsdoc",
+          "typescript",
+          "typescriptreact",
+          "tsdoc",
+        },
+      })
 
-      -- Even more snippets?
-      -- Loading this made Telescope luasnip crash?
-      -- vim.tbl_map(function(type)
-      --   require("luasnip.loaders.from_" .. type).lazy_load()
-      -- end, { "vscode", "snipmate", "lua" })
-
-      -- friendly-snippets - enable standardized comments snippets
+      -- DOC: friendly-snippets - enable standardized comments snippets
       require("luasnip").filetype_extend("typescript", { "tsdoc" })
       require("luasnip").filetype_extend("typescriptreact", { "tsdoc" })
       require("luasnip").filetype_extend("javascript", { "jsdoc" })
