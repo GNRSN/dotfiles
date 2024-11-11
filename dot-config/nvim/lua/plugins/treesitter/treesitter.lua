@@ -26,6 +26,7 @@ return {
       },
       matchup = {
         enable = true,
+        disable_virtual_text = true,
       },
       -- ensure these language parsers are installed
       ensure_installed = {
