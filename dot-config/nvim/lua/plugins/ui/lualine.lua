@@ -82,7 +82,6 @@ local BLACKLIST = {
   "spectre_panel",
   "DiffviewFiles",
   "Avante",
-  "AvanteInput",
 }
 
 return {
