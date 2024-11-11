@@ -2,7 +2,7 @@ return {
   {
     "stevearc/aerial.nvim",
     keys = {
-      { "<leader>A", "<cmd>AerialToggle!<CR>", desc = "Toggle outline (Aerial)" },
+      { "<leader>O", "<cmd>AerialToggle!<CR>", desc = "Toggle outline (Aerial)" },
     },
     opts = {},
     -- Optional dependencies

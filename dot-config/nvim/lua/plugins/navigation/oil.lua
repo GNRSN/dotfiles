@@ -7,7 +7,7 @@ return {
     keys = {
       { "-", "<Cmd>Oil<Cr>", { desc = "Open parent directory" } },
       {
-        "<leader>O",
+        "<leader>-",
         function()
           require("oil").toggle_float()
         end,
