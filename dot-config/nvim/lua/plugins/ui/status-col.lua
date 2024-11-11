@@ -24,6 +24,9 @@ return {
           "Avante",
           "AvanteInput",
         },
+        bt_ignore = {
+          "help",
+        },
         segments = {
           {
             sign = {
