@@ -97,7 +97,8 @@ map("n", "<leader>gr", function() lazygit_graphite:toggle() end, { desc = "Lazyg
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- Scandinavian keyboard compensation
-map({ "n", "x", "o" }, "€", "$", { desc = "End of line"})
+-- I experienced $ including the eol/newline in selections so stepping back and forth got rid of that
+map({ "n", "x", "o" }, "€", "$hl", { desc = "End of line"})
 map({ "n", "x", "o" }, "ö", "[", { desc = "["})
 map({ "n", "x", "o" }, "ä", "]", { desc = "]"})
 
