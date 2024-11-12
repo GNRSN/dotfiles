@@ -116,3 +116,12 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Unbind command history because I often fumble this
 map({ "n", "x", "o" }, "q:", "<nop>")
 
+-- Closer eagle hover on esc, might mess with other buffers?
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function()
+    if vim.bo.buftype == "nofile" then
+      vim.api.nvim_buf_set_keymap(0, "n", "<esc>", ":q<CR>", { noremap = true, silent = true })
+    end
+  end,
+})
