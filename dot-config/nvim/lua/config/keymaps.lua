@@ -112,3 +112,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "gd", "K", { buffer = 0 })
   end,
 })
+
+-- Unbind command history because I often fumble this
+map({ "n", "x", "o" }, "q:", "<nop>")
+
