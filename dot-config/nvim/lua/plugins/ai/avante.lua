@@ -61,7 +61,7 @@ return {
         },
       },
       edit = {
-        border = "single",
+        border = "rounded",
       },
       ask = {
         floating = true,
