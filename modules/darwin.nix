@@ -88,6 +88,8 @@
     "deepl"
     # Matrix client
     "element"
+    # Figma
+    "figma"
     # Keyboard remapping
     "hhkb"
     # For frontend development
