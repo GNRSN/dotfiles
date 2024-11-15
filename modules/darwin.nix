@@ -86,6 +86,8 @@
     "cursor"
     # Translation
     "deepl"
+    # Matrix client
+    "element"
     # Keyboard remapping
     "hhkb"
     # For frontend development
