@@ -1,5 +1,3 @@
-local LazyUtil = require("lazy.core.util")
-
 local M = {}
 
 M.root_patterns = { ".git", "lua" }
@@ -15,11 +13,6 @@ function M.on_attach(on_attach)
   })
 end
 
----@param plugin string
-function M.has(plugin)
-  return require("lazy.core.config").plugins[plugin] ~= nil
-end
-
 ---@param fn fun()
 function M.on_very_lazy(fn)
   vim.api.nvim_create_autocmd("User", {
@@ -28,16 +21,6 @@ function M.on_very_lazy(fn)
       fn()
     end,
   })
-end
-
----@param name string
-function M.opts(name)
-  local plugin = require("lazy.core.config").plugins[name]
-  if not plugin then
-    return {}
-  end
-  local Plugin = require("lazy.core.plugin")
-  return Plugin.values(plugin, "opts", false)
 end
 
 -- returns the root directory based on:
@@ -90,14 +73,14 @@ function M.toggle(option, silent, values)
     else
       vim.opt_local[option] = values[1]
     end
-    return LazyUtil.info("Set " .. option .. " to " .. vim.opt_local[option]:get(), { title = "Option" })
+    return vim.notify("Set " .. option .. " to " .. vim.opt_local[option]:get())
   end
   vim.opt_local[option] = not vim.opt_local[option]:get()
   if not silent then
     if vim.opt_local[option]:get() then
-      LazyUtil.info("Enabled " .. option, { title = "Option" })
+      vim.notify("Enabled " .. option)
     else
-      LazyUtil.warn("Disabled " .. option, { title = "Option" })
+      vim.notify("Disabled " .. option)
     end
   end
 end
@@ -109,12 +92,12 @@ function M.toggle_diagnostics()
     vim.diagnostic.config({
       virtual_text = true,
     })
-    LazyUtil.info("Showing diagnostics", { title = "Diagnostics" })
+    vim.notify("Showing diagnostics")
   else
     vim.diagnostic.config({
       virtual_text = false,
     })
-    LazyUtil.warn("Hiding diagnostics", { title = "Diagnostics" })
+    vim.notify("Hiding diagnostics")
   end
 end
 
