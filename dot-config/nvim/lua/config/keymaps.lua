@@ -125,3 +125,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
+
+-- Search with visual selection
+map("x", "/", "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>", { desc = "Search for selection" })
