@@ -161,8 +161,6 @@ return {
     })
 
     -- LATER: See if https://github.com/olrtg/nvim-emmet is interesting
-    -- [ ] I'd like this to only trigger completions in relevant scopes,
-    -- [x] and only for full completion matches
     lspconfig["emmet_language_server"].setup({
       capabilities = capabilities,
       on_attach = on_attach,

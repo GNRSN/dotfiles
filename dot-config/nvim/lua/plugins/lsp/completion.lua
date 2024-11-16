@@ -86,7 +86,19 @@ return {
         { name = "codeium" },
         { name = "path" },
         { name = "nvim_lua" },
-        { name = "nvim_lsp" },
+        {
+          name = "nvim_lsp",
+          ---@param entry cmp.Entry
+          ---@param ctx cmp.Context
+          entry_filter = function(entry, ctx)
+            -- Filter out emmet suggestions unless exact match
+            -- LATER: Explore filtering based on treesitter context, i.e. only in JSX relevant scope
+            if entry.source.source and entry.source.source.client.name == "emmet_language_server" then
+              return entry.exact
+            end
+            return true
+          end,
+        },
         { name = "luasnip" }, -- snippets
         {
           name = "buffer",
@@ -215,7 +227,6 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       sorting = {
         comparators = {
-          require("util.emmet").emmet_comparator,
           cmp.config.compare.offset,
           cmp.config.compare.exact,
           cmp.config.compare.score,
