@@ -86,6 +86,7 @@ return {
       })
 
       vim.treesitter.language.register("bash", "zsh")
+      vim.treesitter.language.register("bash", "conf")
     end,
   },
 }
