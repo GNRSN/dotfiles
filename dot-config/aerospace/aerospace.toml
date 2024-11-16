@@ -202,12 +202,14 @@ alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-esc = 'mode service'
+# NOTE: Mode changes has to be proppagated "manually" to sketchybar
+# until this is implemented https://github.com/nikitabobko/AeroSpace/issues/390
+alt-shift-esc = ['mode service', 'exec-and-forget sketchybar --add item service q --set service icon=[S] service background.drawing=off icon.color=0xffffffff']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc = ['reload-config', 'mode main']
+esc = ['reload-config', 'exec-and-forget sketchybar --remove service', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
