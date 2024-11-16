@@ -1,7 +1,5 @@
 local CONCEAL_CMD = false
 
--- TODO: Pipe undo message to bottom right
-
 return {
   -- Noice is multiple things, but foremost its an event/message router,
   -- it allows filtering/mapping messages to different UIs,
@@ -115,7 +113,6 @@ return {
         },
         views = {
           notify = {},
-          -- TODO: Block lsp-messages just spamming while typing,
           mini = {
             win_options = {
               -- Transparency needs to be 0 so bg can be nil
@@ -124,27 +121,24 @@ return {
           },
         },
         routes = {
-          {
-            -- Hides save messages
-            -- TODO: Send to mini instead
+          { -- Hide save messages
             filter = {
               event = "msg_show",
               kind = "",
               find = "written",
             },
+            view = "mini",
             opts = { skip = true },
+          },
+          { -- Reroute long messages to splits
+            filter = {
+              event = "notify",
+              min_height = 16,
+            },
+            view = "split",
           },
         },
       })
-
-      -- I use this to debug ui messages
-      -- These are currenlty displayed in nvim-notify, not ideal
-      -- LATER: Filter and show in some other UI?
-      vim.api.nvim_create_user_command("TriggerSelect", function()
-        vim.ui.select({ "foo", "bar" }, {}, function()
-          print("result")
-        end)
-      end, {})
     end,
   },
 }
