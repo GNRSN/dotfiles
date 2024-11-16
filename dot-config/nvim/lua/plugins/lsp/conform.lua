@@ -29,6 +29,7 @@ return {
           python = { "isort", "black" },
           nix = { "nixfmt" },
           sh = { "shfmt" },
+          conf = { "shfmt" },
         },
         format_on_save = function()
           if vim.g.format_on_save then
