@@ -10,14 +10,21 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
 # 32 height matches the notch perfectly
-sketchybar --bar position=top height=32 color=$BAR_COLOR
+bar_config=(
+  position=top
+  height=32
+  color=$BAR_COLOR
+  display=main
+)
+
+sketchybar --bar "${bar_config[@]}"
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-default=(
+defaults=(
   padding_left=5
   padding_right=5
   icon.font="SF Pro:Semibold:13.0"
@@ -29,7 +36,7 @@ default=(
   label.padding_left=4
   label.padding_right=4
 )
-sketchybar --default "${default[@]}"
+sketchybar --default "${defaults[@]}"
 
 ##### Integrate with Aerospace #####
 sketchybar --add event aerospace_workspace_change
