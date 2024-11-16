@@ -60,6 +60,8 @@ return {
             info = palette.number_green, -- Match counter
             query = palette.yellow, -- Input query
           }),
+          -- Prefers matching on file name over path
+          ["--tiebreak"] = "end",
         },
         files = {
           fzf_opts = {
