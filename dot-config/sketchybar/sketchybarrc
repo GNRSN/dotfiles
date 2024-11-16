@@ -58,31 +58,37 @@ sketchybar --default "${default[@]}"
 ##### Integrate with Aerospace #####
 sketchybar --add event aerospace_workspace_change
 
-for sid in $(aerospace list-workspaces --all); do
-    sketchybar --add item space.$sid left \
-        --subscribe space.$sid aerospace_workspace_change \
-        --set space.$sid \
-        background.color=0x44ffffff \
-        background.corner_radius=5 \
-        background.height=20 \
-        background.drawing=off \
-        label="$sid" \
-        click_script="aerospace workspace $sid" \
-        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+# Add items for each monitor's workspace
+for monitor in $(aerospace list-monitors | cut -d'|' -f1); do
+  sketchybar --add item monitor.$monitor left \
+    --subscribe monitor.$monitor aerospace_workspace_change \
+    --set monitor.$monitor \
+    background.color=0x44ffffff \
+    background.corner_radius=5 \
+    background.height=20 \
+    background.drawing=off \
+    padding_left=5 \
+    padding_right=10 \
+    script="$PLUGIN_DIR/aerospace_monitor.sh $monitor"
 done
 
 ##### Adding Left Items #####
 sketchybar --add item front_app left \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-           --subscribe front_app front_app_switched
+  --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+  --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
 sketchybar --add item clock right \
-           --set clock update_freq=20 script="$PLUGIN_DIR/clock.sh"
+  --set clock update_freq=20 \
+  icon=􀐫 \
+  icon.font="SF Pro:Semibold:9.0" \
+  icon.padding_right=2 \
+  label.padding_left=2 \
+  script="$PLUGIN_DIR/clock.sh"
 # LATER: Add battery indicator when low battery?
-           # --add item battery right \
-           # --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           # --subscribe battery system_woke power_source_change
+# --add item battery right \
+# --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+# --subscribe battery system_woke power_source_change
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
