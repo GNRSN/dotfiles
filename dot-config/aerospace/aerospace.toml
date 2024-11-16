@@ -16,6 +16,16 @@ after-startup-command = [
   # needs to directly reference executable as workaround
   # https://github.com/nikitabobko/AeroSpace/issues/556
   'exec-and-forget /Users/{USERNAME}/.nix-profile/bin/borders',
+
+  # Run Sketchybar together with AeroSpace
+  # sketchbar has a built-in detection of already running process,
+  # so it won't be run twice on AeroSpace restart
+  'exec-and-forget sketchybar'
+]
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
 # Start AeroSpace at login
