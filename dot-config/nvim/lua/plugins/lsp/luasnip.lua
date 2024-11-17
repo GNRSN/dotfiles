@@ -22,13 +22,17 @@ return {
       -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
       require("luasnip.loaders.from_vscode").lazy_load({
         exclude = {
+          -- These are general snippets, e.g. `c)` expanding into copywrite statement
           "all",
+          -- I use a mix of emmet and custom snippets instead
           "javascript",
           "javascriptreact",
           "jsdoc",
           "typescript",
           "typescriptreact",
           "tsdoc",
+          "css",
+          "scss",
         },
       })
 
