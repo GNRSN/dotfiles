@@ -28,7 +28,7 @@ local k = require("luasnip.nodes.key_indexer").new_key
 
 return {
   -- Snippet for new react component
-  ["/rfc"] = fmt(
+  ["rfc"] = fmt(
     [[function {1:ComponentName}(props) {{
 
   return (
