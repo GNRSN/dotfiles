@@ -9,12 +9,13 @@ local config = wez.config_builder()
 config.font = wez.font_with_fallback({
   "Hack Nerd Font Mono",
   {
-    -- Use apple emojis instead of wezterm builtin
+    -- Use apple emojis instead of Wezterm builtin
     family = "Apple Color Emoji",
   },
 })
 
 config.font_size = 14
+config.underline_thickness = "1pt"
 
 -- ===
 -- Cursor
