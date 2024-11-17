@@ -111,6 +111,9 @@
     "google-chrome"
     # Modern Keepass UI
     "keepassxc"
+    # Block apple music opening on airpods tap
+    # https://github.com/tombonez/noTunes
+    "notunes"
     # Note-taking app
     "obsidian"
     # MacOS command pallette (spotlight replacement)
