@@ -31,6 +31,7 @@ return {
       { "[", group = "Prev ..." },
       { "gp", group = "Preview" },
       { "<leader>", group = "Leader" },
+      { "<leader>a", group = "Ai", mode = { "n", "v", "x" } },
       { "<leader>c", group = "Code" },
       { "<leader>d", group = "Debugger" },
       { "<leader>f", group = "File/find" },

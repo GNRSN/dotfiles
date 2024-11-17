@@ -4,6 +4,16 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = true,
+    keys = {
+      { "<leader>aa", "<cmd>AvanteAsk<cr>", desc = "Ask" },
+      -- NOTE: Chatting is asking without expected code-generation
+      { "<leader>ac", "<cmd>AvanteChat<cr>", desc = "Chat" },
+      { "<leader>aC", "<cmd>AvanteClear<cr>", desc = "Clear" },
+      { "<leader>ae", "<cmd>AvanteEdit<cr>", desc = "Edit" },
+      { "<leader>af", "<cmd>AvanteFocus<cr>", desc = "Focus" },
+      { "<leader>aR", "<cmd>AvanteRefresh<cr>", desc = "Refresh" },
+      { "<leader>at", "<cmd>AvanteToggle<cr>", desc = "Toggle" },
+    },
     cond = function()
       return not require("util.local-config").is_work_dir()
     end,
@@ -37,6 +47,28 @@ return {
         "MeanderingProgrammer/render-markdown.nvim",
       },
     },
-    opts = {},
+    opts = {
+      behaviour = {
+        support_paste_from_clipboard = true,
+      },
+      hints = {
+        enabled = false,
+      },
+      windows = {
+        input = {
+          prefix = " ",
+          height = 6,
+        },
+      },
+      edit = {
+        border = "single",
+      },
+      ask = {
+        floating = true,
+        start_in_insert = false,
+        border = "single",
+        focus_on_apply = "ours",
+      },
+    },
   },
 }
