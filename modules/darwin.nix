@@ -1,4 +1,8 @@
-{ system, self }:
+{
+  apple-fonts,
+  system,
+  self,
+}:
 { pkgs, ... }:
 
 {
@@ -13,8 +17,16 @@
   ];
 
   fonts.packages = with pkgs; [
-    # REVIEW: Consider narrowing to only install used fonts
+    # REVIEW: Consider narrowing to only install used fonts,
+    # it is currently installing every available nerd-font
     nerdfonts
+    # NOTE: Running the nerdfonts patcher to build takes a while
+    apple-fonts.packages.${system}.sf-pro
+    apple-fonts.packages.${system}.sf-pro-nerd
+    apple-fonts.packages.${system}.sf-mono
+    apple-fonts.packages.${system}.sf-mono-nerd
+    apple-fonts.packages.${system}.ny
+    apple-fonts.packages.${system}.ny-nerd
   ];
 
   # TODO: How does this work? Should I remove it from systemPackages
