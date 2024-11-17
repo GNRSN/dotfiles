@@ -26,4 +26,26 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
-return vim.tbl_extend("force", require("custom_snippets.shared.ecma"), {})
+return {
+  -- Snippet for new react component
+  ["rfc"] = fmt(
+    [[function {1:ComponentName}(props) {{
+
+  return (
+    <div>
+
+    </div>
+  );
+}}]],
+    { ["1:ComponentName"] = i(1, "ComponentName") }
+  ),
+  ["af"] = fmt([[() => {}]], { i(1) }),
+  ["/*"] = fmt(
+    [[
+/**
+ * {} 
+ */
+  ]],
+    { i(1) }
+  ),
+}
