@@ -26,25 +26,25 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-        "ts_ls",
-        "html",
         "bashls",
-        "cssls",
         "css_variables",
+        "cssls",
         "cssmodules_ls",
-        "tailwindcss",
-        "svelte",
-        "lua_ls",
-        "graphql",
         "emmet_language_server",
+        "eslint",
+        "graphql",
+        "html",
+        "jsonls",
+        "lua_ls",
+        "marksman",
+        "mdx_analyzer",
+        "nil_ls",
         "prismals",
         "pyright",
+        "svelte",
+        "tailwindcss",
+        "ts_ls",
         "yamlls",
-        "jsonls",
-        "mdx_analyzer",
-        "eslint",
-        "nil_ls",
-        "marksman",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -52,13 +52,12 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "cspell", -- spell check
-        "prettierd", -- js + more formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
         "black", -- python formatter
+        "isort", -- python formatter
+        "prettierd", -- js + more formatter
         "pylint", -- python linter
         "shfmt", -- shell formatter
+        "stylua", -- lua formatter
       },
     })
   end,
