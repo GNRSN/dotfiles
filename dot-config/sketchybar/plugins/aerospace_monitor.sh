@@ -8,7 +8,7 @@ MONITOR_ID=$1
 WORKSPACE_ID=$(aerospace list-workspaces --monitor $MONITOR_ID --visible)
 
 # Update the display with monitor:workspace format
-sketchybar --set monitor.$MONITOR_ID label="${MONITOR_ID}: ${WORKSPACE_ID}"
+sketchybar --set monitor.$MONITOR_ID label="${MONITOR_ID}:${WORKSPACE_ID}"
 
 highlighted=(
   padding_left=5

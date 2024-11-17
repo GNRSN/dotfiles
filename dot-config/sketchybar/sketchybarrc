@@ -38,11 +38,15 @@ defaults=(
 )
 sketchybar --default "${defaults[@]}"
 
-##### Integrate with Aerospace #####
+##### Adding Left Items #####
+
+# Integrate with Aerospace events
 sketchybar --add event aerospace_workspace_change
 
 # Add items for each monitor's workspace
 for monitor in $(aerospace list-monitors | cut -d'|' -f1); do
+  # LATER: monospace + fixed with works good for now but it would also be possible to use
+  # number and/or letter icons from SF Symbols instead
   sketchybar --add item monitor.$monitor left \
     --subscribe monitor.$monitor aerospace_workspace_change \
     --set monitor.$monitor \
@@ -51,13 +55,15 @@ for monitor in $(aerospace list-monitors | cut -d'|' -f1); do
     background.height=20 \
     background.drawing=off \
     padding_left=5 \
-    padding_right=10 \
+    padding_right=5 \
+    width=41 \
+    label.font="SF Mono:Semibold:13.0" \
     script="$PLUGIN_DIR/aerospace_monitor.sh $monitor"
 done
 
-##### Adding Left Items #####
+# Display name of active app
 sketchybar --add item front_app left \
-  --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+  --set front_app icon.drawing=off padding_left=12 script="$PLUGIN_DIR/front_app.sh" \
   --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
