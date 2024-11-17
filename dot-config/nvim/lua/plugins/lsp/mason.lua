@@ -12,13 +12,24 @@ return {
     -- enable mason and configure icons
     mason.setup({
       ui = {
+        border = "single",
         icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
+          package_installed = "",
+          package_pending = "",
+          package_uninstalled = "",
         },
         keymaps = {
           toggle_help = "h",
+          toggle_package_expand = "<CR>",
+          install_package = "i",
+          update_package = "i",
+          check_package_version = "c",
+          update_all_packages = "U",
+          check_outdated_packages = "R",
+          uninstall_package = "d",
+          cancel_installation = "<C-c>",
+          apply_language_filter = "<C-f>",
+          toggle_package_install_log = "<CR>",
         },
       },
     })
