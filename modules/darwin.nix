@@ -4,7 +4,6 @@
   self,
 }:
 { pkgs, ... }:
-
 {
   # Suppress warning about migration that will need to be performed when upgrading MacOS to Sequoia
   ids.uids.nixbld = 300;
@@ -118,6 +117,8 @@
     "obsidian"
     # MacOS command pallette (spotlight replacement)
     "raycast"
+    # MacOS icon set
+    "sf-symbols"
     # I still use this for merge conflicts (ashamed)
     "visual-studio-code"
     # Terminal emulator of choice
