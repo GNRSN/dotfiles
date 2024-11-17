@@ -77,11 +77,12 @@ local diagnostics_segment = {
   },
 }
 
-local BLACKLIST = {
+local BLACKLIST_FT = {
   "neo-tree",
   "spectre_panel",
   "DiffviewFiles",
   "Avante",
+  "aerial",
 }
 
 return {
@@ -100,7 +101,7 @@ return {
           component_separators = "|",
           section_separators = "",
           disabled_filetypes = {
-            statusline = BLACKLIST,
+            statusline = BLACKLIST_FT,
             winbar = {},
           },
           ignore_focus = {},
