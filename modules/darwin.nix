@@ -73,6 +73,9 @@
       name = "dimentium/autoraise/autoraise";
       restart_service = "changed";
     }
+    {
+      name = "FelixKratz/formulae/sketchybar";
+    }
   ];
 
   homebrew.casks = [
@@ -128,6 +131,7 @@
   # - Sound: always show in the menu bar
   # - Remove keyboard shortcuts for mission control
   # - Mission control group windows by application (defaults write com.apple.dock expose-group-apps -bool true)
+  # TODO: Sketchybar conflicts with this, update after deciding on keeping sketchybar
   # - Disable displays have separate spaces (defaults write com.apple.spaces spans-displays -bool true)
 
   # Control key repeat speed
@@ -183,6 +187,9 @@
   # I want it to be as empty as possible :P
   system.defaults.dock.show-recents = false;
   system.defaults.dock.static-only = true;
+
+  # Hide menu bar
+  system.defaults.NSGlobalDomain._HIHideMenuBar = true;
 
   # === Finder ===
 
