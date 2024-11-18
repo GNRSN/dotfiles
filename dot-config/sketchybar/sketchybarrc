@@ -19,10 +19,7 @@ bar_config=(
 
 sketchybar --bar "${bar_config[@]}"
 
-##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
+##### Defaults #####
 
 defaults=(
   padding_left=5
@@ -38,11 +35,14 @@ defaults=(
 )
 sketchybar --default "${defaults[@]}"
 
-##### Adding Left Items #####
+##### Events #####
 
 # Integrate with Aerospace events
 sketchybar --add event aerospace_workspace_change
-# sketchybar --add event display_change
+
+sketchybar --add event refresh_workspaces
+
+##### Adding Left Items #####
 
 # Create a helper item to handle display changes
 sketchybar --add item display_handler left \
