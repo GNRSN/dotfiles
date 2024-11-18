@@ -1,6 +1,6 @@
 source "$CONFIG_DIR/colors.sh"
 
-PLUGIN_DIR="$CONFIG_DIR/plugins"
+PLUGINS_DIR="$CONFIG_DIR/plugins"
 
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar.
@@ -42,28 +42,17 @@ sketchybar --default "${defaults[@]}"
 
 # Integrate with Aerospace events
 sketchybar --add event aerospace_workspace_change
+# sketchybar --add event display_change
 
-# Add items for each monitor's workspace
-for monitor in $(aerospace list-monitors | cut -d'|' -f1); do
-  # LATER: monospace + fixed with works good for now but it would also be possible to use
-  # number and/or letter icons from SF Symbols instead
-  sketchybar --add item monitor.$monitor left \
-    --subscribe monitor.$monitor aerospace_workspace_change \
-    --set monitor.$monitor \
-    background.color=0x44ffffff \
-    background.corner_radius=5 \
-    background.height=20 \
-    background.drawing=off \
-    padding_left=5 \
-    padding_right=5 \
-    width=41 \
-    label.font="SF Mono:Semibold:13.0" \
-    script="$PLUGIN_DIR/aerospace_monitor.sh $monitor"
-done
+# Create a helper item to handle display changes
+sketchybar --add item display_handler left \
+  --set display_handler drawing=off \
+  script="$PLUGINS_DIR/display_handler.sh" \
+  --subscribe display_handler display_change
 
 # Display name of active app
 sketchybar --add item front_app left \
-  --set front_app icon.drawing=off padding_left=12 script="$PLUGIN_DIR/front_app.sh" \
+  --set front_app icon.drawing=off padding_left=9 script="$PLUGINS_DIR/front_app.sh" \
   --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
@@ -73,9 +62,9 @@ sketchybar --add item clock right \
   icon.font="SF Pro:Semibold:9.0" \
   icon.padding_right=2 \
   label.padding_left=2 \
-  script="$PLUGIN_DIR/clock.sh" \
+  script="$PLUGINS_DIR/clock.sh" \
   --add item battery right \
-  --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+  --set battery update_freq=120 script="$PLUGINS_DIR/battery.sh" \
   --subscribe battery system_woke power_source_change
 
 ##### Force all scripts to run the first time (never do this in a script) #####

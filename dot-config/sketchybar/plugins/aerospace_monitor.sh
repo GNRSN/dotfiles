@@ -8,29 +8,33 @@ MONITOR_ID=$1
 WORKSPACE_ID=$(aerospace list-workspaces --monitor $MONITOR_ID --visible)
 
 # Update the display with monitor:workspace format
+# LATER: monospace + fixed with works good for now but it would also be possible to use
+# number and/or letter icons from SF Symbols instead
 sketchybar --set monitor.$MONITOR_ID label="${MONITOR_ID}:${WORKSPACE_ID}"
 
-highlighted=(
-  padding_left=5
-  padding_right=5
+HIGHLIGHTED=(
   icon.color=$BLACK
   label.color=$BLACK
   background.color=$WHITE
-  label.padding_left=8
-  label.padding_right=8
-  # We don't have an icon yet
-  icon.padding_left=0
-  icon.padding_right=0
 )
-sketchybar --default
+
+NOT_HIGHLIGHTED=(
+  icon.color=$WHITE
+  label.color=$WHITE
+  background.color=$GREY
+)
 
 # If this is the focused monitor, highlight it
 FOCUSED_MONITOR=$(aerospace list-monitors --focused | cut -d'|' -f1)
+
+# Trim any whitespace from the values
+FOCUSED_MONITOR=$(echo "$FOCUSED_MONITOR" | tr -d '[:space:]')
+MONITOR_ID=$(echo "$MONITOR_ID" | tr -d '[:space:]')
+
 if [ "$MONITOR_ID" = "$FOCUSED_MONITOR" ]; then
   sketchybar --set monitor.$MONITOR_ID \
-    background.drawing=on \
-    background.color=$WHITE
+    "${HIGHLIGHTED[@]}"
 else
   sketchybar --set monitor.$MONITOR_ID \
-    "${highlighted[@]}"
+    "${NOT_HIGHLIGHTED[@]}"
 fi
