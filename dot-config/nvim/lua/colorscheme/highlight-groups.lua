@@ -102,7 +102,7 @@ function M.setup()
     StatusLineTerm = { fg = palette.white, bg = palette.black },
     StatusLineTermNC = { fg = palette.fade },
 
-    Directory = { fg = palette.cyan },
+    Directory = { fg = palette.yellow_orange },
     -- Note, used by diff-view
     DiffAdd = { bg = "#2f4a21" },
     DiffChange = { fg = palette.orange },
@@ -348,6 +348,10 @@ function M.setup()
     FzfLuaCursorLine = { bg = palette.visual_bg },
     FzfLuaCursorLineNumber = { fg = palette.fade },
     FzfLuaSearch = { bg = palette.green },
+
+    -- Oil
+    OilDir = { fg = palette.fg },
+    OilDirIcon = { fg = palette.yellow_orange },
 
     -- NeoTree
     NeoTreeNormal = { fg = palette.fg, bg = palette.menu },
