@@ -32,9 +32,9 @@ FOCUSED_MONITOR=$(echo "$FOCUSED_MONITOR" | tr -d '[:space:]')
 MONITOR_ID=$(echo "$MONITOR_ID" | tr -d '[:space:]')
 
 if [ "$MONITOR_ID" = "$FOCUSED_MONITOR" ]; then
-  sketchybar --set monitor.$MONITOR_ID \
+  sketchybar --animate quadratic 6 --set monitor.$MONITOR_ID \
     "${HIGHLIGHTED[@]}"
 else
-  sketchybar --set monitor.$MONITOR_ID \
+  sketchybar --animate quadratic 6 --set monitor.$MONITOR_ID \
     "${NOT_HIGHLIGHTED[@]}"
 fi
