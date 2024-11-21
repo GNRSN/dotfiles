@@ -123,6 +123,10 @@
     "visual-studio-code"
     # Terminal emulator of choice
     "wezterm"
+    # Next gen editor
+    "zed"
+    # Try arc alternative
+    "zen-browser"
   ];
 
   # Touch id for sudo
