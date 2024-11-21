@@ -166,12 +166,17 @@ then
   # compinit
 fi
 
+# Nvim config switcher
+zinit load mehalter/zsh-nvim-appname
+
 # zinit gui
 # DOC: https://github.com/zdharma-continuum/zinit-crasis
 zinit load zdharma-continuum/zui
 zinit load zdharma-continuum/zinit-crasis
 
 # zsh linter
+# See:  https://github.com/psprint/zsh-sweep
+# usage: zsweep --auto [filename].zsh
 zinit param'zs_set_path' for @psprint/zsh-sweep
 
 
