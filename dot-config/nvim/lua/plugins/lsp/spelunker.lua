@@ -64,12 +64,12 @@ return {
           vim.keymap.set("n", "cs", function()
             vim.fn["spelunker#check_displayed_words"]()
             _G.spelunker_suggest_handler(false)
-          end, { silent = true, noremap = true })
+          end, { noremap = true, desc = "Spell Checker: Fix word" })
 
           vim.keymap.set("n", "cS", function()
             vim.fn["spelunker#check_displayed_words"]()
             _G.spelunker_suggest_handler(true)
-          end, { silent = true, noremap = true })
+          end, { noremap = true, desc = "Spell Checker: Fix all" })
         end,
       })
     end,
