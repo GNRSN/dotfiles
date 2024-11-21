@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source "$CONFIG_DIR/colors.sh"
 PLUGINS_DIR="$CONFIG_DIR/plugins"
 
 # Debug mode flag
@@ -26,11 +25,9 @@ MONITOR_DEFAULTS=(
   background.corner_radius=5
   background.height=20
   background.drawing=on
-  # background.color=$GREY
 
   label.width=41
   "label.font=SF Mono:Semibold:13.0"
-  # label.color=$WHITE
   label.padding_left=8
   label.padding_right=8
 
@@ -44,5 +41,9 @@ for monitor in "${MONITORS[@]}"; do
     --set monitor.$monitor "${MONITOR_DEFAULTS[@]}" \
     script="$PLUGINS_DIR/aerospace_monitor.sh $monitor" \
     --move monitor.$monitor before front_app \
-    --subscribe monitor.$monitor aerospace_workspace_change
+    --subscribe monitor.$monitor aerospace_workspace_change refresh_workspaces
 done
+
+# aerospace_monitor.sh doesn't run until aerospace_workspace_change is triggered
+# is there something I'm missing or does the initial --update just not trigger "nested" scripts?
+sketchybar --trigger refresh_workspaces
