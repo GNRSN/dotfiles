@@ -7,10 +7,19 @@ return {
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
+      auto_save = true,
+      auto_restore = true,
       use_git_branch = true,
-      auto_restore_last_session = true,
-      suppressed_dirs = { "~/", "~/github", "~/Downloads", "/", vim.env.WORK_DIR },
-      -- log_level = 'debug',
+      -- This automatically restores the last session, regardless of cwd
+      auto_restore_last_session = false,
+      suppressed_dirs = {
+        "/",
+        "/Users",
+        "~/",
+        "~/github",
+        "~/Downloads",
+      },
+      -- log_level = "debug",
     },
   },
 }
