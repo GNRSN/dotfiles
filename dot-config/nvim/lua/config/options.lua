@@ -25,7 +25,8 @@ opt.relativenumber = true -- Relative line numbers
 opt.ruler = false -- Hides the row+col coordinates to the bottom right
 opt.scrolloff = 4 -- Lines of context
 -- Auto-session.nvim recommended opts
-opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+-- REVIEW: Removed "help" since often help pages wont be loaded (due to lazy) when a session is restored, resulting in an error
+opt.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,winpos,terminal,localoptions"
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 2 -- Size of an indent
 opt.showcmd = false -- Dont show command being written out in bottom right
