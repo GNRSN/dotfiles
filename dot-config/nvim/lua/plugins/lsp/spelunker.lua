@@ -4,13 +4,18 @@ return {
     -- nvim integration was outdated so added custom handler to open in vim.ui.select
     -- NOTE: Some users complained about performance but from what I've seen this is better
     -- than other spellcheckers I have tried
+    -- LATER: I'm still not super impressed with this
+    -- I have configured it not to highlight compound words but it still does
+    -- without showing that highlight though spelling mistakes inside compound words are not highlighted.
+    -- word selection also isn't availble for sub-words it seems
     "kamykn/spelunker.vim",
     config = function()
       -- Custom highlights/underlines
       vim.cmd("highlight SpelunkerSpellBad cterm=undercurl ctermfg=247 gui=undercurl guifg=NONE guisp=#95c698")
 
-      -- Disabling complex word highlighting doesn't seem to work so had to "mask" it by removing all visuals
-      vim.cmd("highlight SpelunkerComplexOrCompoundWord cterm=NONE ctermfg=NONE gui=NONE guifg=NONE guisp=NONE")
+      vim.cmd(
+        "highlight SpelunkerComplexOrCompoundWord cterm=undercurl ctermfg=247 gui=undercurl guifg=NONE guisp=#95c698"
+      )
 
       -- Dynamic parsing instead of entire buffer on load
       vim.g.spelunker_check_type = 2
