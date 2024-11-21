@@ -17,8 +17,8 @@ function M.setup()
 
   -- set font
   vim.o.guifont = "Hack_Nerd_Font:h13"
-  vim.o.pumblend = 50
-  vim.o.winblend = 30
+  vim.o.pumblend = 80
+  vim.o.winblend = 80
 
   -- set animations
   vim.g.neovide_cursor_animate_in_insert_mode = false
@@ -33,15 +33,15 @@ function M.setup()
 
   if config.transparency then
     vim.g.neovide_window_blurred = true
-    vim.g.neovide_transparency = 0.65
-    vim.g.transparency = 0.65
+    vim.g.neovide_transparency = 0.50
+    vim.g.transparency = 0.50
   else
     vim.g.neovide_background_color = palette.bg
     vim.api.nvim_set_hl(0, "Normal", { bg = palette.bg })
   end
 
   -- set scaling and add keymaps for updating
-  vim.g.neovide_scale_factor = 0.9
+  vim.g.neovide_scale_factor = 1.0
   local change_scale_factor = function(delta)
     local resulting_scale = vim.g.neovide_scale_factor + delta
     vim.g.neovide_scale_factor = resulting_scale
