@@ -30,6 +30,7 @@ MONITOR_DEFAULTS=(
   "label.font=SF Mono:Semibold:13.0"
   label.padding_left=8
   label.padding_right=8
+  label.color=$BLACK
 
   icon.padding_left=0
   icon.padding_right=0
