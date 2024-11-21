@@ -37,4 +37,7 @@ return {
   error_dark = "#b36c6c",
   cursor_word_yellow = "#484848",
   cursor_word_blue = "#1D3D59",
+
+  diff_added = "#2f4a21",
+  diff_removed = "#4a1c1c",
 }

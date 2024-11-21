@@ -104,9 +104,9 @@ function M.setup()
 
     Directory = { fg = palette.yellow_orange },
     -- Note, used by diff-view
-    DiffAdd = { bg = "#2f4a21" },
+    DiffAdd = { bg = palette.diff_added },
     DiffChange = { fg = palette.orange },
-    DiffDelete = { bg = "#4a1c1c" },
+    DiffDelete = { bg = palette.diff_removed },
     DiffText = { fg = palette.fade },
 
     ErrorMsg = { fg = palette.bright_red },
