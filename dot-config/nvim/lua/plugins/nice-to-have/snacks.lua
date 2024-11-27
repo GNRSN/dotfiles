@@ -1,24 +1,34 @@
 return {
-  { -- Bunch of utils from folke
+  { -- Bunch of utils from Folke
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
     ---@type snacks.Config
     opts = {
+      -- DOC: bigfile adds a new filetype bigfile to Neovim that triggers when the file is larger than the configured size.
+      -- This automatically prevents things like LSP and Treesitter attaching to the buffer.
       bigfile = { enabled = true },
-      dashboard = { enabled = true },
+
+      -- Dashboard
+      dashboard = { enabled = false },
+
+      lazygit = {
+        configure = false,
+      },
+
       notifier = {
-        enabled = true,
-        timeout = 3000,
+        enabled = false,
       },
-      quickfile = { enabled = true },
-      statuscolumn = { enabled = true },
-      words = { enabled = true },
-      styles = {
-        notification = {
-          wo = { wrap = true }, -- Wrap notifications
-        },
-      },
+
+      -- Doc: When doing nvim somefile.txt, it will render the file as quickly as possible, before loading your plugins.
+      quickfile = { enabled = false },
+
+      statuscolumn = { enabled = false },
+
+      -- "cursor word"-esque
+      words = { enabled = false },
+
+      styles = {},
     },
     keys = {
       {
@@ -36,28 +46,7 @@ return {
         desc = "Delete Buffer",
       },
       {
-        "<leader>gg",
-        function()
-          Snacks.lazygit()
-        end,
-        desc = "Lazygit",
-      },
-      {
-        "<leader>gb",
-        function()
-          Snacks.git.blame_line()
-        end,
-        desc = "Git Blame Line",
-      },
-      {
-        "<leader>gB",
-        function()
-          Snacks.gitbrowse()
-        end,
-        desc = "Git Browse",
-      },
-      {
-        "<leader>gf",
+        "<leader>gF",
         function()
           Snacks.lazygit.log_file()
         end,
@@ -70,60 +59,13 @@ return {
         end,
         desc = "Lazygit Log (cwd)",
       },
-      {
+      { -- Maybe better as usercmd? How common is this?
+        -- Can also integrate with neo-tree, see docs
         "<leader>cR",
         function()
           Snacks.rename.rename_file()
         end,
         desc = "Rename File",
-      },
-      {
-        "<c-/>",
-        function()
-          Snacks.terminal()
-        end,
-        desc = "Toggle Terminal",
-      },
-      {
-        "<c-_>",
-        function()
-          Snacks.terminal()
-        end,
-        desc = "which_key_ignore",
-      },
-      {
-        "]]",
-        function()
-          Snacks.words.jump(vim.v.count1)
-        end,
-        desc = "Next Reference",
-        mode = { "n", "t" },
-      },
-      {
-        "[[",
-        function()
-          Snacks.words.jump(-vim.v.count1)
-        end,
-        desc = "Prev Reference",
-        mode = { "n", "t" },
-      },
-      {
-        "<leader>N",
-        desc = "Neovim News",
-        function()
-          Snacks.win({
-            file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-            width = 0.6,
-            height = 0.6,
-            wo = {
-              spell = false,
-              wrap = false,
-              signcolumn = "yes",
-              statuscolumn = " ",
-              conceallevel = 3,
-            },
-          })
-        end,
       },
     },
     init = function()
@@ -140,6 +82,7 @@ return {
           vim.print = _G.dd -- Override print to use snacks for `:=` command
 
           -- Create some toggle mappings
+          -- REVIEW: I should already have these from copying lazyvim
           Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
           Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
           Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
@@ -151,6 +94,17 @@ return {
           Snacks.toggle.treesitter():map("<leader>uT")
           Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
           Snacks.toggle.inlay_hints():map("<leader>uh")
+
+          -- Add News command
+          vim.api.nvim_create_user_command("News", function()
+            Snacks.win({
+              file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
+              width = 0.6,
+              height = 0.8,
+              backdrop = 0.5,
+              minimal = true,
+            })
+          end, { desc = "Show Neovim News" })
         end,
       })
     end,
