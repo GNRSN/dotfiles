@@ -54,6 +54,10 @@ return {
           signs = true,
           virtual_text = true,
         },
+        ---@diagnostic disable-next-line: missing-fields
+        summary = {
+          follow = true,
+        },
         output_panel = {
           enabled = true,
           open = "botright vsplit | vertical resize 50",
@@ -137,18 +141,18 @@ return {
         desc = "Attach to nearest test",
       },
       {
-        "<leader>to",
+        "<leader>tO",
         function()
           require("neotest").output_panel.toggle()
         end,
         desc = "Output panel (toggle)",
       },
       {
-        "<leader>ts",
+        "<leader>to",
         function()
           require("neotest").summary.toggle()
         end,
-        desc = "Summary panel (toggle)",
+        desc = "Summary/outline panel (toggle)",
       },
       {
         "<leader>tc",
