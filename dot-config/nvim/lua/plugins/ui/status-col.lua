@@ -1,3 +1,22 @@
+local BLACKLIST_FT = {
+  "aerial",
+  "Avante",
+  "AvanteInput",
+  "DiffviewFiles",
+  "neo-tree",
+  "neotest",
+  "neotest-output-panel",
+  "neotest-summary",
+  "netrw",
+  "noice",
+  "octo",
+  "oil",
+  "spectre_panel",
+  "Trouble",
+  "trouble",
+  "undotree",
+}
+
 return {
   -- Status column
   {
@@ -8,23 +27,7 @@ return {
         setopt = true,
         -- Prevent cursor line number being left adjusted (default behavior with relative line numbers)
         relculright = true,
-        ft_ignore = {
-          "neo-tree",
-          "neotest",
-          "neotest-summary",
-          "neotest-output-panel",
-          "Trouble",
-          "trouble",
-          "noice",
-          "undotree",
-          "spectre_panel",
-          "octo",
-          "DiffviewFiles",
-          "aerial",
-          "Avante",
-          "AvanteInput",
-          "netrw",
-        },
+        ft_ignore = BLACKLIST_FT,
         bt_ignore = {
           "help",
         },
