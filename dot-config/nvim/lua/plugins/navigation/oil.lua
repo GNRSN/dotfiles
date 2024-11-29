@@ -6,11 +6,11 @@ return {
     lazy = false,
     keys = {
       {
-        "-",
+        "<leader>e",
         function()
           require("oil").toggle_float()
         end,
-        { desc = "Open parent directory" },
+        desc = "Open parent directory (oil)",
       },
     },
     ---@module 'oil'
@@ -40,6 +40,8 @@ return {
         ["<C-c>"] = false,
         ["<C-h>"] = false,
         ["q"] = "actions.close",
+        ["<esc>"] = { "actions.close", mode = "n", desc = "Close" },
+        ["<BS>"] = "actions.parent",
       },
     },
   },
