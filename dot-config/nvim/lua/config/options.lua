@@ -41,7 +41,8 @@ opt.splitbelow = true -- Put new windows below current
 opt.splitright = true -- Put new windows right of current
 opt.tabstop = 2 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
-opt.timeoutlen = 300
+-- This and which-key messes with nvim-surround
+opt.timeoutlen = 700
 opt.undofile = true
 opt.undolevels = 10000
 opt.updatetime = 200 -- Save swap file and trigger CursorHold
