@@ -4,9 +4,17 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       -- Smarter % matching lua keywords denoting scopes
-      "andymass/vim-matchup",
+      {
+        "andymass/vim-matchup",
+        init = function()
+          -- Disables this feature, it flickers more than it is useful
+          vim.g.matchup_matchparen_offscreen = {}
+        end,
+      },
       -- Automatically inserts "end" keyword to close scopes in languages like lua
-      "RRethy/nvim-treesitter-endwise",
+      {
+        "RRethy/nvim-treesitter-endwise",
+      },
     },
     build = ":TSUpdate",
     opts = { -- enable syntax highlighting
@@ -18,7 +26,7 @@ return {
         enable = true,
       },
       autotag = {
-        -- This is supposed to surpress the warning but i'm still seeing it?
+        -- This is supposed to suppress the warning but i'm still seeing it?
         enable = false,
       },
       endwise = {
