@@ -21,9 +21,12 @@ return {
   -- Status column
   {
     "luukvbaal/statuscol.nvim",
-    config = function()
+    -- Should not be lazy loaded
+    -- see: https://github.com/luukvbaal/statuscol.nvim/issues/63
+    lazy = false,
+    opts = function()
       local builtin = require("statuscol.builtin")
-      require("statuscol").setup({
+      return {
         setopt = true,
         -- Prevent cursor line number being left adjusted (default behavior with relative line numbers)
         relculright = true,
@@ -72,7 +75,7 @@ return {
             click = "v:lua.ScSa",
           },
         },
-      })
+      }
     end,
   },
 }
