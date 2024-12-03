@@ -35,41 +35,41 @@ return {
   ["/typedef"] = fmt([[/** @typedef {{{}}} {} */]], { i(1), i(2, "typename") }),
   ["/param"] = fmt(
     [[
-/**
- * @param {{{}}} {}
- */
-   ]],
+  /**
+   * @param {{{}}} {}
+   */
+     ]],
     { i(1), i(2) }
   ),
   ["/props"] = fmt(
     [[
-/**
- * @param {{object}} props
- * @param {{{}}} props.
- */
-   ]],
+  /**
+   * @param {{object}} props
+   * @param {{{}}} props.
+   */
+     ]],
     { i(1) }
   ),
   ["/tscheck"] = fmt(
     [[
-// @ts-check
+  // @ts-check
 
-{}
-   ]],
+  {}
+     ]],
     { i(1) }
   ),
   ["/tsexpecterror"] = fmt(
     [[
-// @ts-expect-error{}
-   ]],
+  // @ts-expect-error{}
+     ]],
     { i(1) }
   ),
   ["/import"] = fmt(
     [[
-/**
- * @import {{{}}} from '{}'
- */
-   ]],
+  /**
+   * @import {{{}}} from '{}'
+   */
+     ]],
     { i(1), i(2) }
   ),
 }

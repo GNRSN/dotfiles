@@ -26,14 +26,15 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
+-- TODO: Seemingly enabling any of these causes errors
 return {
   ["af"] = fmt([[() => {}]], { i(1) }),
   ["/*"] = fmt(
     [[
-/**
- * {} 
- */
-  ]],
+  /**
+   * {}
+   */
+    ]],
     { i(1) }
   ),
 }
