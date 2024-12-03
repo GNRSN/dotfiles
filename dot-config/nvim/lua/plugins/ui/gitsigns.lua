@@ -3,18 +3,18 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   keys = {
     { "<leader>gb", "<cmd>Gitsigns blame_line<CR>", { desc = "Blame Line" } },
-    { "<leader>gB", "<cmd>Gitsigns blame<CR>", { desc = "Blame File" } },
+    { "<leader>gB", "<cmd>Gitsigns blame<CR>", { desc = "Open file blame panel" } },
     {
       "gn",
       function()
-        require("gitsigns").next_hunk()
+        require("gitsigns").nav_hunk("next")
       end,
       { desc = "Next Hunk" },
     },
     {
       "gp",
       function()
-        require("gitsigns").prev_hunk()
+        require("gitsigns").nav_hunk("prev")
       end,
       { desc = "Prev Hunk" },
     },
