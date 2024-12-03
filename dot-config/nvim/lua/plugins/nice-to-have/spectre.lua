@@ -61,6 +61,7 @@ return {
             cmd = "oxi",
           },
         },
+        is_block_ui_break = true,
       })
     end,
   },
