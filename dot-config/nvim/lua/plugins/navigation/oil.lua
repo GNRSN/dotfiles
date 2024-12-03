@@ -1,4 +1,13 @@
 return {
+  {
+    "refractalize/oil-git-status.nvim",
+    dependencies = {
+      "stevearc/oil.nvim",
+    },
+    config = {
+      show_ignored = true,
+    },
+  },
   -- Navigate directories + vim-like edit to file system
   {
     "stevearc/oil.nvim",
@@ -41,6 +50,8 @@ return {
         max_height = 0,
       },
       win_options = {
+        -- Required for oil-vcs-status
+        signcolumn = "yes:2",
         wrap = true,
         winblend = 0,
       },
