@@ -10,6 +10,7 @@ return {
         -- Load luvit types when the `vim.uv` word is found
         { path = "luvit-meta/library", words = { "vim%.uv" } },
         { path = "wezterm-types", mods = { "wezterm" } },
+        { path = "snacks.nvim", words = { "Snacks%.", "snacks%." } },
       },
     },
   },
