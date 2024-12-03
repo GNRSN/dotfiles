@@ -14,21 +14,42 @@ return {
     build = "./build.sh",
     keys = {
       {
-        "<leader>R",
+        "<leader>rr",
         function()
           require("spectre").toggle()
         end,
         desc = "Spectre",
       },
       {
-        "<leader>R",
+        "<leader>rr",
         function()
           require("spectre").open_visual()
         end,
         desc = "Spectre",
         mode = { "x" },
       },
-      -- REVIEW: Can add more keymaps for eg search for current selection in visual mode
+      {
+        "<leader>rw",
+        function()
+          require("spectre").open_visual({ select_word = true })
+        end,
+        desc = "Search current word",
+      },
+      {
+        "<leader>rw",
+        function()
+          require("spectre").open_visual()
+        end,
+        desc = "Search current word",
+        mode = { "v" },
+      },
+      {
+        "<leader>rp",
+        function()
+          require("spectre").open_file_search({ select_word = true })
+        end,
+        desc = "Search on current file",
+      },
     },
     config = function()
       require("spectre").setup({
