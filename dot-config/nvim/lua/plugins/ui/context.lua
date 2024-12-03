@@ -3,8 +3,6 @@ return {
   -- Displays current scope at top of buffer, good for long files
   {
     "nvim-treesitter/nvim-treesitter-context",
-    -- TODO: Disabled until stable or revert updates
-    cond = false,
     event = { "BufReadPre", "BufNewFile" },
     keys = {
       { "<leader>uc", "<Cmd>TSContextToggle<CR>", desc = "Toggle context ui" },
