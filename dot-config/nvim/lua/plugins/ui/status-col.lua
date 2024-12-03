@@ -23,6 +23,7 @@ return {
           "aerial",
           "Avante",
           "AvanteInput",
+          "netrw",
         },
         bt_ignore = {
           "help",
