@@ -2,7 +2,12 @@ return {
   ---@type LazySpec
   {
     "gbprod/substitute.nvim",
-    cond = false,
+    cond = true,
+    dependencies = {
+      -- Since we use the integration it has to load first
+      "gbprod/yanky.nvim",
+    },
+    event = "VeryLazy",
     keys = {
       {
         "s",
@@ -10,6 +15,7 @@ return {
           require("substitute").operator()
         end,
         mode = "n",
+        desc = "Substitute <motion>",
       },
       {
         "ss",
@@ -17,6 +23,7 @@ return {
           require("substitute").line()
         end,
         mode = "n",
+        desc = "Substitute line",
       },
       {
         "S",
@@ -24,6 +31,7 @@ return {
           require("substitute").eol()
         end,
         mode = "n",
+        desc = "Substitute eol",
       },
       {
         "s",
@@ -31,35 +39,19 @@ return {
           require("substitute").visual()
         end,
         mode = "x",
+        desc = "Substitute",
       },
     },
-    opts = {
-      on_substitute = require("yanky.integration").substitute(),
-      -- Rest ar defaults
-      yank_substituted_text = false,
-      preserve_cursor_position = false,
-      modifiers = nil,
-      highlight_substituted_text = {
-        enabled = true,
-        timer = 500,
-      },
-      range = {
-        -- REVIEW: Does this conflict with Surround?
-        prefix = "s",
-        prompt_current_text = false,
-        confirm = false,
-        complete_word = false,
-        subject = nil,
-        range = nil,
-        suffix = "",
-        auto_apply = false,
-        cursor_position = "end",
-      },
-      exchange = {
-        motion = false,
-        use_esc_to_cancel = true,
-        preserve_cursor_position = false,
-      },
-    },
+    opts = function()
+      return {
+        on_substitute = require("yanky.integration").substitute(),
+        yank_substituted_text = true,
+        preserve_cursor_position = true,
+        highlight_substituted_text = {
+          enabled = true,
+          timer = 200,
+        },
+      }
+    end,
   },
 }
