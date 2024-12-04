@@ -45,11 +45,10 @@ sketchybar --add event refresh_workspaces
 ##### Adding Left Items #####
 
 # Aerospace UI
-# TODO: Subscribing to display_change causes flicker when display actually changes and the entire thing is redrawn
+# TODO: Find a way to subscribe to monitor connected/disconnected
 sketchybar --add item aerospace_monitors_group left \
   --set aerospace_monitors_group drawing=off \
-  script="$PLUGINS_DIR/aerospace_monitors_group.sh" \
-  --subscribe aerospace_monitors_group display_change
+  script="$PLUGINS_DIR/aerospace_monitors_group.sh"
 
 # Display name of active app
 sketchybar --add item front_app left \
