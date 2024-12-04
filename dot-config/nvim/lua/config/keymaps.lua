@@ -103,8 +103,8 @@ map({ "n", "x", "o" }, "ö", "[", { desc = "["})
 map({ "n", "x", "o" }, "ä", "]", { desc = "]"})
 
 -- Unmap K in visual mode to avoid annoying message if fumbled
-map({ "v" }, "K", "<nop>", { silent = true })
--- Create a buffler local mapping in help docs for gd to keywordprg
+map({ "v", "x" }, "K", "<nop>", { silent = true })
+-- Create a buffer local mapping in help docs for gd to keywordprg
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help" },
   callback = function()
@@ -115,6 +115,14 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Unbind command history because I often fumble this
 map({ "n", "x", "o" }, "q:", "<nop>")
+
+-- Unmap macro recording for now
+map("n", "q", function()
+  return '<nop>'
+end, {
+  expr = true,
+  -- desc = "Stop recording (only during macro)"
+})
 
 -- Closer eagle hover on esc, might mess with other buffers?
 vim.api.nvim_create_autocmd("BufEnter", {
