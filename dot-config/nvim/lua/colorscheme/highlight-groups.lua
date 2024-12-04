@@ -102,7 +102,7 @@ function M.setup()
     StatusLineTerm = { fg = palette.white, bg = palette.black },
     StatusLineTermNC = { fg = palette.fade },
 
-    Directory = { fg = palette.yellow_orange },
+    Directory = { fg = palette.fg },
     -- Note, used by diff-view
     DiffAdd = { bg = palette.diff_added },
     DiffChange = { fg = palette.orange },
@@ -350,7 +350,11 @@ function M.setup()
     FzfLuaSearch = { bg = palette.green },
 
     -- Oil
+    OilHidden = { fg = palette.nontext },
+    OilFile = { fg = palette.fg },
+    OilFileHidden = { fg = palette.nontext },
     OilDir = { fg = palette.fg },
+    OilDirHidden = { fg = palette.nontext },
     OilDirIcon = { fg = palette.yellow_orange },
 
     -- NeoTree
