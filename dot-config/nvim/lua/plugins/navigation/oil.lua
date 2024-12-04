@@ -12,6 +12,14 @@ return {
         end,
         desc = "Open parent directory (oil)",
       },
+      {
+        "<BS>",
+        -- LATER: Would it be possible to open in buffer unless splits?
+        function()
+          require("oil").toggle_float()
+        end,
+        desc = "Open parent directory (oil)",
+      },
     },
     ---@module 'oil'
     ---@type oil.SetupOpts
