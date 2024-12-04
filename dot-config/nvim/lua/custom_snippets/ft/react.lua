@@ -31,12 +31,12 @@ return {
   ["rfc"] = fmt(
     [[function {1:ComponentName}(props) {{
 
-  return (
-    <div>
+    return (
+      <div>
 
-    </div>
-  );
-}}]],
+      </div>
+    );
+  }}]],
     { ["1:ComponentName"] = i(1, "ComponentName") }
   ),
 }
