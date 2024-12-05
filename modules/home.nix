@@ -35,6 +35,9 @@
 
     # Better cat, colors etc
     pkgs.bat
+    # Logs parser util, nixpkgs only had the rust port which is not feature complete but should suffice
+    # NOTE: For work
+    pkgs.bunyan-rs
     # GNU utils, MacOS only ships with a subset + keep versions fresh
     pkgs.coreutils
     # Better ls
