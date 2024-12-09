@@ -65,7 +65,7 @@ return {
       },
       ask = {
         floating = true,
-        start_in_insert = false,
+        start_in_insert = true,
         border = "single",
         focus_on_apply = "ours",
       },
