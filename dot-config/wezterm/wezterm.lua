@@ -17,6 +17,13 @@ config.font = wez.font_with_fallback({
 config.font_size = 14
 config.underline_thickness = "1pt"
 
+-- DOC: Control whether changing the font size adjusts the dimensions of the window (true)
+-- or adjusts the number of terminal rows/columns (false). The default is true.
+-- If you use a tiling window manager then you may wish to set this to false.
+config.adjust_window_size_when_changing_font_size = false
+
+config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
+
 -- ===
 -- Cursor
 -- ===
