@@ -12,12 +12,13 @@ return {
       -- Dashboard
       dashboard = { enabled = false },
 
+      ---@diagnostic disable-next-line: missing-fields
       lazygit = {
         configure = false,
       },
 
       notifier = {
-        enabled = false,
+        enabled = true,
       },
 
       -- Doc: When doing nvim somefile.txt, it will render the file as quickly as possible, before loading your plugins.
@@ -26,6 +27,7 @@ return {
       statuscolumn = { enabled = false },
 
       -- "cursor word"-esque
+      ---@diagnostic disable-next-line: missing-fields
       words = { enabled = false },
 
       styles = {},
@@ -68,6 +70,15 @@ return {
         desc = "Rename File",
       },
     },
+    config = function(_, opts)
+      local notify = vim.notify
+      require("snacks").setup(opts)
+      -- HACK: restore vim.notify after snacks setup and let noice.nvim take over
+      -- this is needed to have early notifications show up in noice history
+      -- THX Folke <3
+      -- @see https://github.com/folke/snacks.nvim/discussions/225
+      vim.notify = notify
+    end,
     init = function()
       vim.api.nvim_create_autocmd("User", {
         pattern = "VeryLazy",
