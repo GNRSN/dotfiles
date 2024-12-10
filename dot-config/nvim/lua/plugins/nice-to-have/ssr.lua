@@ -2,8 +2,7 @@ return {
   -- "Structural search and replace"
   -- Treesitter based S&R
   -- Use $name as wildcard
-  -- Only searches current file, could be useful for updating tests though
-  -- LATER: https://github.com/kevinhwang91/nvim-bqf for a more powerful quickfix list
+  -- NOTE: Only searches current file
   {
     "cshuaimin/ssr.nvim",
     keys = {
@@ -14,6 +13,21 @@ return {
         end,
         desc = "(SSR) Structural search and replace",
         mode = { "n", "x" },
+      },
+    },
+    opts = {
+      border = "rounded",
+      min_width = 50,
+      min_height = 5,
+      max_width = 120,
+      max_height = 25,
+      adjust_window = true,
+      keymaps = {
+        close = "q",
+        next_match = "n",
+        prev_match = "N",
+        replace_confirm = "<cr>",
+        replace_all = "<c><cr>",
       },
     },
   },
