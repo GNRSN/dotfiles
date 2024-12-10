@@ -86,6 +86,8 @@ config.colors.visual_bell = "#202020"
 -- This makes wezterm feel a lot snappier
 config.max_fps = 120
 
+config.animation_fps = 30
+
 config.scrollback_lines = 9999
 
 -- Fix issues with Swedish keyboard
