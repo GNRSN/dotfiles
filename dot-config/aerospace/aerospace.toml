@@ -229,18 +229,29 @@ alt-shift-l = ['join-with right', 'mode main']
 #
 # Aerospace cli offers utils list-* for finding ids
 
+# Move Chrome to C
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.during-aerospace-startup = true
+run = ['move-node-to-workspace C']
+
+# Move Obsidian to O
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+if.during-aerospace-startup = true
+run = ['move-node-to-workspace O']
+
 # Move Slack to S
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace S']
 
-
-# Move Chrome to C
+# Move Remainders to R
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome'
+if.app-id = 'com.apple.reminders'
 if.during-aerospace-startup = true
-run = ['move-node-to-workspace C']
+run = ['move-node-to-workspace R']
 
 # Move Chat GPT to Q
 [[on-window-detected]]
