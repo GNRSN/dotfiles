@@ -151,7 +151,6 @@
   # - Sound: always show in the menu bar
   # - Remove keyboard shortcuts for mission control
   # - Mission control group windows by application (defaults write com.apple.dock expose-group-apps -bool true)
-  # TODO: Sketchybar conflicts with this, update after deciding on keeping sketchybar
   # - Disable displays have separate spaces (defaults write com.apple.spaces spans-displays -bool true)
 
   # Control key repeat speed
