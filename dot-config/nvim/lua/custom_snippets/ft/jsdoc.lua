@@ -26,9 +26,6 @@ local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
--- LATER: I'm actually not very happy about these being in jsdoc ft type,
--- jsdoc ft should be inside jsdocstrings?
--- Instead I should find some way to specify js for both javascript and javascriptreact
 return {
   ["/type"] = fmt([[/** @type {{{}}} */]], { i(1) }),
   ["/satisfies"] = fmt([[/** @satisfies {{{}}} */]], { i(1) }),
