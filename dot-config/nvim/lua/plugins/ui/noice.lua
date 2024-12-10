@@ -3,7 +3,6 @@ local CONCEAL_CMD = false
 return {
   -- Noice is multiple things, but foremost its an event/message router,
   -- it allows filtering/mapping messages to different UIs,
-  -- hence an overlap/conflict with any UI plugin trying to do this in its own, e.g. nvim notify
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -11,13 +10,6 @@ return {
     dependencies = {
       -- DOC: if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
-      {
-        "rcarriga/nvim-notify",
-        opts = {
-          render = "wrapped-compact",
-          stages = "fade",
-        },
-      },
     },
     keys = {
       { "<leader>sn", "<cmd>Noice telescope<cr>", desc = "Search notifications" },
@@ -31,6 +23,10 @@ return {
           inc_rename = false, -- enables an input dialog for inc-rename.nvim
           lsp_doc_border = true, -- add a border to hover docs and signature help
         },
+        -- messages = {
+        --   enabled = true,
+        --   view = "mini",
+        -- },
         lsp = {
           -- DOC: override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
