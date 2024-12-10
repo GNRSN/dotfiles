@@ -26,7 +26,7 @@ return {
           check_package_version = "c",
           update_all_packages = "U",
           check_outdated_packages = "R",
-          uninstall_package = "d",
+          uninstall_package = "dd",
           cancel_installation = "<C-c>",
           apply_language_filter = "<C-f>",
           toggle_package_install_log = "<CR>",
