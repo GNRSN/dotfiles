@@ -226,14 +226,20 @@ alt-shift-l = ['join-with right', 'mode main']
 'C' = 'secondary'
 
 # === Automagically move certain apps to their spaces ===
-#
-# Aerospace cli offers utils list-* for finding ids
+
+# NOTE: Aerospace cli offers util `aerospace list-apps` for finding ids
 
 # Move Chrome to C
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace C']
+
+# Move Figma to C
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+if.during-aerospace-startup = true
+run = ['move-node-to-workspace F']
 
 # Move Obsidian to O
 [[on-window-detected]]
