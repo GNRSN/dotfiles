@@ -27,6 +27,11 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
+# === Homebrew ===
+
+# Do not include vscode plugins in dumpfile
+export HOMEBREW_BUNDLE_DUMP_NO_VSCODE=true
+
 # === Rust ===
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export CARGO_HOME=$XDG_DATA_HOME/cargo
