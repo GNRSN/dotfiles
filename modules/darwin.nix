@@ -75,6 +75,11 @@
   # Uninstall anything not specified in nix, leaves associated files
   homebrew.onActivation.cleanup = "uninstall";
 
+  homebrew.taps = [
+    # brew services subcommand, I think this is required for nix restart_service to work
+    "homebrew/services"
+  ];
+
   homebrew.brews = [
     {
       # Focus follows mouse, essential for multi monitor work
@@ -84,6 +89,7 @@
     }
     {
       name = "FelixKratz/formulae/sketchybar";
+      restart_service = "changed";
     }
   ];
 
