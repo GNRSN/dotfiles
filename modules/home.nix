@@ -84,9 +84,6 @@
     pkgs.ripgrep
     # Rust toolchain
     pkgs.rustup
-    # Hotkey daemon
-    # REVIEW: Does this actually work? I just read nix doesn't start up daemons?
-    pkgs.skhd
     # Easy symlinks for dotfiles
     pkgs.stow
     # Libsql, better sqlite
