@@ -98,6 +98,8 @@
     "cursor"
     # Translation
     "deepl"
+    # Access communities
+    "discord"
     # Matrix client
     "element"
     # Figma
