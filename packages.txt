@@ -33,6 +33,7 @@ pre-commit-4.0.1
 ripgrep-14.1.1
 rustup-1.27.1
 skhd-0.3.9
+sqld-0.24.18
 stow-2.4.1
 turso-cli-0.97.2
 yarn-1.22.22
