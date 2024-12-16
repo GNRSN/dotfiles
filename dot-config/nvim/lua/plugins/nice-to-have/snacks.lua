@@ -3,35 +3,6 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    ---@type snacks.Config
-    opts = {
-      -- DOC: bigfile adds a new filetype bigfile to Neovim that triggers when the file is larger than the configured size.
-      -- This automatically prevents things like LSP and Treesitter attaching to the buffer.
-      bigfile = { enabled = true },
-
-      -- Dashboard
-      dashboard = { enabled = false },
-
-      ---@diagnostic disable-next-line: missing-fields
-      lazygit = {
-        configure = false,
-      },
-
-      notifier = {
-        enabled = true,
-      },
-
-      -- Doc: When doing nvim somefile.txt, it will render the file as quickly as possible, before loading your plugins.
-      quickfile = { enabled = false },
-
-      statuscolumn = { enabled = false },
-
-      -- "cursor word"-esque
-      ---@diagnostic disable-next-line: missing-fields
-      words = { enabled = false },
-
-      styles = {},
-    },
     keys = {
       {
         "<leader>un",
@@ -69,6 +40,37 @@ return {
         end,
         desc = "Rename File",
       },
+    },
+    ---@type snacks.Config
+    opts = {
+      -- DOC: bigfile adds a new filetype bigfile to Neovim that triggers when the file is larger than the configured size.
+      -- This automatically prevents things like LSP and Treesitter attaching to the buffer.
+      bigfile = { enabled = true },
+
+      -- Dashboard
+      dashboard = { enabled = false },
+
+      ---@diagnostic disable-next-line: missing-fields
+      lazygit = {
+        configure = false,
+      },
+
+      notifier = {
+        enabled = true,
+        ---@type snacks.notifier.style
+        style = "compact",
+      },
+
+      -- Doc: When doing nvim somefile.txt, it will render the file as quickly as possible, before loading your plugins.
+      quickfile = { enabled = false },
+
+      statuscolumn = { enabled = false },
+
+      -- "cursor word"-esque
+      ---@diagnostic disable-next-line: missing-fields
+      words = { enabled = false },
+
+      styles = {},
     },
     config = function(_, opts)
       local notify = vim.notify
