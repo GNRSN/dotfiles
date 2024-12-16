@@ -1,28 +1,41 @@
-#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+version = 3
 
-version = 2
+[palette]
+  error = '#C94A16'
+
+[secondary_prompt]
+  template = '➜➜'
+  foreground = '#888'
+
+[transient_prompt]
+  template = """{{ if .Segments.ExecutionTime.FormattedMs}} <#999> {{ .Segments.ExecutionTime.FormattedMs }}</>
+{{end}}
+ <#FF79C6>➜</> """
+  background = 'transparent'
 
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
-  
-  # Newline = true only works for the first block, but if it's empty it doesn't work at all
+
   [[blocks.segments]]
     alias = 'BlankLine'
+    template = ' '
     type = 'text'
     style = 'plain'
-    template = """ """
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
 
   [[blocks.segments]]
     alias = 'ExecutionTime'
-    type = 'executiontime'
-    style = 'plain'
+    template = "  {{ .FormattedMs }}\n"
     foreground = 'yellow'
     background = 'transparent'
-    template = """  {{ .FormattedMs }}
-"""
+    type = 'executiontime'
+    style = 'plain'
 
     [blocks.segments.properties]
+      cache_duration = 'none'
       threshold = 1500
 
 [[blocks]]
@@ -31,56 +44,43 @@ version = 2
   newline = true
 
   [[blocks.segments]]
-    # Visible when user is root/elevated shell
+    template = '[root] <#aaa>in</> '
+    foreground = '#E06C75'
     type = 'root'
     style = 'plain'
-    template = '[root] <#aaa>in</> '
-    background = ''
-    foreground = '#E06C75'
-    Text = ''
-    Duration = 0
-    NameLength = 0
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
 
   [[blocks.segments]]
     alias = 'Path'
+    template = '{{ .Path }} '
+    foreground = '#4ca4ff'
     type = 'path'
     style = 'plain'
-    template = '{{ .Path }} '
-    background = ''
-    foreground = '#4ca4ff'
-    Text = ''
-    Duration = 0
-    NameLength = 0
 
     [blocks.segments.properties]
+      cache_duration = 'none'
       style = 'full'
 
   [[blocks.segments]]
-    # Display git context
+    template = '<#aaa>on</> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
+    foreground = '#ef5cf8'
     type = 'git'
     style = 'plain'
-    template = '<#aaa>on</> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
-    background = ''
-    foreground = '#ef5cf8'
-    Text = ''
-    Duration = 0
-    NameLength = 0
 
     [blocks.segments.properties]
+      cache_duration = 'none'
       fetch_status = true
 
   [[blocks.segments]]
-    # Display node version when in node project
+    template = '<#aaa>via</>  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} '
+    foreground = '#00c471'
     type = 'node'
     style = 'plain'
-    template = '<#aaa>via</>  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} '
-    background = ''
-    foreground = '#00c471'
-    Text = ''
-    Duration = 0
-    NameLength = 0
 
     [blocks.segments.properties]
+      cache_duration = 'none'
       fetch_version = true
 
 [[blocks]]
@@ -88,32 +88,22 @@ version = 2
   alignment = 'left'
   newline = true
 
-  # Vi mode indicator
   [[blocks.segments]]
-    type = 'text'
-    style = 'plain'
-    background = 'transparent'
-    foreground = '#FF79C6'
     template = '[{{ .Env.VIM_MODE }}] '
-
-  [[blocks.segments]]
-    # Text entry
+    foreground = '#FF79C6'
+    background = 'transparent'
     type = 'text'
     style = 'plain'
-    foreground = '#63F08C'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
     template = '➜ '
+    foreground = '#63F08C'
     background = 'transparent'
+    type = 'text'
+    style = 'plain'
 
-
-[transient_prompt]
-  background = "transparent"
-  template = """{{ if .Segments.ExecutionTime.FormattedMs}} <#999> {{ .Segments.ExecutionTime.FormattedMs }}</>
-{{end}}
- <#FF79C6>➜</> """
-
-[secondary_prompt]
-  foreground = '#888'
-  template = '➜➜'
-
-[palette]
-  error = "#C94A16"
+    [blocks.segments.properties]
+      cache_duration = 'none'

@@ -16,9 +16,7 @@
   ];
 
   fonts.packages = with pkgs; [
-    # REVIEW: Consider narrowing to only install used fonts,
-    # it is currently installing every available nerd-font
-    nerdfonts
+    nerd-fonts.hack
     # NOTE: Running the nerdfonts patcher to build takes a while
     apple-fonts.packages.${system}.sf-pro
     apple-fonts.packages.${system}.sf-pro-nerd
@@ -52,7 +50,7 @@
   programs.zsh.enable = true;
 
   # This property defines the version of nix to use, defaults to something pretty reasonable
-  # system.nixpkgsRelease = 
+  # system.nixpkgsRelease =
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -199,7 +197,7 @@
   # Least obtrusive IMO
   system.defaults.dock.orientation = "left";
 
-  # Default is null, 
+  # Default is null,
   # REVIEW: hopefully this results in none?
   system.defaults.dock.persistent-apps = [ ];
 
