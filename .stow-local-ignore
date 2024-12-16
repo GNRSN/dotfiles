@@ -13,3 +13,4 @@ flake.*
 modules
 
 packages.txt
+brew.txt
