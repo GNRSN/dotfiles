@@ -114,7 +114,7 @@
     pkgs.go_1_22
     # NodeJS, pinned version for work
     # pkgs.nodejs_20
-    pkgs.nodejs_20
+    pkgs.nodejs_22
 
     pkgs.nodePackages.yarn
 
@@ -169,10 +169,10 @@
   };
 
   programs.zsh = {
-    # REVIEW: I probably don't want to manage zsh through nix? 
+    # REVIEW: I probably don't want to manage zsh through nix?
     enable = false;
     # but I do want a .zshenv in $HOME defining my $ZDOTDIR, this has no effect when it isn't managed though
-    # it would be nice to replace stow with nix, I do want my config files to still be mutable through which may 
+    # it would be nice to replace stow with nix, I do want my config files to still be mutable through which may
     # be fundamentally incompatible with nix?
     dotDir = ".config/zsh";
     # Home manager stand alone install requires sourcing this

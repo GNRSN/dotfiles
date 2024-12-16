@@ -1,8 +1,8 @@
 bat-0.24.0
 bunyan-rs-0.1.9
 coreutils-9.5
-eza-0.20.11
-eza-0.20.11-man
+eza-0.20.12
+eza-0.20.12-man
 fd-10.2.0
 fzf-0.56.3
 fzf-0.56.3-man
@@ -25,7 +25,7 @@ man-db-2.13.0
 neovide-0.13.3
 neovim-0.10.2
 nixfmt-unstable-2024-12-04
-nodejs-20.18.1
+nodejs-22.10.0
 oh-my-posh-24.11.4
 password-store-1.7.4
 pnpm-9.15.0
