@@ -100,9 +100,9 @@
     # Pinned version of go for work
     # TODO: Experiment with direnv
     pkgs.go_1_22
+
     # NodeJS, pinned version for work
-    # pkgs.nodejs_20
-    pkgs.nodejs_22
+    pkgs.nodejs_20
 
     pkgs.nodePackages.yarn
 
