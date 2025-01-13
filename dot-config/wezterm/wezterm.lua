@@ -42,8 +42,8 @@ config.macos_window_background_blur = 44
 
 config.colors = {
   background = "#111",
-  -- cursor_fg = "pink",
   cursor_bg = "#FF79C6",
+  cursor_border = "#FF79C6",
 }
 
 config.command_palette_bg_color = "#222"
@@ -135,6 +135,7 @@ end
 -- Keybinds
 -- ===
 
+-- TODO: Map ctrl d and ctrl u to scroll
 local act = wez.action
 config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
