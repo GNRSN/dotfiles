@@ -61,8 +61,17 @@ return {
         style = "compact",
       },
 
-      -- Doc: When doing nvim somefile.txt, it will render the file as quickly as possible, before loading your plugins.
+      -- DOC: When doing nvim somefile.txt, it will render the file as quickly as possible, before loading your plugins.
       quickfile = { enabled = false },
+
+      -- DOC: Smooth scrolling for Neovim. Properly handles scrolloff and mouse scrolling.
+      scroll = {
+        enabled = true,
+        animate = {
+          duration = { step = 10, total = 150 },
+          easing = "outQuad",
+        },
+      },
 
       statuscolumn = { enabled = false },
 
