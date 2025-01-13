@@ -13,13 +13,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # This tool can be used to search for nixpkgs-versions containing specfic package-versions
-    # https://lazamar.co.uk/nix-versions/?package=nodejs
-    # NOTE: Package name is not the same as specified name for importing the package,
-    # it is listed in a separate field on https://search.nixos.org
-    # TODO: We no longer need this because we've caught up to latest stable at work. Keeping here through since I may need to re-use this method again
-    nodejs-20-14-0_pkgs = {
-      url = "https://github.com/NixOS/nixpkgs/archive/05bbf675397d5366259409139039af8077d695ce.tar.gz";
+    sqld_pkgs = {
+      url = "https://github.com/NixOS/nixpkgs/archive/4989a246d7a390a859852baddb1013f825435cee.tar.gz";
     };
 
     # Flake that downloads fonts from apples website + patches with nerdfonts. These are not installed system wide by default
@@ -33,7 +28,7 @@
       nix-darwin,
       nixpkgs,
       home-manager,
-      nodejs-20-14-0_pkgs,
+      sqld_pkgs,
       apple-fonts,
     }:
     let
@@ -60,7 +55,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           (import ./modules/home.nix {
-            nodejs-20-14-0_pkgs = nodejs-20-14-0_pkgs.legacyPackages.${system};
+            sqld_pkgs = sqld_pkgs.legacyPackages.${system};
           })
         ];
       };

@@ -25,7 +25,7 @@ man-db-2.13.0
 neovide-0.13.3
 neovim-0.10.2
 nixfmt-unstable-2024-12-04
-nodejs-22.10.0
+nodejs-20.18.1
 oh-my-posh-24.11.4
 password-store-1.7.4
 pnpm-9.15.0

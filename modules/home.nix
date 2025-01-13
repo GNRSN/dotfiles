@@ -1,5 +1,5 @@
 # Note the double lambda, home manager expects a function so to pass custom args we need a function returning a function
-{ nodejs-20-14-0_pkgs }:
+{ sqld_pkgs }:
 { pkgs, ... }:
 
 {
@@ -88,7 +88,7 @@
     pkgs.stow
     # Libsql, better sqlite
     # NOTE: sqld is libsql including some extras
-    pkgs.sqld
+    sqld_pkgs.sqld
 
     # Turso cli
     pkgs.turso-cli
@@ -100,9 +100,9 @@
     # Pinned version of go for work
     # TODO: Experiment with direnv
     pkgs.go_1_22
+
     # NodeJS, pinned version for work
-    # pkgs.nodejs_20
-    pkgs.nodejs_22
+    pkgs.nodejs_20
 
     pkgs.nodePackages.yarn
 
