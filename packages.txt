@@ -4,8 +4,8 @@ coreutils-9.5
 eza-0.20.12
 eza-0.20.12-man
 fd-10.2.0
-fzf-0.56.3
-fzf-0.56.3-man
+fzf-0.57.0
+fzf-0.57.0-man
 gh-2.63.2
 git-2.47.0
 gitleaks-8.21.2
