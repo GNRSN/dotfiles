@@ -55,6 +55,8 @@ sketchybar --add item front_app left \
   --set front_app icon.drawing=off padding_left=9 script="$PLUGINS_DIR/front_app.sh" \
   --subscribe front_app front_app_switched
 
+# TODO: Indicate camera on, recording mic and screen sharing
+
 ##### Adding Right Items #####
 sketchybar --add item clock right \
   --set clock update_freq=20 \
