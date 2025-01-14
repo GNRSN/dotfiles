@@ -102,7 +102,7 @@
     pkgs.go_1_22
 
     # NodeJS, pinned version for work
-    pkgs.nodejs_20
+    pkgs.nodejs_22
 
     pkgs.nodePackages.yarn
 
