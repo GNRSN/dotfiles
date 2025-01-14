@@ -129,8 +129,6 @@
     "visual-studio-code"
     # Terminal emulator of choice
     "wezterm"
-    # Emulator
-    "whisky"
     # Next gen editor
     "zed"
     # Try arc alternative
