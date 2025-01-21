@@ -39,7 +39,9 @@ function M.utils.lazygit_smart_open()
   local project_uses_graphite = require("util.local-config").get_workspace_config().graphite
 
   if project_uses_graphite then
-    M.lazygit_graphite:toggle()
+    Snacks.terminal(
+      "lazygit --use-config-file \"$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml\""
+    )
   else
     M.lazygit:toggle()
   end
