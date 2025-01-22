@@ -1,5 +1,3 @@
-local Terminal = require("toggleterm.terminal").Terminal
-
 local M = { utils = {} }
 
 function M.utils.refresh_git()
@@ -29,12 +27,6 @@ local base_config = {
   end,
 }
 
-M.lazygit = Terminal:new(base_config)
-
-M.lazygit_graphite = Terminal:new(vim.tbl_extend("force", base_config, {
-  cmd = "lazygit --use-config-file \"$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml\"",
-}))
-
 function M.utils.lazygit_smart_open()
   local project_uses_graphite = require("util.local-config").get_workspace_config().graphite
 
@@ -43,7 +35,7 @@ function M.utils.lazygit_smart_open()
       "lazygit --use-config-file \"$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml\""
     )
   else
-    M.lazygit:toggle()
+    Snacks.terminal("lazygit")
   end
 end
 
