@@ -205,22 +205,24 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # NOTE: Mode changes has to be proppagated "manually" to sketchybar
 # until this is implemented https://github.com/nikitabobko/AeroSpace/issues/390
 alt-shift-esc = ['mode service', 'exec-and-forget sketchybar --add item service q --set service icon=[S] service background.drawing=off icon.color=0xffffffff']
+ctrl-shift-space = ['mode service', 'exec-and-forget sketchybar --add item service q --set service icon=[S] service background.drawing=off icon.color=0xffffffff']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
 esc = ['reload-config', 'exec-and-forget sketchybar --remove service', 'mode main']
+ctrl-shift-space = ['reload-config', 'exec-and-forget sketchybar --remove service', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
-backspace = ['close-all-windows-but-current', 'mode main']
+# backspace = ['close-all-windows-but-current', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
 
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
+alt-shift-h = ['join-with left', 'mode main', 'exec-and-forget sketchybar --remove service']
+alt-shift-j = ['join-with down', 'mode main', 'exec-and-forget sketchybar --remove service']
+alt-shift-k = ['join-with up', 'mode main', 'exec-and-forget sketchybar --remove service' ]
+alt-shift-l = ['join-with right', 'mode main', 'exec-and-forget sketchybar --remove service']
 
 [workspace-to-monitor-force-assignment]
 'C' = 'secondary'
