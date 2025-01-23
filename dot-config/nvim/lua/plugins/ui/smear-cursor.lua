@@ -22,9 +22,6 @@ return {
       -- distance_stop_animating = 0.5,
       -- hide_target_hack = false,
 
-      -- Since we have Noice, the bottom cmd line is hidden
-      smear_to_cmd = false,
-
       -- Color
       cursor_color = require("colorscheme.palette").pink,
     },
