@@ -13,7 +13,9 @@ return {
         NOTE = { icon = " ", color = "note", alt = { "INFO" } },
         TODO = { icon = "  ", color = "todo" },
         LATER = { icon = "  ", color = "todo" },
-        DOC = { icon = " ", color = "doc" },
+        DOC = { icon = "  ", color = "doc" },
+        REFACTOR = { icon = " ", color = "perf" },
+        HACK = { icon = " ", color = "perf" },
       },
       merge_keywords = false,
       colors = {
