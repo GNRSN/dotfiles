@@ -87,7 +87,7 @@ function M.setup()
 
     NotifyBackground = { bg = palette.black },
 
-    Cursor = { reverse = true },
+    Cursor = { fg = palette.pink, reverse = true },
     CursorLineNr = { fg = palette.fg, bold = true },
 
     SignColumn = { bg = palette.bg },
