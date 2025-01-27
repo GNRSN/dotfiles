@@ -1,6 +1,9 @@
 local wez = require("wezterm")
 local config = wez.config_builder()
 
+-- LATER: Configure $TERM as wezterm, this indicate that wezterm capabilities are available for some programs,
+-- required installing wezterm term definitions
+--
 -- config.term = "wezterm"
 
 -- ===
@@ -135,7 +138,7 @@ end
 -- Keybinds
 -- ===
 
--- TODO: Map ctrl d and ctrl u to scroll
+-- LATER: Map ctrl d and ctrl u to scroll
 local act = wez.action
 config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
@@ -144,39 +147,39 @@ config.keys = {
   { -- Split pane horizontally
     key = "d",
     mods = "CMD",
-    action = wez.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+    action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
   },
   { -- Split pane vertically
     key = "D",
     mods = "CMD",
-    action = wez.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+    action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
   },
   { -- Close pane
     key = "w",
     mods = "CMD",
-    action = wez.action.CloseCurrentPane({ confirm = true }),
+    action = act.CloseCurrentPane({ confirm = true }),
   },
   { -- Activate copy mode or vim mode
     key = "Enter",
     mods = "LEADER",
-    action = wez.action.ActivateCopyMode,
+    action = act.ActivateCopyMode,
   },
   { -- Open command palette
     key = "p",
     mods = "CMD",
-    action = wez.action.ActivateCommandPalette,
+    action = act.ActivateCommandPalette,
   },
   { -- Maximize pane
     key = "m",
     mods = "CMD",
-    action = wez.action.TogglePaneZoomState,
+    action = act.TogglePaneZoomState,
   },
   { -- Clear scrollback
     key = "l",
     mods = "CMD",
-    action = wez.action.Multiple({
-      wez.action.ClearScrollback("ScrollbackAndViewport"),
-      wez.action.SendKey({ key = "l", mods = "CTRL" }),
+    action = act.Multiple({
+      act.ClearScrollback("ScrollbackAndViewport"),
+      act.SendKey({ key = "l", mods = "CTRL" }),
     }),
   },
   -- ===
@@ -185,23 +188,18 @@ config.keys = {
   {
     key = "+",
     mods = "CMD",
-    action = wez.action.IncreaseFontSize,
+    action = act.IncreaseFontSize,
   },
   {
     key = "-",
     mods = "CMD",
-    action = wez.action.DecreaseFontSize,
+    action = act.DecreaseFontSize,
   },
   {
     key = "0",
     mods = "CMD",
-    action = wez.action.ResetFontSize,
+    action = act.ResetFontSize,
   },
-  -- {
-  --   key = "0",
-  --   mods = "CMD",
-  --   action = wez.action.DecreaseFontSize,
-  -- },
   -- move between split panes
   split_nav("move", "h"),
   split_nav("move", "j"),
@@ -216,12 +214,12 @@ config.keys = {
   {
     key = "LeftArrow",
     mods = "CMD|OPT",
-    action = wez.action.MoveTabRelative(-1),
+    action = act.MoveTabRelative(-1),
   },
   {
     key = "RightArrow",
     mods = "CMD|OPT",
-    action = wez.action.MoveTabRelative(1),
+    action = act.MoveTabRelative(1),
   },
 
   -- DEFAULT KEYBINDS
