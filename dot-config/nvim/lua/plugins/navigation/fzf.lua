@@ -101,8 +101,8 @@ return {
         ["--info"] = "inline-right",
         ["--no-separator"] = "",
         ["--scrollbar"] = "█",
-        ["--pointer"] = " ",
-        ["--marker"] = " ", -- multi select
+        ["--pointer"] = "",
+        ["--marker"] = "", -- multi select
         ["--no-bold"] = "",
         ["--tiebreak"] = "end",
       },
