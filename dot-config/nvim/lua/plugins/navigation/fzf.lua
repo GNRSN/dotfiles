@@ -16,65 +16,6 @@ return {
     priority = 100,
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("fzf-lua").setup({
-        winopts = {
-          width = 0.9,
-          preview = {
-            horizontal = "right:50%",
-            scrollbar = "border",
-          },
-        },
-        keymap = {
-          builtin = { -- uses vim style keys
-            ["<C-u>"] = "preview-up",
-            ["<C-d>"] = "preview-down",
-          },
-          fzf = {
-            -- Required here again to override self closing on ctrl-d when listing git files
-            ["ctrl-u"] = "preview-up",
-            ["ctrl-d"] = "preview-down",
-            --
-            -- Reset selection when updating query,
-            -- this opt is passed as the --bind command so this events (seemingly) can't be bound as separate opt
-            ["change"] = "top",
-          },
-        },
-        fzf_opts = {
-          ["--layout"] = "default",
-          ["--info"] = "inline-right",
-          ["--no-separator"] = "",
-          ["--scrollbar"] = "█",
-          ["--pointer"] = " ",
-          ["--marker"] = " ", -- multi select
-          ["--no-bold"] = "",
-          ["--color"] = concatTableKeyValuePairs({
-            fg = palette.white, -- Text
-            ["fg+"] = palette.fg, -- Text (current line)
-            hl = palette.green, -- Highlighted substrings
-            ["hl+"] = palette.green, -- Highlighted substrings on current line
-            ["bg+"] = palette.visual_bg, -- Current line word background
-            gutter = "-1", -- Gutter, just hide it
-            pointer = palette.pink, -- The > icon
-            spinner = palette.pink, -- The spinner
-            info = palette.number_green, -- Match counter
-            query = palette.yellow, -- Input query
-          }),
-          -- Prefers matching on file name over path
-          ["--tiebreak"] = "end",
-        },
-        files = {
-          fzf_opts = {
-            ["--info"] = "inline-right",
-          },
-        },
-        grep = {
-          fzf_opts = {
-            ["--info"] = "inline-right",
-          },
-        },
-      })
-    end,
     keys = {
       {
         "<leader><space>",
@@ -118,6 +59,62 @@ return {
           require("fzf-lua").oldfiles()
         end,
         desc = "Recent files (fzf)",
+      },
+    },
+    opts = {
+      winopts = {
+        width = 0.9,
+        preview = {
+          horizontal = "right:50%",
+          scrollbar = "border",
+        },
+      },
+      keymap = {
+        builtin = { -- uses vim style keys
+          ["<C-u>"] = "preview-up",
+          ["<C-d>"] = "preview-down",
+        },
+        fzf = {
+          -- Required here again to override self closing on ctrl-d when listing git files
+          ["ctrl-u"] = "preview-up",
+          ["ctrl-d"] = "preview-down",
+          --
+          -- Reset selection when updating query,
+          -- this opt is passed as the --bind command so this events (seemingly) can't be bound as separate opt
+          ["change"] = "top",
+        },
+      },
+      fzf_colors = {
+        fg = palette.white, -- Text
+        ["fg+"] = palette.fg, -- Text (current line)
+        hl = palette.green, -- Highlighted substrings
+        ["hl+"] = palette.green, -- Highlighted substrings on current line
+        ["bg+"] = palette.visual_bg, -- Current line word background
+        gutter = "-1", -- Gutter, just hide it
+        pointer = palette.pink, -- The > icon
+        spinner = palette.pink, -- The spinner
+        info = palette.number_green, -- Match counter
+        query = palette.yellow, -- Input query
+      },
+      fzf_opts = {
+        ["--layout"] = "default",
+        ["--info"] = "inline-right",
+        ["--no-separator"] = "",
+        ["--scrollbar"] = "█",
+        ["--pointer"] = " ",
+        ["--marker"] = " ", -- multi select
+        ["--no-bold"] = "",
+        ["--tiebreak"] = "end",
+      },
+      files = {
+        fzf_opts = {
+          ["--info"] = "inline-right",
+        },
+      },
+      grep = {
+        fzf_opts = {
+          ["--info"] = "inline-right",
+        },
       },
     },
   },
