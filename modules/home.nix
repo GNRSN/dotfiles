@@ -92,6 +92,8 @@
 
     # Turso cli
     pkgs.turso-cli
+    # Cli file manager
+    pkgs.yazi
     # Better cd
     pkgs.zoxide
 
