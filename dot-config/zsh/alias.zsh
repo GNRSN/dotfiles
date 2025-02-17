@@ -2,6 +2,7 @@ alias cat=bat
 
 alias ".."="cd .."
 alias lz=lazygit
+alias lg="lazygit --use-config-file \"$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml\""
 alias nv=nvim
 alias pn=pnpm
 alias l='eza -l'
