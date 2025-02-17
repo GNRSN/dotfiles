@@ -5,9 +5,6 @@
 }:
 { pkgs, ... }:
 {
-  # Suppress warning about migration that will need to be performed when upgrading MacOS to Sequoia
-  ids.uids.nixbld = 300;
-
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
