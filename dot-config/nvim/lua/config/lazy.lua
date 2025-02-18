@@ -66,4 +66,7 @@ require("lazy").setup({
     border = "single",
     backdrop = 100,
   },
+  dev = {
+    path = "~/github",
+  },
 })
