@@ -2,6 +2,7 @@ local BLACKLIST_FT = {
   "aerial",
   "Avante",
   "AvanteInput",
+  "AvanteSelectedFiles",
   "DiffviewFiles",
   "neo-tree",
   "neotest",
