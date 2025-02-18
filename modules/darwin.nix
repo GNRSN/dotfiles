@@ -27,9 +27,6 @@
   # see https://daiderd.com/nix-darwin/manual/index.html#opt-programs.direnv.enable
   # programs.direnv.enable = true;
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   # Set the version of nix we want to use
   nix.package = pkgs.nixVersions.nix_2_24;
 
@@ -55,12 +52,6 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
-
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = system;
-
-  nix.configureBuildUsers = true;
-  nix.useDaemon = true;
 
   users.users = {
     gnrsn = {
@@ -219,8 +210,7 @@
   system.defaults.finder.AppleShowAllExtensions = true;
 
   # Sort folders first
-  # TODO: caused error, config option didn't exist
-  #system.defaults.finder._FXSortFoldersFirst = true;
+  system.defaults.finder._FXSortFoldersFirst = true;
 
   # Show path in title
   system.defaults.finder._FXShowPosixPathInTitle = true;
