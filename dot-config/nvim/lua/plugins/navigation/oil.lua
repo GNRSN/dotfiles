@@ -48,6 +48,9 @@ return {
         padding = 2,
         max_width = 90,
         max_height = 0,
+        win_options = {
+          winhighlight = "FloatTitle:OilFloatTitle",
+        },
       },
       win_options = {
         -- Required for oil-vcs-status

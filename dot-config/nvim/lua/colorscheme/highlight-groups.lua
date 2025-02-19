@@ -356,6 +356,7 @@ function M.setup()
     OilDir = { fg = palette.fg },
     OilDirHidden = { fg = palette.nontext },
     OilDirIcon = { fg = palette.yellow_orange },
+    OilFloatTitle = { fg = palette.blue_medium },
 
     -- NeoTree
     NeoTreeNormal = { fg = palette.fg, bg = palette.menu },
