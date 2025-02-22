@@ -1,17 +1,9 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  keys = {
-    {
-      "<leader>?",
-      function()
-        require("which-key").show({ global = false })
-      end,
-      desc = "Buffer Local Keymaps (which-key)",
-    },
-  },
   config = function()
     local wk = require("which-key")
+    ---@diagnostic disable-next-line: missing-fields
     wk.setup({
       triggers = {
         -- Default option, auto trigger
@@ -36,7 +28,7 @@ return {
       { "<leader>d", group = "Debugger" },
       { "<leader>f", group = "File/find" },
       { "<leader>g", group = "Git" },
-      { "<leader>h", group = "Harpoon" },
+      { "<leader>h", group = "Harpoon (Grapple)" },
       { "<leader>o", group = "Obsidian" },
       { "<leader>s", group = "Search" },
       { "<leader>t", group = "Testing" },
