@@ -40,6 +40,16 @@ return {
         end,
         desc = "Rename File",
       },
+      {
+        "<leader>e",
+        function()
+          Snacks.picker.explorer({
+            layout = { preset = "vertical", preview = true },
+          })
+        end,
+        "n",
+        desc = "Floating Explorer",
+      },
     },
     ---@type snacks.Config
     opts = {

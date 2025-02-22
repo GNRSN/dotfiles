@@ -15,13 +15,6 @@ return {
     lazy = false,
     keys = {
       {
-        "<leader>e",
-        function()
-          require("oil").toggle_float()
-        end,
-        desc = "Open parent directory (oil)",
-      },
-      {
         "<BS>",
         -- LATER: Would it be possible to open in buffer unless splits?
         function()
