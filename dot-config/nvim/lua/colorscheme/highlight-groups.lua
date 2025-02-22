@@ -350,11 +350,9 @@ function M.setup()
     FzfLuaSearch = { bg = palette.green },
 
     -- Oil
-    OilHidden = { fg = palette.nontext },
+    OilHidden = { fg = palette.fade },
     OilFile = { fg = palette.fg },
-    OilFileHidden = { fg = palette.nontext },
     OilDir = { fg = palette.fg },
-    OilDirHidden = { fg = palette.nontext },
     OilDirIcon = { fg = palette.yellow_orange },
     OilFloatTitle = { fg = palette.blue_medium },
 
