@@ -4,8 +4,16 @@ return {
     dependencies = {
       "stevearc/oil.nvim",
     },
-    config = {
+    opts = {
       show_ignored = true,
+      symbols = {
+        index = {
+          [" "] = "-",
+        },
+        working_tree = {
+          [" "] = "-",
+        },
+      },
     },
   },
   -- Navigate directories + vim-like edit to file system

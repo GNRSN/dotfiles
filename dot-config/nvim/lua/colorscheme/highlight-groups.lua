@@ -358,6 +358,34 @@ function M.setup()
     OilDirIcon = { fg = palette.yellow_orange },
     OilFloatTitle = { fg = palette.blue_medium },
 
+    OilGitStatusIndexUnmodified = { fg = palette.fade },
+    OilGitStatusWorkingTreeUnmodified = { fg = palette.fade },
+
+    OilGitStatusIndexIgnored = { fg = palette.text_ignored },
+    OilGitStatusWorkingTreeIgnored = { fg = palette.text_ignored },
+
+    OilGitStatusIndexUntracked = { fg = palette.red },
+    OilGitStatusWorkingTreeUntracked = { fg = palette.red },
+
+    OilGitStatusIndexAdded = { fg = palette.green },
+    OilGitStatusWorkingTreeAdded = { fg = palette.green },
+
+    OilGitStatusIndexDeleted = { fg = palette.bright_red },
+    OilGitStatusWorkingTreeDeleted = { fg = palette.green },
+
+    OilGitStatusWorkingTreeModified = { fg = palette.yellow_sunflower },
+    OilGitStatusIndexModified = { fg = palette.green },
+
+    OilGitStatusIndexRenamed = { fg = palette.yellow_sunflower },
+    OilGitStatusWorkingTreeRenamed = { fg = palette.green },
+
+    -- No clue what these last 2 are
+    OilGitStatusIndexTypeChanged = { fg = palette.purple },
+    OilGitStatusWorkingTreeTypeChanged = { fg = palette.purple },
+
+    OilGitStatusIndexUnmerged = { fg = palette.bright_red },
+    OilGitStatusWorkingTreeUnmerged = { fg = palette.bright_red },
+
     -- NeoTree
     NeoTreeNormal = { fg = palette.fg, bg = palette.menu },
     NeoTreeNormalNC = { fg = palette.fg, bg = palette.menu },
