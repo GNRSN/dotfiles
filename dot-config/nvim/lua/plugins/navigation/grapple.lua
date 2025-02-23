@@ -8,12 +8,25 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     cmd = "Grapple",
     keys = {
-      -- { "<leader>m", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle tag" },
-      -- { "<leader>M", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple open tags window" },
-      -- { "<leader>n", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
-      -- { "<leader>p", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
-      { "<leader>hm", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle tag" },
+      {
+        "<leader>hm",
+        function()
+          local existing = require("grapple").name_or_index()
+          require("grapple").toggle()
+          local name_or_index = require("grapple").name_or_index()
+          if name_or_index then
+            vim.notify("Grapple: " .. name_or_index)
+          elseif existing then
+            vim.notify("Removed (" .. existing .. ")")
+          else
+            vim.notify("Unknown Grapple effect", vim.log.levels.WARN)
+          end
+        end,
+        desc = "Grapple toggle tag",
+      },
       { "<leader>hl", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple open tags window" },
+      { "<leader>hn", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
+      { "<leader>hp", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
 
       { "<leader>1", "<cmd>Grapple select index=1<cr>", desc = "Grapple (1)" },
       { "<leader>2", "<cmd>Grapple select index=2<cr>", desc = "Grapple (2)" },
