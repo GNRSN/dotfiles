@@ -554,8 +554,9 @@ function M.setup()
     CmpItemAbbr = { fg = palette.fg },
     -- Source
     CmpItemKind = { fg = palette.white },
-    -- REVIEW: Not sure where "match" are used
-    CmpItemAbbrMatch = { fg = "#569CD6" },
+    -- Part of word that matches current string
+    CmpItemAbbrMatch = { fg = palette.blue },
+    -- Part of word that fuzzy matches current string
     CmpItemAbbrMatchFuzzy = { fg = palette.bright_green },
     CmpItemAbbrDeprecated = { strikethrough = true, fg = palette.error_dark },
     CmpItemKindMethod = { link = "@method" },
@@ -617,8 +618,8 @@ function M.setup()
     -- ScrollbarGitDeleteHandle
 
     -- Yanky
-    YankyPut = { bg = "#8ee592", fg = "#333333" },
-    YankyYanked = { bg = "#8ee592", fg = "#333333" },
+    YankyYanked = { bg = palette.bright_green, fg = "#333333" },
+    YankyPut = { bg = palette.blue, fg = "#333333" },
 
     -- Neotest
     NeotestAdapterName = { fg = palette.bright_blue },
