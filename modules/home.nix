@@ -46,8 +46,6 @@
     pkgs.eza
     # Better find
     pkgs.fd
-    # Node version manager
-    pkgs.fnm
     # Fuzzy finder
     pkgs.fzf
     # Keep version fresh, xcode updates slowly
@@ -102,6 +100,7 @@
     pkgs.zoxide
 
     # === WORK ===
+    pkgs.nodejs_22
 
     # Pinned version of go for work
     # TODO: Experiment with direnv
