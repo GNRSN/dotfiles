@@ -46,6 +46,8 @@
     pkgs.eza
     # Better find
     pkgs.fd
+    # Node version manager
+    pkgs.fnm
     # Fuzzy finder
     pkgs.fzf
     # Keep version fresh, xcode updates slowly
@@ -105,9 +107,8 @@
     # TODO: Experiment with direnv
     pkgs.go_1_22
 
-    # NodeJS, pinned version for work
-    pkgs.nodejs_22
-
+    # Used for work
+    # REVIEW: Does this still work when I install node through fnm?
     pkgs.nodePackages.yarn
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
