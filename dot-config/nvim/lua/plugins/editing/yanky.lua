@@ -7,14 +7,17 @@ return {
         enabled = true,
       },
       highlight = {
+        -- Disable highlights because we tiny-glimmer.nvim adds custom animations
+        on_yank = false,
+        on_put = false,
         timer = 200,
       },
     },
     keys = {
       -- Basic usage
-      { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yanky yank" },
-      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Yanky put (after)" },
-      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Yanky put (before)" },
+      -- { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yanky yank" },
+      -- { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Yanky put (after)" },
+      -- { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Yanky put (before)" },
       -- Interfers with goto preview
       -- { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Yanky G-put (after)" },
       -- { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "Yanky G-put (before)" },
