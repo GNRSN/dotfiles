@@ -91,9 +91,10 @@ return {
         ["hl+"] = palette.green, -- Highlighted substrings on current line
         ["bg+"] = palette.visual_bg, -- Current line word background
         gutter = "-1", -- Gutter, just hide it
-        pointer = palette.pink, -- The > icon
+        prompt = palette.blue_medium, -- Path
+        pointer = palette.pink, -- The current line indicator
         spinner = palette.pink, -- The spinner
-        info = palette.number_green, -- Match counter
+        info = palette.text_ignored, -- Match counter
         query = palette.yellow, -- Input query
       },
       fzf_opts = {
