@@ -37,6 +37,8 @@
     pkgs.aider-chat
     # Better cat, colors etc
     pkgs.bat
+    # Resource monitor tui
+    pkgs.btop
     # Logs parser util, nixpkgs only had the rust port which is not feature complete but should suffice
     # NOTE: For work
     pkgs.bunyan-rs
