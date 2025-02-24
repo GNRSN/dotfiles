@@ -69,6 +69,18 @@ return {
             },
           },
         },
+        search = {
+          -- Errors on n/N "E20: Mark not set"
+          -- Can't guess a plugin that interferes, need to find minimal repro
+          enabled = false,
+          default_animation = "pulse",
+
+          -- Keys to navigate to the next match
+          next_mapping = "n",
+
+          -- Keys to navigate to the previous match
+          prev_mapping = "N",
+        },
       },
     },
   },
