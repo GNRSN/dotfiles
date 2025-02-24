@@ -81,7 +81,7 @@
     # GNU password-store (key manager)
     pkgs.pass
     # Npm but better, faster, stronger...
-    pkgs.pnpm
+    pkgs.nodejs_22.pkgs.pnpm
     # Automatic checks before committing
     pkgs.pre-commit
     # Faster grep
@@ -108,8 +108,7 @@
     pkgs.go_1_22
 
     # Used for work
-    # REVIEW: Does this still work when I install node through fnm?
-    pkgs.nodePackages.yarn
+    pkgs.nodejs_22.pkgs.yarn
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
