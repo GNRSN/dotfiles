@@ -33,6 +33,8 @@
     # Debug, Adds the 'hello' command to your environment.
     # pkgs.hello
 
+    # AI pair programming
+    pkgs.aider-chat
     # Better cat, colors etc
     pkgs.bat
     # Logs parser util, nixpkgs only had the rust port which is not feature complete but should suffice
