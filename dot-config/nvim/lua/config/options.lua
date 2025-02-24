@@ -1,6 +1,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.diagnostic.config({
+  virtual_text = {
+    severity = { min = vim.diagnostic.severity.WARN },
+  },
+})
+
 local opt = vim.opt -- for conciseness
 
 -- NOTE: Do not set blend options in this file, e.g. neovide config updates them automatically
