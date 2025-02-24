@@ -35,7 +35,7 @@ ripgrep-14.1.1
 rustup-1.27.1
 sqld-0.24.18
 stow-2.4.1
-turso-cli-0.97.2
+turso-cli-0.98.0
 yarn-1.22.22
 yazi-25.2.11
 zoxide-0.9.7
