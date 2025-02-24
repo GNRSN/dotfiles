@@ -7,6 +7,7 @@ fd-10.2.0
 fzf-0.60.0
 fzf-0.60.0-man
 gh-2.67.0
+gh-dash-4.11.0
 git-2.47.2
 gitleaks-8.23.3
 glow-2.0.0
