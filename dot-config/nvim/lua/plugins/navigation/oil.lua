@@ -54,10 +54,12 @@ return {
         },
       },
       win_options = {
-        -- Required for oil-vcs-status
+        -- Required for oil-git-status
         signcolumn = "yes:2",
         wrap = true,
         winblend = 0,
+        relativenumber = false,
+        number = false,
       },
       keymaps = {
         ["<C-c>"] = false,
