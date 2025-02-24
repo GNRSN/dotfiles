@@ -77,30 +77,20 @@ map("v", "<tab>", ">gv")
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
--- stylua: ignore start
-
--- toggle options
--- map("n", "<leader>uf", require("plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
-map("n", "<leader>us", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
-map("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-map("n", "<leader>ul", function() Util.toggle("relativenumber", true) Util.toggle("number") end, { desc = "Toggle Line Numbers" })
-map("n", "<leader>ud", function() Util.toggle_diagnostics() end, { desc = "Toggle Diagnostics" })
-
-local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 2
-map("n", "<leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
-
 -- lazygit
-map("n", "<leader>gg", require('util.git-tui').utils.lazygit_smart_open, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gr", function() lazygit_graphite:toggle() end, { desc = "Lazygit with Graphite config (root dir)" })
+map("n", "<leader>gg", require("util.git-tui").utils.lazygit_smart_open, { desc = "Lazygit (root dir)" })
+map("n", "<leader>gr", function()
+  lazygit_graphite:toggle()
+end, { desc = "Lazygit with Graphite config (root dir)" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- Scandinavian keyboard compensation
 -- I experienced $ including the eol/newline in selections so stepping back and forth got rid of that
-map({ "n", "x", "o" }, "€", "$hl", { desc = "End of line"})
-map({ "n", "x", "o" }, "ö", "[", { desc = "["})
-map({ "n", "x", "o" }, "ä", "]", { desc = "]"})
+map({ "n", "x", "o" }, "€", "$hl", { desc = "End of line" })
+map({ "n", "x", "o" }, "ö", "[", { desc = "[" })
+map({ "n", "x", "o" }, "ä", "]", { desc = "]" })
 
 -- Unmap K in visual mode to avoid annoying message if fumbled
 map({ "v", "x" }, "K", "<nop>", { silent = true })
@@ -118,7 +108,7 @@ map({ "n", "x", "o" }, "q:", "<nop>")
 
 -- Unmap macro recording for now
 map("n", "q", function()
-  return '<nop>'
+  return "<nop>"
 end, {
   expr = true,
   -- desc = "Stop recording (only during macro)"

@@ -64,44 +64,8 @@ function M.get_root()
   return root
 end
 
----@param silent boolean?
----@param values? {[1]:any, [2]:any}
-function M.toggle(option, silent, values)
-  if values then
-    if vim.opt_local[option]:get() == values[1] then
-      vim.opt_local[option] = values[2]
-    else
-      vim.opt_local[option] = values[1]
-    end
-    return vim.notify("Set " .. option .. " to " .. vim.opt_local[option]:get())
-  end
-  vim.opt_local[option] = not vim.opt_local[option]:get()
-  if not silent then
-    if vim.opt_local[option]:get() then
-      vim.notify("Enabled " .. option)
-    else
-      vim.notify("Disabled " .. option)
-    end
-  end
-end
-
-local diagnostics_visible = true
-function M.toggle_diagnostics()
-  diagnostics_visible = not diagnostics_visible
-  if diagnostics_visible then
-    vim.diagnostic.config({
-      virtual_text = true,
-    })
-    vim.notify("Showing diagnostics")
-  else
-    vim.diagnostic.config({
-      virtual_text = false,
-    })
-    vim.notify("Hiding diagnostics")
-  end
-end
-
 -- delay notifications till vim.notify was replaced or after 500ms
+-- REVIEW: Is this still used to did I redo this behavior for Noice?
 function M.lazy_notify()
   local notifs = {}
   local function temp(...)

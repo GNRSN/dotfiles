@@ -102,6 +102,13 @@ return {
 
       statuscolumn = { enabled = false },
 
+      toggle = {
+        color = {
+          enabled = require("colorscheme.palette").green,
+          disabled = require("colorscheme.palette").fade,
+        },
+      },
+
       -- "cursor word"-esque
       ---@diagnostic disable-next-line: missing-fields
       words = { enabled = false },
@@ -131,7 +138,7 @@ return {
           vim.print = _G.dd -- Override print to use snacks for `:=` command
 
           -- Create some toggle mappings
-          -- REVIEW: I should already have these from copying lazyvim
+          -- LATER: Toggle format on save
           Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
           Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
           Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
