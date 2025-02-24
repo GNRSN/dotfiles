@@ -47,8 +47,25 @@ return {
             layout = { preset = "vertical", preview = true },
           })
         end,
-        "n",
         desc = "Floating Explorer",
+      },
+      {
+        "<leader>fd",
+        function()
+          Snacks.picker.diagnostics_buffer({
+            severity = { min = vim.diagnostic.severity.WARN },
+          })
+        end,
+        desc = "Diagnostics (Buffer)",
+      },
+      {
+        "<leader>fD",
+        function()
+          Snacks.picker.diagnostics({
+            severity = { min = vim.diagnostic.severity.WARN },
+          })
+        end,
+        desc = "Diagnostics (Workspace)",
       },
     },
     ---@type snacks.Config
