@@ -4,6 +4,7 @@ coreutils-9.5
 eza-0.20.21
 eza-0.20.21-man
 fd-10.2.0
+fnm-1.38.1
 fzf-0.60.0
 fzf-0.60.0-man
 gh-2.67.0
@@ -25,7 +26,6 @@ man-db-2.13.0
 neovide-0.14.0
 neovim-0.10.4
 nixfmt-unstable-2024-12-04
-nodejs-22.13.1
 oh-my-posh-24.11.4
 password-store-1.7.4
 pnpm-10.4.1
