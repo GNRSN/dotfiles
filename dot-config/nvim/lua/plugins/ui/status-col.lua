@@ -12,6 +12,7 @@ local BLACKLIST_FT = {
   "noice",
   "octo",
   "oil",
+  "snacks_picker_preview",
   "spectre_panel",
   "Trouble",
   "trouble",
