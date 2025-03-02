@@ -19,4 +19,35 @@ return {
       },
     },
   },
+  -- add ai_accept action
+  {
+    "Exafunction/codeium.nvim",
+    opts = function()
+      CMP.actions.ai_accept = function()
+        if require("codeium.virtual_text").get_current_completion_item() then
+          CMP.create_undo()
+          vim.api.nvim_input(require("codeium.virtual_text").accept())
+          return true
+        end
+      end
+    end,
+  },
+
+  {
+    "saghen/blink.cmp",
+    optional = true,
+    dependencies = { "codeium.nvim", "saghen/blink.compat" },
+    opts = {
+      sources = {
+        compat = { "codeium" },
+        providers = {
+          codeium = {
+            kind = "Codeium",
+            score_offset = 100,
+            async = true,
+          },
+        },
+      },
+    },
+  },
 }
