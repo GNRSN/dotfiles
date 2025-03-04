@@ -155,6 +155,16 @@ return {
           Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
           Snacks.toggle.inlay_hints():map("<leader>uh")
 
+          -- Add lsp rename callback for Oil
+          vim.api.nvim_create_autocmd("User", {
+            pattern = "OilActionsPost",
+            callback = function(event)
+              if event.data.actions.type == "move" then
+                Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
+              end
+            end,
+          })
+
           -- Add News command
           vim.api.nvim_create_user_command("News", function()
             Snacks.win({
