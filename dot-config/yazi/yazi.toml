@@ -1,0 +1,5 @@
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
+[manager]
+# Show hidden files
+show_hidden = true

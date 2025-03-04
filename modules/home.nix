@@ -54,6 +54,9 @@
     pkgs.gitleaks
     # Github cli
     pkgs.gh
+    # Github tui extension for gh cli
+    # TODO: How do I add this to gh?
+    pkgs.gh-dash
     # Markdown renderer
     pkgs.glow
     # GNU Privacy guard, "backend" for password-store
