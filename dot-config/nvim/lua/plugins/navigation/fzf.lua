@@ -116,6 +116,8 @@ return {
         fzf_opts = {
           ["--info"] = "inline-right",
         },
+        -- Include hidden files, e.g. .dotfiles
+        hidden = true,
       },
     },
   },
