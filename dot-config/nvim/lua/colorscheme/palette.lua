@@ -1,5 +1,6 @@
 ---@class Palette
 return {
+  black = "#0e0e0e",
   bg = "#1E1E1E",
   fg = "#f0f0eb",
   selection = "#222222",
@@ -24,7 +25,6 @@ return {
   visual_bg = "#743563", -- Visual mode
   nontext = "#3B4048",
   white = "#ABB2BF",
-  black = "#000000",
   blue = "#569CD6",
   blue_variable_name = "#33bbff",
   blue_medium = "#18a2fe",

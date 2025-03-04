@@ -1,11 +1,12 @@
 return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
+  cond = not vim.g.blink_cmp,
   dependencies = {
     -- Basics
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
+    -- "hrsh7th/cmp-cmdline",
     -- Lsp
     "neovim/nvim-lspconfig",
     "hrsh7th/cmp-nvim-lsp",
