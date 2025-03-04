@@ -15,7 +15,8 @@ export GIT_EDITOR="$VISUAL"
 
 # === Secrets ===
 if command -v pass > /dev/null 2>&1; then
-  export ANTHROPIC_API_KEY=$(pass show anthropic/api-key/personal)
+  # REVIEW: How do I toggle personal vs work?
+  export ANTHROPIC_API_KEY=$(pass show anthropic/work/api-key)
 else
   echo "pass is not available, secrets have not been loaded into env"
 fi
