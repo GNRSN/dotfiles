@@ -107,7 +107,7 @@
     "notunes"
     # Note-taking app
     "obsidian"
-    # MacOS command pallette (spotlight replacement)
+    # MacOS command palette (spotlight replacement)
     "raycast"
     # MacOS icon set
     "sf-symbols"
