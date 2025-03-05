@@ -174,6 +174,14 @@ return {
 
       cmdline = {
         enabled = true,
+        completion = {
+          list = {
+            selection = {
+              auto_insert = false,
+              preselect = true,
+            },
+          },
+        },
         keymap = {
           preset = "none",
           ["<C-space>"] = {
