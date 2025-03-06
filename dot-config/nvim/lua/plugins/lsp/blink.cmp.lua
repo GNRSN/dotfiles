@@ -16,6 +16,7 @@ return {
       "rafamadriz/friendly-snippets",
       -- DOC: Make sure you're using the latest release of LuaSnip, `main` does not work at the moment
       { "L3MON4D3/LuaSnip", version = "v2.*" },
+      { "Kaiser-Yang/blink-cmp-avante" },
     },
     -- use a release tag to download pre-built binaries
     version = "*",
@@ -157,6 +158,7 @@ return {
         },
         providers = {
           supermaven = {
+            -- No effect?
             kind = "A",
           },
           lsp = {
@@ -293,6 +295,23 @@ return {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
             score_offset = 100, -- show at a higher priority than lsp
+          },
+        },
+      },
+    },
+  },
+  {
+    "saghen/blink.cmp",
+    opts = {
+      sources = {
+        default = { "avante" },
+        providers = {
+          avante = {
+            module = "blink-cmp-avante",
+            name = "Avante",
+            opts = {
+              -- options for blink-cmp-avante
+            },
           },
         },
       },
