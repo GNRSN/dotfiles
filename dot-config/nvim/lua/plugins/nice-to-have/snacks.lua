@@ -75,12 +75,16 @@ return {
       bigfile = { enabled = true },
 
       -- Dashboard
-      dashboard = { enabled = false },
+      dashboard = {
+        enabled = true,
+      },
 
       ---@diagnostic disable-next-line: missing-fields
       lazygit = {
         configure = false,
       },
+
+      indent = { enabled = false },
 
       notifier = {
         enabled = true,
