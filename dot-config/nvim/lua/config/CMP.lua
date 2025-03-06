@@ -143,6 +143,7 @@ M.icons = {
   },
   kinds = {
     Array = " ",
+    Avante = "🧠",
     Boolean = "󰨙 ",
     Class = " ",
     Codeium = "🤖",

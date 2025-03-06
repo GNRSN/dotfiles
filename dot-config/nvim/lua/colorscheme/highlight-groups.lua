@@ -633,6 +633,7 @@ function M.setup()
     BlinkCmpKindStruct = { link = "@structure" },
     BlinkCmpKindTypeParameter = { link = "@parameter" },
     BlinkCmpKindCopilot = { fg = palette.fg },
+    BlinkCmpKindAvante = { fg = palette.fg },
 
     -- Treesitter rainbow delimiter colors
     RainbowDelimiterYellow = { fg = palette.yellow_sunflower },
