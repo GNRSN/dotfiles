@@ -5,6 +5,7 @@ alias lz=lazygit
 alias lg="lazygit --use-config-file \"$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml\""
 alias nv=nvim
 alias pn=pnpm
+alias pnt="pnpm turbo"
 alias l='eza -l'
 alias tree='eza -T'
 alias nvide="neovide --frame=transparent --title-hidden"
