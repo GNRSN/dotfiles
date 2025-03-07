@@ -228,8 +228,8 @@ function M.setup()
     -- Semantic
     ["@class"] = { fg = palette.blue_green },
     ["@struct"] = { fg = palette.blue },
-    ["@enum"] = { fg = palette.blue },
-    ["@enumMember"] = { fg = palette.purple },
+    ["@enum"] = { fg = palette.blue_green },
+    ["@enumMember"] = { fg = palette.blue },
     ["@event"] = { fg = palette.blue },
     ["@interface"] = { fg = palette.blue_light },
     ["@modifier"] = { fg = palette.blue },
@@ -244,8 +244,8 @@ function M.setup()
 
     ["@lsp.type.class"] = { fg = palette.blue_green },
     ["@lsp.type.decorator"] = { fg = palette.red },
-    ["@lsp.type.enum"] = { fg = palette.red },
-    ["@lsp.type.enumMember"] = { fg = palette.red },
+    ["@lsp.type.enum"] = { link = "@enum" },
+    ["@lsp.type.enumMember"] = { link = "@enumMember" },
     ["@lsp.type.function"] = { fg = palette.yellow },
     ["@lsp.type.interface"] = { fg = palette.blue_green },
     ["@lsp.type.macro"] = { fg = palette.orange },
