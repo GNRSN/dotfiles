@@ -8,7 +8,7 @@ return {
       { "<leader>aa", "<cmd>AvanteAsk<cr>", desc = "Ask" },
       -- NOTE: Chatting is asking without expected code-generation
       { "<leader>ac", "<cmd>AvanteChat<cr>", desc = "Chat" },
-      { "<leader>aC", "<cmd>AvanteClear<cr>", desc = "Clear" },
+      { "<leader>ax", "<cmd>AvanteClear<cr>", desc = "Clear" },
       { "<leader>ae", "<cmd>AvanteEdit<cr>", desc = "Edit" },
       { "<leader>af", "<cmd>AvanteFocus<cr>", desc = "Focus" },
       { "<leader>aR", "<cmd>AvanteRefresh<cr>", desc = "Refresh" },
@@ -60,10 +60,15 @@ return {
       hints = {
         enabled = false,
       },
+      mappings = { -- So that hints are correct
+        ask = "<leader>aa", -- ask
+        edit = "<leader>ae", -- edit
+        refresh = "<leader>ar", -- refresh
+      },
       windows = {
         input = {
           prefix = " ",
-          height = 6,
+          height = 7,
         },
       },
       edit = {
@@ -75,6 +80,7 @@ return {
         border = "single",
         focus_on_apply = "ours",
       },
+      -- LATER: Explore RAG
       rag_service = {
         enabled = false,
         host_mount = os.getenv("HOME"), -- Host mount path for the rag service
