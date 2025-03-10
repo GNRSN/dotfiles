@@ -34,6 +34,15 @@ return {
         end,
         mode = { "n", "i", "x" },
       },
+      { -- Jump back, I think this is nice for Avante since cursor ends up in nearest
+        -- field by proximity
+        "<C-tab>",
+        function()
+          require("smart-splits").move_cursor_previous()
+        end,
+        mode = { "n", "i", "x" },
+      },
+
       -- resizing splits
       -- these keymaps will also accept a range,
       -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
