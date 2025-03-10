@@ -64,6 +64,18 @@ return {
         ask = "<leader>aa", -- ask
         edit = "<leader>ae", -- edit
         refresh = "<leader>ar", -- refresh
+        submit = {
+          normal = "<C-s>",
+          insert = "<C-s>",
+        },
+      },
+      sidebar = {
+        apply_all = "A",
+        apply_cursor = "a",
+        remove_file = "dd",
+        add_file = "<leader><space>",
+        close = { "<Esc>", "q", "<C-q>" },
+        close_from_input = { normal = "<C-q>", insert = "<C-q>" },
       },
       windows = {
         input = {
