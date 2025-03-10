@@ -1,3 +1,12 @@
+local BLACKLIST_FT = {
+  "neo-tree",
+  "spectre_panel",
+  "DiffviewFiles",
+  "Avante",
+  "AvanteSelectedFiles",
+  "aerial",
+}
+
 local get_noice_mode = function()
   local noice = pcall(require, "noice")
 
@@ -75,14 +84,6 @@ local diagnostics_segment = {
     -- color_error = { fg = colors.red },
     -- color_warn = { fg = colors.yellow },
   },
-}
-
-local BLACKLIST_FT = {
-  "neo-tree",
-  "spectre_panel",
-  "DiffviewFiles",
-  "Avante",
-  "aerial",
 }
 
 return {
