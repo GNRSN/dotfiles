@@ -45,3 +45,15 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
+
+-- Create a separate autocommand for each filetype
+-- LATER: Workspace specific config
+for ft, pattern in pairs(require("config.filetype-mappings")) do
+  vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    group = augroup("map_custom_filetype_" .. ft),
+    pattern = pattern,
+    callback = function()
+      vim.bo.filetype = ft
+    end,
+  })
+end
