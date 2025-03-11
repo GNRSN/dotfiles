@@ -3,3 +3,6 @@
 
 # Global ignore neoconf for personal config
 .neoconf.json
+
+# Aider
+.aider*
