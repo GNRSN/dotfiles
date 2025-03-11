@@ -4,6 +4,7 @@ M.defaults = {
   format_on_save = true,
   allow_project_tsdk = false,
   graphite = false,
+  filetype_mappings = {},
 }
 
 M.is_init = false

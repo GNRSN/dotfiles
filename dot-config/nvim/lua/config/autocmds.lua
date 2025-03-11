@@ -1,5 +1,5 @@
 local function augroup(name)
-  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+  return vim.api.nvim_create_augroup("gnrsn_" .. name, { clear = true })
 end
 
 -- Check if we need to reload the file when it changed
@@ -47,7 +47,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Create a separate autocommand for each filetype
--- LATER: Workspace specific config
 for ft, pattern in pairs(require("config.filetype-mappings")) do
   vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     group = augroup("map_custom_filetype_" .. ft),
@@ -55,5 +54,16 @@ for ft, pattern in pairs(require("config.filetype-mappings")) do
     callback = function()
       vim.bo.filetype = ft
     end,
+  })
+end
+
+for ft, pattern in pairs(require("util.local-config").get_workspace_config().filetype_mappings) do
+  vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    group = augroup("map_custom_filetype_[project]_" .. ft),
+    pattern = pattern,
+    callback = function()
+      vim.bo.filetype = ft
+    end,
+    desc = "Set filetype [" .. ft .. "] from project conf",
   })
 end
