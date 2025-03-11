@@ -2,6 +2,14 @@
   "workspace-config": {
     "format_on_save": true,
     "allow_project_tsdk": true,
-    "graphite": true
+    "graphite": true,
+    "filetype_mappings": {
+      ".gitconfig": [
+        "**/dot-config/git/config"
+      ],
+      ".gitignore": [
+        "**/dot-config/git/ignore"
+      ],
+    }
   }
 }
