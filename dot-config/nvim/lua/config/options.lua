@@ -82,3 +82,6 @@ opt.fixeol = true
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+-- Results in stripe pattern for removed lines in diff view
+opt.fillchars:append({ diff = "╱" })
