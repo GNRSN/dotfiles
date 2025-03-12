@@ -46,20 +46,23 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Create a separate autocommand for each filetype
+-- Add custom filetype mappings
 for ft, pattern in pairs(require("config.filetype-mappings")) do
   vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    group = augroup("map_custom_filetype_" .. ft),
+    group = augroup("map_filetype_(global)_" .. ft),
     pattern = pattern,
     callback = function()
       vim.bo.filetype = ft
     end,
+    desc = "Set filetype [" .. ft .. "] from global conf",
   })
 end
 
+-- Add custom filetype mappings (from project settings)
+-- LATER: Also read vscode/settings.json files.associations field
 for ft, pattern in pairs(require("util.local-config").get_workspace_config().filetype_mappings) do
   vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    group = augroup("map_custom_filetype_[project]_" .. ft),
+    group = augroup("map_filetype_(project)_" .. ft),
     pattern = pattern,
     callback = function()
       vim.bo.filetype = ft
