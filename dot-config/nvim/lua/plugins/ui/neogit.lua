@@ -7,6 +7,12 @@ return {
       "sindrets/diffview.nvim",
       "ibhagwan/fzf-lua",
     },
-    config = true,
+    cmd = {
+      "Neogit",
+      "NeogitCommit",
+      "NeogitLogCurrent",
+      "NeogitResetState",
+    },
+    opts = {},
   },
 }
