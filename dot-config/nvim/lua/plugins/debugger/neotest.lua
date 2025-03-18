@@ -141,11 +141,11 @@ return {
         desc = "Attach to nearest test",
       },
       {
-        "<leader>tO",
+        "<leader>tt",
         function()
           require("neotest").output_panel.toggle()
         end,
-        desc = "Output panel (toggle)",
+        desc = "Terminal/output panel (toggle)",
       },
       {
         "<leader>to",
