@@ -4,6 +4,9 @@ return {
     keys = {
       { "<leader>O", "<cmd>AerialToggle!<CR>", desc = "Toggle outline (Aerial)" },
     },
+    cmd = {
+      "AerialToggle",
+    },
     opts = {},
     -- Optional dependencies
     dependencies = {
