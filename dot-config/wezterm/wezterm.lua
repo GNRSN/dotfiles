@@ -32,6 +32,7 @@ config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 -- ===
 -- NOTE: From what I understand, this actually overrides the default block style, so setting this to anything else
 -- then BlinkingBlock makes us unable to achieve BlinkingBlock at all
+-- TODO: I think I want to fix this so that line is the default
 config.default_cursor_style = "BlinkingBlock"
 -- IMO better scaling on macbook display since it accounts for window dpi
 config.cursor_thickness = "1pt"
