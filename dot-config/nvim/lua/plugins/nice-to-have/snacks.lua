@@ -18,6 +18,22 @@ return {
         end,
         desc = "Delete Buffer",
       },
+      -- LATER: Could replace fzf but needs to style/fix colors
+      --
+      -- {
+      --   "<leader>fg",
+      --   function()
+      --     Snacks.picker.git_status()
+      --   end,
+      --   desc = "Find file with diff",
+      -- },
+      { -- LATER: I'd like to be able to grep within diffs here, e.g. for "todo" comments
+        "<leader>fG",
+        function()
+          Snacks.picker.git_diff()
+        end,
+        desc = "Find git diff",
+      },
       {
         "<leader>gF",
         function()
