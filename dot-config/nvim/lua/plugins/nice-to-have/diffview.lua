@@ -9,7 +9,7 @@ return {
       "DiffviewOpen",
     },
     keys = {
-      { "<leader>gd", ":DiffviewOpen<cr>", mode = "n" },
+      { "<leader>gd", ":DiffviewOpen<cr>", mode = "n", desc = "Git diff view" },
     },
     config = function()
       require("diffview").setup({
