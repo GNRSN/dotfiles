@@ -20,6 +20,9 @@ return {
 
     -- Neoconf populates configs for us so needs to load first
     "folke/neoconf.nvim",
+
+    -- DOC: Required until Nvim 0.11
+    "saghen/blink.cmp",
   },
   config = function()
     local lspconfig = require("lspconfig")
