@@ -100,7 +100,12 @@ return {
         configure = false,
       },
 
-      indent = { enabled = false },
+      indent = {
+        enabled = true,
+        animate = {
+          enabled = false,
+        },
+      },
 
       notifier = {
         enabled = true,
