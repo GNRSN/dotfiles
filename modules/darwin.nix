@@ -107,6 +107,8 @@
     "notunes"
     # Note-taking app
     "obsidian"
+    # Docker desktop alternative
+    "orbstack"
     # MacOS command palette (spotlight replacement)
     "raycast"
     # MacOS icon set
