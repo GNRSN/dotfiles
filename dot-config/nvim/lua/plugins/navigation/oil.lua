@@ -43,7 +43,7 @@ return {
         show_hidden = true,
         natural_order = true,
         is_always_hidden = function(name, _)
-          return name == ".." or name == ".git"
+          return name == ".." or name == ".git" or name == ".turbo"
         end,
       },
       float = {
