@@ -1,7 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
-  cond = not vim.g.blink_cmp,
+  cond = vim.g.completion == "cmp",
   dependencies = {
     -- Basics
     "hrsh7th/cmp-buffer",
