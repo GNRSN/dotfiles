@@ -1,3 +1,26 @@
+local MENU_MAPPER = {
+  Buffer = "Buf",
+  LSP = "Lsp",
+  codeium = "[ai]",
+  supermaven = "[ai]",
+  npm = "npm",
+  Cmdline = "Cmd",
+  Snippets = "Snip",
+}
+
+local CLIENT_NAME_MAPPER = {
+  emmet_language_server = "emmet",
+  ["typescript-tools"] = "typescript",
+}
+
+---@param ctx blink.cmp.DrawItemContext
+local function get_source_label(ctx)
+  return CLIENT_NAME_MAPPER[ctx.item.client_name]
+    or ctx.item.client_name
+    or MENU_MAPPER[ctx.source_name]
+    or ctx.source_name
+end
+
 return {
   -- Completion
   {
@@ -11,6 +34,7 @@ return {
   },
   {
     "saghen/blink.cmp",
+    cond = vim.g.completion == "blink",
     -- optional: provides snippets for the snippet source
     dependencies = {
       "rafamadriz/friendly-snippets",
@@ -25,8 +49,6 @@ return {
     -- If you use nix, you can build from source using latest nightly rust with:
     -- build = 'nix run .#build-plugin',
 
-    cond = vim.g.blink_cmp,
-
     event = "InsertEnter",
 
     opts_extend = {
@@ -38,16 +60,9 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      -- 'default' for mappings similar to built-in completion
-      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-      -- See the full "keymap" documentation for information on defining your own keymap.
       keymap = {
         preset = "none",
         ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
-        -- REVIEW: I want to learn C-space completion as it seems most efficient
-        -- ["<C-i>"] = { "select_and_accept" },
-        -- ["<C-y>"] = { "select_and_accept" },
         ["<C-space>"] = {
           function(cmp)
             if cmp.is_menu_visible() then
@@ -92,19 +107,15 @@ return {
           draw = {
             treesitter = { "lsp" },
             columns = {
-              { "kind_icon", "label", "label_description", gap = 0 },
-              -- LATER: consider source_id
-              { "source_name" },
+              { "label", "label_description", gap = 0 },
+              { "kind_icon", "source_name" },
             },
             components = {
-              -- LATER: Re map to shortened id
-              -- source_name = {
-              --   width = { max = 30 },
-              --   text = function(ctx)
-              --     return ctx.source_name
-              --   end,
-              --   highlight = "BlinkCmpSource",
-              -- },
+              source_name = {
+                width = { max = 30 },
+                text = get_source_label,
+                highlight = "BlinkCmpSource",
+              },
             },
           },
         },
@@ -129,6 +140,8 @@ return {
             end
             return b.client_name == "emmet_ls"
           end,
+          -- DOC: (optionally) always prioritize exact matches
+          "exact",
           -- default sorts
           "score",
           "sort_text",
@@ -182,6 +195,9 @@ return {
               auto_insert = false,
               preselect = true,
             },
+          },
+          menu = {
+            auto_show = true,
           },
         },
         keymap = {

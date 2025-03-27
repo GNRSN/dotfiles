@@ -597,7 +597,7 @@ function M.setup()
     BlinkCmpLabelDetail = { fg = palette.text_ignored },
     BlinkCmpLabelDescription = { fg = palette.text_ignored },
     BlinkCmpKind = { fg = palette.white },
-    BlinkCmpSource = { fg = palette.white },
+    BlinkCmpSource = { fg = palette.text_ignored },
     BlinkCmpGhostText = { fg = palette.white },
     BlinkCmpDoc = {},
     BlinkCmpDocBorder = { fg = palette.border },
