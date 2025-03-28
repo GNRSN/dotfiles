@@ -93,6 +93,10 @@ return {
       -- Dashboard
       dashboard = {
         enabled = true,
+      sections = {
+        { section = "header" },
+        { section = "startup", gap = 1, padding = 1 },
+      },
       },
 
       ---@diagnostic disable-next-line: missing-fields
