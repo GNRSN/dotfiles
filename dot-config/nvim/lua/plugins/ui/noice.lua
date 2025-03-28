@@ -142,6 +142,12 @@ return {
             },
             opts = { skip = true },
           },
+          { -- Skip: Some new message displayed by Octo
+            filter = {
+              event = "msg_show",
+              find = "OctoEditable",
+            },
+          },
         },
       })
     end,
