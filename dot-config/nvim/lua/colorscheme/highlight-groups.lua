@@ -746,6 +746,10 @@ function M.setup()
     RenderMarkdownH4Bg = { bg = "#333333" },
     RenderMarkdownH5Bg = { bg = "#222222" },
     RenderMarkdownH6Bg = { bg = "#111111" },
+
+    -- Snacks
+    SnacksIndent = { fg = palette.border },
+    SnacksIndentScope = { fg = palette.text_ignored },
   }
 end
 
