@@ -168,7 +168,9 @@ return {
 
           -- Create some toggle mappings
           -- LATER: Toggle format on save
-          Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+          --
+          -- LATER: This breaks spellunker and apparently options are persisted between sessions
+          -- Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
           Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
           Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
           Snacks.toggle.diagnostics():map("<leader>ud")
