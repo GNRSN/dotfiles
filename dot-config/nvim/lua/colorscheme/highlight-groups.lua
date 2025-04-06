@@ -750,6 +750,9 @@ function M.setup()
     -- Snacks
     SnacksIndent = { fg = palette.border },
     SnacksIndentScope = { fg = palette.text_ignored },
+
+    -- Visual whitetext
+    VisualNonText = { fg = "#666666", bg = palette.visual_bg },
   }
 end
 
