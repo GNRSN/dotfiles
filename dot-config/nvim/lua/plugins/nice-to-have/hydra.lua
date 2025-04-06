@@ -19,7 +19,7 @@ end
 return {
   -- Nvim implementation of emacs hydra, define chained inputs which allow repetition without repeating the head of the chain
   {
-    "anuvyklack/hydra.nvim",
+    "nvimtools/hydra.nvim",
     dependencies = {
       {
         -- Better options for moving splits
