@@ -31,7 +31,7 @@ return {
     config = function()
       local Hydra = require("hydra")
 
-      -- Resize window
+      -- DOC: Resize window
       -- See https://github.com/anuvyklack/hydra.nvim/wiki/Windows-and-buffers-management for detailed example
       Hydra({
         name = "Resize window",
@@ -41,7 +41,9 @@ return {
           invoke_on_body = true,
           hint = {
             position = "middle",
-            border = "rounded",
+            float_opts = {
+              border = "rounded",
+            },
           },
         },
         mode = "n",
@@ -87,7 +89,7 @@ return {
         },
       })
 
-      -- LATER: Add hydra for stepping next/prev with [/]
+      -- LATER: Add hydra for stepping next/prev with `[` and `]`
     end,
   },
 }
