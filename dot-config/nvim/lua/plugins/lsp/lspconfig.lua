@@ -47,12 +47,20 @@ return {
       opts.desc = "Lsp rename"
       keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts) -- smart rename
 
-      -- LATER: These overlap with trouble?
+      -- LATER: These overlap with trouble? Maybe I prefer these though
       opts.desc = "Go to previous diagnostic"
-      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+      keymap.set("n", "[d", function()
+        vim.diagnostic.jump({
+          diagnostic = vim.diagnostic.get_prev({ severity = { min = vim.diagnostic.severity.WARN } }),
+        })
+      end, opts) -- jump to previous diagnostic in buffer
 
       opts.desc = "Go to next diagnostic"
-      keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+      keymap.set("n", "]d", function()
+        vim.diagnostic.jump({
+          diagnostic = vim.diagnostic.get_next({ severity = { min = vim.diagnostic.severity.WARN } }),
+        })
+      end, opts) -- jump to next diagnostic in buffer
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
