@@ -4,17 +4,51 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = true,
-    keys = {
-      { "<leader>aa", "<cmd>AvanteAsk<cr>", desc = "Ask" },
-      -- NOTE: Chatting is asking without expected code-generation
-      { "<leader>ac", "<cmd>AvanteChat<cr>", desc = "Chat" },
-      { "<leader>aC", "<cmd>AvanteClear<cr>", desc = "Clear" },
-      { "<leader>ax", "<cmd>AvanteToggle<cr>", desc = "Close" },
-      { "<leader>ae", "<cmd>AvanteEdit<cr>", desc = "Edit" },
-      { "<leader>af", "<cmd>AvanteFocus<cr>", desc = "Focus" },
-      { "<leader>aR", "<cmd>AvanteRefresh<cr>", desc = "Refresh" },
-      { "<leader>at", "<cmd>AvanteToggle<cr>", desc = "Toggle" },
-    },
+    -- DOC: Example settings for keys settings in lazy.nvim
+    -- NOTE: If I tried to set normally with lazy.keys, avante still overwrote e.g. <leader>aa
+    keys = function(_, keys)
+      ---@type avante.Config
+      local opts =
+        require("lazy.core.plugin").values(require("lazy.core.config").spec.plugins["avante.nvim"], "opts", false)
+
+      local mappings = {
+        {
+          opts.mappings.ask,
+          function()
+            if not require("avante").is_sidebar_open() then
+              require("avante").open_sidebar({ ask = true })
+            else
+              require("avante").close_sidebar()
+            end
+          end,
+          desc = "avante: Open / Close",
+          mode = { "n", "v" },
+        },
+        {
+          "<leader>aR",
+          function()
+            require("avante.api").refresh()
+          end,
+          desc = "avante: Refresh",
+          mode = "v",
+        },
+        {
+          opts.mappings.edit,
+          function()
+            require("avante.api").edit()
+          end,
+          desc = "avante: Edit",
+          mode = { "n", "v" },
+        },
+
+        { "<leader>aC", "<cmd>AvanteClear<cr>", desc = "Avante Clear" },
+        { "<leader>aR", "<cmd>AvanteRefresh<cr>", desc = "Avante Refresh" },
+      }
+      mappings = vim.tbl_filter(function(m)
+        return m[1] and #m[1] > 0
+      end, mappings)
+      return vim.list_extend(mappings, keys)
+    end,
     cond = function()
       -- return not require("util.local-config").is_work_dir()
       return true
@@ -83,7 +117,7 @@ return {
       mappings = { -- So that hints are correct
         ask = "<leader>aa", -- ask
         edit = "<leader>ae", -- edit
-        refresh = "<leader>ar", -- refresh
+        refresh = "<leader>aR", -- refresh
         submit = {
           normal = "<C-s>",
           insert = "<C-s>",
