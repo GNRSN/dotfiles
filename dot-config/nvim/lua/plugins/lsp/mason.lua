@@ -53,11 +53,13 @@ return {
         "prismals",
         "pyright",
         "svelte",
+        "stylelint_lsp",
         "tailwindcss",
         "ts_ls",
         "yamlls",
       },
       -- auto-install configured servers (with lspconfig)
+      -- LATER: Can I just remove the list then?
       automatic_installation = true, -- not the same as ensure_installed
     })
 
