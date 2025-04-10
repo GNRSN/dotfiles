@@ -1,5 +1,4 @@
 local Util = require("util")
-local lazygit_graphite = require("util.git-tui").lazygit_graphite
 
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
@@ -79,8 +78,8 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 -- lazygit
 map("n", "<leader>gg", require("util.git-tui").utils.lazygit_smart_open, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gr", function()
-  lazygit_graphite:toggle()
+map("n", "<leader>gt", function()
+  require("util.git-tui").utils.lazygit_smart_open({ force_graphite = true })
 end, { desc = "Lazygit with Graphite config (root dir)" })
 
 -- highlights under cursor
