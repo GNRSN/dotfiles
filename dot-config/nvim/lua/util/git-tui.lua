@@ -27,10 +27,12 @@ local base_config = {
   end,
 }
 
-function M.utils.lazygit_smart_open()
+---@param options? { force_graphite?: boolean }
+function M.utils.lazygit_smart_open(options)
+  local opts = options or {}
   local project_uses_graphite = require("util.local-config").get_workspace_config().graphite
 
-  if project_uses_graphite then
+  if project_uses_graphite or opts.force_graphite then
     Snacks.terminal(
       "lazygit --use-config-file \"$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml\""
     )
