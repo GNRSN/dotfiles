@@ -22,6 +22,12 @@ M.actions = {
   end,
 }
 
+---@param name "ai_accept"
+---@param action fun():boolean?
+M.register_action = function(name, action)
+  M.actions[name] = action
+end
+
 ---@param actions string[]
 ---@param fallback? string|fun()
 function M.map(actions, fallback)

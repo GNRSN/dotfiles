@@ -20,7 +20,7 @@ return {
     "supermaven-inc/supermaven-nvim",
     opts = function()
       require("supermaven-nvim.completion_preview").suggestion_group = "SupermavenSuggestion"
-      CMP.actions.ai_accept = function()
+      CMP.register_action("ai_accept", function()
         local suggestion = require("supermaven-nvim.completion_preview")
         if suggestion.has_suggestion() then
           CMP.create_undo()
@@ -29,7 +29,7 @@ return {
           end)
           return true
         end
-      end
+      end)
     end,
   },
 
