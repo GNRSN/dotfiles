@@ -751,6 +751,11 @@ function M.setup()
     SnacksIndent = { fg = palette.border },
     SnacksIndentScope = { fg = palette.text_ignored },
 
+    -- Avante
+    AvanteSidebarWinSeparator = { link = "FloatBorder" },
+    -- NOTE: Avante are doing some weird things with colors in their panes so I cant get it transparent
+    AvanteSidebarWinHorizontalSeparator = { fg = palette.selection, bg = palette.selection },
+
     -- Visual whitetext
     VisualNonText = { fg = "#666666", bg = palette.visual_bg },
   }

@@ -8,7 +8,8 @@ return {
       { "<leader>aa", "<cmd>AvanteAsk<cr>", desc = "Ask" },
       -- NOTE: Chatting is asking without expected code-generation
       { "<leader>ac", "<cmd>AvanteChat<cr>", desc = "Chat" },
-      { "<leader>ax", "<cmd>AvanteClear<cr>", desc = "Clear" },
+      { "<leader>aC", "<cmd>AvanteClear<cr>", desc = "Clear" },
+      { "<leader>ax", "<cmd>AvanteToggle<cr>", desc = "Close" },
       { "<leader>ae", "<cmd>AvanteEdit<cr>", desc = "Edit" },
       { "<leader>af", "<cmd>AvanteFocus<cr>", desc = "Focus" },
       { "<leader>aR", "<cmd>AvanteRefresh<cr>", desc = "Refresh" },
@@ -49,8 +50,27 @@ return {
       },
     },
     opts = {
+      provider = "claude",
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-7-sonnet-20250219",
+        timeout = 30000, -- Timeout in milliseconds
+        temperature = 0.4,
+        max_tokens = 8000,
+      },
+      -- claude = {
+      --   endpoint = "https://api.anthropic.com",
+      --   model = "claude-3-5-sonnet-20241022",
+      --   temperature = 0,
+      --   max_tokens = 4096,
+      -- },
+      system_prompt = "",
       behaviour = {
+        -- Defaults to false but Im pretty sure I dont want this
+        auto_suggestions = false,
         support_paste_from_clipboard = true,
+        -- I think I want this?
+        use_cwd_as_project_root = true,
       },
       file_selector = {
         provider = "fzf",
@@ -78,6 +98,10 @@ return {
         close_from_input = { normal = "<C-q>", insert = "<C-q>" },
       },
       windows = {
+        sidebar_header = {
+          enabled = false,
+          rounded = false,
+        },
         input = {
           prefix = " ",
           height = 7,
