@@ -52,10 +52,10 @@ function M.setup()
     WinSeparator = { fg = palette.selection },
     Comment = { fg = palette.text_ignored },
     Constant = { fg = palette.yellow },
-    String = { fg = palette.yellow },
+    String = { fg = palette.orange },
     Character = { fg = palette.green },
     Number = { fg = palette.number_green },
-    Boolean = { fg = palette.cyan },
+    Boolean = { fg = palette.blue_medium },
     Float = { fg = palette.fg },
     FloatBorder = { fg = palette.border },
     FloatTitle = { fg = palette.text_ignored },
@@ -267,6 +267,10 @@ function M.setup()
 
     -- scss
     ["@character.special.scss"] = { fg = palette.yellow_sunflower },
+
+    -- gitconfig
+    gitconfigSection = { fg = palette.blue_green },
+    gitconfigAssignment = { fg = palette.orange },
 
     -- HTML
     htmlArg = { fg = palette.green },
