@@ -46,6 +46,8 @@
     pkgs.coreutils
     # Better git diff visualisation, usable by e.g. lazygit as well
     pkgs.delta
+    # Another, even smarter git diff visualisation tool, built on tree sitter
+    pkgs.difftastic
     # Better ls
     pkgs.eza
     # Better find
