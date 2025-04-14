@@ -10,6 +10,7 @@ return {
       keyboard_mode = true,
       mouse_mode = false,
       border_color = require("colorscheme.palette").border,
+      show_headers = false,
       order = 2,
     },
   },
