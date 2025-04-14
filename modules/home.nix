@@ -44,6 +44,8 @@
     pkgs.bunyan-rs
     # GNU utils, MacOS only ships with a subset + keep versions fresh
     pkgs.coreutils
+    # Better git diff visualisation, usable by e.g. lazygit as well
+    pkgs.delta
     # Better ls
     pkgs.eza
     # Better find
