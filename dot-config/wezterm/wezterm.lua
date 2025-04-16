@@ -93,6 +93,7 @@ config.max_fps = 120
 config.animation_fps = 30
 
 config.scrollback_lines = 9999
+config.enable_scroll_bar = true
 
 -- Fix issues with Swedish keyboard
 -- https://www.reddit.com/r/wezterm/comments/1bdmufm/cant_write_out_curly_brackets_in_wezterm/
