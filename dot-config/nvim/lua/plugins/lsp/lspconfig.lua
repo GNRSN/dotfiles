@@ -20,9 +20,6 @@ return {
 
     -- Neoconf populates configs for us so needs to load first
     "folke/neoconf.nvim",
-
-    -- DOC: Required until Nvim 0.11
-    "saghen/blink.cmp",
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -83,6 +80,7 @@ return {
     }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
+      -- TODO: Deprecated in nvim 0.11
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
@@ -116,7 +114,7 @@ return {
     lspconfig["eslint"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      root_dir = lspconfig.util.find_git_ancestor,
+      root_dir = util.find_git_ancestor,
       settings = {
         workingDirectory = { mode = "auto" },
         experimental = {
@@ -184,6 +182,8 @@ return {
       on_attach = on_attach,
     })
 
+    -- LATER: There are some additional config options available here:
+    -- https://www.reddit.com/r/neovim/comments/17h74vs/a_working_stylelintlsp_config_with_lspconfig/
     lspconfig["stylelint_lsp"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
