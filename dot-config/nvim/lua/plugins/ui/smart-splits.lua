@@ -47,28 +47,28 @@ return {
       -- these keymaps will also accept a range,
       -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
       {
-        "<A-h>",
+        "<C-A-h>",
         function()
           require("smart-splits").resize_left()
         end,
         mode = { "n", "i", "x" },
       },
       {
-        "<A-j>",
+        "<C-A-j>",
         function()
           require("smart-splits").resize_down()
         end,
         mode = { "n", "i", "x" },
       },
       {
-        "<A-k>",
+        "<C-A-k>",
         function()
           require("smart-splits").resize_up()
         end,
         mode = { "n", "i", "x" },
       },
       {
-        "<A-l>",
+        "<C-A-l>",
         function()
           require("smart-splits").resize_right()
         end,
