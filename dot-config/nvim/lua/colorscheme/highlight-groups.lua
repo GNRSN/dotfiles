@@ -744,12 +744,18 @@ function M.setup()
     -- GlanceBorderTop
 
     -- Render-markdown.nvim
-    RenderMarkdownH1Bg = { bg = "#666666" },
-    RenderMarkdownH2Bg = { bg = "#555555" },
-    RenderMarkdownH3Bg = { bg = "#444444" },
-    RenderMarkdownH4Bg = { bg = "#333333" },
-    RenderMarkdownH5Bg = { bg = "#222222" },
-    RenderMarkdownH6Bg = { bg = "#111111" },
+    RenderMarkdownH1 = { fg = palette.blue_green },
+    RenderMarkdownH2 = { fg = palette.blue_green },
+    RenderMarkdownH3 = { fg = palette.blue_green },
+    RenderMarkdownH4 = { fg = palette.blue_green },
+    RenderMarkdownH5 = { fg = palette.blue_green },
+    RenderMarkdownH6 = { fg = palette.blue_green },
+    RenderMarkdownH1Icon = { fg = palette.yellow_sunflower },
+    RenderMarkdownH2Icon = { fg = palette.yellow_sunflower },
+    RenderMarkdownH3Icon = { fg = palette.yellow_sunflower },
+    RenderMarkdownH4Icon = { fg = palette.yellow_sunflower },
+    RenderMarkdownH5Icon = { fg = palette.yellow_sunflower },
+    RenderMarkdownH6Icon = { fg = palette.yellow_sunflower },
 
     -- Snacks
     SnacksIndent = { fg = palette.border },
