@@ -108,6 +108,36 @@ local function is_vim(pane)
   return pane:get_user_vars().IS_NVIM == "true"
 end
 
+function process_basename(s)
+  return string.gsub(s, "(.*[/\\])(.*)", "%2")
+end
+
+local function is_zsh(pane)
+  local process_name = process_basename(pane:get_foreground_process_name())
+  wez.log_info("process_name: " .. process_name)
+  return process_name == "zsh"
+end
+
+---@param opts {key: string, mods?: string, condition: function, action_spec: table}
+local function conditional_action(opts)
+  return {
+    key = opts.key,
+    mods = opts.mods,
+    action = wez.action_callback(function(win, pane)
+      if opts.condition(pane) then
+        win:perform_action(opts.action_spec, pane)
+      else
+        win:perform_action({
+          SendKey = {
+            key = opts.key,
+            mods = opts.mods,
+          },
+        }, pane)
+      end
+    end),
+  }
+end
+
 local direction_keys = {
   h = "Left",
   j = "Down",
@@ -139,8 +169,6 @@ end
 -- ===
 -- Keybinds
 -- ===
-
--- LATER: Map ctrl d and ctrl u to scroll
 local act = wez.action
 config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
@@ -176,13 +204,26 @@ config.keys = {
     mods = "CMD",
     action = act.TogglePaneZoomState,
   },
+  conditional_action({
+    key = "u",
+    mods = "CTRL",
+    condition = is_zsh,
+    action_spec = {
+      ScrollByPage = -0.3,
+    },
+  }),
+  conditional_action({
+    key = "d",
+    mods = "CTRL",
+    condition = is_zsh,
+    action_spec = {
+      ScrollByPage = 0.3,
+    },
+  }),
   { -- Clear scrollback
     key = "l",
     mods = "CMD",
-    action = act.Multiple({
-      act.ClearScrollback("ScrollbackAndViewport"),
-      act.SendKey({ key = "l", mods = "CTRL" }),
-    }),
+    action = act.ClearScrollback("ScrollbackAndViewport"),
   },
   -- ===
   -- Control font size
