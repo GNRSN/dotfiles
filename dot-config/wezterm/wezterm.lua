@@ -249,10 +249,12 @@ config.keys = {
   split_nav("move", "k"),
   split_nav("move", "l"),
   -- resize panes
-  split_nav("resize", "h"),
-  split_nav("resize", "j"),
-  split_nav("resize", "k"),
-  split_nav("resize", "l"),
+  -- TODO: cant use alt keybind since thats used by window manager
+  --
+  -- split_nav("resize", "h"),
+  -- split_nav("resize", "j"),
+  -- split_nav("resize", "k"),
+  -- split_nav("resize", "l"),
   -- Tabs
   {
     key = "LeftArrow",
