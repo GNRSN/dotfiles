@@ -2,6 +2,7 @@ bat-0.25.0
 btop-1.4.0
 bunyan-rs-0.1.9
 coreutils-9.6
+delta-0.18.2
 eza-0.21.0
 eza-0.21.0-man
 fd-10.2.0
