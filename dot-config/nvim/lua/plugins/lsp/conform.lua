@@ -4,46 +4,47 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo", "Format", "PrettierdReload" },
-    config = function()
+    opts = {
+      notify_on_error = true,
+      notify_no_formatters = true,
+      formatters_by_ft = {
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        javascriptreact = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        ["markdown.mdx"] = { "prettierd" },
+        svelte = { "prettierd" },
+        css = { "prettierd", "stylelint" },
+        scss = { "prettierd", "stylelint" },
+        less = { "prettierd", "stylelint" },
+        html = { "prettierd" },
+        json = { "prettierd" },
+        yaml = { "prettierd" },
+        markdown = { "prettierd" },
+        graphql = { "prettierd" },
+        lua = { "stylua" },
+        python = { "isort", "black" },
+        nix = { "nixfmt" },
+        sh = { "shfmt" },
+        conf = { "shfmt" },
+      },
+      format_on_save = function()
+        if vim.g.format_on_save then
+          return {
+            lsp_fallback = true,
+            async = false,
+            timeout_ms = 1000,
+          }
+        else
+          return nil
+        end
+      end,
+      formatters = {},
+    },
+    config = function(_, opts)
       local conform = require("conform")
 
-      conform.setup({
-        notify_on_error = true,
-        notify_no_formatters = true,
-        formatters_by_ft = {
-          javascript = { "prettierd" },
-          typescript = { "prettierd" },
-          javascriptreact = { "prettierd" },
-          typescriptreact = { "prettierd" },
-          ["markdown.mdx"] = { "prettierd" },
-          svelte = { "prettierd" },
-          css = { "prettierd" },
-          scss = { "prettierd" },
-          less = { "prettierd" },
-          html = { "prettierd" },
-          json = { "prettierd" },
-          yaml = { "prettierd" },
-          markdown = { "prettierd" },
-          graphql = { "prettierd" },
-          lua = { "stylua" },
-          python = { "isort", "black" },
-          nix = { "nixfmt" },
-          sh = { "shfmt" },
-          conf = { "shfmt" },
-        },
-        format_on_save = function()
-          if vim.g.format_on_save then
-            return {
-              lsp_fallback = true,
-              async = false,
-              timeout_ms = 1000,
-            }
-          else
-            return nil
-          end
-        end,
-        formatters = {},
-      })
+      conform.setup(opts)
 
       -- Register :Format command
       vim.api.nvim_create_user_command("Format", function(args)
@@ -59,6 +60,7 @@ return {
       end, { range = true })
 
       -- Register :PrettierdRestart to reload prettierd
+      -- LATER: Defined in usercmds as well?
       vim.api.nvim_create_user_command("PrettierdReload", function()
         vim.fn.jobstart("kill $(pidof prettierd)", {
           on_exit = function()
