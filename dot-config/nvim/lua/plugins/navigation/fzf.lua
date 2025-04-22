@@ -9,6 +9,19 @@ function concatTableKeyValuePairs(table)
   return result
 end
 
+local GREP_IGNORE_LIST = {
+  "package_lock.json",
+  "pnpm-lock.yaml",
+}
+
+function build_ripgrep_ignore_globs(ignoreList)
+  local result = ""
+  for _, value in ipairs(ignoreList) do
+    result = result .. "-g '!" .. value .. "' "
+  end
+  return result
+end
+
 return {
   -- fzf-lua is said to be faster than telescope with fzf native
   {
@@ -20,14 +33,14 @@ return {
       {
         "<leader><space>",
         function()
-          require("fzf-lua").files({ multiprocess = true })
+          require("fzf-lua").files()
         end,
         desc = "Search files (fzf)",
       },
       {
         "<leader>fs",
         function()
-          require("fzf-lua").live_grep({ multiprocess = true })
+          require("fzf-lua").live_grep()
         end,
         desc = "Grep (fzf)",
       },
@@ -61,64 +74,106 @@ return {
         desc = "Recent files (fzf)",
       },
     },
-    opts = {
-      winopts = {
-        width = 0.9,
-        preview = {
-          horizontal = "right:50%",
-          scrollbar = "border",
+    opts = function(_, opts)
+      local fzf = require("fzf-lua")
+      local config = fzf.config
+      local actions = fzf.actions
+
+      -- From LazyVim
+      config.defaults.actions.files["ctrl-r"] = function(_, ctx)
+        local o = vim.deepcopy(ctx.__call_opts)
+        o.root = o.root == false
+        o.cwd = nil
+        o.buf = ctx.__CTX.bufnr
+        fzf.files(ctx.__INFO.cmd, o)
+      end
+      config.set_action_helpstr(config.defaults.actions.files["ctrl-r"], "toggle-root-dir")
+      return {
+        defaults = {
+          -- I do not love this, but it helps a lot in vertical split panes
+          formatter = "path.filename_first",
         },
-      },
-      keymap = {
-        builtin = { -- uses vim style keys
-          ["<C-u>"] = "preview-up",
-          ["<C-d>"] = "preview-down",
+        oldfiles = {
+          include_current_session = true,
         },
-        fzf = {
-          -- Required here again to override self closing on ctrl-d when listing git files
-          ["ctrl-u"] = "preview-up",
-          ["ctrl-d"] = "preview-down",
+        winopts = {
+          width = 0.9,
+          preview = {
+            horizontal = "right:50%",
+            scrollbar = "border",
+          },
+        },
+        previewers = {
+          builtin = {
+            -- Avoid trying to display huge files
+            syntax_limit_b = 1024 * 100, -- 100KB
+          },
+        },
+        keymap = {
+          builtin = { -- uses vim style keys
+            ["<C-u>"] = "preview-up",
+            ["<C-d>"] = "preview-down",
+          },
+          fzf = {
+            -- Required here again to override self closing on ctrl-d when listing git files
+            ["ctrl-u"] = "preview-up",
+            ["ctrl-d"] = "preview-down",
+
+            -- use cltr-q to select all items and convert to quickfix list
+            ["ctrl-q"] = "select-all+accept",
+
+            --
+            -- Reset selection when updating query,
+            -- this opt is passed as the --bind command so this events (seemingly) can't be bound as separate opt
+            ["change"] = "top",
+          },
+        },
+        fzf_colors = {
+          fg = palette.white, -- Text
+          ["fg+"] = palette.fg, -- Text (current line)
+          hl = palette.green, -- Highlighted substrings
+          ["hl+"] = palette.green, -- Highlighted substrings on current line
+          ["bg+"] = palette.visual_bg, -- Current line word background
+          gutter = "-1", -- Gutter, just hide it
+          prompt = palette.blue_medium, -- Path
+          pointer = palette.pink, -- The current line indicator
+          spinner = palette.pink, -- The spinner
+          info = palette.text_ignored, -- Match counter
+          query = palette.yellow, -- Input query
+        },
+        fzf_opts = {
+          ["--layout"] = "default",
+          ["--info"] = "inline-right",
+          ["--no-separator"] = "",
+          ["--scrollbar"] = "█",
+          ["--pointer"] = "",
+          ["--marker"] = "", -- multi select
+          ["--no-bold"] = "",
+          ["--tiebreak"] = "end",
+        },
+        files = {
+          fzf_opts = {
+            ["--info"] = "inline-right",
+          },
+        },
+        grep = {
+          fzf_opts = {
+            ["--info"] = "inline-right",
+          },
+          -- Lets try this
+          git_icons = true,
+          -- -- Include hidden files, e.g. .dotfiles
+          hidden = true,
           --
-          -- Reset selection when updating query,
-          -- this opt is passed as the --bind command so this events (seemingly) can't be bound as separate opt
-          ["change"] = "top",
+          -- --
+          -- -- rg_glob = true, -- Enable glob parsing
+          -- -- glob_flag = "--iglob", -- Case insensitive globs
+          -- glob_separator = "%s%-%-", -- Separator pattern
+          rg_opts = build_ripgrep_ignore_globs(GREP_IGNORE_LIST)
+            .. "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+          -- cmd = "rg --vimgrep --hidden --glob '!.git/**'", -- Explicitly exclude staging/
         },
-      },
-      fzf_colors = {
-        fg = palette.white, -- Text
-        ["fg+"] = palette.fg, -- Text (current line)
-        hl = palette.green, -- Highlighted substrings
-        ["hl+"] = palette.green, -- Highlighted substrings on current line
-        ["bg+"] = palette.visual_bg, -- Current line word background
-        gutter = "-1", -- Gutter, just hide it
-        prompt = palette.blue_medium, -- Path
-        pointer = palette.pink, -- The current line indicator
-        spinner = palette.pink, -- The spinner
-        info = palette.text_ignored, -- Match counter
-        query = palette.yellow, -- Input query
-      },
-      fzf_opts = {
-        ["--layout"] = "default",
-        ["--info"] = "inline-right",
-        ["--no-separator"] = "",
-        ["--scrollbar"] = "█",
-        ["--pointer"] = "",
-        ["--marker"] = "", -- multi select
-        ["--no-bold"] = "",
-        ["--tiebreak"] = "end",
-      },
-      files = {
-        fzf_opts = {
-          ["--info"] = "inline-right",
-        },
-      },
-      grep = {
-        fzf_opts = {
-          ["--info"] = "inline-right",
-        },
-        -- Include hidden files, e.g. .dotfiles
-        hidden = true,
-      },
-    },
+      }
+    end,
   },
 }
