@@ -1,6 +1,7 @@
 return {
   "williamboman/mason.nvim",
   dependencies = {
+    "jay-babu/mason-nvim-dap.nvim",
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
@@ -34,9 +35,13 @@ return {
       },
     })
 
-    mason_lspconfig.setup({
-      -- list of servers for mason to install
+    mason_tool_installer.setup({
+      integrations = {
+        ["mason-lspconfig"] = true,
+        ["mason-nvim-dap"] = true,
+      },
       ensure_installed = {
+        -- Lsp
         "bashls",
         "css_variables",
         "cssls",
@@ -57,19 +62,15 @@ return {
         "tailwindcss",
         "ts_ls",
         "yamlls",
-      },
-      -- auto-install configured servers (with lspconfig)
-      -- LATER: Can I just remove the list then?
-      automatic_installation = true, -- not the same as ensure_installed
-    })
 
-    mason_tool_installer.setup({
-      ensure_installed = {
+        -- Formatters & linters
         "black", -- python formatter
         "isort", -- python formatter
         "prettierd", -- js + more formatter
         "pylint", -- python linter
         "shfmt", -- shell formatter
+        -- REVIEW: Pin to same version as work as I don't know how to use workspace version
+        { "stylelint", version = "15.4.0" }, -- css/less/scss linter
         "stylua", -- lua formatter
       },
     })
