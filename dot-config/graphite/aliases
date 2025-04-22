@@ -1,4 +1,3 @@
-
 # Edit this file to configure aliases for Graphite commands.
 # If you delete this file, it will be recreated with the default aliases.
 # The first word of each line is the alias, and the rest is the command.
@@ -11,3 +10,5 @@ ls log short
 ll log long
 ss submit --stack
 
+# Submit and merge, some of these flags may be superfluous
+sm submit --stack --no-edit --restack --publish --merge-when-ready --web=false
