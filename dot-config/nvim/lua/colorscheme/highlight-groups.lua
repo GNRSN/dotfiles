@@ -97,9 +97,9 @@ function M.setup()
     CursorLine = { bg = palette.selection },
     ColorColumn = { bg = palette.selection },
 
-    StatusLine = { fg = palette.white, bg = palette.black },
+    StatusLine = { fg = palette.white },
     StatusLineNC = { fg = palette.fade },
-    StatusLineTerm = { fg = palette.white, bg = palette.black },
+    StatusLineTerm = { fg = palette.white },
     StatusLineTermNC = { fg = palette.fade },
 
     Directory = { fg = palette.fg },
