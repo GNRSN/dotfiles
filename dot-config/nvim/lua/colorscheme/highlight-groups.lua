@@ -42,9 +42,6 @@ M.HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
 ---@nodiscard
 function M.setup()
   local palette = require("colorscheme.palette")
-  local endOfBuffer = {
-    fg = palette.bg,
-  }
 
   return {
     Normal = { fg = palette.fg, bg = palette.bg },
@@ -141,7 +138,7 @@ function M.setup()
     WarningMsg = { fg = palette.yellow },
     WildMenu = { fg = palette.black, bg = palette.white },
 
-    EndOfBuffer = endOfBuffer,
+    EndOfBuffer = { fg = palette.bg },
 
     DiagnosticUnnecessary = { fg = palette.text_ignored },
 
