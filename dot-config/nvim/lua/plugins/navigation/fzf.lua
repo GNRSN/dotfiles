@@ -12,6 +12,7 @@ end
 local GREP_IGNORE_LIST = {
   "package_lock.json",
   "pnpm-lock.yaml",
+  ".git/*",
 }
 
 function build_ripgrep_ignore_globs(ignoreList)
