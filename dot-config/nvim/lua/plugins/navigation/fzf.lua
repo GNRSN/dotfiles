@@ -24,12 +24,12 @@ function build_ripgrep_ignore_globs(ignoreList)
 end
 
 return {
-  -- fzf-lua is said to be faster than telescope with fzf native
+  -- Fast picker
   {
     "ibhagwan/fzf-lua",
-    priority = 100,
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = "FzfLua",
     keys = {
       {
         "<leader><space>",
@@ -80,15 +80,22 @@ return {
       local config = fzf.config
       local actions = fzf.actions
 
-      -- From LazyVim
+      -- From LazyVim https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/editor/fzf.lua#L84
+      -- Toggle root dir / cwd
       config.defaults.actions.files["ctrl-r"] = function(_, ctx)
         local o = vim.deepcopy(ctx.__call_opts)
         o.root = o.root == false
         o.cwd = nil
         o.buf = ctx.__CTX.bufnr
-        fzf.files(ctx.__INFO.cmd, o)
+
+        if not o.root then
+          o.cwd = require("util.find-root").get({ buf = opts.buf })
+        end
+
+        fzf[ctx.__INFO.cmd](o)
       end
       config.set_action_helpstr(config.defaults.actions.files["ctrl-r"], "toggle-root-dir")
+
       return {
         defaults = {
           -- I do not love this, but it helps a lot in vertical split panes
@@ -163,13 +170,9 @@ return {
           },
           -- Lets try this
           git_icons = true,
-          -- -- Include hidden files, e.g. .dotfiles
+          -- Include hidden files, e.g. .dotfiles
           hidden = true,
-          --
-          -- --
-          -- -- rg_glob = true, -- Enable glob parsing
-          -- -- glob_flag = "--iglob", -- Case insensitive globs
-          -- glob_separator = "%s%-%-", -- Separator pattern
+          -- Since we include .prefix files we need to ignore some, we also want to ignore venodred files, etc...
           rg_opts = build_ripgrep_ignore_globs(GREP_IGNORE_LIST)
             .. "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
           -- cmd = "rg --vimgrep --hidden --glob '!.git/**'", -- Explicitly exclude staging/
