@@ -108,6 +108,10 @@ local function is_vim(pane)
   return pane:get_user_vars().IS_NVIM == "true"
 end
 
+local function not_is_vim(pane)
+  return not is_vim(pane)
+end
+
 function process_basename(s)
   return string.gsub(s, "(.*[/\\])(.*)", "%2")
 end
@@ -144,27 +148,6 @@ local direction_keys = {
   k = "Up",
   l = "Right",
 }
-
-local function split_nav(resize_or_move, key)
-  return {
-    key = key,
-    mods = resize_or_move == "resize" and "META" or "CTRL",
-    action = wez.action_callback(function(win, pane)
-      if is_vim(pane) then
-        -- pass the keys through to vim/nvim
-        win:perform_action({
-          SendKey = { key = key, mods = resize_or_move == "resize" and "META|CMD" or "CTRL" },
-        }, pane)
-      else
-        if resize_or_move == "resize" then
-          win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
-        else
-          win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-        end
-      end
-    end),
-  }
-end
 
 -- ===
 -- Keybinds
@@ -244,17 +227,72 @@ config.keys = {
     action = act.ResetFontSize,
   },
   -- move between split panes
-  split_nav("move", "h"),
-  split_nav("move", "j"),
-  split_nav("move", "k"),
-  split_nav("move", "l"),
+  conditional_action({
+    key = "h",
+    mods = "CTRL",
+    condition = not_is_vim,
+    action_spec = {
+      ActivatePaneDirection = direction_keys["h"],
+    },
+  }),
+  conditional_action({
+    key = "j",
+    mods = "CTRL",
+    condition = not_is_vim,
+    action_spec = {
+      ActivatePaneDirection = direction_keys["j"],
+    },
+  }),
+  conditional_action({
+    key = "k",
+    mods = "CTRL",
+    condition = not_is_vim,
+    action_spec = {
+      ActivatePaneDirection = direction_keys["k"],
+    },
+  }),
+  conditional_action({
+    key = "l",
+    mods = "CTRL",
+    condition = not_is_vim,
+    action_spec = {
+      ActivatePaneDirection = direction_keys["l"],
+    },
+  }),
+
   -- resize panes
-  -- TODO: cant use alt keybind since thats used by window manager
-  --
-  -- split_nav("resize", "h"),
-  -- split_nav("resize", "j"),
-  -- split_nav("resize", "k"),
-  -- split_nav("resize", "l"),
+  conditional_action({
+    key = "h",
+    mods = "CTRL|ALT",
+    condition = not_is_vim,
+    action_spec = {
+      AdjustPaneSize = { direction_keys["h"], 3 },
+    },
+  }),
+  conditional_action({
+    key = "j",
+    mods = "CTRL|ALT",
+    condition = not_is_vim,
+    action_spec = {
+      AdjustPaneSize = { direction_keys["j"], 3 },
+    },
+  }),
+  conditional_action({
+    key = "k",
+    mods = "CTRL|ALT",
+    condition = not_is_vim,
+    action_spec = {
+      AdjustPaneSize = { direction_keys["k"], 3 },
+    },
+  }),
+  conditional_action({
+    key = "l",
+    mods = "CTRL|ALT",
+    condition = not_is_vim,
+    action_spec = {
+      AdjustPaneSize = { direction_keys["l"], 3 },
+    },
+  }),
   -- Tabs
   {
     key = "LeftArrow",
@@ -285,10 +323,10 @@ config.keys = {
   { key = "F", mods = "SHIFT|CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
   -- { key = "H", mods = "CTRL", action = act.HideApplication },
   -- { key = "H", mods = "SHIFT|CTRL", action = act.HideApplication },
-  { key = "K", mods = "CTRL", action = act.ClearScrollback("ScrollbackOnly") },
-  { key = "K", mods = "SHIFT|CTRL", action = act.ClearScrollback("ScrollbackOnly") },
-  { key = "L", mods = "CTRL", action = act.ShowDebugOverlay },
-  { key = "L", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
+  -- { key = "K", mods = "CTRL", action = act.ClearScrollback("ScrollbackOnly") },
+  -- { key = "K", mods = "SHIFT|CTRL", action = act.ClearScrollback("ScrollbackOnly") },
+  -- { key = "L", mods = "CTRL", action = act.ShowDebugOverlay },
+  -- { key = "L", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
   { key = "M", mods = "CTRL", action = act.Hide },
   { key = "M", mods = "SHIFT|CTRL", action = act.Hide },
   { key = "N", mods = "CTRL", action = act.SpawnWindow },
@@ -330,17 +368,17 @@ config.keys = {
   { key = "f", mods = "SUPER", action = act.Search("CurrentSelectionOrEmptyString") },
   -- { key = "h", mods = "ALT", action = act.EmitEvent("user-defined-4") },
   -- { key = "h", mods = "CTRL", action = act.EmitEvent("user-defined-0") },
-  { key = "h", mods = "SHIFT|CTRL", action = act.HideApplication },
-  { key = "h", mods = "SUPER", action = act.HideApplication },
+  -- { key = "h", mods = "SHIFT|CTRL", action = act.HideApplication },
+  -- { key = "h", mods = "SUPER", action = act.HideApplication },
   -- { key = "j", mods = "ALT", action = act.EmitEvent("user-defined-5") },
   -- { key = "j", mods = "CTRL", action = act.EmitEvent("user-defined-1") },
   -- { key = "k", mods = "ALT", action = act.EmitEvent("user-defined-6") },
   -- { key = "k", mods = "CTRL", action = act.EmitEvent("user-defined-2") },
-  { key = "k", mods = "SHIFT|CTRL", action = act.ClearScrollback("ScrollbackOnly") },
+  -- { key = "k", mods = "SHIFT|CTRL", action = act.ClearScrollback("ScrollbackOnly") },
   { key = "k", mods = "SUPER", action = act.ClearScrollback("ScrollbackOnly") },
   -- { key = "l", mods = "ALT", action = act.EmitEvent("user-defined-7") },
   -- { key = "l", mods = "CTRL", action = act.EmitEvent("user-defined-3") },
-  { key = "l", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
+  -- { key = "l", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
   {
     key = "l",
     mods = "SUPER",
