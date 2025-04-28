@@ -21,6 +21,10 @@ return {
       },
     },
     ---@type FastActionConfig
-    opts = {},
+    opts = {
+      popup = {
+        title = false,
+      },
+    },
   },
 }
