@@ -10,6 +10,7 @@ M.HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
   "NeoTreeNormalNC",
   "TelescopeNormal",
   "NoiceMini",
+  "NotifyBackground",
 }
 
 ---@class Highlight
@@ -82,7 +83,7 @@ function M.setup()
     Todo = { fg = palette.purple, bold = true, italic = true },
     Underlined = { fg = palette.cyan, underline = true },
 
-    NotifyBackground = { bg = palette.black },
+    NotifyBackground = { bg = palette.bg },
 
     Cursor = { fg = palette.pink, reverse = true },
     CursorLineNr = { fg = palette.fg, bold = true },
@@ -139,8 +140,6 @@ function M.setup()
     WildMenu = { fg = palette.black, bg = palette.white },
 
     EndOfBuffer = { fg = palette.bg },
-
-    DiagnosticUnnecessary = { fg = palette.text_ignored },
 
     -- TreeSitter
     -- The list of capture-groups can  be found at:
@@ -498,6 +497,7 @@ function M.setup()
     DiagnosticVirtualTextWarn = { fg = palette.yellow },
     DiagnosticVirtualTextInfo = { fg = palette.cyan },
     DiagnosticVirtualTextHint = { fg = palette.number_green },
+    DiagnosticUnnecessary = { fg = palette.text_ignored },
 
     LspDiagnosticsDefaultError = { fg = palette.red },
     LspDiagnosticsDefaultWarning = { fg = palette.yellow },
