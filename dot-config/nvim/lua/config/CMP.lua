@@ -1,10 +1,10 @@
 --- NOTE: Module copied from https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/util/cmp
 ---
----@class lazyvim.util.cmp
+---@class config.util.cmp
 local M = {}
 
----@alias lazyvim.util.cmp.Action fun():boolean?
----@type table<string, lazyvim.util.cmp.Action>
+---@alias config.util.cmp.Action fun():boolean?
+---@type table<string, config.util.cmp.Action>
 M.actions = {
   -- Native Snippets
   snippet_forward = function()
@@ -69,7 +69,7 @@ function M.confirm(opts)
   }, opts or {})
   return function(fallback)
     if cmp.core.view:visible() or vim.fn.pumvisible() == 1 then
-      LazyVim.create_undo()
+      M.create_undo()
       if cmp.confirm(opts) then
         return
       end
@@ -116,6 +116,7 @@ function M.setup(opts)
 end
 
 M.CREATE_UNDO = vim.api.nvim_replace_termcodes("<c-G>u", true, true, true)
+
 function M.create_undo()
   if vim.api.nvim_get_mode().mode == "i" then
     vim.api.nvim_feedkeys(M.CREATE_UNDO, "n", false)

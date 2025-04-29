@@ -71,18 +71,6 @@ return {
       has_blink and blink.get_lsp_capabilities() or {},
       opts.capabilities or {}
     )
-    -- Change the Diagnostic symbols
-    local signs = {
-      Error = " ",
-      Warn = " ",
-      Info = " ",
-      Hint = " ",
-    }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      -- TODO: Deprecated in nvim 0.11
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
 
     lspconfig["html"].setup({
       capabilities = capabilities,
