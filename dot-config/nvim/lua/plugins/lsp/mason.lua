@@ -60,7 +60,8 @@ return {
         "svelte",
         "stylelint_lsp",
         "tailwindcss",
-        "ts_ls",
+        "ts_ls", -- Typescript
+        "ts_query_ls", -- Treesitter query language
         "yamlls",
 
         -- Formatters & linters

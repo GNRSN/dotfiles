@@ -224,11 +224,10 @@ return {
     })
 
     -- Treesitter query language
-    -- LATER: Not yet installable through mason or any other easy-to-use installer
-    -- lspconfig["ts_query_ls"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    -- })
+    lspconfig["ts_query_ls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
 
     lspconfig["bashls"].setup({
       capabilities = capabilities,
