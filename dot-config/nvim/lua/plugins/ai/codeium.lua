@@ -1,8 +1,10 @@
+local is_windsurf_enabled = require("util.local-config").is_work_dir()
+
 return {
   {
-    "Exafunction/codeium.nvim",
+    "Exafunction/windsurf.nvim",
     cond = function()
-      return require("util.local-config").is_work_dir()
+      return is_windsurf_enabled
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -14,14 +16,17 @@ return {
       enable_chat = true,
       enable_cmp_source = true,
       virtual_text = {
-        -- nvim-cmp is providing this functionality already
+        -- completion plugin is providing this functionality already
         enabled = false,
       },
     },
+    config = function(_, opts)
+      require("codeium").setup(opts)
+    end,
   },
   -- add ai_accept action
   {
-    "Exafunction/codeium.nvim",
+    "Exafunction/windsurf.nvim",
     opts = function()
       CMP.register_action("ai_accept", function()
         if require("codeium.virtual_text").get_current_completion_item() then
@@ -33,21 +38,29 @@ return {
     end,
   },
 
-  {
-    "saghen/blink.cmp",
-    optional = true,
-    dependencies = { "codeium.nvim", "saghen/blink.compat" },
-    opts = {
-      sources = {
-        compat = { "codeium" },
-        providers = {
-          codeium = {
-            kind = "Codeium",
-            score_offset = 100,
-            async = true,
+  is_windsurf_enabled
+      and {
+        "saghen/blink.cmp",
+        optional = true,
+        dependencies = {
+          "Exafunction/windsurf.nvim",
+        },
+        opts = {
+          sources = {
+            default = { "codeium" },
+            providers = {
+              codeium = {
+                -- Recommended
+                name = "Codeium",
+                module = "codeium.blink",
+                async = true,
+                -- from LazyVim
+                kind = "Codeium",
+                score_offset = 100,
+              },
+            },
           },
         },
-      },
-    },
-  },
+      }
+    or nil,
 }
