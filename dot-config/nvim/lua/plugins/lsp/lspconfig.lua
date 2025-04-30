@@ -1,3 +1,17 @@
+--- Recommended replacement for lspconfig.utils.find_git_ancestor
+--- @param startpath string
+--- @return string|nil
+local function find_git_ancestor(startpath)
+  return vim.fs.dirname(vim.fs.find(".git", { path = startpath, upward = true })[1])
+end
+
+--- Recommended replacement for lspconfig.utils.find_node_modules_ancestor
+--- @param startpath string
+--- @return string|nil
+local function find_node_modules_ancestor(startpath)
+  return vim.fs.dirname(vim.fs.find("node_modules", { path = startpath, upward = true })[1])
+end
+
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -21,7 +35,7 @@ return {
     -- Neoconf populates configs for us so needs to load first
     "folke/neoconf.nvim",
   },
-  config = function()
+  config = function(_, opts)
     local lspconfig = require("lspconfig")
 
     local keymap = vim.keymap -- for conciseness
@@ -31,7 +45,7 @@ return {
       opts.buffer = bufnr
 
       opts.desc = "Go to declaration"
-      keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+      keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
       keymap.set("n", "gR", "<cmd>Glance references<CR>", { desc = "Show LSP references" })
 
@@ -42,7 +56,7 @@ return {
       keymap.set("n", "gt", "<cmd>Glance type_definitions<CR>", { desc = "Show LSP type definitions" })
 
       opts.desc = "Lsp rename"
-      keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts) -- smart rename
+      keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
 
       -- LATER: These overlap with trouble? Maybe I prefer these though
       opts.desc = "Go to previous diagnostic"
@@ -50,14 +64,14 @@ return {
         vim.diagnostic.jump({
           diagnostic = vim.diagnostic.get_prev({ severity = { min = vim.diagnostic.severity.WARN } }),
         })
-      end, opts) -- jump to previous diagnostic in buffer
+      end, opts)
 
       opts.desc = "Go to next diagnostic"
       keymap.set("n", "]d", function()
         vim.diagnostic.jump({
           diagnostic = vim.diagnostic.get_next({ severity = { min = vim.diagnostic.severity.WARN } }),
         })
-      end, opts) -- jump to next diagnostic in buffer
+      end, opts)
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
@@ -102,7 +116,7 @@ return {
     lspconfig["eslint"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      root_dir = util.find_git_ancestor,
+      root_dir = find_git_ancestor,
       settings = {
         workingDirectory = { mode = "auto" },
         experimental = {
@@ -112,8 +126,10 @@ return {
     })
 
     local function get_typescript_server_path(root_dir)
-      local project_root = util.find_node_modules_ancestor(root_dir)
-      return project_root and (util.path.join(project_root, "node_modules", "typescript", "lib")) or ""
+      local project_root = find_node_modules_ancestor(root_dir)
+      -- REVIEW: Unsure if this already ends with a trailing slash or not?
+      vim.notify(project_root)
+      return project_root and project_root .. "/node_modules/typescript/lib" or ""
     end
 
     lspconfig["mdx_analyzer"].setup({
@@ -217,7 +233,7 @@ return {
       },
     })
     -- Nix language server
-    -- LATER: Consider evaluating nixd instead
+    -- LATER: Consider trying nixd instead
     lspconfig["nil_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
