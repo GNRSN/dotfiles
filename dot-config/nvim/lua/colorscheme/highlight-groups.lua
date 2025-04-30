@@ -674,7 +674,7 @@ function M.setup()
     YankyPut = { bg = palette.blue, fg = "#333333" },
 
     -- Neotest
-    NeotestAdapterName = { fg = palette.bright_blue },
+    NeotestAdapterName = { fg = palette.bright_blue }, -- This hl isn't working?
     NeotestBorder = { fg = palette.border },
     NeotestDir = { fg = palette.yellow },
     NeotestExpandMarker = { fg = palette.white },
@@ -685,7 +685,7 @@ function M.setup()
     NeotestMarked = { fg = palette.yellow_sunflower },
     NeotestNamespace = { fg = palette.white },
     NeotestPassed = { fg = palette.green },
-    NeotestRunning = { fg = palette.number_green },
+    NeotestRunning = { fg = palette.pink },
     NeotestWinSelect = { fg = palette.pink },
     NeotestSkipped = { fg = palette.nontext },
     NeotestTarget = { fg = palette.orange },
