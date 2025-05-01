@@ -150,7 +150,9 @@ return {
 
         menu = {
           -- not working
-          auto_show = not inside_comment_block(),
+          auto_show = function(ctx, items)
+            return not inside_comment_block()
+          end,
           draw = {
             treesitter = { "lsp" },
             columns = {
@@ -172,7 +174,9 @@ return {
           auto_show_delay_ms = 200,
         },
         ghost_text = {
-          enabled = true,
+          enabled = function()
+            return not inside_comment_block()
+          end,
         },
         trigger = {
           -- TODO: Something feels broken here, I don't get lsp suggestions in js objects
