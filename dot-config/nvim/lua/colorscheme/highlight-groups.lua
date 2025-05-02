@@ -197,6 +197,7 @@ function M.setup()
     ["@variable"] = { fg = palette.blue_variable_name },
     ["@definition"] = { fg = palette.green },
     ["@variable.builtin"] = { fg = palette.blue_light },
+    ["@variable.member"] = { fg = palette.blue_light },
     ["@constant"] = { fg = palette.blue_variable_name },
     ["@constant.builtin"] = { fg = palette.blue_medium },
 
