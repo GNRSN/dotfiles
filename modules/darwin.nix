@@ -120,7 +120,7 @@
     # Next gen editor
     "zed"
     # Try arc alternative
-    "zen-browser"
+    "zen"
   ];
 
   # Touch id for sudo
