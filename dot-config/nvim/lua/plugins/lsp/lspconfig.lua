@@ -1,17 +1,3 @@
---- Recommended replacement for lspconfig.utils.find_git_ancestor
---- @param startpath string
---- @return string|nil
-local function find_git_ancestor(startpath)
-  return vim.fs.dirname(vim.fs.find(".git", { path = startpath, upward = true })[1])
-end
-
---- Recommended replacement for lspconfig.utils.find_node_modules_ancestor
---- @param startpath string
---- @return string|nil
-local function find_node_modules_ancestor(startpath)
-  return vim.fs.dirname(vim.fs.find("node_modules", { path = startpath, upward = true })[1])
-end
-
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -82,6 +68,7 @@ return {
       {},
       vim.lsp.protocol.make_client_capabilities(),
       has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+      -- TODO: Is this still required in nvim 11.0?
       has_blink and blink.get_lsp_capabilities() or {},
       opts.capabilities or {}
     )
@@ -116,7 +103,7 @@ return {
     lspconfig["eslint"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      root_dir = find_git_ancestor,
+      root_dir = require("util.find-root").find_git_ancestor,
       settings = {
         workingDirectory = { mode = "auto" },
         experimental = {
@@ -126,7 +113,7 @@ return {
     })
 
     local function get_typescript_server_path(root_dir)
-      local project_root = find_node_modules_ancestor(root_dir)
+      local project_root = require("util.find-root").find_node_modules_ancestor(root_dir)
       -- REVIEW: Unsure if this already ends with a trailing slash or not?
       vim.notify(project_root)
       return project_root and project_root .. "/node_modules/typescript/lib" or ""
