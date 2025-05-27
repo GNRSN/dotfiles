@@ -25,6 +25,9 @@ return {
       popup = {
         title = false,
       },
+      -- Temp fix: https://github.com/Chaitanyabsprip/fastaction.nvim/issues/40#issuecomment-2911339072
+      dismiss_keys = { "<c-c>" },
+
     },
   },
 }
