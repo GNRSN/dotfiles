@@ -11,4 +11,4 @@ timestamp=$1
 seconds=$(echo "scale=0; $timestamp / 1000" | bc)
 
 # Print the date and time in a human-readable format
-date -r $seconds +"%Y-%m-%d %H:%M:%S"
+date -d "@$seconds" +"%Y-%m-%d %H:%M:%S"
