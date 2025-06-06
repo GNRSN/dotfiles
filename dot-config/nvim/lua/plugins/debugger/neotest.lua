@@ -11,87 +11,6 @@ return {
       "marilari88/neotest-vitest",
       "adrigzr/neotest-mocha",
     },
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require("neotest").setup({
-        adapters = {
-          require("neotest-vitest"),
-          -- Default config
-          require("neotest-mocha")({
-            command = "npm test --",
-            command_args = function(context)
-              -- The context contains:
-              --   results_path: The file that json results are written to
-              --   test_name_pattern: The generated pattern for the test
-              --   path: The path to the test file
-              --
-              -- It should return a string array of arguments
-              --
-              -- Not specifying 'command_args' will use the defaults below
-              return {
-                "--full-trace",
-                "--reporter=json",
-                "--reporter-options=output=" .. context.results_path,
-                "--grep=" .. context.test_name_pattern,
-                context.path,
-              }
-            end,
-            env = { CI = true },
-            cwd = function(path)
-              return vim.fn.getcwd()
-            end,
-          }),
-          -- require("neotest-python")({
-          --   dap = { justMyCode = false },
-          -- }),
-          -- require("neotest-plenary"),
-          -- require("neotest-vim-test")({
-          --   ignore_file_types = { "python", "vim", "lua" },
-          -- }),
-        },
-        status = {
-          enabled = true,
-          signs = true,
-          virtual_text = true,
-        },
-        ---@diagnostic disable-next-line: missing-fields
-        summary = {
-          follow = true,
-        },
-        output_panel = {
-          enabled = true,
-          open = "botright vsplit | vertical resize 50",
-        },
-        icons = {
-          watching = "👀",
-          running = "▶️",
-          passed = "✅",
-          failed = "❌",
-          skipped = "⏸️",
-          unknown = "",
-          collapsed = "",
-          expanded = "󰍝",
-          child_indent = "│ ",
-          child_prefix = "",
-          final_child_indent = "│ ",
-          final_child_prefix = "",
-          non_collapsible = "",
-          -- Spinner
-          running_animated = {
-            "⠋",
-            "⠙",
-            "⠹",
-            "⠸",
-            "⠼",
-            "⠴",
-            "⠦",
-            "⠧",
-            "⠇",
-            "⠏",
-          },
-        },
-      })
-    end,
     keys = {
       {
         "<leader>tr",
@@ -103,7 +22,7 @@ return {
       {
         "<leader>tw",
         function()
-          require("neotest").watch.toggle(vim.fn.expand("%"))
+          require("neotest").watch.toggle()
         end,
         desc = "Watch nearest position",
       },
@@ -165,5 +84,82 @@ return {
         desc = "Clear output",
       },
     },
+    opts = function()
+      return {
+        adapters = {
+          require("neotest-vitest")({
+            cwd = function(path)
+              return require("util.find-root").find_node_modules_ancestor(path)
+            end,
+          }),
+          -- Default config
+          require("neotest-mocha")({
+            command = "npm test --",
+            command_args = function(context)
+              -- The context contains:
+              --   results_path: The file that json results are written to
+              --   test_name_pattern: The generated pattern for the test
+              --   path: The path to the test file
+              --
+              -- It should return a string array of arguments
+              --
+              -- Not specifying 'command_args' will use the defaults below
+              return {
+                "--full-trace",
+                "--reporter=json",
+                "--reporter-options=output=" .. context.results_path,
+                "--grep=" .. context.test_name_pattern,
+                context.path,
+              }
+            end,
+            env = { CI = true },
+            cwd = function(path)
+              return require("util.find-root").find_node_modules_ancestor(path)
+            end,
+          }),
+        },
+        status = {
+          enabled = true,
+          signs = true,
+          virtual_text = true,
+        },
+        ---@diagnostic disable-next-line: missing-fields
+        summary = {
+          follow = true,
+        },
+        output_panel = {
+          enabled = true,
+          open = "botright vsplit | vertical resize 50",
+        },
+        icons = {
+          watching = "👀",
+          running = "▶️",
+          passed = "✅",
+          failed = "❌",
+          skipped = "⏸️",
+          unknown = "",
+          collapsed = "",
+          expanded = "󰍝",
+          child_indent = "│ ",
+          child_prefix = "",
+          final_child_indent = "│ ",
+          final_child_prefix = "",
+          non_collapsible = "",
+          -- Spinner
+          running_animated = {
+            "⠋",
+            "⠙",
+            "⠹",
+            "⠸",
+            "⠼",
+            "⠴",
+            "⠦",
+            "⠧",
+            "⠇",
+            "⠏",
+          },
+        },
+      }
+    end,
   },
 }
