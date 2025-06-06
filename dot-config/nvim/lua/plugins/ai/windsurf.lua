@@ -1,5 +1,11 @@
 local is_windsurf_enabled = require("util.local-config").is_work_dir()
 
+local blacklist_ft = {
+  "oil",
+  "AvanteInput",
+  "sh",
+}
+
 return {
   {
     "Exafunction/windsurf.nvim",
@@ -57,6 +63,10 @@ return {
                 -- from LazyVim
                 kind = "Codeium",
                 score_offset = 100,
+                -- disable in certian filetypes
+                enabled = function(ctx)
+                  return not vim.tbl_contains(blacklist_ft, vim.bo.filetype)
+                end,
               },
             },
           },
