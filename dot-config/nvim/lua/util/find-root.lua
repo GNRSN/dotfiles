@@ -199,7 +199,7 @@ end
 -- * lsp root_dir
 -- * root pattern of filename of the current buffer
 -- * root pattern of cwd
----@param opts? {normalize?:boolean, buf?:number}
+---@param opts? { normalize?:boolean, buf?:number, path?:string }
 ---@return string
 function M.get(opts)
   opts = opts or {}
@@ -226,6 +226,20 @@ end
 ---@param opts? {hl_last?: string}
 function M.pretty_path(opts)
   return ""
+end
+
+--- Recommended replacement for lspconfig.utils.find_git_ancestor
+--- @param startpath string
+--- @return string|nil
+function M.find_git_ancestor(startpath)
+  return vim.fs.dirname(vim.fs.find(".git", { path = startpath, upward = true })[1])
+end
+
+--- Recommended replacement for lspconfig.utils.find_node_modules_ancestor
+--- @param startpath string
+--- @return string|nil
+function M.find_node_modules_ancestor(startpath)
+  return vim.fs.dirname(vim.fs.find("node_modules", { path = startpath, upward = true })[1])
 end
 
 return M
