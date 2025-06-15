@@ -27,6 +27,8 @@
     pkg:
     builtins.elem (pkgs.lib.getName pkg) [
       "graphite-cli"
+      "mongodb-ce"
+      "mongosh"
     ];
 
   home.packages = [
@@ -77,6 +79,10 @@
     pkgs.jqp
     # Git TUI
     pkgs.lazygit
+    # Mongodb community edition (for local development)
+    pkgs.mongodb-ce
+    # Mongodb cli interface
+    pkgs.mongosh
     # Better Vim
     pkgs.neovim
     # Neovim gui
