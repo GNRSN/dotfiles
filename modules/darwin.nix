@@ -82,7 +82,7 @@
   homebrew.casks = [
     # Tiling window manager
     "nikitabobko/tap/aerospace"
-    # Browser of choice
+    # (ex) Browser of choice, RIP
     "arc"
     # Still the best AI(?)
     "chatgpt"
@@ -90,6 +90,8 @@
     "cursor"
     # Translation
     "deepl"
+    # Arc 2
+    "thebrowsercompany-dia"
     # Access communities
     "discord"
     # Matrix client
