@@ -104,6 +104,8 @@
     "google-chrome"
     # Modern Keepass UI
     "keepassxc"
+    # Mongo DB gui/studio
+    "mongodb-compass"
     # Block apple music opening on airpods tap
     # https://github.com/tombonez/noTunes
     "notunes"
