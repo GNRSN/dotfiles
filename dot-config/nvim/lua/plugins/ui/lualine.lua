@@ -6,6 +6,7 @@ local BLACKLIST_FT = {
   "AvanteSelectedFiles",
   "aerial",
   "neotest-summary",
+  "neotest-output-panel",
 }
 
 local get_noice_mode = function()
