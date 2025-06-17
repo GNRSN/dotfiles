@@ -1,19 +1,26 @@
 -- Change the Diagnostic symbols
 local signs = require("config.CMP").icons.diagnostics
 
+local diagnostic_signs = {
+  [vim.diagnostic.severity.ERROR] = signs.Error,
+  [vim.diagnostic.severity.WARN] = signs.Warn,
+  [vim.diagnostic.severity.INFO] = signs.Info,
+  [vim.diagnostic.severity.HINT] = signs.Hint,
+}
+
 vim.diagnostic.config({
   virtual_text = {
+    spacing = 2,
+    prefix = "",
+    format = function(diagnostic)
+      return diagnostic_signs[diagnostic.severity] .. diagnostic.message
+    end,
     severity = { min = vim.diagnostic.severity.WARN },
   },
   ---@type vim.diagnostic.Opts.Signs
   signs = {
     severity = { min = vim.diagnostic.severity.WARN },
-    text = {
-      [vim.diagnostic.severity.ERROR] = signs.Error,
-      [vim.diagnostic.severity.WARN] = signs.Warn,
-      [vim.diagnostic.severity.INFO] = signs.Info,
-      [vim.diagnostic.severity.HINT] = signs.Hint,
-    },
+    text = diagnostic_signs,
     numhl = {
       -- [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
       -- [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
@@ -30,4 +37,5 @@ vim.diagnostic.config({
   underline = {
     severity = { min = vim.diagnostic.severity.WARN },
   },
+  severity_sort = true,
 })
