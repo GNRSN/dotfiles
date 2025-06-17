@@ -106,6 +106,8 @@
     "keepassxc"
     # Mongo DB gui/studio
     "mongodb-compass"
+    # Teams
+    "microsoft-teams"
     # Block apple music opening on airpods tap
     # https://github.com/tombonez/noTunes
     "notunes"
