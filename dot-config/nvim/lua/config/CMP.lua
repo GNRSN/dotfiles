@@ -229,4 +229,11 @@ M.kind_filter = {
   },
 }
 
+M.diagnostic_signs = {
+  [vim.diagnostic.severity.ERROR] = M.icons.diagnostics.Error,
+  [vim.diagnostic.severity.WARN] = M.icons.diagnostics.Warn,
+  [vim.diagnostic.severity.INFO] = M.icons.diagnostics.Info,
+  [vim.diagnostic.severity.HINT] = M.icons.diagnostics.Hint,
+}
+
 return M
