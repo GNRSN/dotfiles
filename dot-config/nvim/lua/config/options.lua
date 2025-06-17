@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-require("config.diagnostic")
+require("config.diagnostic").reset()
 
 local opt = vim.opt -- for conciseness
 

@@ -58,6 +58,25 @@ return {
           diagnostic = vim.diagnostic.get_next({ severity = { min = vim.diagnostic.severity.WARN } }),
         })
       end, opts)
+
+      opts.desc = "Line diagnostic"
+      keymap.set("n", "<leader>cd", function()
+        vim.diagnostic.config({
+          virtual_lines = require("config.diagnostic").virtual_lines_config,
+          virtual_text = false,
+        })
+
+        vim.api.nvim_create_autocmd("CursorMoved", {
+          once = true,
+          group = vim.api.nvim_create_augroup("line-diagnostics", { clear = true }),
+          callback = function()
+            vim.diagnostic.config({
+              virtual_lines = false,
+              virtual_text = require("config.diagnostic").virtual_text_config,
+            })
+          end,
+        })
+      end, opts)
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
