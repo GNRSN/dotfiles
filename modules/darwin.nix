@@ -98,6 +98,8 @@
     "element"
     # Figma
     "figma"
+    # 2.5% global usage but still needed to validate UI
+    "firefox"
     # Keyboard remapping
     "hhkb"
     # For frontend development
