@@ -21,6 +21,8 @@ return {
     config = function()
       local tsserver_path = get_ts_server_path()
 
+      local api = require("typescript-tools.api")
+
       require("typescript-tools").setup({
         on_attach = function(client, bufnr)
           require("twoslash-queries").attach(client, bufnr)
@@ -45,6 +47,10 @@ return {
           --   vim.notify("custom textDocument/publishDiagnostics handler")
           --   vim.notify(vim.inspect(result))
           -- end,
+          ["textDocument/publishDiagnostics"] = api.filter_diagnostics(
+            -- Ignore "Merge conflict marker encountered"
+            { 1185 }
+          ),
         },
       })
     end,
