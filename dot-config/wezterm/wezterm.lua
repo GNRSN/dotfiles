@@ -116,10 +116,24 @@ function process_basename(s)
   return string.gsub(s, "(.*[/\\])(.*)", "%2")
 end
 
-local function is_zsh(pane)
+local SCROLLABLE_WHITE_LIST = {
+  "zsh",
+  "node", -- e.g. vitest watch
+}
+
+local function is_scrollable_process(pane)
   local process_name = process_basename(pane:get_foreground_process_name())
+  -- Outbuts into debug log so its easy to check process name and add to whitelist
   wez.log_info("process_name: " .. process_name)
-  return process_name == "zsh"
+
+  for _, whitelisted_process in ipairs(SCROLLABLE_WHITE_LIST) do
+    if process_name == whitelisted_process then
+      wez.log_info("scrollable process: " .. whitelisted_process)
+      return true
+    end
+  end
+
+  return false
 end
 
 ---@param opts {key: string, mods?: string, condition: function, action_spec: table}
@@ -190,7 +204,7 @@ config.keys = {
   conditional_action({
     key = "u",
     mods = "CTRL",
-    condition = is_zsh,
+    condition = is_scrollable_process,
     action_spec = {
       ScrollByPage = -0.3,
     },
@@ -198,7 +212,7 @@ config.keys = {
   conditional_action({
     key = "d",
     mods = "CTRL",
-    condition = is_zsh,
+    condition = is_scrollable_process,
     action_spec = {
       ScrollByPage = 0.3,
     },
