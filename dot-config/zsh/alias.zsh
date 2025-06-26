@@ -7,6 +7,7 @@ alias nv=nvim
 alias pn=pnpm
 alias px=pnpx
 alias pt="pnpm turbo"
+alias pi="pnpm dlx @antfu/nip"
 alias l='eza -l'
 alias tree='eza -T'
 alias nvide="neovide --frame=transparent --title-hidden"
