@@ -5,6 +5,8 @@
 }:
 { pkgs, ... }:
 {
+  system.primaryUser = "gnrsn";
+
   environment.systemPackages = with pkgs; [
     # Manage nix-envs based on directory
     direnv
