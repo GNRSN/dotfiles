@@ -104,6 +104,8 @@
     "firefox"
     # Keyboard remapping
     "hhkb"
+    # Alternate terminal
+    "ghostty"
     # For frontend development
     "google-chrome"
     # Modern Keepass UI
