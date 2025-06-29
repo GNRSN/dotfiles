@@ -79,6 +79,8 @@
     pkgs.jq
     # jq TUI playground
     pkgs.jqp
+    # Git compatible vcs
+    pkgs.jujutsu
     # Git TUI
     pkgs.lazygit
     # Mongodb community edition (for local development)

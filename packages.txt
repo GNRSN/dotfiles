@@ -25,6 +25,7 @@ JankyBorders-1.7.0
 jq-1.8.0-bin
 jq-1.8.0-man
 jqp-0.7.0
+jujutsu-0.30.0
 lazygit-0.52.0
 man-db-2.13.1
 mongodb-ce-8.0.4
