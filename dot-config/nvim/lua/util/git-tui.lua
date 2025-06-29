@@ -8,18 +8,7 @@ function M.utils.refresh_git()
   neo_tree_events.fire_event(neo_tree_events.GIT_EVENT)
 end
 
-local base_config = {
-  cmd = "lazygit",
-  dir = "git_dir",
-  direction = "float",
-  float_opts = {
-    border = "none",
-  },
-  -- function to run on opening the terminal
-  on_open = function(term)
-    vim.cmd("startinsert!")
-    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-  end,
+local win_options = {
   -- function to run on closing the terminal
   on_close = function(term)
     vim.cmd("startinsert!")
@@ -34,10 +23,15 @@ function M.utils.lazygit_smart_open(options)
 
   if project_uses_graphite or opts.force_graphite then
     Snacks.terminal(
-      "lazygit --use-config-file \"$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml\""
+      "lazygit --use-config-file \"$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml\"",
+      {
+        win = win_options,
+      }
     )
   else
-    Snacks.terminal("lazygit")
+    Snacks.terminal("lazygit", {
+      win = win_options,
+    })
   end
 end
 
