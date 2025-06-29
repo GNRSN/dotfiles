@@ -223,3 +223,7 @@ source "$ZDOTDIR/alias.zsh"
 # DOC: ...must be added after compinit is called
 eval "$(zoxide init zsh --cmd cd)"
 
+# Load carapace automatic shell completion
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)

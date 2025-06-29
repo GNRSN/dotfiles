@@ -44,6 +44,8 @@
     # Logs parser util, nixpkgs only had the rust port which is not feature complete but should suffice
     # NOTE: For work
     pkgs.bunyan-rs
+    # Shell completion generator
+    pkgs.carapace
     # GNU utils, MacOS only ships with a subset + keep versions fresh
     pkgs.coreutils
     # Better git diff visualisation, usable by e.g. lazygit as well
