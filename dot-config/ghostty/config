@@ -21,6 +21,7 @@ keybind = ctrl+alt+k=resize_split:up,10
 keybind = ctrl+alt+l=resize_split:right,10
 
 
-# Won't work until ghostty 1.2
+# Use https://enchanted.games/app/colour-converter/ to convert colours
+# NOTE: Won't work until ghostty 1.2
 # custom-shader = shaders/cursor_smear.glsl
 
