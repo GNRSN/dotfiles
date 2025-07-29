@@ -108,6 +108,8 @@
     "ghostty"
     # For frontend development
     "google-chrome"
+    # Allows automation for dev tasks
+    "google-chrome@canary"
     # Modern Keepass UI
     "keepassxc"
     # Mongo DB gui/studio
