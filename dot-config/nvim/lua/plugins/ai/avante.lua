@@ -41,8 +41,8 @@ return {
           mode = { "n", "v" },
         },
 
-        { "<leader>aC", "<cmd>AvanteClear<cr>", desc = "Avante Clear" },
-        { "<leader>aR", "<cmd>AvanteRefresh<cr>", desc = "Avante Refresh" },
+        { "<leader>ax", "<cmd>AvanteStop<cr>", desc = "Avante Stop" },
+        { "<leader>ar", "<cmd>AvanteRefresh<cr>", desc = "Avante Refresh" },
       }
       mappings = vim.tbl_filter(function(m)
         return m[1] and #m[1] > 0
