@@ -1,6 +1,10 @@
 return {
   {
     "sphamba/smear-cursor.nvim",
+    cond = function()
+      -- Ghostty has its native cursor smearing
+      return vim.env.TERM ~= "xterm-ghostty"
+    end,
     opts = {
       -- Smear cursor when switching buffers or windows.
       smear_between_buffers = true,
