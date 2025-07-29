@@ -1,11 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 
 disableStartupPopups: true
-
 notARepository: skip
-
 promptToReturnFromSubprocess: false
-
 gui:
   nerdFontsVersion: "3"
   skipStashWarning: true
@@ -29,12 +26,10 @@ gui:
       - ⠇
       - ⠏
   statusPanelView: allBranchesLog
-
 git:
   disableForcePushing: true
   paging:
     externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off --tab-width=2
-
 # TODO: Disable tab/shift tab to cycle module.
 keybinding:
   universal:
@@ -43,21 +38,18 @@ keybinding:
     pullFiles: <disabled>
     # This opens on <c-p> which I find annoying since I also use that to page
     createPatchOptionsMenu: <disabled>
-
     prevBlock: <disabled>
     nextBlock: <disabled>
     prevBlock-alt: <disabled>
     nextBlock-alt: <disabled>
     prevBlock-alt2: <disabled>
     nextBlock-alt2: <disabled>
-
     prevTab: h
     nextTab: l
-
 customCommands:
   - key: "P"
     description: "Push a specific commit (and any preceding)"
     command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
     context: "commits"
     loadingText: "Pushing commit..."
-    stream: true
+    output: log
