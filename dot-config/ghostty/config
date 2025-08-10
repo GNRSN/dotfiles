@@ -1,4 +1,4 @@
-theme = G+Dark
+theme = Dark+
 font-family = Hack Nerd Font Mono
 
 keybind = cmd+w=close_surface
