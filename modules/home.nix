@@ -110,11 +110,12 @@
     # Libsql, better sqlite
     # NOTE: sqld is libsql including some extras
     sqld_pkgs.sqld
-
     # Turso cli
     pkgs.turso-cli
     # Cli file manager
     pkgs.yazi
+    # Terminal multiplexer, required for ghostty since its keybinding functionality as well as tabs sucks
+    pkgs.zellij
     # Better cd
     pkgs.zoxide
 

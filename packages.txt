@@ -46,4 +46,5 @@ stow-2.4.1
 turso-cli-1.0.11
 yarn-1.22.22
 yazi-25.5.31
+zellij-0.42.2
 zoxide-0.9.8

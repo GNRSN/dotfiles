@@ -49,3 +49,6 @@ export NEOVIDE_TITLE_HIDDEN=1
 # Don't open file in separate tab
 export NEOVIDE_TABS=0
 
+
+# Load env for work
+source $ZDOTDIR/work.zsh

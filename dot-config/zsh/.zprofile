@@ -1,9 +1,7 @@
+# REVIEW: .zprofile doesn't get sourced in multiplexers, should I move all of this to .zshrc?
 
 # Load homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Load env for work
-source $ZDOTDIR/work.zsh
 
 # config pnpm
 export PNPM_HOME="$HOME/Library/pnpm"

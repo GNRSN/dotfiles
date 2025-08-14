@@ -1,27 +1,33 @@
 theme = Dark+
 font-family = Hack Nerd Font Mono
+window-colorspace = display-p3
 
-keybind = cmd+w=close_surface
 keybind = cmd+r=reload_config
 
 keybind = unconsumed:ctrl+u=scroll_page_fractional:-0.5
 keybind = unconsumed:ctrl+d=scroll_page_fractional:0.5
 
-# REVIEW: How to passthrough nvim
-keybind = ctrl+h=goto_split:left
-keybind = ctrl+j=goto_split:down
-keybind = ctrl+k=goto_split:up
-keybind = ctrl+l=goto_split:right
-
-keybind = cmd+m=toggle_split_zoom
-
-keybind = ctrl+alt+h=resize_split:left,10
-keybind = ctrl+alt+j=resize_split:down,10
-keybind = ctrl+alt+k=resize_split:up,10
-keybind = ctrl+alt+l=resize_split:right,10
-
+# I bind these through terminal multiplexer instead
+#
+# REASON:
+# 1. Ghostty doesn't doesn't have conditionals that allow me to have vimish keybindings outside vim
+# without interferring with vim
+# 2. Ghostty uses macos native tabs which does not work with my current window manager (Aerospace)
+#
+keybind = cmd+d=unbind
+keybind = cmd+shift+d=unbind
+keybind = cmd+w=unbind
+keybind = cmd+t=unbind
+keybind = cmd+1=unbind
+keybind = cmd+2=unbind
+keybind = cmd+3=unbind
+keybind = cmd+4=unbind
+keybind = cmd+5=unbind
+keybind = cmd+6=unbind
+keybind = cmd+7=unbind
+keybind = cmd+8=unbind
+keybind = cmd+9=unbind
 
 # Use https://enchanted.games/app/colour-converter/ to convert colours
-# NOTE: Won't work until ghostty 1.2
-# custom-shader = shaders/cursor_smear.glsl
-
+# NOTE: Requires nightly, should be stable in v1.2
+custom-shader = shaders/cursor_smear.glsl
