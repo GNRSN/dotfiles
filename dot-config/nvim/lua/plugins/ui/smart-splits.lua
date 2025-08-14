@@ -4,6 +4,7 @@ return {
     "mrjones2014/smart-splits.nvim",
     -- DOC: Lazy loading may cause issues
     lazy = false,
+    cond = vim.env.TERM_PROGRAM == "WezTerm",
     keys = {
       -- moving between splits
       {

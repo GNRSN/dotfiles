@@ -24,6 +24,10 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 ## Source zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+## Autostart a new zellij shell, if not already inside one
+if [ "$TERM_PROGRAM" = "ghostty" ]; then
+  eval "$(zellij setup --generate-auto-start zsh)"
+fi
 
 #   ------
 ### Prompt
