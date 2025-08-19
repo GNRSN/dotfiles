@@ -49,10 +49,6 @@ return {
       end, mappings)
       return vim.list_extend(mappings, keys)
     end,
-    cond = function()
-      -- return not require("util.local-config").is_work_dir()
-      return true
-    end,
     version = false,
     build = "make",
     dependencies = {
@@ -117,6 +113,9 @@ return {
         add_file = "<leader><space>",
         close = { "<Esc>", "q", "<C-q>" },
         close_from_input = { normal = "<C-q>", insert = "<C-q>" },
+      },
+      selection = {
+        hint_display = "none",
       },
       windows = {
         sidebar_header = {
