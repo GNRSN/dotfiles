@@ -105,7 +105,8 @@
     # Keyboard remapping
     "hhkb"
     # Alternate terminal
-    "ghostty"
+    # Disabled because I've built the nightly version instead
+    # "ghostty"
     # For frontend development
     "google-chrome"
     # Allows automation for dev tasks
