@@ -4,7 +4,9 @@ return {
     "mrjones2014/smart-splits.nvim",
     -- DOC: Lazy loading may cause issues
     lazy = false,
-    cond = vim.env.TERM_PROGRAM == "WezTerm",
+    -- cond = vim.env.TERM_PROGRAM == "WezTerm",
+    -- TODO: at_edge stop doesn't seem to be working in wezterm? But it works in zellij-nav.nvim
+    cond = vim.env.TERM_PROGRAM == "WezTerm" or vim.env.ZELLIJ == "0",
     keys = {
       -- moving between splits
       {
@@ -82,7 +84,6 @@ return {
       -- vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
     },
     opts = {
-      -- I wasn't really a fan of wrapping
       at_edge = "stop",
 
       ignored_filetypes = {
