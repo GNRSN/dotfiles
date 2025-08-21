@@ -207,8 +207,8 @@ alt-esc = ['exec-and-forget']
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 # NOTE: Mode changes has to be proppagated "manually" to sketchybar
 # until this is implemented https://github.com/nikitabobko/AeroSpace/issues/390
-alt-shift-esc = ['mode service', 'exec-and-forget sketchybar --add item service q --set service icon=[S] service background.drawing=off icon.color=0xffffffff']
-ctrl-shift-space = ['mode service', 'exec-and-forget sketchybar --add item service q --set service icon=[S] service background.drawing=off icon.color=0xffffffff']
+alt-shift-esc = ['mode service', 'exec-and-forget sketchybar --add item service q --set service icon=[SERVICE-MODE] service background.drawing=off icon.color=0xffffffff']
+ctrl-shift-space = ['mode service', 'exec-and-forget sketchybar --add item service q --set service icon=[SERVICE-MODE] service background.drawing=off icon.color=0xffffffff']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
