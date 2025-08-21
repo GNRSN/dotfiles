@@ -344,7 +344,7 @@ load_plugins {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "dracula"
+theme "dark_plus"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -363,8 +363,10 @@ default_mode "locked"
 // The name of the default layout to load on startup
 // Default: "default"
 // 
-// default_layout "compact"
- 
+default_layout "basic-layout"
+
+simplified_ui true
+
 // The folder in which Zellij will look for layouts
 // (Requires restart)
 // 
