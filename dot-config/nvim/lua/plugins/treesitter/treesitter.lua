@@ -55,6 +55,7 @@ return {
         "jsdoc",
         "json",
         "jsonc",
+        "kdl", -- Kotlin Data Language, used to config zellij
         "lua",
         "luadoc",
         "luap", -- Lua patterns
