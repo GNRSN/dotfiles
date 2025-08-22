@@ -5,7 +5,7 @@
 customCommands:
   - key: c
     description: Graphite create stack
-    command: 'graphite create -m "{{index .PromptResponses 0}}"'
+    command: gt create -m "{{index .PromptResponses 0}}"
     # I can't find how to trigger this while in the staging view
     context: files
     prompts:
@@ -16,11 +16,25 @@ customCommands:
 
   - key: P
     description: Graphite submit stack
-    command: "gt submit --stack --web=false --no-interactive --publish"
+    command: gt submit --stack --web=false --no-interactive --publish
     context: global
     loadingText: "submitting stack..."
 
   - key: A
     description: Graphite modify commit
-    command: graphite modify
+    command: gt modify
+    context: commits, files
+
+  - key: f
+    description: Graphite sync
+    command: gt sync --no-interactive --restack
     context: commits
+
+  - key: r
+    description: Graphite rename commit
+    command: gt modify -m "{{index .PromptResponses 0}}"
+    context: commits, files
+    prompts:
+      - type: input
+        title: "Commit Message"
+        initialValue: ""
