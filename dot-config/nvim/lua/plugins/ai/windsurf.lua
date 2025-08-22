@@ -5,6 +5,7 @@ local blacklist_ft = {
   "AvanteInput",
   "AvantePromptInput",
   "sh",
+  "fyler",
 }
 
 return {
