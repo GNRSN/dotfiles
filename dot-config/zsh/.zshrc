@@ -26,7 +26,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 ## Autostart a new zellij shell, if not already inside one
 if [ "$TERM_PROGRAM" = "ghostty" ]; then
-  eval "$(zellij setup --generate-auto-start zsh)"
+  eval "zellij -l welcome"
 fi
 
 #   ------
