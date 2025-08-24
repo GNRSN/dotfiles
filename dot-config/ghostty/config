@@ -13,7 +13,7 @@ keybind = unconsumed:ctrl+d=scroll_page_fractional:0.5
 # 1. Ghostty doesn't doesn't have conditionals that allow me to have vimish keybindings outside vim
 # without interferring with vim
 # 2. Ghostty uses macos native tabs which does not work with my current window manager (Aerospace)
-#
+
 keybind = cmd+d=unbind
 keybind = cmd+shift+d=unbind
 keybind = cmd+w=unbind
@@ -27,6 +27,12 @@ keybind = cmd+6=unbind
 keybind = cmd+7=unbind
 keybind = cmd+8=unbind
 keybind = cmd+9=unbind
+
+# This allows us to hide the titlebar
+keybind = cmd+q=close_window
+
+# Hides macos titlebar but then there is no close button
+macos-titlebar-style = hidden
 
 # Use https://enchanted.games/app/colour-converter/ to convert colours
 # NOTE: Requires nightly, should be stable in v1.2
