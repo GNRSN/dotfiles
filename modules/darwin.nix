@@ -88,6 +88,8 @@
     "arc"
     # Still the best AI(?)
     "chatgpt"
+    # Claude Code UI
+    "claudia"
     # I want to try out the experience
     "cursor"
     # Translation
