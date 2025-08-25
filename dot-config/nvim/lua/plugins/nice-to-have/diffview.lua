@@ -7,9 +7,11 @@ return {
     },
     cmd = {
       "DiffviewOpen",
+      "DiffviewFileHistory",
     },
     keys = {
-      { "<leader>gd", ":DiffviewOpen<cr>", mode = "n", desc = "Git diff view" },
+      { "<leader>gd", "<cmd>DiffviewOpen<CR>", mode = "n", desc = "Git diff view" },
+      { "<leader>gh", "<cmd>DiffviewFileHistory %<CR>", mode = "n", desc = "Git diff view (file history)" },
     },
     config = function()
       require("diffview").setup({
