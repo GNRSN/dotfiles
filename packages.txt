@@ -1,4 +1,4 @@
-aider-chat-0.85.2
+aider-chat-0.86.1
 bat-0.25.0
 btop-1.4.4
 bunyan-rs-0.1.9
@@ -9,15 +9,15 @@ difftastic-0.64.0
 eza-0.23.0
 eza-0.23.0-man
 fd-10.2.0
-fzf-0.65.0
-fzf-0.65.0-man
+fzf-0.65.1
+fzf-0.65.1-man
 gh-2.76.2
 gh-dash-4.16.1
 git-2.50.1
 gitleaks-8.28.0
 glow-2.1.1
 gnupg-2.4.8
-go-1.23.11
+go-1.23.12
 graphite-cli-1.6.7
 hm-session-vars.sh
 home-configuration-reference-manpage
@@ -26,8 +26,8 @@ JankyBorders-1.7.0
 jq-1.8.1-bin
 jq-1.8.1-man
 jqp-0.7.0
-jujutsu-0.31.0
-lazygit-0.54.0
+jujutsu-0.32.0
+lazygit-0.54.2
 man-db-2.13.1
 mongodb-ce-8.0.12
 mongosh-2.5.6
@@ -38,7 +38,7 @@ nodejs-22.17.0
 oh-my-posh-26.8.0
 password-store-1.7.4
 pnpm-10.14.0
-pre-commit-4.2.0
+pre-commit-4.3.0
 ripgrep-14.1.1
 rustup-1.28.2
 sqld-0.24.18
@@ -46,5 +46,5 @@ stow-2.4.1
 turso-cli-1.0.11
 yarn-1.22.22
 yazi-25.5.31
-zellij-0.42.2
+zellij-0.43.1
 zoxide-0.9.8
