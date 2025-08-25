@@ -2,6 +2,14 @@ keybinds clear-defaults=true {
     shared {
         bind "Super g" { SwitchToMode "normal"; }
 
+        bind "Super o" { 
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "locked"
+        }
+
         bind "Super d" { NewPane; }
         bind "Super Shift d" { NewPane "down"; }
 
