@@ -67,6 +67,7 @@ return {
         -- Formatters & linters
         "black", -- python formatter
         "isort", -- python formatter
+        "kdlfmt", -- kdl formatter
         "prettierd", -- js + more formatter
         "pylint", -- python linter
         "shfmt", -- shell formatter

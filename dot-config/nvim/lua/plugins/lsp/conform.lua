@@ -28,6 +28,7 @@ return {
         nix = { "nixfmt" },
         sh = { "shfmt" },
         conf = { "shfmt" },
+        kdl = { "kdlfmt" },
       },
       format_on_save = function()
         if vim.g.format_on_save then
