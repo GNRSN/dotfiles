@@ -191,7 +191,7 @@ keybinds clear-defaults=true {
     }
     tab {
         bind "left" {
-            GoToPreviousTab
+            MoveTab "left"
         }
         bind "down" {
             GoToNextTab
@@ -200,7 +200,7 @@ keybinds clear-defaults=true {
             GoToPreviousTab
         }
         bind "right" {
-            GoToNextTab
+            MoveTab "right"
         }
         bind "1" {
             GoToTab 1
