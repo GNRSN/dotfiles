@@ -12,7 +12,7 @@ else
     require("colorscheme").load()
   end)
 
-  if require("neovide").ctx_is_neovide() then
+  if require("util.ctx").get_is_neovide() then
     require("neovide").setup()
   end
 

@@ -4,10 +4,6 @@ local config = {
 
 local M = {}
 
-function M.ctx_is_neovide()
-  return (vim.g.neovide and true) or false
-end
-
 function M.setup()
   local palette = require("colorscheme.palette")
 

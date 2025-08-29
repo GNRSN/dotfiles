@@ -706,9 +706,11 @@ function M.setup()
     TreesitterContext = { bg = nil },
     TreesitterContextLineNumber = { fg = palette.fade },
     TreesitterContextSeparator = { fg = palette.white },
-    TreesitterContextBottom = require("neovide").ctx_is_neovide() and { underline = true, sp = palette.white } or {},
-    TreesitterContextLineNumberBottom = require("neovide").ctx_is_neovide()
-        and { underline = true, sp = palette.white }
+    TreesitterContextBottom = require("util.ctx").supports_underline_separator()
+        and { underline = true, sp = palette.text_ignored }
+      or {},
+    TreesitterContextLineNumberBottom = require("util.ctx").supports_underline_separator()
+        and { underline = true, sp = palette.text_ignored }
       or {},
 
     -- Visual multi
