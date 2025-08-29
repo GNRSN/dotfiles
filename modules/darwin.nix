@@ -126,6 +126,8 @@
     "obsidian"
     # Docker desktop alternative
     "orbstack"
+    # iOS emulation
+    "playcover-community"
     # MacOS command palette (spotlight replacement)
     "raycast"
     # MacOS icon set
