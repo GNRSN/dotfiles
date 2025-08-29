@@ -11,25 +11,26 @@ local DEFAULT_CONFIG = {
   transparent_bg = false,
 }
 
-local function apply_term_colors(colors)
-  g.terminal_color_0 = colors.black
-  g.terminal_color_1 = colors.red
-  g.terminal_color_2 = colors.green
-  g.terminal_color_3 = colors.yellow
-  g.terminal_color_4 = colors.purple
-  g.terminal_color_5 = colors.pink
-  g.terminal_color_6 = colors.cyan
-  g.terminal_color_7 = colors.white
-  g.terminal_color_8 = colors.selection
-  g.terminal_color_9 = colors.bright_red
-  g.terminal_color_10 = colors.bright_green
-  g.terminal_color_11 = colors.bright_yellow
-  g.terminal_color_12 = colors.bright_blue
-  g.terminal_color_13 = colors.bright_magenta
-  g.terminal_color_14 = colors.bright_cyan
-  g.terminal_color_15 = colors.bright_white
-  g.terminal_color_background = colors.bg
-  g.terminal_color_foreground = colors.fg
+local function apply_term_colors()
+  local palette = require("colorscheme.palette")
+  g.terminal_color_0 = palette.black
+  g.terminal_color_1 = palette.red
+  g.terminal_color_2 = palette.green
+  g.terminal_color_3 = palette.yellow
+  g.terminal_color_4 = palette.purple
+  g.terminal_color_5 = palette.pink
+  g.terminal_color_6 = palette.cyan
+  g.terminal_color_7 = palette.white
+  g.terminal_color_8 = palette.fade
+  g.terminal_color_9 = palette.bright_red
+  g.terminal_color_10 = palette.bright_green
+  g.terminal_color_11 = palette.bright_yellow
+  g.terminal_color_12 = palette.bright_blue
+  g.terminal_color_13 = palette.bright_magenta
+  g.terminal_color_14 = palette.bright_cyan
+  g.terminal_color_15 = palette.bright_white
+  g.terminal_color_background = palette.bg
+  g.terminal_color_foreground = palette.fg
 end
 
 ---apply colorscheme
