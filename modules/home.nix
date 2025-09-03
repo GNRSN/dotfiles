@@ -26,6 +26,7 @@
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (pkgs.lib.getName pkg) [
+      "claude-code"
       "graphite-cli"
       "mongodb-ce"
       "mongosh"
@@ -46,6 +47,8 @@
     pkgs.bunyan-rs
     # Shell completion generator
     pkgs.carapace
+    # Claude Cli
+    pkgs.claude-code
     # GNU utils, MacOS only ships with a subset + keep versions fresh
     pkgs.coreutils
     # Better git diff visualisation, usable by e.g. lazygit as well
