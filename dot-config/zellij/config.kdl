@@ -3,6 +3,9 @@ keybinds clear-defaults=true {
         bind "Super g" {
             SwitchToMode "normal"
         }
+        bind "Super m" {
+            ToggleFocusFullscreen
+        }
         bind "Super o" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
