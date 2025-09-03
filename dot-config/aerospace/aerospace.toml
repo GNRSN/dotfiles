@@ -1,8 +1,3 @@
-# LATER:
-# - Explore routing apps to workspaces with conditions
-#   see: https://nikitabobko.github.io/AeroSpace/guide#on-window-detected-callback
-#
-
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
@@ -132,14 +127,7 @@ alt-period = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'
-# alt-2 = 'workspace 2'
-# alt-3 = 'workspace 3'
-# alt-4 = 'workspace 4'
-# alt-5 = 'workspace 5'
-# alt-6 = 'workspace 6'
-# alt-7 = 'workspace 7'
-# alt-8 = 'workspace 8'
-# alt-9 = 'workspace 9'
+# Since alt+(2-9) are used on EU keyboards we avoid occupying those keys
 alt-a = 'workspace A'
 alt-b = 'workspace B'
 alt-c = 'workspace C'
@@ -165,14 +153,6 @@ alt-z = 'workspace Z'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
-# alt-shift-2 = 'move-node-to-workspace 2'
-# alt-shift-3 = 'move-node-to-workspace 3'
-# alt-shift-4 = 'move-node-to-workspace 4'
-# alt-shift-5 = 'move-node-to-workspace 5'
-# alt-shift-6 = 'move-node-to-workspace 6'
-# alt-shift-7 = 'move-node-to-workspace 7'
-# alt-shift-8 = 'move-node-to-workspace 8'
-# alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-a = 'move-node-to-workspace A'
 alt-shift-b = 'move-node-to-workspace B'
 alt-shift-c = 'move-node-to-workspace C'
@@ -201,7 +181,7 @@ alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-# Close notificatons 
+# TODO: Close notificatons 
 alt-esc = ['exec-and-forget']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
@@ -234,38 +214,43 @@ alt-shift-l = ['join-with right', 'mode main', 'exec-and-forget sketchybar --rem
 
 # NOTE: Aerospace cli offers util `aerospace list-apps` for finding ids
 
-# Move Chrome to C
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace C']
 
-# Move Figma to C
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace F']
 
-# Move Obsidian to O
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace O']
 
-# Move Slack to S
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace S']
 
-# Move Remainders to R
 [[on-window-detected]]
 if.app-id = 'com.apple.reminders'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace R']
 
-# Move Chat GPT to Q
 [[on-window-detected]]
 if.app-id = 'com.openai.chat'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace Q']
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+if.during-aerospace-startup = true
+run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
+if.app-id = 'ea.browser.deta.surf'
+if.during-aerospace-startup = true
+run = ['move-node-to-workspace Z']
+
