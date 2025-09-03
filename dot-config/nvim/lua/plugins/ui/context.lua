@@ -9,7 +9,7 @@ return {
     },
     config = function()
       local separator = nil
-      if not require("neovide").ctx_is_neovide() then
+      if not require("util.ctx").supports_underline_separator() then
         separator = "─"
       end
 
