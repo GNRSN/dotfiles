@@ -163,6 +163,9 @@
   # - Remove keyboard shortcuts for mission control
   # - Mission control group windows by application (defaults write com.apple.dock expose-group-apps -bool true)
   # - Disable displays have separate spaces (defaults write com.apple.spaces spans-displays -bool true)
+  # - Add shortcut with never-use keybind for "Minimize" to get rid of default cmd+m keybinding, see this comment from Reddit
+  #   System Settings -> Accessibility -> Keyboard shortcuts -> App shortcuts -> click plus(+) ->
+  #   Application : All Applications, Menu title : Minimize, Keyboard shortcut : any stupid key you won't use. (I set it as ctrl option command m)
 
   # Control key repeat speed
   # Values based on https://apple.stackexchange.com/questions/261163/default-value-for-nsglobaldomain-initialkeyrepeat
