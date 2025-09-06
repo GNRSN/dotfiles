@@ -3,6 +3,7 @@ local BLACKLIST_FT = {
   "spectre_panel",
   "DiffviewFiles",
   "Avante",
+  "AvanteTodos",
   "AvanteSelectedFiles",
   "aerial",
   "neotest-summary",
