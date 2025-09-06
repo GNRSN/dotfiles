@@ -1,6 +1,7 @@
 local BLACKLIST_FT = {
   "aerial",
   "Avante",
+  "AvanteTodos",
   "AvanteInput",
   "AvanteSelectedFiles",
   "DiffviewFiles",
