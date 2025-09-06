@@ -196,6 +196,18 @@ return {
               end,
             })
             :map("<leader>uf")
+          Snacks.toggle
+            .new({
+              name = "Autosession",
+              get = function()
+                return require("auto-session.config").auto_save
+              end,
+              set = function(state)
+                -- Very weird naming but this is actually a toggle
+                require("auto-session").DisableAutoSave(state)
+              end,
+            })
+            :map("<leader>us")
 
           -- Add lsp rename callback for Oil
           vim.api.nvim_create_autocmd("User", {
