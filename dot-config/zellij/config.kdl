@@ -9,7 +9,8 @@ keybinds clear-defaults=true {
         bind "Super o" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
-                move_to_focused_tab true
+ // REVIEW: I'm sometimes moving to the wrong tab when its opened in the current, is this causing it?
+ // move_to_focused_tab true
             }
             SwitchToMode "locked"
         }
@@ -471,59 +472,6 @@ keybinds clear-defaults=true {
             SwitchToMode "locked"
         }
     }
-    shared_among "normal" "locked" {
-        bind "Alt left" {
-            MoveFocusOrTab "left"
-        }
-        bind "Alt down" {
-            MoveFocus "down"
-        }
-        bind "Alt up" {
-            MoveFocus "up"
-        }
-        bind "Alt right" {
-            MoveFocusOrTab "right"
-        }
-        bind "Alt +" {
-            Resize "Increase"
-        }
-        bind "Alt -" {
-            Resize "Decrease"
-        }
-        bind "Alt =" {
-            Resize "Increase"
-        }
-        bind "Alt [" {
-            PreviousSwapLayout
-        }
-        bind "Alt ]" {
-            NextSwapLayout
-        }
-        bind "Alt f" {
-            ToggleFloatingPanes
-        }
-        bind "Alt h" {
-            MoveFocusOrTab "left"
-        }
-        bind "Alt i" {
-            MoveTab "left"
-        }
-        bind "Alt j" {
-            MoveFocus "down"
-        }
-        bind "Alt k" {
-            MoveFocus "up"
-        }
-        bind "Alt l" {
-            MoveFocusOrTab "right"
-        }
-        bind "Alt n" {
-            NewPane
-        }
-        bind "Alt o" {
-            MoveTab "right"
-        }
-    }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" {
             SwitchToMode "locked"
@@ -573,12 +521,6 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "scroll" "search" {
-        bind "PageDown" {
-            PageScrollDown
-        }
-        bind "PageUp" {
-            PageScrollUp
-        }
         bind "left" {
             PageScrollUp
         }
@@ -591,8 +533,11 @@ keybinds clear-defaults=true {
         bind "right" {
             PageScrollDown
         }
-        bind "Ctrl b" {
-            PageScrollUp
+        bind "Ctrl d" {
+            HalfPageScrollDown
+        }
+        bind "Ctrl u" {
+            HalfPageScrollUp
         }
         bind "Ctrl c" {
             ScrollToBottom
@@ -600,9 +545,6 @@ keybinds clear-defaults=true {
         }
         bind "d" {
             HalfPageScrollDown
-        }
-        bind "Ctrl f" {
-            PageScrollDown
         }
         bind "h" {
             PageScrollUp
@@ -697,7 +639,7 @@ default_mode "locked"
 // The name of the default layout to load on startup
 // Default: "default"
 //
-default_layout "basic-layout"
+default_layout "zjstatus"
 simplified_ui true
 // The folder in which Zellij will look for layouts
 // (Requires restart)
