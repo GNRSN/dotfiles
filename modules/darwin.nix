@@ -28,7 +28,8 @@
   # programs.direnv.enable = true;
 
   # Set the version of nix we want to use
-  nix.package = pkgs.nixVersions.nix_2_24;
+  # REVIEW: Why are we not using unstable?
+  nix.package = pkgs.nixVersions.nix_2_28;
 
   # Write directly into the nix.conf, try to replicate what NixInstaller left there
   # Some discrepancies between installer and NixDarwin
