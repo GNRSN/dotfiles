@@ -1,14 +1,22 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPre", "BufNewFile" },
+    -- Stable branch, currently beeing rewritten on main
+    -- New version requires tree-sitter cli to be installed
+    -- TODO: Migrate to main
+    branch = "master",
+    build = ":TSUpdate",
+    -- DOC: This plugin does not support lazy-loading
+    lazy = false,
     dependencies = {
       -- Smarter % matching lua keywords denoting scopes
       {
+        -- TODO: has started adding virtual text when hovering return or => in typescript
         "andymass/vim-matchup",
         init = function()
           -- Disables this feature, it flickers more than it is useful
           vim.g.matchup_matchparen_offscreen = {}
+          -- vim.g.matchup_matchparen_enabled = 0
         end,
       },
       -- Automatically inserts "end" keyword to close scopes in languages like lua
@@ -16,7 +24,6 @@ return {
         "RRethy/nvim-treesitter-endwise",
       },
     },
-    build = ":TSUpdate",
     opts = { -- enable syntax highlighting
       highlight = {
         enable = true,
