@@ -18,6 +18,12 @@ local BLACKLIST_FT = {
   "Trouble",
   "trouble",
   "undotree",
+  "dapui_scopes",
+  "dapui_breakpoints",
+  "dapui_stacks",
+  "dapui_watches",
+  "dapui_console",
+  "dapui_repl",
 }
 
 return {
@@ -41,13 +47,14 @@ return {
           {
             sign = {
               name = {
+                "DapBreakpointRejected",
+                "DapBreakpoint",
+                "DapBreakpointCondition",
+                -- REVIEW: I've found that diagnostic signs are not prioritized in diagnostic level
+                -- ^ Still relevant?
                 "DiagnosticSignError",
                 "DiagnosticSignWarn",
                 "DiagnosticSignInfo",
-                -- REVIEW: I've found that diagnostic signs are not prioritized in diagnostic level, leading to hints occasionally covering errors
-                -- hiding hints is a workaround for now
-
-                -- "DiagnosticSignHint",
               },
               condition = { true },
               maxwidth = 1,
@@ -62,11 +69,11 @@ return {
             condition = { true, builtin.not_empty },
             click = "v:lua.ScLa",
           },
-          {
-            -- REVIEW: Do not know what this does, folds?
-            text = { "%C" },
-            click = "v:lua.ScFa",
-          },
+          -- {
+          --   -- REVIEW: Do not know what this does, folds?
+          --   text = { "%C" },
+          --   click = "v:lua.ScFa",
+          -- },
           {
             -- git sign + diagnostic
             -- text = { "%s" },
