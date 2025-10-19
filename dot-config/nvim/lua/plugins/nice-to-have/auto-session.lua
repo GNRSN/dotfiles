@@ -1,3 +1,16 @@
+local FT_BLACKLIST = {
+  "checkhealth",
+  "help", -- Would like to keep this but it crashes for plugins which are lazy-loaded
+  "neotest-summary",
+  "neotest-output-panel",
+  "dapui_scopes",
+  "dapui_breakpoints",
+  "dapui_stacks",
+  "dapui_watches",
+  "dapui_console",
+  "dapui_repl",
+}
+
 return {
   { -- Session manager
     "rmagatti/auto-session",
@@ -25,12 +38,7 @@ return {
         "snacks_dashboard",
       },
       -- Buffers with matching filetypes will be closed before saving
-      close_filetypes_on_save = {
-        "checkhealth",
-        "help", -- Would like to keep this but it crashes for plugins which are lazy-loaded
-        "neotest-summary",
-        "neotest-output-panel",
-      },
+      close_filetypes_on_save = FT_BLACKLIST,
     },
   },
 }
