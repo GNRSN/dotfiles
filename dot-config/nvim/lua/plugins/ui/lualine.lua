@@ -8,6 +8,12 @@ local BLACKLIST_FT = {
   "aerial",
   "neotest-summary",
   "neotest-output-panel",
+  "dapui_scopes",
+  "dapui_breakpoints",
+  "dapui_stacks",
+  "dapui_watches",
+  "dapui_console",
+  "dapui_repl",
 }
 
 local get_noice_mode = function()
