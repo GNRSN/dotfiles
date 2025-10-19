@@ -1,11 +1,18 @@
 theme = Dark+
 font-family = Hack Nerd Font Mono
 window-colorspace = display-p3
+macos-titlebar-style = hidden
 
+keybind = clear
 keybind = cmd+r=reload_config
+keybind = f12=inspector:toggle
 
-keybind = unconsumed:ctrl+u=scroll_page_fractional:-0.5
-keybind = unconsumed:ctrl+d=scroll_page_fractional:0.5
+# This allows us close windows with titlebar hidden
+keybind = cmd+q=close_window
+
+
+#keybind = unconsumed:ctrl+u=scroll_page_fractional:-0.5
+#keybind = unconsumed:ctrl+d=scroll_page_fractional:0.5
 
 # I bind these through terminal multiplexer instead
 #
@@ -14,10 +21,13 @@ keybind = unconsumed:ctrl+d=scroll_page_fractional:0.5
 # without interferring with vim
 # 2. Ghostty uses macos native tabs which does not work with my current window manager (Aerospace)
 
+# REVIEW: Might no longer be needed after clearing all keybinds?
 keybind = cmd+d=unbind
 keybind = cmd+shift+d=unbind
 keybind = cmd+w=unbind
 keybind = cmd+t=unbind
+keybind = cmd+m=unbind
+
 keybind = cmd+1=unbind
 keybind = cmd+2=unbind
 keybind = cmd+3=unbind
@@ -27,13 +37,6 @@ keybind = cmd+6=unbind
 keybind = cmd+7=unbind
 keybind = cmd+8=unbind
 keybind = cmd+9=unbind
-keybind = cmd+m=unbind
-
-# This allows us to hide the titlebar
-keybind = cmd+q=close_window
-
-# Hides macos titlebar but then there is no close button
-macos-titlebar-style = hidden
 
 # Use https://enchanted.games/app/colour-converter/ to convert colours
 # NOTE: Requires nightly, should be stable in v1.2
