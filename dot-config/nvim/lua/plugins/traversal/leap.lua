@@ -3,6 +3,8 @@ return {
 
   -- easily jump to any location and enhanced f/t motions for Leap
   {
+    -- TODO: Deprecated,
+    -- DOC: To get the same functionality from Leap, see :help leap-ft.
     "ggandor/flit.nvim",
     enabled = true,
     lazy = false,
