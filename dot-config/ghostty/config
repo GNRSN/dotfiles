@@ -10,6 +10,7 @@ keybind = f12=inspector:toggle
 # This allows us close windows with titlebar hidden
 keybind = cmd+q=close_window
 
+keybind = cmd+n=new_window
 
 #keybind = unconsumed:ctrl+u=scroll_page_fractional:-0.5
 #keybind = unconsumed:ctrl+d=scroll_page_fractional:0.5
@@ -38,6 +39,13 @@ keybind = cmd+7=unbind
 keybind = cmd+8=unbind
 keybind = cmd+9=unbind
 
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+
+# REVIEW: Wtf this doesn't behave as I would expect, cmd+ decreases font size and cmd- does nothing
+keybind = cmd+plus=increase_font_size:1.5
+keybind = cmd+minus=decrease_font_size:1.5
+keybind = cmd+0=reset_font_size
+
 # Use https://enchanted.games/app/colour-converter/ to convert colours
-# NOTE: Requires nightly, should be stable in v1.2
 custom-shader = shaders/cursor_smear.glsl
