@@ -12,7 +12,7 @@ return {
       file_types = { "markdown", "Avante" },
       completions = {
         blink = {
-          enabled = vim.g.completion == "blink",
+          enabled = true,
         },
       },
       heading = {

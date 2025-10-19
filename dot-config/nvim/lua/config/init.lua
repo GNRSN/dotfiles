@@ -7,8 +7,6 @@ return {
     -- loading lazy.nvim so that mappings are correct.
     -- This is also a good place to setup other settings (vim.opt)
     require("config.options")
-    ---@type "blink"|"cmp"
-    vim.g.completion = "blink"
     _G.CMP = require("config.CMP")
     require("config.lazy")
     require("config.autocmds")
