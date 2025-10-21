@@ -86,7 +86,10 @@ return {
     -- build = 'cargo build --release',
     -- If you use nix, you can build from source using latest nightly rust with:
     -- build = 'nix run .#build-plugin',
-    event = "InsertEnter",
+    event = {
+      "InsertEnter",
+      "CmdlineEnter",
+    },
 
     opts_extend = {
       "sources.completion.enabled_providers",
@@ -101,15 +104,6 @@ return {
         preset = "none",
         ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
         ["<C-space>"] = { "show", "accept" },
-        --   {
-        --   function(cmp)
-        --     if cmp.is_menu_visible() then
-        --       return cmp.accept()
-        --     else
-        --       return cmp.show()
-        --     end
-        --   end,
-        -- },
         ["<C-p>"] = { "select_prev", "fallback" },
         ["<C-n>"] = { "select_next", "fallback" },
         ["<C-q>"] = { "hide", "fallback" },
