@@ -37,8 +37,10 @@
   # side-by-side = true
   line-numbers = true
   hunk-header-style = omit
-  # Highlight recognized move
-  colorMoved = default
 
 [merge]
   conflictstyle = zdiff3
+
+[diff]
+  # Highlight recognized move
+  colorMoved = dimmed-zebra
