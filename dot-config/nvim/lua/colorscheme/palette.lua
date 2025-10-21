@@ -14,6 +14,7 @@ return {
   purple = "#C586C0",
   cyan = "#8BE9FD",
   pink = "#FF79C6",
+  -- NOTE: Bright colors are also used for terminal colorscheme
   bright_red = "#FF6E6E",
   bright_green = "#69FF94",
   bright_yellow = "#FFFFA5",
