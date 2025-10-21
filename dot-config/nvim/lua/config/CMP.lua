@@ -22,6 +22,8 @@ M.actions = {
   end,
 }
 
+--- REVIEW: Consider if this anything I will ever want to have
+---
 ---@param name "ai_accept"
 ---@param action fun():boolean?
 M.register_action = function(name, action)

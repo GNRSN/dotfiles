@@ -61,11 +61,10 @@ local function get_source_label(ctx)
 end
 
 return {
-  -- Completion
   {
     "saghen/blink.compat",
-    -- use the latest release, via version = '*', if you also use the latest release for blink.cmp
-    version = "*",
+    -- use v2.* for blink.cmp v1.*
+    version = "2.*",
     -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
     lazy = true,
     -- make sure to set opts so that lazy.nvim calls blink.compat's setup
@@ -80,13 +79,13 @@ return {
       { "L3MON4D3/LuaSnip", version = "v2.*" },
       { "Kaiser-Yang/blink-cmp-avante" },
     },
+
     -- use a release tag to download pre-built binaries
-    version = "*",
+    version = "1.*",
     -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     -- build = 'cargo build --release',
     -- If you use nix, you can build from source using latest nightly rust with:
     -- build = 'nix run .#build-plugin',
-
     event = "InsertEnter",
 
     opts_extend = {
@@ -118,6 +117,7 @@ return {
         ["<tab>"] = { "snippet_forward", "fallback" },
         ["<s-tab>"] = { "snippet_backward", "fallback" },
       },
+
       appearance = {
         -- Sets the fallback highlight groups to nvim-cmp's highlight groups
         -- Useful for when your theme doesn't support blink.cmp
@@ -177,29 +177,32 @@ return {
             return not inside_comment_block()
           end,
         },
-        trigger = {
-          -- TODO: Something feels broken here, I don't get lsp suggestions in js objects
-          -- it also doesn't update suggestions as I'm typing
-          -- DOC: set to empty map override default behavior (hiding)
-          show_on_blocked_trigger_characters = {},
-        },
       },
 
+      -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+      --
+      -- See the fuzzy documentation for more information
       fuzzy = {
-        -- TODO: remove emmet guessing react components based on capital letter
-        sorts = {
-          function(a, b)
-            if a.client_name == nil or b.client_name == nil then
-              return
-            end
-            return a.client_name == "emmet_ls"
-          end,
-          -- DOC: (optionally) always prioritize exact matches
-          "exact",
-          -- default sorts
-          "score",
-          "sort_text",
-        },
+        implementation = "prefer_rust_with_warning",
+        -- TODO: Can't use custom lua sort for emmet, consider the implications for emmet usage
+        -- DOC: If you are using the Rust implementation but specify a custom Lua function for sorting,
+        -- the sorting process will fall back to Lua instead of being handled by Rust.
+        -- LATER: remove emmet guessing react components based on capital letter
+        -- sorts = {
+        --   function(a, b)
+        --     if a.client_name == nil or b.client_name == nil then
+        --       return
+        --     end
+        --     return a.client_name == "emmet_ls"
+        --   end,
+        --   -- DOC: (optionally) always prioritize exact matches
+        --   "exact",
+        --   -- default sorts
+        --   "score",
+        --   "sort_text",
+        -- },
       },
 
       signature = {
@@ -279,6 +282,7 @@ return {
         },
       },
     },
+
     ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
     config = function(_, opts)
       -- Disable native completion
@@ -351,7 +355,7 @@ return {
       require("blink.cmp").setup(opts)
     end,
   },
-  -- lazydev
+  -- Lazydev
   {
     "saghen/blink.cmp",
     opts = {
@@ -368,6 +372,7 @@ return {
       },
     },
   },
+  -- Avante
   {
     "saghen/blink.cmp",
     opts = {
