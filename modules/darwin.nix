@@ -109,7 +109,7 @@
     "hhkb"
     # Alternate terminal
     # Disabled because I've built the nightly version instead
-    # "ghostty"
+    "ghostty"
     # For frontend development
     "google-chrome"
     # Allows automation for dev tasks
