@@ -173,7 +173,7 @@ function M.setup()
     ["@property"] = { fg = palette.blue_light },
     ["@constructor"] = { fg = palette.blue_green },
 
-    ["@conditional.ternary"] = { fg = palette.bright_yellow },
+    ["@conditional.ternary"] = { fg = palette.yellow },
     ["@repeat"] = { fg = palette.pink },
     --["@label"] = { fg = colors.cyan },
 
