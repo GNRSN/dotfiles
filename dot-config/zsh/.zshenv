@@ -49,6 +49,10 @@ export NEOVIDE_TITLE_HIDDEN=1
 # Don't open file in separate tab
 export NEOVIDE_TABS=0
 
+# === Misc ===
+
+# Delta git diff viewer also uses bat theme automatically
+export BAT_THEME="CustomTheme"
 
 # Load env for work
 source $ZDOTDIR/work.zsh
