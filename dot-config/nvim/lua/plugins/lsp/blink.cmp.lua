@@ -78,6 +78,7 @@ return {
       -- DOC: Make sure you're using the latest release of LuaSnip, `main` does not work at the moment
       { "L3MON4D3/LuaSnip", version = "v2.*" },
       { "Kaiser-Yang/blink-cmp-avante" },
+      -- LATER: Consider https://github.com/Kaiser-Yang/blink-cmp-git for octo
     },
 
     -- use a release tag to download pre-built binaries
