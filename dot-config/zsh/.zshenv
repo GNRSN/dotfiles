@@ -16,16 +16,9 @@ export GIT_EDITOR="$VISUAL"
 # === Secrets ===
 if command -v pass > /dev/null 2>&1; then
   # REVIEW: How do I toggle personal vs work?
-  export ANTHROPIC_API_KEY=$(pass show anthropic/work/api-key)
+  export ANTHROPIC_API_KEY=$(pass show anthropic/personal/api-key)
 else
   echo "pass is not available, secrets have not been loaded into env"
-fi
-
-# === Nix ===
-# NOTE: I'm not sure if this is necessary but I see it being done a bunch
-export PATH=/run/current-system/sw/bin:$HOME/.nix-profile/bin:$PATH
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
 # === Homebrew ===

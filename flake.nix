@@ -8,10 +8,6 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     sqld_pkgs = {
       url = "https://github.com/NixOS/nixpkgs/archive/4989a246d7a390a859852baddb1013f825435cee.tar.gz";
@@ -27,7 +23,6 @@
       self,
       nix-darwin,
       nixpkgs,
-      home-manager,
       sqld_pkgs,
       apple-fonts,
     }:
@@ -43,21 +38,12 @@
         modules = [
           (import ./modules/darwin.nix {
             inherit system self apple-fonts;
+            sqld_pkgs = sqld_pkgs.legacyPackages.${system};
           })
         ];
       };
 
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."GNRSN/MacBook".pkgs;
-
-      # Bootstrap: nix run home-manager/master -- switch --flake .#GNRSN
-      homeConfigurations."GNRSN" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [
-          (import ./modules/home.nix {
-            sqld_pkgs = sqld_pkgs.legacyPackages.${system};
-          })
-        ];
-      };
     };
 }
