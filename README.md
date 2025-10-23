@@ -31,7 +31,8 @@ Acts as a glue between Nix and MacOS, allows declarative MacOS configuration ins
 sudo darwin-rebuild switch --flake .#GNRSN/MacBook && brew bundle dump --file=~/dotfiles/brew.txt --force && find /run/current-system/sw/bin/ -type l -exec readlink {} \; \
   | sed -E 's|[^-]+-([^/]+)/.*|\1|g' \
   | sort -u \
-  | grep -vE '^(bash-interactive-.*|darwin-help|darwin-rebuild|darwin-uninstaller|darwin-option|darwin-version|nix-info|texinfo-interactive-.*)$' \ > packages.txt
+  | grep -vE '^(bash-interactive-.*|darwin-help|darwin-rebuild|darwin-uninstaller|darwin-option|darwin-version|nix-info|texinfo-interactive-.*)$' \
+  > packages.txt
 ```
 
 ### GNU Stow
