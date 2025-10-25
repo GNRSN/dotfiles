@@ -158,6 +158,7 @@ return {
           ["--marker"] = "", -- multi select
           ["--no-bold"] = "",
           ["--tiebreak"] = "end",
+          ["--gutter"] = " ", -- set gutter character to space
         },
         files = {
           fzf_opts = {
