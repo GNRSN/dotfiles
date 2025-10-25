@@ -11,9 +11,6 @@
 - Bootstrap nix-darwin, see documentation, something like
   `nix run nix-darwin -- switch --flake ~/dotfiles/nix-darwin#GNRSN/MacBook`
 
-- Bootstrap home-manager, see documentation, something like
-  `nix run home-manager -- switch --flake ~/dotfiles/nix-darwin#GNRSN`
-
 - Symlink dotfiles into .config using
   `cd ~/dotfiles && stow .`
 
@@ -24,18 +21,22 @@
 Nix is a build tool/package manager with its own language (DSL) and package repository nixpkgs.
 The installer created by determinate systems also allows easy uninstallation so we prefer this over the official installation script
 
+Nixpkgs has stable releases and an unstable branch which is essentially the latest version/nightly build. However the flake lock-file pins the version of nixpkgs to a specific commit.
+
 ### Nix Darwin
 
 Acts as a glue between Nix and MacOS, allows declarative MacOS configuration inspired by NixOS. Manages itself after bootstrapping.
 
-### Nix Home manager
-
-Installs and configures the user environment. Can "manage" supported software, e.g. managing zsh results in a generated zshrc and so forth.
-Enabled per supported software package and then takes ownership for the configuration of that software.
+```
+sudo darwin-rebuild switch --flake .#GNRSN/MacBook && brew bundle dump --file=~/dotfiles/brew.txt --force && find /run/current-system/sw/bin/ -type l -exec readlink {} \; \
+  | sed -E 's|[^-]+-([^/]+)/.*|\1|g' \
+  | sort -u \
+  | grep -vE '^(bash-interactive-.*|darwin-help|darwin-rebuild|darwin-uninstaller|darwin-option|darwin-version|nix-info|texinfo-interactive-.*)$' \ > packages.txt
+```
 
 ### GNU Stow
 
-Symlink utility, I use this for configs since I want them to be editable with instant refresh. Having to home-manager switch for each config is wasteful friction IMO. Could possibly be replaced with Nix `mkOutOfStoreSymlink`
+Symlink utility, I use this for configs since I want them to be editable with instant refresh.
 
 See discussion in `https://github.com/omerxx/dotfiles/issues/10`
 

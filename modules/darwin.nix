@@ -1,5 +1,6 @@
 {
   apple-fonts,
+  sqld_pkgs,
   system,
   self,
 }:
@@ -7,9 +8,111 @@
 {
   system.primaryUser = "gnrsn";
 
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
+      "claude-code"
+      "graphite-cli"
+      "mongodb-ce"
+      "mongosh"
+    ];
+
   environment.systemPackages = with pkgs; [
+    # Better cat, colors etc
+    bat
+    # Resource monitor tui
+    btop
+    # Logs parser util, nixpkgs only had the rust port which is not feature complete but should suffice
+    # NOTE: For work
+    bunyan-rs
+    # Shell completion generator
+    carapace
+    # Claude Cli
+    claude-code
+    # GNU utils, MacOS only ships with a subset + keep versions fresh
+    coreutils
+    # Better git diff visualisation, usable by e.g. lazygit as well
+    delta
+    # Another, even smarter git diff visualisation tool, built on tree sitter
+    difftastic
     # Manage nix-envs based on directory
     direnv
+    # Better ls
+    eza
+    # Better find
+    fd
+    # Fuzzy finder
+    fzf
+    # Keep version fresh, xcode updates slowly
+    git
+    # Scan for secrets in git commits/history
+    gitleaks
+    # Github cli
+    gh
+    # Github tui extension for gh cli
+    # TODO: How do I add this to gh?
+    gh-dash
+    # Markdown renderer
+    glow
+    # GNU Privacy guard, "backend" for password-store
+    gnupg
+    # Graphite cli
+    graphite-cli
+    # MacOS border for active window
+    jankyborders
+    # json processor/query tool
+    jq
+    # jq TUI playground
+    jqp
+    # Git compatible vcs
+    jujutsu
+    # Git TUI
+    lazygit
+    # Mongodb community edition (for local development)
+    mongodb-ce
+    # Mongodb cli interface
+    mongosh
+    # Better Vim
+    neovim
+    # Neovim gui
+    neovide
+    # Nix-dsl formatter
+    nixfmt-rfc-style
+    # Cross platform prompt
+    oh-my-posh
+    # GNU password-store (key manager)
+    pass
+    # Npm but better, faster, stronger...
+    nodejs_22.pkgs.pnpm
+    # Automatic checks before committing
+    pre-commit
+    # Faster grep
+    ripgrep
+    # Rust toolchain
+    rustup
+    # Easy symlinks for dotfiles
+    stow
+    # Libsql, better sqlite
+    # NOTE: sqld is libsql including some extras
+    sqld_pkgs.sqld
+    # Turso cli
+    turso-cli
+    # Cli file manager
+    yazi
+    # Terminal multiplexer, required for ghostty since its keybinding functionality as well as tabs sucks
+    zellij
+    # Better cd
+    zoxide
+
+    # === WORK ===
+    nodejs_22
+
+    # Pinned version of go for work
+    # TODO: Experiment with direnv
+    go_1_24
+
+    # Used for work
+    nodejs_22.pkgs.yarn
   ];
 
   fonts.packages = with pkgs; [
