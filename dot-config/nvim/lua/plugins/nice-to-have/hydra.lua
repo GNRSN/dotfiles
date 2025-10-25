@@ -18,6 +18,7 @@ end
 
 return {
   -- Nvim implementation of emacs hydra, define chained inputs which allow repetition without repeating the head of the chain
+  -- LATER: Replace focus with other usage, split in direction? Move window with non capital letter?
   {
     "nvimtools/hydra.nvim",
     dependencies = {
