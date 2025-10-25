@@ -3,6 +3,7 @@ local BLACKLIST_FT = {
   "Avante",
   "AvanteTodos",
   "AvanteInput",
+  "AvanteSelectedCode",
   "AvanteSelectedFiles",
   "DiffviewFiles",
   "neo-tree",
