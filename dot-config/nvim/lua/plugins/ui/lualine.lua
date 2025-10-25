@@ -4,6 +4,7 @@ local BLACKLIST_FT = {
   "DiffviewFiles",
   "Avante",
   "AvanteTodos",
+  "AvanteSelectedCode",
   "AvanteSelectedFiles",
   "aerial",
   "neotest-summary",
