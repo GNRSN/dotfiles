@@ -117,15 +117,6 @@ return {
           },
         },
         routes = {
-          { -- Hide save messages
-            filter = {
-              event = "msg_show",
-              kind = "",
-              find = "written",
-            },
-            view = "mini",
-            opts = { skip = true },
-          },
           { -- Reroute long messages to splits
             filter = {
               event = "notify",
@@ -139,6 +130,16 @@ return {
               find = "OctoEditable",
             },
           },
+          -- Hide bunch of noisy messages, copied from https://github.com/folke/noice.nvim/discussions/908#discussioncomment-10583586
+          { filter = { event = "msg_show", find = "written" } },
+          { filter = { event = "msg_show", find = "yanked" } },
+          { filter = { event = "msg_show", find = "%d+L, %d+B" } },
+          { filter = { event = "msg_show", find = "; after #%d+" } },
+          { filter = { event = "msg_show", find = "; before #%d+" } },
+          { filter = { event = "msg_show", find = "%d fewer lines" } },
+          { filter = { event = "msg_show", find = "%d more lines" } },
+          { filter = { event = "msg_show", find = "<ed" } },
+          { filter = { event = "msg_show", find = ">ed" } },
         },
       })
     end,
