@@ -41,6 +41,9 @@ return {
         ["mason-nvim-dap"] = true,
       },
       ensure_installed = {
+        -- Required by nvim-treesitter to install/compile parsers
+        "tree-sitter-cli",
+
         -- Lsp
         "bashls",
         "css_variables",

@@ -1,5 +1,5 @@
 local function augroup(name)
-  return vim.api.nvim_create_augroup("gnrsn_" .. name, { clear = true })
+  return vim.api.nvim_create_augroup("user:" .. name, { clear = true })
 end
 
 --- ===
@@ -94,34 +94,3 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.opt_local.conceallevel = 0
   end,
 })
-
---- ===
---- My own autocommands
---- ===
-
--- Add custom filetype mappings
-for ft, pattern in pairs(require("config.filetype-mappings")) do
-  -- REVIEW: Possibly changing these between BufReadPre and BufRead may conflict differently with different plugins/lsp,
-  -- preferably they would run before any ft dependent code has run
-  vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-    group = augroup("map_filetype_(global)_" .. ft),
-    pattern = pattern,
-    callback = function()
-      vim.bo.filetype = ft
-    end,
-    desc = "Set filetype [" .. ft .. "] from global conf",
-  })
-end
-
--- Add custom filetype mappings (from project settings)
--- LATER: Also read vscode/settings.json files.associations field
-for ft, pattern in pairs(require("util.local-config").get_workspace_config().filetype_mappings) do
-  vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-    group = augroup("map_filetype_(project)_" .. ft),
-    pattern = pattern,
-    callback = function()
-      vim.bo.filetype = ft
-    end,
-    desc = "Set filetype [" .. ft .. "] from project conf",
-  })
-end

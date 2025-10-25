@@ -1,15 +1,14 @@
+// @gnrsn/dotfiles project local configuration
 {
   "workspace-config": {
     "format_on_save": true,
     "allow_project_tsdk": true,
     "graphite": true,
-    "filetype_mappings": {
-      ".gitconfig": [
-        "**/dot-config/git/config"
-      ],
-      ".gitignore": [
-        "**/dot-config/git/ignore"
-      ],
+    "custom_filetypes": {
+      "pattern": {
+        ".*/dot%-config/git/config": "gitconfig",
+        ".*/dot%-config/git/ignore": "gitignore"
+      }
     }
   }
 }

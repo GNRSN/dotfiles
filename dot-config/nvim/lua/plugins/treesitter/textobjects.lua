@@ -3,6 +3,7 @@ return {
   -- Other extenions may improve their behavior with this enabled
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
