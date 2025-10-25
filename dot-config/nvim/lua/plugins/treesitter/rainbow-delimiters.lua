@@ -6,6 +6,8 @@ return {
       -- This module contains a number of default definitions
       local rainbow_delimiters = require("rainbow-delimiters")
 
+      -- This is how they recommend configuring the plugin,
+      -- docs say .setup should would work too but I get an error with it
       vim.g.rainbow_delimiters = {
         strategy = {
           [""] = rainbow_delimiters.strategy["global"],

@@ -133,15 +133,6 @@ return {
             },
             view = "split",
           },
-          { -- Skip annoying deprecation warning on startup,
-            -- this is showing even though I have the correct config
-            filter = {
-              event = "notify",
-              -- NOTE: For some reason find didn't work with multiple words?
-              find = "autotag",
-            },
-            opts = { skip = true },
-          },
           { -- Skip: Some new message displayed by Octo
             filter = {
               event = "msg_show",

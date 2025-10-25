@@ -4,7 +4,7 @@ M.defaults = {
   format_on_save = true,
   allow_project_tsdk = false,
   graphite = false,
-  filetype_mappings = {},
+  custom_filetypes = {},
 }
 
 M.is_init = false
@@ -34,6 +34,9 @@ function M.init()
   local workspace_config = M.get_workspace_config()
 
   vim.g.format_on_save = workspace_config.format_on_save
+
+  -- LATER: Also read vscode/settings.json files.associations field
+  vim.filetype.add(workspace_config.custom_filetypes)
 end
 
 function M.get_tsdk_from_config()
