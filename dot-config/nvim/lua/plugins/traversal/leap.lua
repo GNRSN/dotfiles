@@ -1,44 +1,61 @@
 return {
-  -- NOTE: Copied from LazyVim
-
-  -- easily jump to any location and enhanced f/t motions for Leap
-  {
-    -- TODO: Deprecated,
-    -- DOC: To get the same functionality from Leap, see :help leap-ft.
-    "ggandor/flit.nvim",
-    enabled = true,
-    lazy = false,
-    keys = function()
-      ---@type LazyKeysSpec[]
-      local ret = {}
-      for _, key in ipairs({ "f", "F", "t", "T" }) do
-        ret[#ret + 1] = { key, mode = { "n", "x", "o" }, desc = key }
-      end
-      return ret
-    end,
-    opts = { labeled_modes = "nx" },
-  },
-  {
+  { -- Jump to letters on screen
     "ggandor/leap.nvim",
-    enabled = true,
+    -- DOC: Lazy-loads itself, using lazyspec keys may have issues
     lazy = false,
-    -- REVIEW: Maybe I don't even need mappings for leap, just for flit?
-    -- Here is a discussion from the author about keybinds
-    -- https://github.com/ggandor/leap.nvim/discussions/59#discussioncomment-3842315
-    keys = {
-      { "z", "<Plug>(leap-forward)", mode = { "n", "x", "o" }, desc = "Leap forward to" },
-      { "Z", "<Plug>(leap-backward)", mode = { "n", "x", "o" }, desc = "Leap backward to" },
-      { "gz", "<Plug>(leap-from-window)", mode = { "n", "x", "o" }, desc = "Leap from windows" },
-    },
     config = function(_, opts)
-      -- REVIEW: Not sure if this acutually does anything
-      local leap = require("leap")
-      for k, v in pairs(opts) do
-        leap.opts[k] = v
+      -- LATER: Here is a discussion from the author about keybinds, they recommend s/S which collides with surround/subbstitute
+      -- https://github.com/ggandor/leap.nvim/discussions/59#discussioncomment-3842315
+      local modes = { "n", "x", "o" }
+      vim.keymap.set(modes, "z", function()
+        require("leap").leap({})
+      end, { desc = "Leap forward to..." })
+
+      vim.keymap.set(modes, "Z", function()
+        require("leap").leap({ backward = true })
+      end, { desc = "Leap forward to..." })
+
+      vim.keymap.set(modes, "gz", "<Plug>(leap-from-window)", { desc = "Leap from windows" })
+
+      -- DOC: Recipe: 1-character search (enhanced f/t motions)
+      --
+      -- Return an argument table for `leap()`, tailored for f/t-motions.
+      local function as_ft(key_specific_args)
+        local common_args = {
+          inputlen = 1,
+          inclusive = true,
+          -- To limit search scope to the current line:
+          -- pattern = function (pat) return '\\%.l'..pat end,
+          opts = {
+            labels = "", -- force autojump
+            safe_labels = vim.fn.mode(1):match("[no]") and "" or nil, -- [1]
+          },
+        }
+        return vim.tbl_deep_extend("keep", common_args, key_specific_args)
       end
-      -- leap.add_default_mappings(true)
-      -- vim.keymap.del({ "x", "o" }, "x")
-      -- vim.keymap.del({ "x", "o" }, "X")
+
+      local clever = require("leap.user").with_traversal_keys -- [2]
+      local clever_f = clever("f", "F")
+      local clever_t = clever("t", "T")
+
+      for key, key_specific_args in pairs({
+        f = { opts = clever_f },
+        F = { backward = true, opts = clever_f },
+        t = { offset = -1, opts = clever_t },
+        T = { backward = true, offset = 1, opts = clever_t },
+      }) do
+        vim.keymap.set({ "n", "x", "o" }, key, function()
+          require("leap").leap(as_ft(key_specific_args))
+        end)
+      end
+
+      ------------------------------------------------------------------------
+      -- [1] Match the modes here for which you don't want to use labels
+      --     (`:h mode()`, `:h lua-pattern`).
+      -- [2] This helper function makes it easier to set "clever-f"-like
+      --     functionality (https://github.com/rhysd/clever-f.vim), returning
+      --     an `opts` table derived from the defaults, where the given keys
+      --     are added to `keys.next_target` and `keys.prev_target`
     end,
   },
 
