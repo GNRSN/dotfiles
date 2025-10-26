@@ -70,6 +70,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "fyler",
     "lazy",
+    "dap-float",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

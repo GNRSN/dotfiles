@@ -5,12 +5,13 @@ return {
   ft = {
     octo = "",
   },
+  ---@type { icon: string, textHl: string, lineHl?: string }
   dap = {
-    Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
-    Breakpoint = " ",
-    BreakpointCondition = " ",
-    BreakpointRejected = { " ", "DiagnosticError" },
-    LogPoint = ".>",
+    Breakpoint = { " ", "DapBreakpoint" },
+    BreakpointCondition = { " ", "DapBreakpointCondition" },
+    BreakpointRejected = { " ", "DapBreakpointRejected" },
+    Stopped = { "󰁕 ", "DapStopped", "DapStoppedLine" },
+    LogPoint = { ".>", "DiagnosticInfo" },
   },
   diagnostics = {
     Error = " ",

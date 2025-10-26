@@ -693,6 +693,13 @@ function M.setup()
     NeotestUnknown = { fg = palette.text_ignored },
     NeotestWatching = { fg = palette.purple },
 
+    -- DAP
+    DapBreakpoint = { fg = palette.red },
+    DapBreakpointCondition = { fg = palette.yellow_sunflower },
+    DapBreakpointRejected = { fg = palette.red },
+    DapStopped = { fg = palette.white },
+    DapStoppedLine = { bg = palette.diff_removed },
+
     -- WhichKey
     WhichKey = { fg = palette.fg },
     WhichKeyGroup = { fg = palette.pink },
