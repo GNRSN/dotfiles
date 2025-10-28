@@ -30,10 +30,11 @@ return {
     keys = {
       { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>TodoTrouble keywords=TODO<cr>", desc = "Todo(s) (Trouble)" },
-      { "<leader>xl", "<cmd>TodoTrouble keywords=LATER<cr>", desc = "Todo later(s) (Trouble)" },
-      { "<leader>xr", "<cmd>TodoTrouble keywords=REVIEW,PERF<cr>", desc = "Review & Perf (Trouble)" },
-      { "<leader>ft", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "Todo" },
+      { "<leader>xt", "<cmd>Trouble todo filter = {tag = {TODO}}<cr>", desc = "Todo(s) (Trouble)" },
+      { "<leader>xl", "<cmd>Trouble todo filter = {tag = {LATER}}<cr>", desc = "Todo later(s) (Trouble)" },
+      -- REVIEW: Can we replace with fzf or snacks picker?
+      { "<leader>fct", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "Todo" },
+      { "<leader>fcl", "<cmd>TodoTelescope keywords=LATER<cr>", desc = "Later" },
     },
   },
 }
