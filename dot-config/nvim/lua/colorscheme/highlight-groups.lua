@@ -751,12 +751,12 @@ function M.setup()
     -- GlanceBorderTop
 
     -- Render-markdown.nvim
-    RenderMarkdownH1 = { fg = palette.blue_green },
-    RenderMarkdownH2 = { fg = palette.blue_green },
-    RenderMarkdownH3 = { fg = palette.blue_green },
-    RenderMarkdownH4 = { fg = palette.blue_green },
-    RenderMarkdownH5 = { fg = palette.blue_green },
-    RenderMarkdownH6 = { fg = palette.blue_green },
+    RenderMarkdownH1 = { fg = palette.blue_variable_name },
+    RenderMarkdownH2 = { fg = palette.blue_variable_name },
+    RenderMarkdownH3 = { fg = palette.blue_variable_name },
+    RenderMarkdownH4 = { fg = palette.blue_variable_name },
+    RenderMarkdownH5 = { fg = palette.blue_variable_name },
+    RenderMarkdownH6 = { fg = palette.blue_variable_name },
     RenderMarkdownH1Icon = { fg = palette.yellow_sunflower },
     RenderMarkdownH2Icon = { fg = palette.yellow_sunflower },
     RenderMarkdownH3Icon = { fg = palette.yellow_sunflower },
