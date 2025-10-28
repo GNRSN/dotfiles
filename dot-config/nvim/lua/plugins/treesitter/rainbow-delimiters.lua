@@ -1,5 +1,18 @@
 return {
-  {
+  { -- Alternating colors for brackets
+
+    -- LATER: See if its possible to inject typescript into jsdoc comments to get colored brackets inside,
+    -- example from render-markdown for injecting markdown into gitcommit filetype
+    --
+    -- gitcommit = {
+    --     enabled = true,
+    --     query = [[
+    --         ((message) @injection.content
+    --             (#set! injection.combined)
+    --             (#set! injection.include-children)
+    --             (#set! injection.language "markdown"))
+    --     ]],
+    -- },
     "HiPhish/rainbow-delimiters.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
