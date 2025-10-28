@@ -10,7 +10,7 @@ return {
     opts = {
       file_types = { "markdown", "Avante" },
       completions = {
-        blink = {
+        lsp = {
           enabled = true,
         },
       },

@@ -130,6 +130,8 @@ return {
               find = "OctoEditable",
             },
           },
+          -- Glance: no lsp references
+          { filter = { event = "notify", find = "No definitions found" } },
           -- Hide bunch of noisy messages, copied from https://github.com/folke/noice.nvim/discussions/908#discussioncomment-10583586
           { filter = { event = "msg_show", find = "written" } },
           { filter = { event = "msg_show", find = "yanked" } },
