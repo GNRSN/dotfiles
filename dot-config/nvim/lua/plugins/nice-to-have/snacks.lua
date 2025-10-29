@@ -109,6 +109,16 @@ return {
         animate = {
           enabled = false,
         },
+        ---@param buf number
+        ---@param win number
+        filter = function(buf, win)
+          local default_cond = vim.g.snacks_indent ~= false
+            and vim.b[buf].snacks_indent ~= false
+            and vim.bo[buf].buftype == ""
+
+          -- REVIEW: Would it be nice to have it in codeblocks though?
+          return default_cond and vim.bo[buf].filetype ~= "markdown"
+        end,
       },
 
       notifier = {
