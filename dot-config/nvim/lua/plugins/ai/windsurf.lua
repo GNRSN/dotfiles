@@ -35,9 +35,9 @@ return {
   {
     "Exafunction/windsurf.nvim",
     opts = function()
-      CMP.register_action("ai_accept", function()
+      require("config.CMP").register_action("ai_accept", function()
         if require("codeium.virtual_text").get_current_completion_item() then
-          CMP.create_undo()
+          require("config.CMP").create_undo()
           vim.api.nvim_input(require("codeium.virtual_text").accept())
           return true
         end
@@ -62,7 +62,6 @@ return {
                 module = "codeium.blink",
                 async = true,
                 -- from LazyVim
-                kind = "Codeium",
                 score_offset = 100,
                 -- disable in certian filetypes
                 enabled = function(ctx)

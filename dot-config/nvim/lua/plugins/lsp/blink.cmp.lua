@@ -122,7 +122,7 @@ return {
         -- Adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
 
-        kind_icons = CMP.icons.kinds,
+        kind_icons = require("config.icons").kinds,
       },
 
       completion = {
@@ -158,6 +158,39 @@ return {
                 width = { max = 30 },
                 text = get_source_label,
                 highlight = "BlinkCmpSource",
+              },
+              -- Use nvim-web-devicons for file imports
+              kind_icon = {
+                text = function(ctx)
+                  local icon = ctx.kind_icon
+                  if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                    local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+                    if dev_icon then
+                      icon = dev_icon
+                    end
+                  -- Custom "kinds" for AI sources
+                  elseif ctx.source_name == "supermaven" then
+                    icon = require("config.icons").kinds.Supermaven
+                  elseif ctx.source_name == "codeium" then
+                    icon = require("config.icons").kinds.Codeium
+                  end
+
+                  return icon .. ctx.icon_gap
+                end,
+
+                -- Optionally, use the highlight groups from nvim-web-devicons
+                -- You can also add the same function for `kind.highlight` if you want to
+                -- keep the highlight groups in sync with the icons.
+                highlight = function(ctx)
+                  local hl = ctx.kind_hl
+                  if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                    local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+                    if dev_icon then
+                      hl = dev_hl
+                    end
+                  end
+                  return hl
+                end,
               },
             },
           },
@@ -222,10 +255,7 @@ return {
           "buffer",
         },
         providers = {
-          supermaven = {
-            -- No effect?
-            kind = "A",
-          },
+          supermaven = {},
           lsp = {
             override = {
               -- DOC: enable whitespace as completion trigger
@@ -276,6 +306,10 @@ return {
           },
         },
       },
+
+      term = {
+        enabled = true,
+      },
     },
 
     ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
@@ -316,36 +350,6 @@ return {
 
       -- Unset custom prop to pass blink.cmp ops validation
       opts.sources.compat = nil
-
-      -- check if we need to override symbol kinds
-      -- LATER: There is a recipe for combining with nvim-web-devicons
-      for _, provider in pairs(opts.sources.providers or {}) do
-        ---@cast provider blink.cmp.SourceProviderConfig|{kind?:string}
-        if provider.kind then
-          local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-          local kind_idx = #CompletionItemKind + 1
-
-          CompletionItemKind[kind_idx] = provider.kind
-          ---@diagnostic disable-next-line: no-unknown
-          CompletionItemKind[provider.kind] = kind_idx
-
-          ---@type fun(ctx: blink.cmp.Context, items: blink.cmp.CompletionItem[]): blink.cmp.CompletionItem[]
-          local transform_items = provider.transform_items
-          ---@param ctx blink.cmp.Context
-          ---@param items blink.cmp.CompletionItem[]
-          provider.transform_items = function(ctx, items)
-            items = transform_items and transform_items(ctx, items) or items
-            for _, item in ipairs(items) do
-              item.kind = kind_idx or item.kind
-              item.kind_icon = CMP.icons.kinds[item.kind_name] or item.kind_icon or nil
-            end
-            return items
-          end
-
-          -- Unset custom prop to pass blink.cmp validation
-          provider.kind = nil
-        end
-      end
 
       require("blink.cmp").setup(opts)
     end,
