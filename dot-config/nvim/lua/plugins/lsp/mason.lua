@@ -59,7 +59,6 @@ return {
         "mdx_analyzer",
         "nil_ls",
         "prismals",
-        "pyright",
         "svelte",
         "stylelint_lsp",
         "tailwindcss",
@@ -68,11 +67,8 @@ return {
         "yamlls",
 
         -- Formatters & linters
-        "black", -- python formatter
-        "isort", -- python formatter
         "kdlfmt", -- kdl formatter
         "prettierd", -- js + more formatter
-        "pylint", -- python linter
         "shfmt", -- shell formatter
         -- REVIEW: Pin to same version as work as I don't know how to use workspace version
         { "stylelint", version = "15.4.0" }, -- css/less/scss linter
