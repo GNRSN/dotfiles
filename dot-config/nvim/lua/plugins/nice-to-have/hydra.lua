@@ -5,7 +5,7 @@ local window_menu = [[
   ^ ^ _k_ ^ ^   ^ ^ _K_ ^ ^     ^    _+_   ^     _s_: Horizontally  
   _h_ ^ ^ _l_   _H_ ^ ^ _L_        _<_ _>_       _v_: Vertically
   ^ ^ _j_ ^ ^   ^ ^ _J_ ^ ^     ^    _-_   ^     _c_: Close
-  focus^^^^^^   window^^^^^^   ^ _=_ equalize^   _o_: Only
+  split^^^^^^   window^^^^^^   ^ _=_ equalize^   _o_: Only
                                  ^^^^^^^^^^^^^^^^_m_: Maximize
 
            ^^^^shift _<C-e>_^^^^  ^^^^swap _<C-w>_^^^^
@@ -18,7 +18,6 @@ end
 
 return {
   -- Nvim implementation of emacs hydra, define chained inputs which allow repetition without repeating the head of the chain
-  -- LATER: Replace focus with other usage, split in direction? Move window with non capital letter?
   {
     "nvimtools/hydra.nvim",
     dependencies = {
@@ -64,12 +63,11 @@ return {
           { "<", cmd("wincmd <") },
           { ">", cmd("wincmd >") },
 
-          -- focus window
-          { "h", cmd("wincmd h") },
-          { "j", cmd("wincmd j") },
-          { "k", cmd("wincmd k") },
-          { "l", cmd("wincmd l") },
-          -- { "f", focus_window },
+          -- Split in direction
+          { "h", cmd("vsplit") .. cmd("wincmd h") },
+          { "j", cmd("split") },
+          { "k", cmd("split") .. cmd("wincmd k") },
+          { "l", cmd("vsplit") },
 
           -- Zoom windows
           { "m", cmd("WindowsMaximize") },
