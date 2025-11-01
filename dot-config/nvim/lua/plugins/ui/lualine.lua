@@ -15,6 +15,7 @@ local BLACKLIST_FT = {
   "dapui_watches",
   "dapui_console",
   "dapui_repl",
+  "atone",
 }
 
 local get_noice_mode = function()

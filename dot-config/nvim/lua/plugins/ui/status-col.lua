@@ -18,13 +18,13 @@ local BLACKLIST_FT = {
   "spectre_panel",
   "Trouble",
   "trouble",
-  "undotree",
   "dapui_scopes",
   "dapui_breakpoints",
   "dapui_stacks",
   "dapui_watches",
   "dapui_console",
   "dapui_repl",
+  "atone",
 }
 
 return {

@@ -86,6 +86,7 @@ return {
     opts = {
       at_edge = "stop",
 
+      -- DOC: Ignored filetypes (only while resizing)
       ignored_filetypes = {
         "neo-tree",
         "neotest",
@@ -93,7 +94,7 @@ return {
         "neotest-output-panel",
         "Trouble",
         "noice",
-        "undotree",
+        "atone",
         "spectre_panel",
         "octo",
         "DiffviewFiles",
