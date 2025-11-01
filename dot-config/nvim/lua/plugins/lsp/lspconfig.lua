@@ -80,6 +80,11 @@ return {
           end,
         })
       end, opts)
+
+      opts.desc = "Cursor diagnostic (float)"
+      keymap.set("n", "cD", function()
+        vim.diagnostic.open_float({ border = "rounded" })
+      end, opts)
     end
 
     vim.lsp.config("*", {
