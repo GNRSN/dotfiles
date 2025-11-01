@@ -20,10 +20,10 @@ return {
     "supermaven-inc/supermaven-nvim",
     opts = function()
       require("supermaven-nvim.completion_preview").suggestion_group = "SupermavenSuggestion"
-      CMP.register_action("ai_accept", function()
+      require("config.CMP").register_action("ai_accept", function()
         local suggestion = require("supermaven-nvim.completion_preview")
         if suggestion.has_suggestion() then
-          CMP.create_undo()
+          require("config.CMP").create_undo()
           vim.schedule(function()
             suggestion.on_accept_suggestion()
           end)
@@ -42,7 +42,6 @@ return {
         compat = { "supermaven" },
         providers = {
           supermaven = {
-            kind = "Supermaven",
             score_offset = 100,
             async = true,
           },

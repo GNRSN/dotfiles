@@ -8,7 +8,6 @@ return {
     -- This is also a good place to setup other settings (vim.opt)
     require("config.options")
     require("config.custom-filetypes")
-    _G.CMP = require("config.CMP")
     require("config.lazy")
     require("config.autocmds")
     require("config.usercmds")
