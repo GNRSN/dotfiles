@@ -171,7 +171,7 @@ return {
                   -- Custom "kinds" for AI sources
                   elseif ctx.source_name == "supermaven" then
                     icon = require("config.icons").kinds.Supermaven
-                  elseif ctx.source_name == "codeium" then
+                  elseif ctx.source_name == "Codeium" then
                     icon = require("config.icons").kinds.Codeium
                   end
 
