@@ -88,12 +88,8 @@ local diagnostics_segment = {
   "diagnostics",
   sections = { "error", "warn" },
   symbols = {
-    error = " ",
-    warn = " ",
-  },
-  diagnostics_color = {
-    -- color_error = { fg = colors.red },
-    -- color_warn = { fg = colors.yellow },
+    error = require("config.icons").diagnostics.Error,
+    warn = require("config.icons").diagnostics.Warn,
   },
 }
 
