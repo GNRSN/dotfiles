@@ -93,6 +93,17 @@ local diagnostics_segment = {
   },
 }
 
+local obsidian_segment = {
+  function()
+    ---@diagnostic disable-next-line: undefined-field
+    return "[" .. _G.Obsidian.workspace.name .. "]"
+  end,
+  cond = function()
+    ---@diagnostic disable-next-line: undefined-field
+    return _G.Obsidian ~= nil and _G.Obsidian.workspace.name ~= nil
+  end,
+}
+
 return {
   -- Customizable status line
   {
@@ -141,7 +152,7 @@ return {
           },
           lualine_c = {},
           lualine_x = {},
-          lualine_y = { diagnostics_segment },
+          lualine_y = { diagnostics_segment, obsidian_segment },
           lualine_z = { "filetype" },
         },
         inactive_sections = {
@@ -149,7 +160,7 @@ return {
           lualine_b = { "filename" },
           lualine_c = {},
           lualine_x = {},
-          lualine_y = { diagnostics_segment },
+          lualine_y = { diagnostics_segment, obsidian_segment },
           lualine_z = { "filetype" },
         },
         tabline = {},
