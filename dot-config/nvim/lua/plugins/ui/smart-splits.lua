@@ -14,28 +14,28 @@ return {
         function()
           require("smart-splits").move_cursor_left()
         end,
-        mode = { "n", "i", "x" },
+        mode = { "n", "i", "x", "t" },
       },
       {
         "<C-j>",
         function()
           require("smart-splits").move_cursor_down()
         end,
-        mode = { "n", "i", "x" },
+        mode = { "n", "i", "x", "t" },
       },
       {
         "<C-k>",
         function()
           require("smart-splits").move_cursor_up()
         end,
-        mode = { "n", "i", "x" },
+        mode = { "n", "i", "x", "t" },
       },
       {
         "<C-l>",
         function()
           require("smart-splits").move_cursor_right()
         end,
-        mode = { "n", "i", "x" },
+        mode = { "n", "i", "x", "t" },
       },
       { -- Jump back, I think this is nice for Avante since cursor ends up in nearest
         -- field by proximity
@@ -43,7 +43,7 @@ return {
         function()
           require("smart-splits").move_cursor_previous()
         end,
-        mode = { "n", "i", "x" },
+        mode = { "n", "i", "x", "t" },
       },
 
       -- resizing splits
@@ -54,28 +54,28 @@ return {
         function()
           require("smart-splits").resize_left()
         end,
-        mode = { "n", "i", "x" },
+        mode = { "n", "i", "x", "t" },
       },
       {
         "<C-A-j>",
         function()
           require("smart-splits").resize_down()
         end,
-        mode = { "n", "i", "x" },
+        mode = { "n", "i", "x", "t" },
       },
       {
         "<C-A-k>",
         function()
           require("smart-splits").resize_up()
         end,
-        mode = { "n", "i", "x" },
+        mode = { "n", "i", "x", "t" },
       },
       {
         "<C-A-l>",
         function()
           require("smart-splits").resize_right()
         end,
-        mode = { "n", "i", "x" },
+        mode = { "n", "i", "x", "t" },
       },
       -- swapping buffers between windows
       -- vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
