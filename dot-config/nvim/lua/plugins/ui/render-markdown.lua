@@ -35,6 +35,9 @@ return {
           "RenderMarkdownH6Icon",
         },
       },
+      bullet = {
+        icons = { "", "", "◆", "◇" },
+      },
     },
   },
 }
