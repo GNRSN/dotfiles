@@ -5,16 +5,6 @@ return {
     build = vim.fn.has("win32") ~= 0 and "make install_jsregexp" or nil,
     dependencies = {
       "rafamadriz/friendly-snippets", -- useful snippets
-      {
-        -- Search snippets
-        "benfowler/telescope-luasnip.nvim",
-        dependencies = {
-          "nvim-telescope/telescope.nvim",
-        },
-      },
-    },
-    keys = {
-      { "<leader>sS", "<cmd>Telescope luasnip<CR>", desc = "Search snippets" },
     },
     config = function()
       local ls = require("luasnip")

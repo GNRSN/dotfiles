@@ -4,8 +4,16 @@ return {
   -- todo comments as "bookmarks" + jump between them through trouble
   {
     "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile" },
+    -- stylua: ignore
+    keys = {
+      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+      { "<leader>xt", "<cmd>Trouble todo filter = {tag = {TODO}}<cr>", desc = "Todo(s) (Trouble)" },
+      { "<leader>xl", "<cmd>Trouble todo filter = {tag = {LATER}}<cr>", desc = "Todo later(s) (Trouble)" },
+      { "<leader>st", function () Snacks.picker.todo_comments({ keywords = { "TODO", "LATER" } }) end, desc = "TODOs" },
+      { "<leader>sT", function() Snacks.picker.todo_comments() end, desc = "Any comment tags" },
+    },
     opts = {
       keywords = {
         REVIEW = { icon = " ", color = "review" },
@@ -25,16 +33,6 @@ return {
         todo = { palette.yellow_sunflower },
         doc = { palette.blue },
       },
-    },
-    -- stylua: ignore
-    keys = {
-      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>Trouble todo filter = {tag = {TODO}}<cr>", desc = "Todo(s) (Trouble)" },
-      { "<leader>xl", "<cmd>Trouble todo filter = {tag = {LATER}}<cr>", desc = "Todo later(s) (Trouble)" },
-      -- REVIEW: Can we replace with fzf or snacks picker?
-      { "<leader>fct", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "Todo" },
-      { "<leader>fcl", "<cmd>TodoTelescope keywords=LATER<cr>", desc = "Later" },
     },
   },
 }

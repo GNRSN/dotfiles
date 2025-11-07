@@ -12,7 +12,7 @@ return {
       "MunifTanjim/nui.nvim",
     },
     keys = {
-      { "<leader>sn", "<cmd>Noice telescope<cr>", desc = "Search notifications" },
+      { "<leader>sn", "<cmd>Noice snacks<cr>", desc = "Search notifications" },
     },
     config = function()
       require("noice").setup({

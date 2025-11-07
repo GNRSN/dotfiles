@@ -1,3 +1,5 @@
+-- Bunch of great examples for customization https://github.com/folke/snacks.nvim/discussions/1768
+
 return {
   { -- Bunch of utils from Folke
     "folke/snacks.nvim",
@@ -5,34 +7,171 @@ return {
     lazy = false,
     keys = {
       {
-        "<leader>un",
+        "<leader><space>",
         function()
-          Snacks.notifier.hide()
+          Snacks.picker.smart()
         end,
-        desc = "Dismiss All Notifications",
+        desc = "Smart Find Files",
       },
       {
-        "<leader>bd",
+        "<leader>,",
         function()
-          Snacks.bufdelete()
+          Snacks.picker.buffers()
         end,
-        desc = "Delete Buffer",
+        desc = "Buffers",
       },
-      -- LATER: Could replace fzf but needs to style/fix colors
-      --
-      -- {
-      --   "<leader>fg",
-      --   function()
-      --     Snacks.picker.git_status()
-      --   end,
-      --   desc = "Find file with diff",
-      -- },
-      { -- LATER: I'd like to be able to grep within diffs here, e.g. for "todo" comments
+      {
+        "<leader>/",
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = "Grep",
+      },
+      {
+        "<leader>:",
+        function()
+          Snacks.picker.command_history()
+        end,
+        desc = "Command History",
+      },
+      {
+        "<leader>fd",
+        function()
+          Snacks.picker.diagnostics_buffer({
+            severity = { min = vim.diagnostic.severity.WARN },
+          })
+        end,
+        desc = "Diagnostics (Buffer)",
+      },
+      {
+        "<leader>fD",
+        function()
+          Snacks.picker.diagnostics({
+            severity = { min = vim.diagnostic.severity.WARN },
+          })
+        end,
+        desc = "Diagnostics (Workspace)",
+      },
+      {
+        "<leader>fg",
+        function()
+          Snacks.picker.git_status()
+        end,
+        desc = "Find file with diff",
+      },
+      { -- LATER: I'd like to be able to grep within diffs here, e.g. for "todo" comments, but its only gepping on file names?
         "<leader>fG",
         function()
           Snacks.picker.git_diff()
         end,
         desc = "Find git diff",
+      },
+      {
+        "<leader>sc",
+        function()
+          Snacks.picker.command_history()
+        end,
+        desc = "Command History",
+      },
+      {
+        "<leader>sC",
+        function()
+          Snacks.picker.commands()
+        end,
+        desc = "Commands",
+      },
+      {
+        "<leader>sd",
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = "Diagnostics",
+      },
+      {
+        "<leader>sD",
+        function()
+          Snacks.picker.diagnostics_buffer()
+        end,
+        desc = "Buffer Diagnostics",
+      },
+      {
+        "<leader>sh",
+        function()
+          Snacks.picker.help()
+        end,
+        desc = "Help Pages",
+      },
+      {
+        "<leader>sH",
+        function()
+          Snacks.picker.highlights()
+        end,
+        desc = "Highlights",
+      },
+      {
+        "<leader>si",
+        function()
+          Snacks.picker.icons()
+        end,
+        desc = "Icons",
+      },
+      {
+        "<leader>sk",
+        function()
+          Snacks.picker.keymaps()
+        end,
+        desc = "Keymaps",
+      },
+      {
+        "<leader>sM",
+        function()
+          Snacks.picker.man()
+        end,
+        desc = "Man Pages",
+      },
+      {
+        "<leader>sP",
+        function()
+          Snacks.picker.lazy()
+        end,
+        desc = "Search for Plugin Spec",
+      },
+
+      {
+        "<leader>ss",
+        function()
+          Snacks.picker.lsp_symbols()
+        end,
+        desc = "LSP Symbols",
+      },
+      {
+        "<leader>sS",
+        function()
+          Snacks.picker.lsp_workspace_symbols()
+        end,
+        desc = "LSP Workspace Symbols",
+      },
+      {
+        "<leader>sq",
+        function()
+          Snacks.picker.qflist()
+        end,
+        desc = "Quickfix List",
+      },
+      {
+        "<leader>sw",
+        function()
+          Snacks.picker.grep_word()
+        end,
+        desc = "Visual selection or word",
+        mode = { "n", "x" },
+      },
+      {
+        "<leader>uC",
+        function()
+          Snacks.picker.colorschemes()
+        end,
+        desc = "Colorschemes",
       },
       {
         "<leader>gF",
@@ -66,22 +205,18 @@ return {
         desc = "Floating Explorer",
       },
       {
-        "<leader>fd",
+        "<leader>un",
         function()
-          Snacks.picker.diagnostics_buffer({
-            severity = { min = vim.diagnostic.severity.WARN },
-          })
+          Snacks.notifier.hide()
         end,
-        desc = "Diagnostics (Buffer)",
+        desc = "Dismiss All Notifications",
       },
       {
-        "<leader>fD",
+        "<leader>bd",
         function()
-          Snacks.picker.diagnostics({
-            severity = { min = vim.diagnostic.severity.WARN },
-          })
+          Snacks.bufdelete()
         end,
-        desc = "Diagnostics (Workspace)",
+        desc = "Delete Buffer",
       },
     },
     ---@type snacks.Config
@@ -127,8 +262,28 @@ return {
         style = "compact",
       },
 
+      -- TODO: How do I make it ~90% screen width?
       picker = {
+        -- replaces native ui.select
         ui_select = true,
+        layout = {
+          preset = function()
+            return vim.o.columns >= 120 and "telescope" or "vertical"
+          end,
+        },
+        matcher = {
+          frecency = true,
+        },
+        win = {
+          input = {
+            keys = {
+              -- to close the picker on ESC instead of going to normal mode,
+              -- add the following keymap to your config
+              -- ["<Esc>"] = { "close", mode = { "n", "i" } },
+              ["<CR>"] = { "confirm", mode = { "n", "i" } },
+            },
+          },
+        },
       },
 
       -- DOC: When doing nvim somefile.txt, it will render the file as quickly as possible, before loading your plugins.
@@ -181,7 +336,6 @@ return {
           vim.print = _G.dd -- Override print to use snacks for `:=` command
 
           -- Create some toggle mappings
-          -- LATER: Toggle format on save
           --
           -- LATER: This breaks spellunker and apparently options are persisted between sessions
           -- Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")

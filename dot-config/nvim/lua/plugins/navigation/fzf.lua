@@ -31,13 +31,13 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = "FzfLua",
     keys = {
-      {
-        "<leader><space>",
-        function()
-          require("fzf-lua").files()
-        end,
-        desc = "Search files (fzf)",
-      },
+      -- {
+      --   "<leader><space>",
+      --   function()
+      --     require("fzf-lua").files()
+      --   end,
+      --   desc = "Search files (fzf)",
+      -- },
       {
         "<leader>fs",
         function()
@@ -53,27 +53,27 @@ return {
         mode = { "x" },
         desc = "Grep selection (fzf)",
       },
-      {
-        "<leader>fg",
-        function()
-          require("fzf-lua").git_status()
-        end,
-        desc = "Git status (fzf)",
-      },
-      {
-        "<leader>fr",
-        function()
-          require("fzf-lua").resume()
-        end,
-        desc = "Resume search (fzf)",
-      },
-      {
-        "<leader>fR",
-        function()
-          require("fzf-lua").oldfiles()
-        end,
-        desc = "Recent files (fzf)",
-      },
+      -- {
+      --   "<leader>fg",
+      --   function()
+      --     require("fzf-lua").git_status()
+      --   end,
+      --   desc = "Git status (fzf)",
+      -- },
+      -- {
+      --   "<leader>fr",
+      --   function()
+      --     require("fzf-lua").resume()
+      --   end,
+      --   desc = "Resume search (fzf)",
+      -- },
+      -- {
+      --   "<leader>fR",
+      --   function()
+      --     require("fzf-lua").oldfiles()
+      --   end,
+      --   desc = "Recent files (fzf)",
+      -- },
     },
     opts = function(_, opts)
       local fzf = require("fzf-lua")

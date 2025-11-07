@@ -8,35 +8,34 @@ M.HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
   "SignColumn",
   "NeoTreeNormal",
   "NeoTreeNormalNC",
-  "TelescopeNormal",
   "NoiceMini",
   "NotifyBackground",
 }
 
 ---@class Highlight
----@field fg string color name or "#RRGGBB"
----@field foreground string same fg, color name or "#RRGGBB"
----@field bg string color name or "#RRGGBB"
----@field background string same bg, color name or "#RRGGBB"
----@field sp string color name or "#RRGGBB"
----@field special string same sg, color name or "#RRGGBB"
----@field blend integer value between 0 and 100
----@field bold boolean
----@field standout boolean
----@field underline boolean
----@field undercurl boolean
----@field underdouble boolean
----@field underdotted boolean
----@field underdashed boolean
----@field strikethrough boolean
----@field italic boolean
----@field reverse boolean
----@field nocombine boolean
----@field link string name of another highlight group to link to, see |:hi-link|.
----@field default string Don't override existing definition |:hi-default|
----@field ctermfg integer Sets foreground of cterm color |highlight-ctermfg|
----@field ctermbg integer Sets background of cterm color |highlight-ctermbg|
----@field cterm table cterm attribute map, like |highlight-args|.
+---@field fg? string color name or "#RRGGBB"
+---@field foreground? string same fg, color name or "#RRGGBB"
+---@field bg? string color name or "#RRGGBB"
+---@field background? string same bg, color name or "#RRGGBB"
+---@field sp? string color name or "#RRGGBB"
+---@field special? string same sg, color name or "#RRGGBB"
+---@field blend? integer value between 0 and 100
+---@field bold? boolean
+---@field standout? boolean
+---@field underline? boolean
+---@field undercurl? boolean
+---@field underdouble? boolean
+---@field underdotted? boolean
+---@field underdashed? boolean
+---@field strikethrough? boolean
+---@field italic? boolean
+---@field reverse? boolean
+---@field nocombine? boolean
+---@field link? string name of another highlight group to link to, see |:hi-link|.
+---@field default? string Don't override existing definition |:hi-default|
+---@field ctermfg? integer Sets foreground of cterm color |highlight-ctermfg|
+---@field ctermbg? integer Sets background of cterm color |highlight-ctermbg|
+---@field cterm? table cterm attribute map, like |highlight-args|.
 
 ---setup highlight groups
 ---@return table<string, Highlight>
@@ -44,6 +43,7 @@ M.HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
 function M.setup()
   local palette = require("colorscheme.palette")
 
+  ---@type table<string, Highlight>
   return {
     Normal = { fg = palette.fg, bg = palette.bg },
     NormalFloat = { fg = palette.fg, bg = palette.bg },
@@ -351,16 +351,6 @@ function M.setup()
     GitSignsChangeLn = { fg = palette.black, bg = palette.cyan },
     GitSignsDeleteLn = { fg = palette.black, bg = palette.bright_red },
     GitSignsCurrentLineBlame = { fg = palette.white },
-
-    -- Telescope
-    TelescopePromptBorder = { fg = palette.fade },
-    TelescopeResultsBorder = { fg = palette.fade },
-    TelescopePreviewBorder = { fg = palette.fade },
-    TelescopeSelection = { fg = palette.bright_white, bg = palette.visual_bg },
-    TelescopeMultiSelection = { fg = palette.green, bg = palette.visual_bg },
-    TelescopeNormal = { fg = palette.white, bg = palette.bg },
-    TelescopeMatching = { fg = palette.green },
-    TelescopePromptPrefix = { fg = palette.bright_magenta },
 
     -- Fzf-lua
     FzfLuaBorder = { fg = palette.fade },
@@ -773,6 +763,12 @@ function M.setup()
     -- Snacks
     SnacksIndent = { fg = palette.border },
     SnacksIndentScope = { fg = palette.text_ignored },
+    SnacksPickerDir = { fg = palette.text_ignored },
+    SnacksPickerFile = { fg = palette.white },
+    -- TODO: Make match higher priority
+    SnacksPickerListCursorLine = { fg = palette.fg, bg = palette.visual_bg },
+    SnacksDiffContext = { bg = nil, fg = palette.text_ignored },
+    SnacksPickerPrompt = { fg = palette.pink }, -- Icon prefixing prompt
 
     -- Avante
     AvanteSidebarWinSeparator = { link = "FloatBorder" },
