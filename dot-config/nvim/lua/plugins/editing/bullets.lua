@@ -1,13 +1,12 @@
 return {
   { -- Makes it easier to work with bullets/numbered lists
     "kaymmm/bullets.nvim",
-    -- TODO: Disabled, breaks snacks picker enter to select file keybind
-    cond = false,
-    -- Default config?
+    -- Default config ish
     opts = {
       colon_indent = true,
       delete_last_bullet = true,
-      empty_buffers = true,
+      -- Has to set to false or it interferes with snacks picker
+      empty_buffers = false,
       file_types = { "markdown", "text", "gitcommit" },
       line_spacing = 1,
       mappings = true,
