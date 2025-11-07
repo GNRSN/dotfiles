@@ -6,7 +6,7 @@ local BLACKLIST_FT = {
   "Trouble",
   "trouble",
   "noice",
-  "undotree",
+  "atone",
   "spectre_panel",
   "octo",
   "DiffviewFiles",
