@@ -1,3 +1,4 @@
+// https://github.com/KroneCorylus/ghostty-shader-playground
 
 float sdBox(in vec2 p, in vec2 xy, in vec2 b)
 {
