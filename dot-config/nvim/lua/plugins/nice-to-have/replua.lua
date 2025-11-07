@@ -13,7 +13,7 @@ return {
       print_prefix = "-- print: ",
       result_prefix = "-- return: ",
       intro_lines = {
-        "-- Lua repl buffer",
+        "-- Lua sandbox",
         "-- run line: <leader>tr",
         "-- run file: <leader>tf",
         "",
