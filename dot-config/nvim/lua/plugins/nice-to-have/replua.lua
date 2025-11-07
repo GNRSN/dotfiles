@@ -1,11 +1,24 @@
 return {
-  {
+  { -- Lua repl experience in scratch buffer
     "mghaight/replua.nvim",
     cmd = {
       "RepluaOpen",
     },
-    config = function()
-      require("replua").setup()
-    end,
+    opts = {
+      keymaps = {
+        eval_line = "<leader>tr",
+        eval_block = nil, -- disable
+        eval_buffer = "<leader>tf",
+      },
+      print_prefix = "-- print: ",
+      result_prefix = "-- return: ",
+      intro_lines = {
+        "-- Lua repl buffer",
+        "-- run line: <leader>tr",
+        "-- run file: <leader>tf",
+        "",
+        "",
+      },
+    },
   },
 }
