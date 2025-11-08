@@ -2,6 +2,10 @@ return {
   -- Better yanking with history, ctrl p/n to replace with previous yank after putting
   {
     "gbprod/yanky.nvim",
+    dependencies = {
+      -- Needs to load first for integration
+      "folke/snacks.nvim",
+    },
     opts = {
       preserve_cursor_position = {
         enabled = true,
@@ -38,7 +42,13 @@ return {
       { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Yanky put indent after linewise" },
       { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Yanky put indent after linewise" },
       -- History
-      { "<leader>sp", "<cmd>Telescope yank_history<cr>", desc = "Yanky clipboard" },
+      {
+        "<leader>sp",
+        function()
+          Snacks.picker.yanky()
+        end,
+        desc = "Yanky clipboard",
+      },
     },
   },
 }

@@ -1,6 +1,8 @@
 return {
   { -- Makes it easier to work with bullets/numbered lists
     "kaymmm/bullets.nvim",
+    -- TODO: Disabled, breaks snacks picker enter to select file keybind
+    cond = false,
     -- Default config?
     opts = {
       colon_indent = true,
