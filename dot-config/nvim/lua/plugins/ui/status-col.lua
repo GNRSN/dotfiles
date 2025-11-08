@@ -27,6 +27,11 @@ local BLACKLIST_FT = {
   "atone",
 }
 
+local BLACKLIST_BT = {
+  "help",
+  "terminal",
+}
+
 return {
   -- Status column
   {
@@ -41,9 +46,7 @@ return {
         -- Prevent cursor line number being left adjusted (default behavior with relative line numbers)
         relculright = true,
         ft_ignore = BLACKLIST_FT,
-        bt_ignore = {
-          "help",
-        },
+        bt_ignore = BLACKLIST_BT,
         segments = {
           {
             sign = {
