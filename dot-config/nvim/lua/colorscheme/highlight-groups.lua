@@ -294,12 +294,6 @@ function M.setup()
     markdownCode = { fg = palette.green },
     markdownCodeBlock = { fg = palette.orange },
     markdownCodeDelimiter = { fg = palette.red },
-    markdownH1 = { fg = palette.pink, bold = true },
-    markdownH2 = { fg = palette.pink, bold = true },
-    markdownH3 = { fg = palette.pink, bold = true },
-    markdownH4 = { fg = palette.pink, bold = true },
-    markdownH5 = { fg = palette.pink, bold = true },
-    markdownH6 = { fg = palette.pink, bold = true },
     markdownHeadingDelimiter = { fg = palette.red },
     markdownHeadingRule = { fg = palette.fade },
     markdownId = { fg = palette.purple },
@@ -311,6 +305,32 @@ function M.setup()
     markdownListMarker = { fg = palette.cyan },
     markdownOrderedListMarker = { fg = palette.red },
     markdownRule = { fg = palette.fade },
+    markdownH1 = { fg = palette.pink, bold = true },
+    markdownH2 = { fg = palette.pink, bold = true },
+    markdownH3 = { fg = palette.pink, bold = true },
+    markdownH4 = { fg = palette.pink, bold = true },
+    markdownH5 = { fg = palette.pink, bold = true },
+    markdownH6 = { fg = palette.pink, bold = true },
+    ["@markup.heading.1.markdown"] = { fg = palette.blue_variable_name },
+    ["@markup.heading.2.markdown"] = { fg = palette.blue_variable_name },
+    ["@markup.heading.3.markdown"] = { fg = palette.blue_variable_name },
+    ["@markup.heading.4.markdown"] = { fg = palette.blue_variable_name },
+    ["@markup.heading.5.markdown"] = { fg = palette.blue_variable_name },
+    ["@markup.heading.6.markdown"] = { fg = palette.blue_variable_name },
+
+    -- Render-markdown.nvim
+    RenderMarkdownH1 = { fg = palette.blue_variable_name },
+    RenderMarkdownH2 = { fg = palette.blue_variable_name },
+    RenderMarkdownH3 = { fg = palette.blue_variable_name },
+    RenderMarkdownH4 = { fg = palette.blue_variable_name },
+    RenderMarkdownH5 = { fg = palette.blue_variable_name },
+    RenderMarkdownH6 = { fg = palette.blue_variable_name },
+    RenderMarkdownH1Icon = { fg = palette.yellow_sunflower },
+    RenderMarkdownH2Icon = { fg = palette.yellow_sunflower },
+    RenderMarkdownH3Icon = { fg = palette.yellow_sunflower },
+    RenderMarkdownH4Icon = { fg = palette.yellow_sunflower },
+    RenderMarkdownH5Icon = { fg = palette.yellow_sunflower },
+    RenderMarkdownH6Icon = { fg = palette.yellow_sunflower },
 
     --  Diff
     diffAdded = { fg = palette.green },
@@ -749,20 +769,6 @@ function M.setup()
     -- GlanceFoldIcon
     -- GlanceIndent
     -- GlanceBorderTop
-
-    -- Render-markdown.nvim
-    RenderMarkdownH1 = { fg = palette.blue_variable_name },
-    RenderMarkdownH2 = { fg = palette.blue_variable_name },
-    RenderMarkdownH3 = { fg = palette.blue_variable_name },
-    RenderMarkdownH4 = { fg = palette.blue_variable_name },
-    RenderMarkdownH5 = { fg = palette.blue_variable_name },
-    RenderMarkdownH6 = { fg = palette.blue_variable_name },
-    RenderMarkdownH1Icon = { fg = palette.yellow_sunflower },
-    RenderMarkdownH2Icon = { fg = palette.yellow_sunflower },
-    RenderMarkdownH3Icon = { fg = palette.yellow_sunflower },
-    RenderMarkdownH4Icon = { fg = palette.yellow_sunflower },
-    RenderMarkdownH5Icon = { fg = palette.yellow_sunflower },
-    RenderMarkdownH6Icon = { fg = palette.yellow_sunflower },
 
     -- Snacks
     SnacksIndent = { fg = palette.border },
