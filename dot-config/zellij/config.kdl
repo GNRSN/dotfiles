@@ -1,4 +1,21 @@
 keybinds clear-defaults=true {
+    normal {
+        bind "Super g" {
+            Run "lazygit" {
+                floating true
+                width "80%"
+                height "80%"
+                x "10%"
+                y "10%"
+                top
+                close_on_exit true
+            }
+            Resize "Increase"
+            Resize "Increase"
+            Resize "Increase"
+            SwitchToMode "locked"
+        }
+    }
     shared {
         bind "Super g" {
             SwitchToMode "normal"
