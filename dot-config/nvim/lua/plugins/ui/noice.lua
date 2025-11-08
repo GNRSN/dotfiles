@@ -23,6 +23,15 @@ return {
           inc_rename = false, -- enables an input dialog for inc-rename.nvim
           lsp_doc_border = true, -- add a border to hover docs and signature help
         },
+
+        commands = {
+          all = {
+            -- Overwite all command to open in vsplit, maybe consider float
+            view = "vsplit",
+            opts = { enter = true, format = "details" },
+            filter = {},
+          },
+        },
         -- messages = {
         --   enabled = true,
         --   view = "mini",
