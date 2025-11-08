@@ -4,7 +4,7 @@ window-colorspace = display-p3
 macos-titlebar-style = hidden
 
 keybind = clear
-keybind = cmd+r=reload_config
+keybind = global:unconsumed:cmd+r=reload_config
 keybind = f12=inspector:toggle
 
 # This allows us close windows with titlebar hidden
@@ -41,10 +41,15 @@ keybind = cmd+9=unbind
 
 keybind = cmd+c=copy_to_clipboard
 keybind = cmd+v=paste_from_clipboard
+keybind = copy=copy_to_clipboard
+keybind = paste=paste_from_clipboard
+
+keybind = cmd+p=toggle_command_palette
 
 # REVIEW: Wtf this doesn't behave as I would expect, cmd+ decreases font size and cmd- does nothing
-keybind = cmd+plus=increase_font_size:1.5
-keybind = cmd+minus=decrease_font_size:1.5
+# See https://github.com/ghostty-org/ghostty/discussions/8743
+keybind = cmd+plus=increase_font_size:1
+keybind = cmd+minus=decrease_font_size:1
 keybind = cmd+0=reset_font_size
 
 # Use https://enchanted.games/app/colour-converter/ to convert colours
