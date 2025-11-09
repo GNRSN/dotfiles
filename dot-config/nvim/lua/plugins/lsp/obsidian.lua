@@ -62,7 +62,7 @@ return {
         min_chars = 0,
       },
       picker = {
-        name = "fzf-lua",
+        name = "snacks.pick",
       },
       footer = {
         enabled = true,

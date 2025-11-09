@@ -53,10 +53,10 @@ return {
     build = "make",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       "nvim-tree/nvim-web-devicons",
+      "folke/snacks.nvim", -- for input provider snacks
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -90,9 +90,7 @@ return {
         use_cwd_as_project_root = true,
       },
       file_selector = {
-        provider = "fzf",
-        -- TODO: enable preview
-        provider_opts = {},
+        provider = "snacks",
       },
       hints = {
         enabled = false,

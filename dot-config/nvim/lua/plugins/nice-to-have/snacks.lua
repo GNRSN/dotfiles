@@ -20,10 +20,10 @@ return {
         end,
         desc = "Buffers",
       },
-      {
+      { -- LATER: I'd like this to grep only in the active buffer
         "<leader>/",
         function()
-          Snacks.picker.grep()
+          Snacks.picker.grep({ buffers = true })
         end,
         desc = "Grep",
       },
@@ -65,6 +65,20 @@ return {
           Snacks.picker.git_diff()
         end,
         desc = "Find git diff",
+      },
+      {
+        "<leader>fr",
+        function()
+          Snacks.picker.resume()
+        end,
+        desc = "Resume (Snacks.picker)",
+      },
+      {
+        "<leader>fs",
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = "Grep (Snacks)",
       },
       {
         "<leader>sc",
@@ -262,14 +276,43 @@ return {
         style = "compact",
       },
 
-      -- TODO: How do I make it ~90% screen width?
       picker = {
-        -- replaces native ui.select
+        -- replace native ui.select
         ui_select = true,
         layout = {
           preset = function()
-            return vim.o.columns >= 120 and "telescope" or "vertical"
+            return vim.o.columns >= 120 and "custom" or "vertical"
           end,
+        },
+        formatters = {
+          file = {
+            filename_first = true,
+          },
+        },
+        layouts = {
+
+          custom = {
+            reverse = true,
+            layout = {
+              box = "horizontal",
+              backdrop = false,
+              width = 0.95,
+              height = 0.9,
+              border = "none",
+              {
+                box = "vertical",
+                { win = "list", title = " Results ", title_pos = "center", border = true },
+                { win = "input", height = 1, border = true, title = "{title} {live} {flags}", title_pos = "center" },
+              },
+              {
+                win = "preview",
+                title = "{preview:Preview}",
+                width = 0.45,
+                border = true,
+                title_pos = "center",
+              },
+            },
+          },
         },
         matcher = {
           frecency = true,

@@ -39,7 +39,7 @@ return {
       --   desc = "Search files (fzf)",
       -- },
       {
-        "<leader>fs",
+        "<leader>fS",
         function()
           require("fzf-lua").live_grep()
         end,

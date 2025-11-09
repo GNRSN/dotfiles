@@ -765,8 +765,8 @@ function M.setup()
     SnacksIndentScope = { fg = palette.text_ignored },
     SnacksPickerDir = { fg = palette.text_ignored },
     SnacksPickerFile = { fg = palette.white },
-    -- TODO: Make match higher priority
-    SnacksPickerListCursorLine = { fg = palette.fg, bg = palette.visual_bg },
+    -- Wanted to change default fg to increase contrast but then we overwrite the matching character highlights as well
+    SnacksPickerListCursorLine = { bg = palette.visual_bg },
     SnacksDiffContext = { bg = nil, fg = palette.text_ignored },
     SnacksPickerPrompt = { fg = palette.pink }, -- Icon prefixing prompt
 
