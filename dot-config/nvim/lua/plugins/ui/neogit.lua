@@ -5,7 +5,6 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
-      "ibhagwan/fzf-lua",
     },
     cmd = {
       "Neogit",
@@ -13,6 +12,12 @@ return {
       "NeogitLogCurrent",
       "NeogitResetState",
     },
-    opts = {},
+    opts = {
+      integrations = {
+        telescope = false,
+        fzf_lua = false,
+        snacks = true,
+      },
+    },
   },
 }
