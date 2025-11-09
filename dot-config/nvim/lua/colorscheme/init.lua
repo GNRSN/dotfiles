@@ -17,7 +17,7 @@ local function apply_term_colors()
   g.terminal_color_1 = palette.red
   g.terminal_color_2 = palette.green
   g.terminal_color_3 = palette.yellow
-  g.terminal_color_4 = palette.purple
+  g.terminal_color_4 = palette.term_blue
   g.terminal_color_5 = palette.pink
   g.terminal_color_6 = palette.cyan
   g.terminal_color_7 = palette.white
