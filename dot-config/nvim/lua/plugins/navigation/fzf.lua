@@ -45,14 +45,14 @@ return {
         end,
         desc = "Grep (fzf)",
       },
-      {
-        "<leader>fs",
-        function()
-          require("fzf-lua").grep_visual()
-        end,
-        mode = { "x" },
-        desc = "Grep selection (fzf)",
-      },
+      -- {
+      --   "<leader>fs",
+      --   function()
+      --     require("fzf-lua").grep_visual()
+      --   end,
+      --   mode = { "x" },
+      --   desc = "Grep selection (fzf)",
+      -- },
       -- {
       --   "<leader>fg",
       --   function()
