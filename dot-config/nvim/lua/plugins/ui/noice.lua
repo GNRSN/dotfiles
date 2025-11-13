@@ -141,6 +141,8 @@ return {
           },
           -- Glance: no lsp references
           { filter = { event = "notify", find = "No definitions found" } },
+          -- Img-clip on text pasted
+          { filter = { event = "notify", find = "Content is not an image." } },
           -- Hide bunch of noisy messages, copied from https://github.com/folke/noice.nvim/discussions/908#discussioncomment-10583586
           { filter = { event = "msg_show", find = "written" } },
           { filter = { event = "msg_show", find = "yanked" } },
