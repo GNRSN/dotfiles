@@ -26,7 +26,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 ## Autostart a new zellij shell, if not already inside one
 if [ "$TERM_PROGRAM" = "ghostty" ] && [ "$ZELLIJ" != "0" ]; then
-  eval "zellij -l welcome"
+  eval "zellij attach -c Users.$USER.dotfiles"
 fi
 
 #   ------
