@@ -39,6 +39,8 @@
     direnv
     # Better ls
     eza
+    # Make json greppable (50x faster)
+    fastgron
     # Better find
     fd
     # Fuzzy finder
