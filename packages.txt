@@ -43,6 +43,7 @@ stow-2.4.1
 turso-cli-1.0.15
 yarn-1.22.22
 yazi-25.5.31
+yq-go-4.48.1
 zellij-0.43.1
 zoxide-0.9.8
 zsh-5.9
