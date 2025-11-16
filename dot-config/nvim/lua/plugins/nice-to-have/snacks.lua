@@ -7,13 +7,6 @@ return {
     lazy = false,
     keys = {
       {
-        "<leader><space>",
-        function()
-          Snacks.picker.smart()
-        end,
-        desc = "Smart Find Files",
-      },
-      {
         "<leader>,",
         function()
           Snacks.picker.buffers()
@@ -59,7 +52,7 @@ return {
         end,
         desc = "Find file with diff",
       },
-      { -- LATER: I'd like to be able to grep within diffs here, e.g. for "todo" comments, but its only gepping on file names?
+      { -- LATER: I'd like to be able to grep within diffs here, e.g. for "todo" comments, but its only grepping on file names?
         "<leader>fG",
         function()
           Snacks.picker.git_diff()
@@ -173,12 +166,12 @@ return {
         desc = "Quickfix List",
       },
       {
-        "<leader>sw",
+        "<leader>fs",
         function()
           Snacks.picker.grep_word()
         end,
-        desc = "Visual selection or word",
-        mode = { "n", "x" },
+        desc = "Visual selection",
+        mode = { "x" },
       },
       {
         "<leader>uC",
@@ -281,12 +274,41 @@ return {
         ui_select = true,
         layout = {
           preset = function()
-            return vim.o.columns >= 120 and "custom" or "vertical"
+            return vim.o.columns >= 120 and "custom" or "custom_vertical"
           end,
         },
         formatters = {
           file = {
             filename_first = true,
+          },
+        },
+        matcher = {
+          frecency = true,
+        },
+        previewers = {
+          diff = {
+            -- fancy: Snacks fancy diff (borders, multi-column line numbers, syntax highlighting)
+            -- syntax: Neovim's built-in diff syntax highlighting
+            -- terminal: external command (git's pager for git commands, `cmd` for other diffs)
+            style = "terminal", ---@type "fancy"|"syntax"|"terminal"
+            cmd = { "difft" }, -- example for using `delta` as the external diff command
+            ---@type vim.wo?|{} window options for the fancy diff preview window
+            wo = {
+              breakindent = true,
+              wrap = true,
+              linebreak = true,
+              showbreak = "",
+            },
+          },
+        },
+        win = {
+          input = {
+            keys = {
+              -- to close the picker on ESC instead of going to normal mode,
+              -- add the following keymap to your config
+              -- ["<Esc>"] = { "close", mode = { "n", "i" } },
+              ["<CR>"] = { "confirm", mode = { "n", "i" } },
+            },
           },
         },
         layouts = {
@@ -296,13 +318,16 @@ return {
             layout = {
               box = "horizontal",
               backdrop = false,
-              width = 0.95,
+              width = 0.92,
               height = 0.9,
               border = "none",
               {
                 box = "vertical",
-                { win = "list", title = " Results ", title_pos = "center", border = true },
-                { win = "input", height = 1, border = true, title = "{title} {live} {flags}", title_pos = "center" },
+                border = true,
+                title = "{title} {live} {flags}",
+                title_pos = "center",
+                { win = "list", border = "none" },
+                { win = "input", height = 1, border = "top" },
               },
               {
                 win = "preview",
@@ -313,17 +338,22 @@ return {
               },
             },
           },
-        },
-        matcher = {
-          frecency = true,
-        },
-        win = {
-          input = {
-            keys = {
-              -- to close the picker on ESC instead of going to normal mode,
-              -- add the following keymap to your config
-              -- ["<Esc>"] = { "close", mode = { "n", "i" } },
-              ["<CR>"] = { "confirm", mode = { "n", "i" } },
+
+          custom_vertical = {
+            reverse = true,
+            layout = {
+              backdrop = false,
+              width = 0.5,
+              min_width = 80,
+              height = 0.8,
+              min_height = 30,
+              box = "vertical",
+              border = true,
+              title = "{title} {live} {flags}",
+              title_pos = "center",
+              { win = "preview", title = "{title}", height = 0.4, border = "bottom" },
+              { win = "list", border = "none" },
+              { win = "input", height = 1, border = "top" },
             },
           },
         },

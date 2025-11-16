@@ -8,15 +8,6 @@ return {
     end,
     -- DOC: This plugin initializes itself lazily.
     lazy = false,
-    keys = {
-      {
-        "<leader>ff",
-        function()
-          require("fff").find_files()
-        end,
-        desc = "Find files (fff)",
-      },
-    },
     opts = {
       layout = {
         height = 0.8,
@@ -31,5 +22,21 @@ return {
         show_scores = false, -- to help us optimize the scoring system, feel free to share your scores!
       },
     },
+  },
+  { -- Uses snacks picker as fff frontend
+    "madmaxieee/fff-snacks.nvim",
+    dependencies = {
+      "dmtrKovalenko/fff.nvim",
+      "folke/snacks.nvim",
+    },
+    cmd = "FFFSnacks",
+    keys = {
+      {
+        "<leader><space>",
+        "<cmd>FFFSnacks<cr>",
+        desc = "Find files (fff)",
+      },
+    },
+    config = true,
   },
 }
