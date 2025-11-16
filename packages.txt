@@ -23,6 +23,7 @@ jq-1.8.1-bin
 jqp-0.8.0
 jujutsu-0.35.0
 lazygit-0.56.0
+mergiraf-0.16.1
 mongodb-ce-8.0.15
 mongosh-2.5.9
 neovide-0.15.2

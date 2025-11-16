@@ -68,6 +68,8 @@
     jujutsu
     # Git TUI
     lazygit
+    # Automatic merge tool
+    mergiraf
     # Mongodb community edition (for local development)
     mongodb-ce
     # Mongodb cli interface
