@@ -103,6 +103,8 @@
     turso-cli
     # Cli file manager
     yazi
+    # Jq for yaml & friends (+fast)
+    yq-go
     # Terminal multiplexer, required for ghostty since its keybinding functionality as well as tabs sucks
     zellij
     # Better cd
