@@ -14,6 +14,8 @@ alias nvide="neovide --frame=transparent --title-hidden"
 alias llama="ollama run llama3.1:latest"
 alias yz=yazi
 alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
+alias gron='fastgron'
+alias ungon='fastgron -u'
 
 # gcal with monday as first columns
 alias cal='gcal --starting-day=1 "$@"' 
