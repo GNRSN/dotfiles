@@ -40,6 +40,7 @@ local ENSURE_INSTALLED = {
   "xml",
   "yaml",
   "zig",
+  "zsh",
 }
 
 return {
@@ -93,8 +94,6 @@ return {
 
       TS.install(parsers_to_install)
 
-      -- LATER: Do i still need this?
-      vim.treesitter.language.register("bash", "zsh")
       vim.treesitter.language.register("bash", "conf")
 
       vim.api.nvim_create_autocmd("FileType", {
