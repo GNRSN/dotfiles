@@ -106,12 +106,7 @@ vim.api.nvim_create_autocmd("FileType", {
 map({ "n", "x", "o" }, "q:", "<nop>")
 
 -- Unmap macro recording for now
-map("n", "q", function()
-  return "<nop>"
-end, {
-  expr = true,
-  -- desc = "Stop recording (only during macro)"
-})
+map("n", "q", "<NOP>")
 
 -- Closer eagle hover on esc, might mess with other buffers?
 vim.api.nvim_create_autocmd("BufEnter", {
