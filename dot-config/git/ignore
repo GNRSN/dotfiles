@@ -4,8 +4,5 @@
 # Global ignore neoconf for personal config
 .neoconf.json
 
-# Aider
-.aider*
-
 # Claude code
 **/.claude/settings.local.json
