@@ -88,6 +88,7 @@
   "tiny-glimmer.nvim": { "branch": "main", "commit": "73b17b8a41ac7a61bfdcbe1cd3743c29d28d376e" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
+  "ts-error-translator.nvim": { "branch": "main", "commit": "17ec46d9827e39ee5fab23ad6346ac7ab0fff9e4" },
   "tsc.nvim": { "branch": "main", "commit": "e4773833726beec2e8a8e11f0b21613b5472b97b" },
   "twoslash-queries.nvim": { "branch": "main", "commit": "1262c20cad5abd6e89995dc4bc0eaab0e2e4e0b9" },
   "typescript-tools.nvim": { "branch": "refac-use_native_lsp_api", "commit": "61e2b0857d75ff62941e7b38cc202f483f76c0ee" },
