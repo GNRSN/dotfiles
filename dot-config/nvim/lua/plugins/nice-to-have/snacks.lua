@@ -144,7 +144,7 @@ return {
         desc = "Search for Plugin Spec",
       },
 
-      {
+      { -- LATER: Lol reversed doesn't look too good here
         "<leader>ss",
         function()
           Snacks.picker.lsp_symbols()
@@ -304,10 +304,12 @@ return {
         win = {
           input = {
             keys = {
-              -- to close the picker on ESC instead of going to normal mode,
-              -- add the following keymap to your config
-              -- ["<Esc>"] = { "close", mode = { "n", "i" } },
-              ["<CR>"] = { "confirm", mode = { "n", "i" } },
+              ["<C-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+              ["<C-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+              -- LATER: Would like to reuse split resize keybinds to resize preview
+              --
+              -- ["<C-A-h>"] = { "preview_" },
+              -- ["<C-A-l>"] = { "preview_" },
             },
           },
         },
