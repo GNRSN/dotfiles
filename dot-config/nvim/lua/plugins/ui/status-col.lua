@@ -25,6 +25,7 @@ local BLACKLIST_FT = {
   "dapui_console",
   "dapui_repl",
   "atone",
+  "gitsigns-blame",
 }
 
 local BLACKLIST_BT = {
