@@ -8,6 +8,13 @@ return {
     end,
     -- DOC: This plugin initializes itself lazily.
     lazy = false,
+    keys = {
+      { -- Keeping this for now as a way to debug/compare fff-snacks to original UI
+        "<leader>ff",
+        "<cmd>FFFFind<cr>",
+        { desc = "Find files (fff, original UI)" },
+      },
+    },
     opts = {
       layout = {
         height = 0.8,
