@@ -12,38 +12,13 @@ M.HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
   "NotifyBackground",
 }
 
----@class Highlight
----@field fg? string color name or "#RRGGBB"
----@field foreground? string same fg, color name or "#RRGGBB"
----@field bg? string color name or "#RRGGBB"
----@field background? string same bg, color name or "#RRGGBB"
----@field sp? string color name or "#RRGGBB"
----@field special? string same sg, color name or "#RRGGBB"
----@field blend? integer value between 0 and 100
----@field bold? boolean
----@field standout? boolean
----@field underline? boolean
----@field undercurl? boolean
----@field underdouble? boolean
----@field underdotted? boolean
----@field underdashed? boolean
----@field strikethrough? boolean
----@field italic? boolean
----@field reverse? boolean
----@field nocombine? boolean
----@field link? string name of another highlight group to link to, see |:hi-link|.
----@field default? string Don't override existing definition |:hi-default|
----@field ctermfg? integer Sets foreground of cterm color |highlight-ctermfg|
----@field ctermbg? integer Sets background of cterm color |highlight-ctermbg|
----@field cterm? table cterm attribute map, like |highlight-args|.
-
 ---setup highlight groups
----@return table<string, Highlight>
+---@return table<string, vim.api.keyset.highlight>
 ---@nodiscard
 function M.setup()
   local palette = require("colorscheme.palette")
 
-  ---@type table<string, Highlight>
+  ---@type table<string, vim.api.keyset.highlight>
   return {
     Normal = { fg = palette.fg, bg = palette.bg },
     NormalFloat = { fg = palette.fg, bg = palette.bg },

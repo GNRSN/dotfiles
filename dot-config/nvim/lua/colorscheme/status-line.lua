@@ -1,4 +1,4 @@
-local configs = require("colorscheme").configs()
+local configs = require("colorscheme").get_configs()
 local palette = require("colorscheme.palette")
 
 local function getBg()

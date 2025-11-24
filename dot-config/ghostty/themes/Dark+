@@ -1,4 +1,5 @@
-# From https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/ghostty/Dark%2B
+# Inspired by:
+# https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/ghostty/Dark%2B
 palette = 0=#000000
 palette = 1=#cd3131
 palette = 2=#0dbc79
@@ -15,12 +16,11 @@ palette = 12=#3b8eea
 palette = 13=#d670d6
 palette = 14=#29b8db
 palette = 15=#e5e5e5
-foreground = #cccccc
-cursor-text = #000000
-selection-background = #3a3d41
+foreground =           #cccccc
+cursor-text =          #1E1E1E
+selection-background = #743563
 selection-foreground = #e0e0e0
-# Own customization
-background = #111111
-cursor-color = #FF79C6
+background =           #111111
+cursor-color =         #FF79C6
 background-opacity = 0.60
 background-blur = 44
