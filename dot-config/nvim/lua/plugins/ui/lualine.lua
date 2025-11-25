@@ -17,6 +17,7 @@ local BLACKLIST_FT = {
   "dapui_repl",
   "atone",
   "gitsigns-blame",
+  "Outline",
 }
 
 local get_noice_mode = function()
