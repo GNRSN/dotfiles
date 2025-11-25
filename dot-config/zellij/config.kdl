@@ -1,3 +1,35 @@
+theme "dark_plus"
+default_mode "locked"
+default_layout "zjstatus"
+simplified_ui true
+pane_frames false
+show_startup_tips false
+// DOC: changing these requires a restart to take effect
+plugins {
+    about location="zellij:about"
+    compact-bar location="zellij:compact-bar"
+    configuration location="zellij:configuration"
+    filepicker location="zellij:strider" {
+        cwd "/"
+    }
+    plugin-manager location="zellij:plugin-manager"
+    session-manager location="zellij:session-manager"
+    status-bar location="zellij:status-bar"
+    strider location="zellij:strider"
+    tab-bar location="zellij:tab-bar"
+    zellij-vim-navigator location="https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+
+    }
+    zsm location="https://github.com/liam-mackie/zsm/releases/download/v0.4.1/zsm.wasm" {
+        default_layout "zjstatus"
+    }
+    zjstatus location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
+
+    }
+    zellij-workspace location="https://github.com/vdbulcke/zellij-workspace/releases/download/v0.3.0/zellij-workspace.wasm" {
+
+    }
+}
 keybinds clear-defaults=true {
     normal {
         bind "Super g" {
@@ -15,6 +47,15 @@ keybinds clear-defaults=true {
             Resize "Increase"
             SwitchToMode "locked"
         }
+        bind "y" {
+            LaunchOrFocusPlugin "zellij-workspace" {
+                floating true
+                // default false: replace current session with selected layout
+                replace_current_session true
+                debug false
+            }
+            SwitchToMode "locked"
+        }
     }
     shared {
         bind "Super g" {
@@ -24,10 +65,17 @@ keybinds clear-defaults=true {
             ToggleFocusFullscreen
         }
         bind "Super o" {
+            LaunchOrFocusPlugin "zsm" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "locked"
+        }
+        bind "Super O" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
- // REVIEW: I'm sometimes moving to the wrong tab when its opened in the current, is this causing it?
- // move_to_focused_tab true
+                // REVIEW: I'm sometimes moving to the wrong tab when its opened in the current, is this causing it?
+                move_to_focused_tab true
             }
             SwitchToMode "locked"
         }
@@ -71,7 +119,7 @@ keybinds clear-defaults=true {
             GoToTab 9
         }
         bind "Ctrl h" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "zellij-vim-navigator" {
                 name "move_focus"
                 payload "left"
                 // Plugin Configuration
@@ -82,7 +130,7 @@ keybinds clear-defaults=true {
             }
         }
         bind "Ctrl j" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "zellij-vim-navigator" {
                 name "move_focus"
                 payload "down"
                 move_mod "ctrl"
@@ -90,7 +138,7 @@ keybinds clear-defaults=true {
             }
         }
         bind "Ctrl k" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "zellij-vim-navigator" {
                 name "move_focus"
                 payload "up"
                 move_mod "ctrl"
@@ -98,7 +146,7 @@ keybinds clear-defaults=true {
             }
         }
         bind "Ctrl l" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "zellij-vim-navigator" {
                 name "move_focus"
                 payload "right"
                 move_mod "ctrl"
@@ -107,28 +155,28 @@ keybinds clear-defaults=true {
             }
         }
         bind "Ctrl Alt h" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "zellij-vim-navigator" {
                 name "resize"
                 payload "left"
                 resize_mod "ctrl+alt"
             }
         }
         bind "Ctrl Alt j" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "zellij-vim-navigator" {
                 name "resize"
                 payload "down"
                 resize_mod "ctrl+alt"
             }
         }
         bind "Ctrl Alt k" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "zellij-vim-navigator" {
                 name "resize"
                 payload "up"
                 resize_mod "ctrl+alt"
             }
         }
         bind "Ctrl Alt l" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "zellij-vim-navigator" {
                 name "resize"
                 payload "right"
                 resize_mod "ctrl+alt"
@@ -608,56 +656,13 @@ keybinds clear-defaults=true {
         }
     }
 }
-// Plugin aliases - can be used to change the implementation of Zellij
-// changing these requires a restart to take effect
-plugins {
-    about location="zellij:about"
-    compact-bar location="zellij:compact-bar"
-    configuration location="zellij:configuration"
-    filepicker location="zellij:strider" {
-        cwd "/"
-    }
-    plugin-manager location="zellij:plugin-manager"
-    session-manager location="zellij:session-manager"
-    status-bar location="zellij:status-bar"
-    strider location="zellij:strider"
-    tab-bar location="zellij:tab-bar"
-    welcome-screen location="zellij:session-manager" {
-        welcome_screen true
-    }
-}
-// Plugins to load in the background when a new session starts
-// eg. "file:/path/to/my-plugin.wasm"
-// eg. "https://example.com/my-plugin.wasm"
-load_plugins {
-
-}
-// Use a simplified UI without special fonts (arrow glyphs)
-// Options:
-//   - true
-//   - false (Default)
-//
-// simplified_ui true
-// Choose the theme that is specified in the themes section.
-// Default: default
-//
-theme "dark_plus"
-// Choose the base input mode of zellij.
-// Default: normal
-//
-default_mode "locked"
-// Choose the path to the default shell that zellij will use for opening new panes
+ // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 //
 // default_shell "fish"
 // Choose the path to override cwd that zellij will use for opening new panes
 //
 // default_cwd "/tmp"
-// The name of the default layout to load on startup
-// Default: "default"
-//
-default_layout "zjstatus"
-simplified_ui true
 // The folder in which Zellij will look for layouts
 // (Requires restart)
 //
@@ -674,12 +679,6 @@ simplified_ui true
 //   - false
 //
 // mouse_mode false
-// Toggle having pane frames around the panes
-// Options:
-//   - true (default, enabled)
-//   - false
-//
-pane_frames false
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
 // or should each user have their own cursor (false)
@@ -787,10 +786,6 @@ pane_frames false
 // Default: true
 //
 // stacked_resize false
-// Whether to show tips on startup
-// Default: true
-//
-show_startup_tips false
  // Whether to show release notes on first version run
 // Default: true
 // 
