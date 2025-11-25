@@ -1,5 +1,6 @@
 return {
   { -- Next gen file-picker, this one powered by frizbee/SIMD
+    -- INFO: See this post from author about file picker vs general pickers https://github.com/dmtrKovalenko/fff.nvim/issues/92#issuecomment-3177134145
     "dmtrKovalenko/fff.nvim",
     build = function()
       -- DOC: this will download prebuild binary or try to use existing rustup toolchain to build from source
