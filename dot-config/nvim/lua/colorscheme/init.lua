@@ -7,7 +7,7 @@ local DEFAULT_CONFIG = {
 local function apply_term_colors()
   local palette = require("colorscheme.palette")
   -- NOTE: libvterm used by nvim does't support some escape sequences, e.g. for dimmed text
-  -- so there may still be descrepencies to regular terminal
+  -- so there may still be discrepancies to regular terminal
   vim.g.terminal_color_0 = "#000000"
   vim.g.terminal_color_1 = "#cd3131"
   vim.g.terminal_color_2 = "#0dbc79"
