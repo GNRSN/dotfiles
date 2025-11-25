@@ -1,43 +1,38 @@
-local o = vim.o
-local g = vim.g
-local cmd = vim.cmd
-local nvim_set_hl = vim.api.nvim_set_hl
-local tbl_deep_extend = vim.tbl_deep_extend
-
 ---@class DefaultConfig
 ---@field transparent_bg boolean
-
 local DEFAULT_CONFIG = {
   transparent_bg = false,
 }
 
 local function apply_term_colors()
   local palette = require("colorscheme.palette")
-  g.terminal_color_0 = palette.black
-  g.terminal_color_1 = palette.red
-  g.terminal_color_2 = palette.green
-  g.terminal_color_3 = palette.yellow
-  g.terminal_color_4 = palette.term_blue
-  g.terminal_color_5 = palette.pink
-  g.terminal_color_6 = palette.cyan
-  g.terminal_color_7 = palette.white
-  g.terminal_color_8 = palette.fade
-  g.terminal_color_9 = palette.bright_red
-  g.terminal_color_10 = palette.bright_green
-  g.terminal_color_11 = palette.bright_yellow
-  g.terminal_color_12 = palette.bright_blue
-  g.terminal_color_13 = palette.bright_magenta
-  g.terminal_color_14 = palette.bright_cyan
-  g.terminal_color_15 = palette.bright_white
-  g.terminal_color_background = palette.bg
-  g.terminal_color_foreground = palette.fg
+  -- NOTE: libvterm used by nvim does't support some escape sequences, e.g. for dimmed text
+  -- so there may still be descrepencies to regular terminal
+  vim.g.terminal_color_0 = "#000000"
+  vim.g.terminal_color_1 = "#cd3131"
+  vim.g.terminal_color_2 = "#0dbc79"
+  vim.g.terminal_color_3 = "#e5e510"
+  vim.g.terminal_color_4 = "#2472c8"
+  vim.g.terminal_color_5 = "#bc3fbc"
+  vim.g.terminal_color_6 = "#11a8cd"
+  vim.g.terminal_color_7 = "#e5e5e5"
+  vim.g.terminal_color_8 = "#666666"
+  vim.g.terminal_color_9 = "#f14c4c"
+  vim.g.terminal_color_10 = "#23d18b"
+  vim.g.terminal_color_11 = "#f5f543"
+  vim.g.terminal_color_12 = "#3b8eea"
+  vim.g.terminal_color_13 = "#d670d6"
+  vim.g.terminal_color_14 = "#29b8db"
+  vim.g.terminal_color_15 = "#e5e5e5"
+  vim.g.terminal_color_foreground = "#cccccc"
+  vim.g.terminal_color_background = palette.bg
 end
 
 ---apply colorscheme
 ---@param configs DefaultConfig
 local function apply(configs)
   local palette = require("colorscheme.palette")
-  apply_term_colors(palette)
+  apply_term_colors()
   local hl_groups = require("colorscheme.highlight-groups").setup()
 
   -- apply transparency
@@ -57,42 +52,41 @@ local function apply(configs)
 
   -- set defined highlights
   for group, setting in pairs(hl_groups) do
-    nvim_set_hl(0, group, setting)
+    vim.api.nvim_set_hl(0, group, setting)
   end
 end
 
 local local_configs = DEFAULT_CONFIG
 
+local M = {}
+
 ---setup colorscheme
 ---@param configs DefaultConfig?
-local function setup(configs)
+function M.setup(configs)
   if type(configs) == "table" then
-    local_configs = tbl_deep_extend("force", DEFAULT_CONFIG, configs) --[[@as DefaultConfig]]
+    local_configs = vim.tbl_deep_extend("force", DEFAULT_CONFIG, configs) --[[@as DefaultConfig]]
   end
 end
 
 ---load colorscheme
-local function load()
+function M.load()
   -- reset colors
-  if g.colors_name then
-    cmd("hi clear")
+  if vim.g.colors_name then
+    vim.cmd("hi clear")
   end
 
   if vim.fn.exists("syntax_on") then
-    cmd("syntax reset")
+    vim.cmd("syntax reset")
   end
 
-  o.background = "dark"
-  o.termguicolors = true
-  g.colors_name = "colorscheme"
+  vim.o.background = "dark"
+  vim.g.colors_name = "colorscheme"
 
   apply(local_configs)
 end
 
-return {
-  load = load,
-  setup = setup,
-  configs = function()
-    return local_configs
-  end,
-}
+function M.get_configs()
+  return local_configs
+end
+
+return M
