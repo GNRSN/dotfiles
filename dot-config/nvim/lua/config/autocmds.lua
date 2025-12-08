@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_esc"),
   pattern = {
-    "fyler",
+    -- "fyler",
     "lazy",
     "dap-float",
   },
