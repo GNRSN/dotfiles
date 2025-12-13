@@ -1,8 +1,6 @@
-tap "dimentium/autoraise"
 tap "felixkratz/formulae"
 tap "homebrew/services"
 tap "nikitabobko/tap"
-brew "dimentium/autoraise/autoraise"
 brew "felixkratz/formulae/sketchybar"
 cask "aerospace"
 cask "arc"

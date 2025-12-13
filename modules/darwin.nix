@@ -179,12 +179,14 @@
   ];
 
   homebrew.brews = [
-    {
-      # Focus follows mouse, essential for multi monitor work
-      # NOTE: The cask versions option for starting at login did not work
-      name = "dimentium/autoraise/autoraise";
-      restart_service = "changed";
-    }
+    # TODO: The latest version of autoraise through brew (5.5) just stoppped working for me,
+    # reninstalling didnt help, had to remove and install manually
+    # {
+    #   # Focus follows mouse, essential for multi monitor work
+    #   # LATER: The cask versions option for starting at login did not work
+    #   name = "dimentium/autoraise/autoraise";
+    #   restart_service = "changed";
+    # }
     {
       name = "FelixKratz/formulae/sketchybar";
       restart_service = "changed";
