@@ -99,6 +99,8 @@
     # Libsql, better sqlite
     # NOTE: sqld is libsql including some extras
     sqld_pkgs.sqld
+    # Tmux
+    tmux
     # Turso cli
     turso-cli
     # Cli file manager
