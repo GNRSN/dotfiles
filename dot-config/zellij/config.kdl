@@ -35,16 +35,12 @@ keybinds clear-defaults=true {
         bind "Super g" {
             Run "lazygit" {
                 floating true
-                width "80%"
-                height "80%"
-                x "10%"
-                y "10%"
-                top
                 close_on_exit true
+                width "94%"
+                height "95%"
+                x "4%"
+                y "5%"
             }
-            Resize "Increase"
-            Resize "Increase"
-            Resize "Increase"
             SwitchToMode "locked"
         }
         bind "y" {
@@ -656,7 +652,7 @@ keybinds clear-defaults=true {
         }
     }
 }
- // Choose the path to the default shell that zellij will use for opening new panes
+// Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 //
 // default_shell "fish"
@@ -701,8 +697,8 @@ keybinds clear-defaults=true {
 // Valid values: positive integers
 // Default value: 10000
 //
-// scroll_buffer_size 10000
-// Provide a command to execute when copying text. The text will be piped to
+scroll_buffer_size 10000
+ // Provide a command to execute when copying text. The text will be piped to
 // the stdin of the program to perform the copy. This can be used with
 // terminal emulators which do not support the OSC 52 ANSI control sequence
 // that will be used by default if this option is not set.
