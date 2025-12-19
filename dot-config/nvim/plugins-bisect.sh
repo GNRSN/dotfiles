@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# LATER: Maybe it would suffice to only add plugins with a diff in the lockfile?
+
 set -euo pipefail
 
 LOCKFILE="$HOME/.config/nvim/lazy-lock.json"
