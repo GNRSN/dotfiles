@@ -33,13 +33,14 @@ plugins {
 keybinds clear-defaults=true {
     normal {
         bind "Super g" {
-            Run "lazygit" {
+            Run "bash" "-lc" "$XDG_CONFIG_HOME/lazygit/lazygit-router.sh" {
+                args
                 floating true
                 close_on_exit true
-                width "94%"
-                height "95%"
-                x "4%"
-                y "5%"
+                width "97%"
+                height "97%"
+                x "2%"
+                y "2%"
             }
             SwitchToMode "locked"
         }

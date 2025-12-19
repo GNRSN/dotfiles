@@ -1,8 +1,7 @@
 alias cat=bat
 
 alias ".."="cd .."
-alias lz=lazygit
-alias lg="lazygit --use-config-file \"$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml\""
+alias lg="$XDG_CONFIG_HOME/lazygit/lazygit-router.sh"
 alias nv=nvim
 alias pn=pnpm
 alias px=pnpx
