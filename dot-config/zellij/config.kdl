@@ -20,9 +20,6 @@ plugins {
     zellij-vim-navigator location="https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
 
     }
-    zsm location="https://github.com/liam-mackie/zsm/releases/download/v0.4.1/zsm.wasm" {
-        default_layout "zjstatus"
-    }
     zjstatus location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
 
     }
@@ -34,7 +31,6 @@ keybinds clear-defaults=true {
     normal {
         bind "Super g" {
             Run "bash" "-lc" "$XDG_CONFIG_HOME/lazygit/lazygit-router.sh" {
-                args
                 floating true
                 close_on_exit true
                 width "97%"
@@ -62,13 +58,6 @@ keybinds clear-defaults=true {
             ToggleFocusFullscreen
         }
         bind "Super o" {
-            LaunchOrFocusPlugin "zsm" {
-                floating true
-                move_to_focused_tab true
-            }
-            SwitchToMode "locked"
-        }
-        bind "Super O" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
                 // REVIEW: I'm sometimes moving to the wrong tab when its opened in the current, is this causing it?
