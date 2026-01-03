@@ -63,6 +63,7 @@ return {
         event = "VeryLazy",
         opts = {
           -- recommended settings
+          -- TODO: Find a way to copy image to same folder
           default = {
             embed_image_as_base64 = false,
             prompt_for_file_name = false,
@@ -70,7 +71,7 @@ return {
               insert_mode = true,
             },
             -- required for Windows users
-            use_absolute_path = true,
+            -- use_absolute_path = true,
           },
         },
       },
