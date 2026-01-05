@@ -105,6 +105,7 @@
   "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" },
   "visual-whitespace.nvim": { "branch": "main", "commit": "2c2de32bb97620bcf4b3b78879c185315ee971dc" },
   "volt": { "branch": "main", "commit": "620de1321f275ec9d80028c68d1b88b409c0c8b1" },
+  "vscode-diff.nvim": { "branch": "main", "commit": "1610dbfeda57b003e666f93e88df5b33cd8c721b" },
   "wezterm-types": { "branch": "main", "commit": "e30476bc7779adf466e771f2de13aebcdc7eb1a6" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "windsurf.nvim": { "branch": "main", "commit": "821b570b526dbb05b57aa4ded578b709a704a38a" },
