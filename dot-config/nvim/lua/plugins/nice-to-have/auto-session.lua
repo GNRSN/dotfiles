@@ -9,6 +9,8 @@ local FT_BLACKLIST = {
   "dapui_watches",
   "dapui_console",
   "dapui_repl",
+  "fyler",
+  "oil",
 }
 
 return {

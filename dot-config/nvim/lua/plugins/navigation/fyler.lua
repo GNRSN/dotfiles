@@ -1,14 +1,16 @@
 return {
   "A7Lavinraj/fyler.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "nvim-mini/mini.icons" },
   branch = "stable",
-  cond = false,
+  -- DOC: Necessary for `default_explorer` to work properly
+  lazy = false,
   keys = {
     {
-      "<BS>",
+      "<D-BS>",
       function()
         if vim.bo.filetype ~= "fyler" then
-          require("fyler").open()
+          require("fyler").open({ kind = "float" })
         else
           -- TODO: Should go to parent node if wanting to mimic oil?
         end
@@ -17,13 +19,16 @@ return {
     },
   },
   opts = {
-    icon_provider = "nvim-web-devicons",
+    integrations = {
+      -- TODO: is this no longer possible
+      -- icon = "nvim-web-devicons",
+    },
     views = {
-      explorer = {
-        width = 0.95,
-        height = 0.9,
-        kind = "float",
-      },
+      -- finder = {
+      --   width = 0.95,
+      --   height = 0.9,
+      --   kind = "float",
+      -- },
     },
   },
 }
