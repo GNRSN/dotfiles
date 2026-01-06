@@ -287,11 +287,9 @@ return {
         },
         previewers = {
           diff = {
-            -- fancy: Snacks fancy diff (borders, multi-column line numbers, syntax highlighting)
-            -- syntax: Neovim's built-in diff syntax highlighting
             -- terminal: external command (git's pager for git commands, `cmd` for other diffs)
             style = "terminal", ---@type "fancy"|"syntax"|"terminal"
-            cmd = { "difft" }, -- example for using `delta` as the external diff command
+            cmd = { "difft --display=inline" }, -- example for using `delta` as the external diff command
             ---@type vim.wo?|{} window options for the fancy diff preview window
             wo = {
               breakindent = true,
