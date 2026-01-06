@@ -1,7 +1,9 @@
 return {
   "A7Lavinraj/fyler.nvim",
   -- dependencies = { "nvim-tree/nvim-web-devicons" },
-  dependencies = { "nvim-mini/mini.icons" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
   branch = "stable",
   -- DOC: Necessary for `default_explorer` to work properly
   lazy = false,
@@ -20,8 +22,7 @@ return {
   },
   opts = {
     integrations = {
-      -- TODO: is this no longer possible
-      -- icon = "nvim-web-devicons",
+      icon = "nvim_web_devicons",
     },
     views = {
       -- finder = {
