@@ -1,5 +1,6 @@
 return {
   { -- Lua repl experience in scratch buffer
+    -- TODO: Why is vim lsp not included?
     "mghaight/replua.nvim",
     cmd = {
       "RepluaOpen",
