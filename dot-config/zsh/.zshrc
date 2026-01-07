@@ -29,6 +29,11 @@ if [ "$TERM_PROGRAM" = "ghostty" ] && [ "$ZELLIJ" != "0" ]; then
   eval "zellij attach -c Users.$USER.dotfiles"
 fi
 
+## Autostart a new tmux session, if not already inside one
+# if [ "$TERM_PROGRAM" = "ghostty" ] && [ "$TMUX" != "0" ]; then
+#   eval "tmux new-session -A -s dotfiles -c $HOME/dotfiles"
+# fi
+
 #   ------
 ### Prompt
 #   ------
