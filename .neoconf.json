@@ -7,7 +7,8 @@
     "custom_filetypes": {
       "pattern": {
         ".*/dot%-config/git/config": "gitconfig",
-        ".*/dot%-config/git/ignore": "gitignore"
+        ".*/dot%-config/git/ignore": "gitignore",
+        ".*/dot%-config/zed/[^/]+%.json": "jsonc"
       }
     }
   }
