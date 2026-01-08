@@ -26,7 +26,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 ## Autostart a new zellij shell, if not already inside one
 if [ "$TERM_PROGRAM" = "ghostty" ] && [ "$ZELLIJ" != "0" ]; then
-  eval "zellij attach -c Users.$USER.dotfiles"
+  eval "zellij attach -c Dotfiles"
 fi
 
 ## Autostart a new tmux session, if not already inside one

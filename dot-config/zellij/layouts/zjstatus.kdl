@@ -14,8 +14,8 @@ layout {
                 // Zjstatus can automatically toggle frames when > 1 pane but it doesn't happen quickly enough when switching tabs
                 pane_frames "false"
                 hide_frame_for_single_pane "false"
-                tab_normal "#[fg=#666666,italic] {name} "
-                tab_active "#[fg=#cccccc,bold,italic] {name} "
+                tab_normal "#[fg=#666666,italic] {index}:{name} "
+                tab_active "#[fg=#cccccc,bold,italic] {index}:{name} "
                 mode_locked "#[bg=#222222,fg=#666666,bold] {name} "
                 mode_normal "#[bg=#666666,fg=#222222,bold] {name} "
                 mode_resize "#[bg=#89B4FA,fg=#222222,bold] {name} "
