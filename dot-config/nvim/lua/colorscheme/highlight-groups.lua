@@ -327,14 +327,6 @@ function M.setup()
     GitSignsDeleteLn = { fg = palette.black, bg = palette.bright_red },
     GitSignsCurrentLineBlame = { fg = palette.white },
 
-    -- Fzf-lua
-    FzfLuaBorder = { fg = palette.fade },
-    FzfLuaTitle = { fg = palette.white },
-    FzfLuaCursor = { fg = palette.white },
-    FzfLuaCursorLine = { bg = palette.visual_bg },
-    FzfLuaCursorLineNumber = { fg = palette.fade },
-    FzfLuaSearch = { bg = palette.green },
-
     -- Oil
     OilHidden = { fg = palette.fade },
     OilFile = { fg = palette.fg },

@@ -42,6 +42,10 @@ export NEOVIDE_TITLE_HIDDEN=1
 # Don't open file in separate tab
 export NEOVIDE_TABS=0
 
+# === Fzf ===
+
+source $XDG_CONFIG_HOME/fzf/fzf.zsh
+
 # === Misc ===
 
 # Delta git diff viewer also uses bat theme automatically
