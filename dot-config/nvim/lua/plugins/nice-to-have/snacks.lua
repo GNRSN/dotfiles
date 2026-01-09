@@ -6,6 +6,13 @@ return {
     priority = 1000,
     lazy = false,
     keys = {
+      -- {
+      --   "<leader><space>",
+      --   function()
+      --     Snacks.picker.smart()
+      --   end,
+      --   desc = "Find files (Snacks)",
+      -- },
       {
         "<leader>,",
         function()

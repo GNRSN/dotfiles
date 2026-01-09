@@ -15,6 +15,11 @@ return {
         "<cmd>FFFFind<cr>",
         { desc = "Find files (fff, original UI)" },
       },
+      {
+        "<leader><space>",
+        "<cmd>FFFFind<cr>",
+        desc = "Find files (fff)",
+      },
     },
     opts = {
       layout = {
@@ -30,21 +35,8 @@ return {
         show_scores = false, -- to help us optimize the scoring system, feel free to share your scores!
       },
     },
-  },
-  { -- Uses snacks picker as fff frontend
-    "madmaxieee/fff-snacks.nvim",
-    dependencies = {
-      "dmtrKovalenko/fff.nvim",
-      "folke/snacks.nvim",
-    },
-    cmd = "FFFSnacks",
-    keys = {
-      {
-        "<leader><space>",
-        "<cmd>FFFSnacks<cr>",
-        desc = "Find files (fff)",
-      },
-    },
-    config = true,
+    config = function(_, opts)
+      require("fff").setup(opts)
+    end,
   },
 }
