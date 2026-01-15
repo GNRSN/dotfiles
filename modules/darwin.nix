@@ -87,7 +87,7 @@
     # GNU password-store (key manager)
     pass
     # Npm but better, faster, stronger...
-    nodejs_22.pkgs.pnpm
+    nodejs_24.pkgs.pnpm
     # Automatic checks before committing
     pre-commit
     # Faster grep
@@ -113,14 +113,14 @@
     zoxide
 
     # === WORK ===
-    nodejs_22
+    nodejs_24
 
     # Pinned version of go for work
     # TODO: Experiment with direnv
     go_1_24
 
     # Used for work
-    nodejs_22.pkgs.yarn
+    nodejs_24.pkgs.yarn
   ];
 
   fonts.packages = with pkgs; [
