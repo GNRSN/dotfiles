@@ -29,6 +29,8 @@ local k = require("luasnip.nodes.key_indexer").new_key
 return {
   ["af"] = fmt([[() => {}]], { i(1) }),
   ["afn"] = fmt([[() => {{{}}}]], { i(1) }),
+  ["afa"] = fmt([[async () => {}]], { i(1) }),
+  ["afna"] = fmt([[async () => {{{}}}]], { i(1) }),
   ["/*"] = fmt(
     [[
   /**
