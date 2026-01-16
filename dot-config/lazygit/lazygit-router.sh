@@ -18,9 +18,15 @@ fi
 
 # If Graphite metadata exists → use Graphite config
 if [[ -d "$git_dir/.gt" ]]; then
+  # Set pane title
+  echo -n -e "\033]0;Lazygit (graphite)\007"
+
   exec lazygit \
     --use-config-file \
     "$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml"
 else
+  # Set pane title
+  echo -n -e "\033]0;Lazygit\007"
+
   exec lazygit
 fi
