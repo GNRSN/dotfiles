@@ -9,8 +9,41 @@
 {
   "agent": {
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest",
+      "provider": "Cerebras",
+      "model": "zai-glm-4.7",
+    },
+  },
+  "language_models": {
+    "openai_compatible": {
+      "Cerebras": {
+        "api_url": "https://api.cerebras.ai/v1",
+        "available_models": [
+          {
+            "name": "llama-3.3-70b",
+            "display_name": "Llama 3.3 70b",
+            "max_tokens": 32768,
+            "max_completion_tokens": 1024,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "zai-glm-4.7",
+            "display_name": "Z.ai GLM 4.7",
+            "max_tokens": 32768,
+            "max_completion_tokens": 1024,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
     },
   },
   "vim_mode": true,
