@@ -28,6 +28,7 @@ local BLACKLIST_FT = {
   "gitsigns-blame",
   "Outline",
   "fyler",
+  "grug-far",
 }
 
 local BLACKLIST_BT = {
