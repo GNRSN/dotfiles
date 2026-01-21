@@ -18,6 +18,7 @@ local BLACKLIST_FT = {
   "atone",
   "gitsigns-blame",
   "Outline",
+  "grug-far",
 }
 
 local get_noice_mode = function()
