@@ -6,3 +6,6 @@
 
 # Claude code
 **/.claude/settings.local.json
+
+# Mise toolchain manager project config
+**/.mise.local.toml

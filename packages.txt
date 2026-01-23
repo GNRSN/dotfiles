@@ -25,16 +25,15 @@ jqp-0.8.0
 jujutsu-0.37.0
 lazygit-0.58.1
 mergiraf-0.16.1
+mise-2026.1.2
 mongodb-ce-8.2.3
 mongosh-2.6.0
 neovide-0.15.2
 neovim-0.11.5
 nix-2.28.5
 nixfmt-1.2.0
-nodejs-24.12.0
 oh-my-posh-29.0.2
 password-store-1.7.4
-pnpm-10.28.0
 pre-commit-4.5.1
 ripgrep-15.1.0
 rustup-1.28.2
@@ -42,7 +41,6 @@ sqld-0.24.18
 stow-2.4.1
 tmux-3.6a
 turso-cli-1.0.15
-yarn-1.22.22
 yazi-26.1.4
 yq-go-4.50.1
 zellij-0.43.1
