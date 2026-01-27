@@ -111,12 +111,6 @@
     zellij
     # Better cd
     zoxide
-
-    # === WORK ===
-
-    # Pinned version of go for work
-    # TODO: Experiment with direnv
-    go_1_24
   ];
 
   fonts.packages = with pkgs; [
