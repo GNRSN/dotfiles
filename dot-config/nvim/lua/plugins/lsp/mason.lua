@@ -36,6 +36,8 @@ return {
     })
 
     mason_tool_installer.setup({
+      -- NOTE: All these integrations do is remap names so that the same
+      -- language/service name maps to the corresponding mason registry packages
       integrations = {
         ["mason-lspconfig"] = true,
         ["mason-nvim-dap"] = true,

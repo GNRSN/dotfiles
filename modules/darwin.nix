@@ -82,8 +82,8 @@
     neovim
     # Neovim gui
     neovide
-    # Nix-dsl formatter
-    nixfmt-rfc-style
+    # Nix-dsl formatter, mason doesn't provide arm/darwin version
+    nixfmt
     # Cross platform prompt
     oh-my-posh
     # GNU password-store (key manager)
