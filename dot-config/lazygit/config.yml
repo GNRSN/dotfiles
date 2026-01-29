@@ -36,8 +36,6 @@ keybinding:
     # I often do this by accident and it risks "loosing" commits from working copy of branch.
     # If this isn't noticed its a pain to restore later
     pullFiles: <disabled>
-    # This opens on <c-p> which I find annoying since I also use that to page
-    createPatchOptionsMenu: <disabled>
     prevBlock: <disabled>
     nextBlock: <disabled>
     prevBlock-alt: <disabled>
@@ -46,6 +44,11 @@ keybinding:
     nextBlock-alt2: <disabled>
     prevTab: h
     nextTab: l
+    rangeSelectDown: <disabled>
+    rangeSelectUp: <disabled>
+  commits:
+    moveDownCommit: <s-down>
+    moveUpCommit: <s-up>
 customCommands:
   - key: "P"
     description: "Push a specific commit (and any preceding)"
