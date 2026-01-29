@@ -77,7 +77,10 @@ map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 -- lazygit
-map("n", "<leader>gg", require("util.git-tui").utils.lazygit_smart_open, { desc = "Lazygit (root dir)" })
+-- NOTE: In zellij we have replaced this with zellij float
+if not require("util.ctx").is_zellij then
+  map("n", "<leader>gg", require("util.git-tui").utils.lazygit_smart_open, { desc = "Lazygit (root dir)" })
+end
 map("n", "<leader>gt", function()
   require("util.git-tui").utils.lazygit_smart_open({ force_graphite = true })
 end, { desc = "Lazygit with Graphite config (root dir)" })
