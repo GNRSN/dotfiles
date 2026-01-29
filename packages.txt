@@ -17,7 +17,6 @@ git-2.52.0
 gitleaks-8.30.0
 glow-2.1.1
 gnupg-2.4.8
-go-1.24.12
 graphite-cli-1.7.2
 JankyBorders-1.8.4
 jq-1.8.1-bin
