@@ -72,6 +72,8 @@
     lazygit
     # Automatic merge tool
     mergiraf
+    # Toolchain manager
+    mise
     # Mongodb community edition (for local development)
     mongodb-ce
     # Mongodb cli interface
@@ -86,8 +88,6 @@
     oh-my-posh
     # GNU password-store (key manager)
     pass
-    # Npm but better, faster, stronger...
-    nodejs_24.pkgs.pnpm
     # Automatic checks before committing
     pre-commit
     # Faster grep
@@ -113,14 +113,10 @@
     zoxide
 
     # === WORK ===
-    nodejs_24
 
     # Pinned version of go for work
     # TODO: Experiment with direnv
     go_1_24
-
-    # Used for work
-    nodejs_24.pkgs.yarn
   ];
 
   fonts.packages = with pkgs; [

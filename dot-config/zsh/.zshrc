@@ -236,3 +236,6 @@ eval "$(zoxide init zsh --cmd cd)"
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
+
+# Load dev environment/toolchains through mise 
+eval "$(mise activate zsh)"
