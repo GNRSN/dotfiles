@@ -1,6 +1,7 @@
 return {
   { -- Jump to letters on screen
     "ggandor/leap.nvim",
+    url = "https://codeberg.org/andyg/leap.nvim",
     -- DOC: Lazy-loads itself, using lazyspec keys may have issues
     lazy = false,
     config = function(_, opts)
