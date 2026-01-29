@@ -12,11 +12,11 @@ return {
   -- TODO: Get rid of some options from lsp code actions that I never use, they just clutter it
   {
     -- TODO: pmizio/typescript-tools.nvim was no longer maintained?
-    "Yuki-bun/typescript-tools.nvim",
+    --
     -- Fork using nvim 0.11 native lsp apis
     -- Discussion:
     -- https://github.com/pmizio/typescript-tools.nvim/pull/366
-    branch = "refac-use_native_lsp_api",
+    "Yuki-bun/typescript-tools.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "neovim/nvim-lspconfig",

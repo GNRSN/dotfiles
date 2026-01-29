@@ -93,7 +93,7 @@
   "ts-error-translator.nvim": { "branch": "main", "commit": "c1e6a5529009e855eb102a668549679548757a05" },
   "tsc.nvim": { "branch": "main", "commit": "eecf551d69bf683603c77bd31a031873261d0147" },
   "twoslash-queries.nvim": { "branch": "main", "commit": "1262c20cad5abd6e89995dc4bc0eaab0e2e4e0b9" },
-  "typescript-tools.nvim": { "branch": "refac-use_native_lsp_api", "commit": "61e2b0857d75ff62941e7b38cc202f483f76c0ee" },
+  "typescript-tools.nvim": { "branch": "master", "commit": "d5076cb1952c128ce115a3e50c2a8d8e558ccbeb" },
   "typr": { "branch": "main", "commit": "584e4ef34dea25a4035627794322f315b22d1253" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "72e160cb1ce8c0db2ac4315f77d97420a2f4223d" },
   "vim-illuminate": { "branch": "master", "commit": "0d1e93684da00ab7c057410fecfc24f434698898" },
