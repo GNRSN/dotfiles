@@ -38,7 +38,6 @@ ripgrep-15.1.0
 rustup-1.28.2
 sqld-0.24.18
 stow-2.4.1
-tmux-3.6a
 turso-cli-1.0.15
 yazi-26.1.4
 yq-go-4.50.1

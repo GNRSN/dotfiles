@@ -6,7 +6,7 @@ return {
     lazy = false,
     -- cond = vim.env.TERM_PROGRAM == "WezTerm",
     -- TODO: at_edge stop doesn't seem to be working in wezterm? But it works in zellij-nav.nvim
-    cond = vim.env.TERM_PROGRAM == "WezTerm" or vim.env.ZELLIJ == "0" or vim.env.TMUX ~= "0",
+    cond = vim.env.TERM_PROGRAM == "WezTerm" or vim.env.ZELLIJ == "0",
     keys = {
       -- moving between splits
       {
