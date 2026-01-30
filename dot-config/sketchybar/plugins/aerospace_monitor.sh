@@ -8,8 +8,6 @@ MONITOR_ID=$1
 WORKSPACE_ID=$(aerospace list-workspaces --monitor $MONITOR_ID --visible)
 
 # Update the display with monitor:workspace format
-# LATER: monospace + fixed with works good for now but it would also be possible to use
-# number and/or letter icons from SF Symbols instead
 sketchybar --set monitor.$MONITOR_ID label="${MONITOR_ID}:${WORKSPACE_ID}"
 
 HIGHLIGHTED=(

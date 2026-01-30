@@ -1,3 +1,6 @@
+# Start AeroSpace at login
+start-at-login = true
+
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
@@ -10,21 +13,17 @@ after-startup-command = [
   # Bootstrap JankyBorders
   # needs to directly reference executable as workaround
   # https://github.com/nikitabobko/AeroSpace/issues/556
-  'exec-and-forget /Users/{USERNAME}/.nix-profile/bin/borders',
+  # 'exec-and-forget /Users/{USERNAME}/.nix-profile/bin/borders',
 
   # Run Sketchybar together with AeroSpace
-  # sketchbar has a built-in detection of already running process,
-  # so it won't be run twice on AeroSpace restart
   'exec-and-forget sketchybar'
 ]
 
 # Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change'
 ]
 
-# Start AeroSpace at login
-start-at-login = true
+on-mode-changed = ['exec-and-forget sketchybar --trigger aerospace_mode_change']
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -181,21 +180,16 @@ alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-# TODO: Close notificatons 
-# alt-esc = ['exec-and-forget']
+# LATER: Dismiss notifications through apple-script
+#
+# alt-esc = ['exec-and-forget some-dismiss-notifications-script']
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#mode
-# TODO: Mode changes has to be proppagated "manually" to sketchybar, can now update with "callback" https://github.com/nikitabobko/AeroSpace/issues/390
-# on-mode-changed = ['exec-and-forget sketchybar --trigger aerospace_service_mode_enabled_changed AEROSPACE_SERVICE_MODE_ENABLED=false']
-
-alt-shift-esc = ['mode service', 'exec-and-forget sketchybar --add item service q --set service icon=[SERVICE-MODE] service background.drawing=off icon.color=0xffffffff']
-ctrl-shift-space = ['mode service', 'exec-and-forget sketchybar --add item service q --set service icon=[SERVICE-MODE] service background.drawing=off icon.color=0xffffffff']
+ctrl-shift-alt-s = ['mode service']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc = ['reload-config', 'exec-and-forget sketchybar --remove service', 'mode main']
-ctrl-shift-space = ['reload-config', 'exec-and-forget sketchybar --remove service', 'mode main']
+esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 # backspace = ['close-all-windows-but-current', 'mode main']
@@ -249,9 +243,4 @@ run = ['move-node-to-workspace Q']
 if.app-id = 'com.mitchellh.ghostty'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace T']
-
-[[on-window-detected]]
-if.app-id = 'ea.browser.deta.surf'
-if.during-aerospace-startup = true
-run = ['move-node-to-workspace Z']
 
