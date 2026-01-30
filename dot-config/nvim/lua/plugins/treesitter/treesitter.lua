@@ -15,7 +15,6 @@ local ENSURE_INSTALLED = {
   "javascript",
   "jsdoc",
   "json",
-  "jsonc",
   "kdl", -- Kotlin Data Language, used to config zellij
   "lua",
   "luadoc",
