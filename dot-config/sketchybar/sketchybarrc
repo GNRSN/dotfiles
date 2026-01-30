@@ -15,6 +15,7 @@ bar_config=(
   height=32
   color=$BAR_COLOR
   display=main
+  padding_left=0
 )
 
 sketchybar --bar "${bar_config[@]}"
@@ -39,12 +40,18 @@ sketchybar --default "${defaults[@]}"
 
 # Integrate with Aerospace events
 sketchybar --add event aerospace_workspace_change
-
+sketchybar --add event aerospace_mode_change
 sketchybar --add event refresh_workspaces
 
 ##### Adding Left Items #####
 
 # Aerospace UI
+
+sketchybar --add item aerospace_mode left \
+  --set aerospace_mode \
+  script="$PLUGINS_DIR/aerospace_mode.sh" \
+  --subscribe aerospace_mode aerospace_mode_change
+
 # TODO: Find a way to subscribe to monitor connected/disconnected
 sketchybar --add item aerospace_monitors_group left \
   --set aerospace_monitors_group drawing=off \
