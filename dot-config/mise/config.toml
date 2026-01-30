@@ -1,5 +1,6 @@
 [tools]
 node = "24.13"
+opencode = "latest"
 
 [hooks]
 # Enabling corepack will install the `pnpm` package manager specified in your package.json
