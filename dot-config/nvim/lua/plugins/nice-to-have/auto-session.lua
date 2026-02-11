@@ -41,6 +41,7 @@ return {
       },
       -- Buffers with matching filetypes will be closed before saving
       close_filetypes_on_save = FT_BLACKLIST,
+      close_unsupported_windows = true,
     },
   },
 }
