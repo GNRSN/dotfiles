@@ -20,8 +20,7 @@ after-startup-command = [
 ]
 
 # Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change'
-]
+exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change']
 
 on-mode-changed = ['exec-and-forget sketchybar --trigger aerospace_mode_change']
 
@@ -184,23 +183,26 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 #
 # alt-esc = ['exec-and-forget some-dismiss-notifications-script']
 
-ctrl-shift-alt-s = ['mode service']
+# Enter service mode, always reload config upon entering
+ctrl-shift-alt-s = ['mode service', 'reload-config']
 
-# 'service' binding mode declaration.
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
-# backspace = ['close-all-windows-but-current', 'mode main']
+esc = ['mode main']
+r = ['flatten-workspace-tree'] # reset layout
+f = ['layout floating tiling'] # Toggle between floating and tiling layout
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
 
-alt-shift-h = ['join-with left', 'mode main', 'exec-and-forget sketchybar --remove service']
-alt-shift-j = ['join-with down', 'mode main', 'exec-and-forget sketchybar --remove service']
-alt-shift-k = ['join-with up', 'mode main', 'exec-and-forget sketchybar --remove service' ]
-alt-shift-l = ['join-with right', 'mode main', 'exec-and-forget sketchybar --remove service']
+alt-h = ['move-workspace-to-monitor left']
+alt-j = ['move-workspace-to-monitor down']
+alt-k = ['move-workspace-to-monitor up']
+alt-l = ['move-workspace-to-monitor right']
+
+alt-shift-h = ['join-with left']
+alt-shift-j = ['join-with down']
+alt-shift-k = ['join-with up']
+alt-shift-l = ['join-with right']
 
 [workspace-to-monitor-force-assignment]
 'C' = 'secondary'
