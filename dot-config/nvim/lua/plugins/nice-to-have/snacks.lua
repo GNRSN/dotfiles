@@ -448,7 +448,7 @@ return {
               end,
               set = function(state)
                 -- Very weird naming but this is actually a toggle
-                require("auto-session").DisableAutoSave(state)
+                require("auto-session").disable_auto_save(state)
               end,
             })
             :map("<leader>us")
