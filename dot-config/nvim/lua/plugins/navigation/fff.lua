@@ -9,6 +9,8 @@ return {
     end,
     -- DOC: This plugin initializes itself lazily.
     lazy = false,
+    -- TODO: Memory leak?
+    cond = false,
     keys = {
       { -- Keeping this for now as a way to debug/compare fff-snacks to original UI
         "<leader>ff",
