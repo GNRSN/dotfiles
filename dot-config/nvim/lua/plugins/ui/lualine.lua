@@ -2,6 +2,7 @@ local BLACKLIST_FT = {
   "neo-tree",
   "spectre_panel",
   "DiffviewFiles",
+  "DiffviewFileHistory",
   "Avante",
   "AvanteTodos",
   "AvanteSelectedCode",
@@ -19,6 +20,7 @@ local BLACKLIST_FT = {
   "gitsigns-blame",
   "Outline",
   "grug-far",
+  "qf", -- Quickfix
 }
 
 local get_noice_mode = function()

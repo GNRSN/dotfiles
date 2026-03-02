@@ -6,6 +6,7 @@ local BLACKLIST_FT = {
   "AvanteSelectedCode",
   "AvanteSelectedFiles",
   "DiffviewFiles",
+  "DiffviewFileHistory",
   "neo-tree",
   "neotest",
   "neotest-output-panel",
@@ -29,6 +30,7 @@ local BLACKLIST_FT = {
   "Outline",
   "fyler",
   "grug-far",
+  "qf", -- Quickfix
 }
 
 local BLACKLIST_BT = {
