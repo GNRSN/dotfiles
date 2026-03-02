@@ -742,8 +742,16 @@ function M.setup()
     -- NOTE: Avante are doing some weird things with colors in their panes so I cant get it transparent
     AvanteSidebarWinHorizontalSeparator = { fg = palette.selection, bg = palette.selection },
 
-    -- Visual whitetext
+    -- Visual-whitespace.nvim
     VisualNonText = { fg = "#666666", bg = palette.visual_bg },
+
+    -- Stride.nvim
+    StrideReplace = { fg = palette.red, strikethrough = true },
+    StrideRemoteSuggestion = { fg = palette.bright_magenta },
+    StrideInsert = { fg = palette.bright_green },
+    StrideSign = { link = "StrideInsert" },
+    StrideNotify = { link = "NormalFloat" },
+    StrideNotifyBorder = { link = "FloatBorder" },
   }
 end
 
