@@ -232,7 +232,12 @@ end
 --- @param startpath string
 --- @return string|nil
 function M.find_git_ancestor(startpath)
-  return vim.fs.dirname(vim.fs.find(".git", { path = startpath, upward = true })[1])
+  local found_path = vim.fs.find(".git", { path = startpath, upward = true })[1]
+  if found_path then
+    return vim.fs.dirname(found_path)
+  else
+    return nil
+  end
 end
 
 --- Recommended replacement for lspconfig.utils.find_node_modules_ancestor
