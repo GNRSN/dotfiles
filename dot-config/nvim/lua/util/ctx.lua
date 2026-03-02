@@ -6,8 +6,6 @@ end
 
 CTX.is_ghostty = vim.env.TERM_PROGRAM == "ghostty"
 
-CTX.is_wezterm = vim.env.TERM_PROGRAM == "WezTerm"
-
 CTX.is_zellij = vim.env.ZELLIJ == "0"
 
 function CTX.supports_underline_separator()
