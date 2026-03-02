@@ -49,6 +49,20 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "locked"
         }
+        bind "P" {
+            LaunchOrFocusPlugin "plugin-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "locked"
+        }
+        bind "a" {
+            LaunchOrFocusPlugin "zellij:about" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "locked"
+        }
     }
     shared {
         bind "Super g" {
@@ -170,154 +184,31 @@ keybinds clear-defaults=true {
         }
     }
     pane {
-        bind "left" {
-            MoveFocus "left"
+        bind "b" {
+            TogglePaneFrames
+            SwitchToMode "locked"
         }
-        bind "down" {
-            MoveFocus "down"
-        }
-        bind "up" {
-            MoveFocus "up"
-        }
-        bind "right" {
-            MoveFocus "right"
-        }
-        bind "c" {
+        bind "r" {
             SwitchToMode "renamepane"
             PaneNameInput 0
         }
-        bind "d" {
-            NewPane "down"
-            SwitchToMode "locked"
-        }
-        bind "e" {
+        bind "f" {
             TogglePaneEmbedOrFloating
             SwitchToMode "locked"
-        }
-        bind "f" {
-            ToggleFocusFullscreen
-            SwitchToMode "locked"
-        }
-        bind "h" {
-            MoveFocus "left"
         }
         bind "i" {
             TogglePanePinned
             SwitchToMode "locked"
         }
-        bind "j" {
-            MoveFocus "down"
-        }
-        bind "k" {
-            MoveFocus "up"
-        }
-        bind "l" {
-            MoveFocus "right"
-        }
-        bind "n" {
-            NewPane
-            SwitchToMode "locked"
-        }
         bind "p" {
             SwitchToMode "normal"
-        }
-        bind "r" {
-            NewPane "right"
-            SwitchToMode "locked"
         }
         bind "w" {
             ToggleFloatingPanes
             SwitchToMode "locked"
         }
-        bind "x" {
-            CloseFocus
-            SwitchToMode "locked"
-        }
-        bind "z" {
-            TogglePaneFrames
-            SwitchToMode "locked"
-        }
-        bind "tab" {
-            SwitchFocus
-        }
     }
     tab {
-        bind "left" {
-            MoveTab "left"
-        }
-        bind "down" {
-            GoToNextTab
-        }
-        bind "up" {
-            GoToPreviousTab
-        }
-        bind "right" {
-            MoveTab "right"
-        }
-        bind "1" {
-            GoToTab 1
-            SwitchToMode "locked"
-        }
-        bind "2" {
-            GoToTab 2
-            SwitchToMode "locked"
-        }
-        bind "3" {
-            GoToTab 3
-            SwitchToMode "locked"
-        }
-        bind "4" {
-            GoToTab 4
-            SwitchToMode "locked"
-        }
-        bind "5" {
-            GoToTab 5
-            SwitchToMode "locked"
-        }
-        bind "6" {
-            GoToTab 6
-            SwitchToMode "locked"
-        }
-        bind "7" {
-            GoToTab 7
-            SwitchToMode "locked"
-        }
-        bind "8" {
-            GoToTab 8
-            SwitchToMode "locked"
-        }
-        bind "9" {
-            GoToTab 9
-            SwitchToMode "locked"
-        }
-        bind "[" {
-            BreakPaneLeft
-            SwitchToMode "locked"
-        }
-        bind "]" {
-            BreakPaneRight
-            SwitchToMode "locked"
-        }
-        bind "b" {
-            BreakPane
-            SwitchToMode "locked"
-        }
-        bind "h" {
-            GoToPreviousTab
-        }
-        bind "j" {
-            GoToNextTab
-        }
-        bind "k" {
-            GoToPreviousTab
-        }
-        bind "l" {
-            GoToNextTab
-        }
-        bind "n" {
-            NewTab
-            SwitchToMode "locked"
-        }
         bind "r" {
             SwitchToMode "renametab"
             TabNameInput 0
@@ -325,16 +216,6 @@ keybinds clear-defaults=true {
         bind "s" {
             ToggleActiveSyncTab
             SwitchToMode "locked"
-        }
-        bind "t" {
-            SwitchToMode "normal"
-        }
-        bind "x" {
-            CloseTab
-            SwitchToMode "locked"
-        }
-        bind "tab" {
-            ToggleTab
         }
     }
     resize {
@@ -388,18 +269,6 @@ keybinds clear-defaults=true {
         }
     }
     move {
-        bind "left" {
-            MovePane "left"
-        }
-        bind "down" {
-            MovePane "down"
-        }
-        bind "up" {
-            MovePane "up"
-        }
-        bind "right" {
-            MovePane "right"
-        }
         bind "h" {
             MovePane "left"
         }
@@ -412,9 +281,6 @@ keybinds clear-defaults=true {
         bind "l" {
             MovePane "right"
         }
-        bind "m" {
-            SwitchToMode "normal"
-        }
         bind "n" {
             MovePane
         }
@@ -426,22 +292,6 @@ keybinds clear-defaults=true {
         }
     }
     scroll {
-        bind "Alt left" {
-            MoveFocusOrTab "left"
-            SwitchToMode "locked"
-        }
-        bind "Alt down" {
-            MoveFocus "down"
-            SwitchToMode "locked"
-        }
-        bind "Alt up" {
-            MoveFocus "up"
-            SwitchToMode "locked"
-        }
-        bind "Alt right" {
-            MoveFocusOrTab "right"
-            SwitchToMode "locked"
-        }
         bind "e" {
             EditScrollback
             SwitchToMode "locked"
@@ -449,25 +299,6 @@ keybinds clear-defaults=true {
         bind "f" {
             SwitchToMode "entersearch"
             SearchInput 0
-        }
-        bind "Alt h" {
-            MoveFocusOrTab "left"
-            SwitchToMode "locked"
-        }
-        bind "Alt j" {
-            MoveFocus "down"
-            SwitchToMode "locked"
-        }
-        bind "Alt k" {
-            MoveFocus "up"
-            SwitchToMode "locked"
-        }
-        bind "Alt l" {
-            MoveFocusOrTab "right"
-            SwitchToMode "locked"
-        }
-        bind "s" {
-            SwitchToMode "normal"
         }
     }
     search {
@@ -488,39 +319,8 @@ keybinds clear-defaults=true {
         }
     }
     session {
-        bind "a" {
-            LaunchOrFocusPlugin "zellij:about" {
-                floating true
-                move_to_focused_tab true
-            }
-            SwitchToMode "locked"
-        }
-        bind "c" {
-            LaunchOrFocusPlugin "configuration" {
-                floating true
-                move_to_focused_tab true
-            }
-            SwitchToMode "locked"
-        }
         bind "d" {
             Detach
-        }
-        bind "o" {
-            SwitchToMode "normal"
-        }
-        bind "p" {
-            LaunchOrFocusPlugin "plugin-manager" {
-                floating true
-                move_to_focused_tab true
-            }
-            SwitchToMode "locked"
-        }
-        bind "w" {
-            LaunchOrFocusPlugin "session-manager" {
-                floating true
-                move_to_focused_tab true
-            }
-            SwitchToMode "locked"
         }
     }
     shared_except "locked" "renametab" "renamepane" {
@@ -624,15 +424,15 @@ keybinds clear-defaults=true {
             SwitchToMode "search"
         }
     }
+    shared_among "renametab" "renamepane" {
+        bind "Ctrl c" {
+            SwitchToMode "locked"
+        }
+    }
     renametab {
         bind "esc" {
             UndoRenameTab
             SwitchToMode "tab"
-        }
-    }
-    shared_among "renametab" "renamepane" {
-        bind "Ctrl c" {
-            SwitchToMode "locked"
         }
     }
     renamepane {
