@@ -6,13 +6,13 @@ return {
     priority = 1000,
     lazy = false,
     keys = {
-      -- {
-      --   "<leader><space>",
-      --   function()
-      --     Snacks.picker.smart()
-      --   end,
-      --   desc = "Find files (Snacks)",
-      -- },
+      {
+        "<leader><space>",
+        function()
+          Snacks.picker.smart()
+        end,
+        desc = "Find files (Snacks)",
+      },
       {
         "<leader>,",
         function()
@@ -20,10 +20,10 @@ return {
         end,
         desc = "Buffers",
       },
-      { -- LATER: I'd like this to grep only in the active buffer
+      {
         "<leader>/",
         function()
-          Snacks.picker.grep({ buffers = true })
+          Snacks.picker.lines({ buffers = true })
         end,
         desc = "Grep",
       },
@@ -76,7 +76,10 @@ return {
       {
         "<leader>fs",
         function()
-          Snacks.picker.grep()
+          Snacks.picker.grep({
+            -- LATER: Maybe ignore .git and .ds_store
+            hidden = true,
+          })
         end,
         desc = "Grep (Snacks)",
       },
