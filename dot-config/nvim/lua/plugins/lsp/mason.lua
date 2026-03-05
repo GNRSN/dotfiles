@@ -42,39 +42,25 @@ return {
         ["mason-lspconfig"] = true,
         ["mason-nvim-dap"] = true,
       },
-      ensure_installed = {
-        -- Required by nvim-treesitter to install/compile parsers
-        "tree-sitter-cli",
+      ensure_installed = vim.list_extend(
+        {
+          -- Required by nvim-treesitter to install/compile parsers
+          "tree-sitter-cli",
 
-        -- Lsp
-        "bashls",
-        "css_variables",
-        "cssls",
-        "cssmodules_ls",
-        "emmet_language_server",
-        "graphql",
-        "html",
-        "jsonls",
-        "lua_ls",
-        "marksman",
-        "mdx_analyzer",
-        "nil_ls",
-        "prismals",
-        "svelte",
-        "stylelint_lsp",
-        "tailwindcss",
-        "ts_ls", -- Typescript
-        "ts_query_ls", -- Treesitter query language
-        "yamlls",
+          -- Typescript, managed by typescript-tools
+          "ts_ls",
 
-        -- Formatters & linters
-        "kdlfmt", -- kdl formatter
-        "prettierd", -- js + more formatter
-        "shfmt", -- shell formatter
-        -- REVIEW: Pin to same version as work as I don't know how to use workspace version
-        { "stylelint", version = "15.4.0" }, -- css/less/scss linter
-        "stylua", -- lua formatter
-      },
+          -- Formatters & linters
+          "kdlfmt", -- kdl formatter
+          "prettierd", -- js + more formatter
+          "shfmt", -- shell formatter
+          -- REVIEW: Pin to same version as work as I don't know how to use workspace version
+          { "stylelint", version = "15.4.0" }, -- css/less/scss linter
+          "stylua", -- lua formatter
+        },
+        -- LSP
+        require("config.lsp-servers")
+      ),
     })
   end,
 }
