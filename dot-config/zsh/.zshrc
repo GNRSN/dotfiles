@@ -175,6 +175,9 @@ then
   # compinit
 fi
 
+# Claude code placed itself here
+export PATH="$HOME/.local/bin:$PATH"
+
 # Nvim config switcher
 zinit load mehalter/zsh-nvim-appname
 
