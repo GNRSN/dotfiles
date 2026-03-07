@@ -208,8 +208,7 @@
     "firefox"
     # Keyboard remapping
     "hhkb"
-    # Alternate terminal
-    # Disabled because I've built the nightly version instead
+    # Terminal of choice
     "ghostty"
     # For frontend development
     "google-chrome"
@@ -236,8 +235,6 @@
     "sf-symbols"
     # I still use this for merge conflicts (ashamed)
     "visual-studio-code"
-    # Terminal emulator of choice
-    "wezterm"
     # Next gen editor
     "zed"
     # Try arc alternative
