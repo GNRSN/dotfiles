@@ -52,7 +52,6 @@ return {
         "cssls",
         "cssmodules_ls",
         "emmet_language_server",
-        "eslint",
         "graphql",
         "html",
         "jsonls",
