@@ -91,23 +91,6 @@ return {
       on_attach = on_attach,
     })
 
-    vim.lsp.enable({
-      "bashls",
-      "css_variables",
-      "cssls",
-      "cssmodules_ls",
-      "emmet_language_server",
-      "html",
-      "jsonls",
-      "lua_ls",
-      "marksman",
-      "mdx_analyzer",
-      "nil_ls",
-      "prismals",
-      "stylelint_lsp",
-      "tailwindcss",
-      "ts_query_ls",
-      "yamlls",
-    })
+    vim.lsp.enable(require("config.lsp-servers"))
   end,
 }
