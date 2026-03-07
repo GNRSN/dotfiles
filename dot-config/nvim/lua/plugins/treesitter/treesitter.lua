@@ -1,4 +1,5 @@
 local ENSURE_INSTALLED = {
+  "applescript",
   "bash",
   "cpp",
   "css",
@@ -42,6 +43,20 @@ local ENSURE_INSTALLED = {
   "zsh",
 }
 
+-- NOTE: Pinned to avoid supply chain attacks
+local CUSTOM_PARSERS = {
+  applescript = {
+    "waddie/tree-sitter-applescript",
+    url = "https://github.com/waddie/tree-sitter-applescript",
+    commit = "adff3f4de87033350050232c8dd23947c7b34850",
+  },
+}
+
+local CUSTOM_FT_MAPPINGS = {
+  conf = "bash",
+  osascript = "applescript",
+}
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -51,20 +66,16 @@ return {
     build = ":TSUpdate",
     -- DOC: This plugin does not support lazy-loading
     lazy = false,
-    dependencies = {
+    dependencies = vim.list_extend({
       { -- Smarter/more correct % and similar actions
         "andymass/vim-matchup",
-        ---@type matchup.Config|{}
         opts = {
-          ---@diagnostic disable-next-line: missing-fields
           treesitter = {
             stopline = 500,
             disable_virtual_text = true,
           },
-          ---@diagnostic disable-next-line: missing-fields
           matchparen = {
             --- Disable feature by setting to empty
-            ---@diagnostic disable-next-line: missing-fields
             offscreen = {},
           },
         },
@@ -80,10 +91,41 @@ return {
           decr_key = "<C-bs>",
         },
       },
-    },
+    }, vim.tbl_values(CUSTOM_PARSERS)),
     config = function(_, opts)
-      local TS = require("nvim-treesitter")
-      local already_installed = TS.get_installed("parsers")
+      vim.api.nvim_create_autocmd("User", {
+        desc = "User: Add treesitter custom parsers",
+        pattern = "TSUpdate",
+        callback = function()
+          for lang, spec in pairs(CUSTOM_PARSERS) do
+            require("nvim-treesitter.parsers")[lang] = {
+              tier = 2,
+              install_info = {
+                url = spec.url,
+                revision = spec.commit, -- commit hash for revision to check out; HEAD if missing
+                -- optional entries:
+                -- branch = "main", -- only needed if different from default branch
+                -- location = "parser", -- only needed if the parser is in subdirectory of a "monorepo"
+                generate = false, -- only needed if repo does not contain pre-generated `src/parser.c`
+                generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
+                queries = "queries", -- also install queries from given directory
+              },
+            }
+          end
+        end,
+      })
+
+      for lang in pairs(CUSTOM_PARSERS) do
+        -- vim.treesitter.language.add(lang, { path = require("lazy"). })
+        vim.treesitter.language.register(lang, lang)
+        vim.notify("vim.treesitter.language.register: " .. lang)
+      end
+
+      for ft, lang in pairs(CUSTOM_FT_MAPPINGS) do
+        vim.treesitter.language.register(lang, ft)
+      end
+
+      local already_installed = require("nvim-treesitter").get_installed("parsers")
       local parsers_to_install = vim
         .iter(ENSURE_INSTALLED)
         :filter(function(parser)
@@ -91,9 +133,7 @@ return {
         end)
         :totable()
 
-      TS.install(parsers_to_install)
-
-      vim.treesitter.language.register("bash", "conf")
+      require("nvim-treesitter").install(parsers_to_install)
 
       vim.api.nvim_create_autocmd("FileType", {
         desc = "User: Enable Treesitter for buffer",
