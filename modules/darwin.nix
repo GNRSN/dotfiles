@@ -11,7 +11,6 @@
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (pkgs.lib.getName pkg) [
-      "claude-code"
       "graphite-cli"
       "mongodb-ce"
       "mongosh"
@@ -27,8 +26,6 @@
     bunyan-rs
     # Shell completion generator
     carapace
-    # Claude Cli
-    claude-code
     # GNU utils, MacOS only ships with a subset + keep versions fresh
     coreutils
     # Better git diff visualisation, usable by e.g. lazygit as well
@@ -52,7 +49,6 @@
     # Github cli
     gh
     # Github tui extension for gh cli
-    # TODO: How do I add this to gh?
     gh-dash
     # Markdown renderer
     glow
@@ -82,7 +78,7 @@
     neovim
     # Neovim gui
     neovide
-    # Nix-dsl formatter, mason doesn't provide arm/darwin version
+    # Nix-dsl formatter, Mason.nvim doesn't provide arm/darwin version
     nixfmt
     # Cross platform prompt
     oh-my-posh
@@ -190,8 +186,6 @@
     "arc"
     # Still the best AI(?)
     "chatgpt"
-    # Claude Code UI
-    "claudia"
     # I want to try out the experience
     "cursor"
     # Translation
@@ -227,8 +221,6 @@
     "obsidian"
     # Docker desktop alternative
     "orbstack"
-    # iOS emulation
-    "playcover-community"
     # MacOS command palette (spotlight replacement)
     "raycast"
     # MacOS icon set

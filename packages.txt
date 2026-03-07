@@ -2,7 +2,6 @@ bat-0.26.1
 btop-1.4.6
 bunyan-rs-0.1.9
 carapace-1.5.5
-claude-code-2.1.12
 coreutils-9.8
 delta-0.18.2
 difftastic-0.67.0
