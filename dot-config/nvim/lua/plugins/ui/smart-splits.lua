@@ -4,7 +4,7 @@ return {
     "mrjones2014/smart-splits.nvim",
     -- DOC: Lazy loading may cause issues
     lazy = false,
-    cond = vim.env.ZELLIJ == "0",
+    cond = require("util.ctx").is_zellij,
     keys = {
       -- moving between splits
       {
