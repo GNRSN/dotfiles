@@ -115,12 +115,6 @@ return {
         end,
       })
 
-      for lang in pairs(CUSTOM_PARSERS) do
-        -- vim.treesitter.language.add(lang, { path = require("lazy"). })
-        vim.treesitter.language.register(lang, lang)
-        vim.notify("vim.treesitter.language.register: " .. lang)
-      end
-
       for ft, lang in pairs(CUSTOM_FT_MAPPINGS) do
         vim.treesitter.language.register(lang, ft)
       end
