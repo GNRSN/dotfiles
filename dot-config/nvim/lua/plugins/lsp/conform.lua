@@ -48,7 +48,6 @@ return {
 
       conform.setup(opts)
 
-      -- Register :Format command
       vim.api.nvim_create_user_command("Format", function(args)
         local range = nil
         if args.count ~= -1 then
@@ -61,14 +60,10 @@ return {
         require("conform").format({ async = true, lsp_fallback = true, range = range })
       end, { range = true })
 
-      -- Register :PrettierdRestart to reload prettierd
-      -- LATER: Defined in usercmds as well?
       vim.api.nvim_create_user_command("PrettierdReload", function()
-        vim.fn.jobstart("kill $(pidof prettierd)", {
-          on_exit = function()
-            vim.notify("Prettier deamon killed", vim.log.levels.INFO, { title = "PrettierdReload" })
-          end,
-        })
+        vim.system({ "prettierd", "stop" }, { text = true }, function(result)
+          vim.notify("Prettier deamon stopped", vim.log.levels.INFO, { title = "PrettierdReload" })
+        end)
       end, {})
     end,
     keys = {

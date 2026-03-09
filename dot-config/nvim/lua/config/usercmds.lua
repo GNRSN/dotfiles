@@ -51,11 +51,6 @@ add_cmd("R", function()
   vim.cmd.e()
 end)
 
--- REVIEW: I don't understand why but adding this during conform setup didn't work?
-add_cmd("PrettierdReload", function()
-  os.execute("prettierd stop")
-end)
-
 add_cmd("CopyBufferPath", function()
   local buffer_path = vim.api.nvim_buf_get_name(0)
 
