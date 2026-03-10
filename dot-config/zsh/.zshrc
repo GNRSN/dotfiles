@@ -242,3 +242,10 @@ source <(carapace _carapace)
 
 # Load dev environment/toolchains through mise 
 eval "$(mise activate zsh)"
+
+# === Bun ===
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "/Users/gnrsn/.bun/_bun" ] && source "/Users/gnrsn/.bun/_bun"
