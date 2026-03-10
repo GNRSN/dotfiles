@@ -420,11 +420,13 @@ keybinds clear-defaults=true {
         }
     }
     session {
-        LaunchOrFocusPlugin "zellij-forgot" {
-            LOAD_ZELLIJ_BINDINGS "false"
-            caller_cwd ""
-            d "Detach"
-            floating true
+        bind "?" {
+            LaunchOrFocusPlugin "zellij-forgot" {
+                LOAD_ZELLIJ_BINDINGS "false"
+                caller_cwd ""
+                d "Detach"
+                floating true
+            }
         }
         bind "d" {
             Detach
