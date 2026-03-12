@@ -60,6 +60,28 @@ local function get_source_label(ctx)
     or ctx.source_name
 end
 
+local function to_set(list)
+  local set = {}
+  for _, v in ipairs(list) do
+    set[v] = true
+  end
+  return set
+end
+
+-- Files where emmet should be filtered based on cursor position <-> treesitter
+local emmet_tweaking_ft_whitelist = to_set({
+  "typescriptreact",
+  "javascriptreact",
+})
+
+local emmet_ts_node_whitelist = to_set({
+  "jsx_element",
+  "jsx_self_closing_element",
+  "jsx_opening_element",
+  "jsx_fragment",
+  "jsx_expression",
+})
+
 return {
   {
     "saghen/blink.compat",
@@ -265,6 +287,51 @@ return {
                 return trigger_characters
               end,
             },
+            -- Custom logic to avoid showing emmet completions when irrelevant
+            -- REVIEW: Consider using this pattern to just disable emmet source instead of filtering output
+            -- https://cmp.saghen.dev/recipes#dynamically-picking-providers-by-treesitter-node-filetype
+            -- PERF: Evaluate if this degrades performance
+            transform_items = function(ctx, items)
+              if not emmet_tweaking_ft_whitelist[vim.bo[ctx.bufnr].filetype] then
+                return items
+              end
+
+              local has_emmet = false
+              for _, item in ipairs(items) do
+                if item.client_name == "emmet_language_server" then
+                  has_emmet = true
+                  break
+                end
+              end
+
+              if not has_emmet then
+                return items
+              end
+
+              local node = vim.treesitter.get_node()
+              local in_jsx = false
+
+              while node do
+                if emmet_ts_node_whitelist[node:type()] then
+                  in_jsx = true
+                  break
+                end
+                node = node:parent()
+              end
+
+              if in_jsx then
+                return items
+              end
+
+              local filtered = {}
+              for _, item in ipairs(items) do
+                if item.client_name ~= "emmet_language_server" or in_jsx then
+                  filtered[#filtered + 1] = item
+                end
+              end
+
+              return filtered
+            end,
           },
         },
       },
