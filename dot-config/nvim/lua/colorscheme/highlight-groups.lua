@@ -752,6 +752,9 @@ function M.setup()
     StrideSign = { link = "StrideInsert" },
     StrideNotify = { link = "NormalFloat" },
     StrideNotifyBorder = { link = "FloatBorder" },
+
+    -- Grug-far.nvim
+    GrugFarResultsMatch = { link = "Search" },
   }
 end
 
