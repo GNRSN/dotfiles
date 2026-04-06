@@ -10,6 +10,8 @@ return {
         "<leader><space>",
         function()
           Snacks.picker.smart({
+            -- Defaults to including recent files, which can be from other cwds
+            multi = { "buffers", "files" },
             hidden = true,
           })
         end,
