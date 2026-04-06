@@ -78,12 +78,18 @@
     },
   },
   {
+    // Mimic oil-like behavior
     "context": "ProjectPanel",
     "bindings": {
       "enter": [
         "action::Sequence",
         ["project_panel::Open", "project_panel::Toggle"],
       ],
+      "escape": "project_panel::Toggle",
+      "ctrl-h": "project_panel::Toggle",
+      "ctrl-j": "project_panel::Toggle",
+      "ctrl-k": "project_panel::Toggle",
+      "ctrl-l": "project_panel::Toggle",
     },
   },
 ]
