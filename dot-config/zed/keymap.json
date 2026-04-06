@@ -28,6 +28,7 @@
       // LATER: Can't manage to deploy without having word under cursor as prefilled search
       "space f s": ["pane::DeploySearch", {}],
       "space f d": "diagnostics::Deploy",
+      "space a a": "agent::Toggle",
     },
   },
   {
