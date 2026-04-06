@@ -125,6 +125,24 @@
       "type": "registry",
     },
   },
+  "theme_overrides": {
+    "zed-theme": {
+      "syntax": {
+        "constant.comment.todo": {
+          "color": "#0e0e0e",
+          "background_color": "#FFEA00",
+          "font_weight": 700,
+        },
+        "constant.comment.todo.text": {
+          "color": "#FFEA00",
+        },
+        "constant.comment.comment.prefix": {
+          "color": "#FFEA00",
+          "background_color": "#00000000",
+        },
+      },
+    },
+  },
   "context_servers": {
     "chrome-devtools-mcp-zed": {
       "enabled": true,
