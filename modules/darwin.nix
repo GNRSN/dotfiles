@@ -177,6 +177,10 @@
       name = "FelixKratz/formulae/sketchybar";
       restart_service = "changed";
     }
+
+    {
+      name = "malpern/tap/sketchybar-toggle";
+    }
   ];
 
   homebrew.casks = [

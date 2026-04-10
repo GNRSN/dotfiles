@@ -16,6 +16,8 @@ bar_config=(
   color=$BAR_COLOR
   display=main
   padding_left=0
+  # Required for sketchybar-toggle to work
+  topmost=window
 )
 
 sketchybar --bar "${bar_config[@]}"
@@ -78,3 +80,8 @@ sketchybar --add item clock right \
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
+
+##### Start sketchybar-toggle
+# @see https://github.com/malpern/sketchybar-toggle
+pkill -x sketchybar-toggle
+sketchybar-toggle &
