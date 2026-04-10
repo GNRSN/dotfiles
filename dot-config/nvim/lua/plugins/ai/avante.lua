@@ -1,9 +1,14 @@
+local AVANTE_ENABLED = true
+
 return {
   -- Cursor-eqsue AI interactions from nvim
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = true,
+    cond = function()
+      return AVANTE_ENABLED and not require("util.local-config").is_work_dir()
+    end,
     -- DOC: Example settings for keys settings in lazy.nvim
     -- NOTE: If I tried to set normally with lazy.keys, avante still overwrote e.g. <leader>aa
     keys = function(_, keys)
@@ -81,7 +86,18 @@ return {
       },
     },
     opts = {
-      provider = "claude",
+      -- provider = "claude",
+      provider = "cerebras",
+      providers = {
+        ["cerebras"] = {
+          __inherited_from = "openai",
+          endpoint = "https://api.cerebras.ai/v1",
+          model = "gpt-oss-120b",
+          api_key_name = "CEREBRAS_API_KEY",
+        },
+      },
+      temperature = 0.7,
+      max_tokens = 1024,
       -- system_prompt = "",
       behaviour = {
         -- Defaults to false but Im pretty sure I dont want this
