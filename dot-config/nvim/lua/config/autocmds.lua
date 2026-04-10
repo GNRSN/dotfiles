@@ -56,7 +56,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.schedule(function()
       vim.keymap.set("n", "q", function()
         vim.cmd("close")
-        pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+
+        if vim.api.nvim_buf_is_valid(event.buf) then
+          pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+        end
       end, {
         buffer = event.buf,
         silent = true,
