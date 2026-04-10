@@ -10,7 +10,7 @@
   "agent": {
     "default_model": {
       "provider": "Cerebras",
-      "model": "zai-glm-4.7",
+      "model": "gpt-oss-120b",
     },
   },
   "language_models": {
@@ -18,6 +18,13 @@
       "Cerebras": {
         "api_url": "https://api.cerebras.ai/v1",
         "available_models": [
+          {
+            // https://inference-docs.cerebras.ai/models/openai-oss
+            "name": "gpt-oss-120b",
+            "display_name": "GPT OSS 120b",
+            "max_output_tokens": 400000,
+            "max_tokens": 131000,
+          },
           {
             "name": "llama-3.3-70b",
             "display_name": "Llama 3.3 70b",
