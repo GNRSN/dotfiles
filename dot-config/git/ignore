@@ -9,3 +9,7 @@
 
 # Mise toolchain manager project config
 **/.mise.local.toml
+
+# Project local zed config
+.zed
+#.zed/*
