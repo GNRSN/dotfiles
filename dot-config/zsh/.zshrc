@@ -75,10 +75,7 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 # }
 # zvm_after_init_commands+=(my_init)
 
-# This doesn't seem to work with wezterm
-ZVM_CURSOR_STYLE_ENABLED=false
-ZVM_VI_HIGHLIGHT_BACKGROUND=#743563           
-
+# Returns config options for zsh-vim-mode
 function zvm_config() {
   # Retrieve default cursor styles
   local icur=$(zvm_cursor_style $ZVM_INSERT_MODE_CURSOR)
@@ -86,8 +83,7 @@ function zvm_config() {
   # Append your custom color for your cursor
   ZVM_NORMAL_MODE_CURSOR=$ncur'\e\e]12;#FF79C6\a'
 
-
-  ZVM_VI_HIGHLIGHT_BACKGROUND=#743563           
+  ZVM_VI_HIGHLIGHT_BACKGROUND=#743563
 }
 
 function refresh_omp() {
