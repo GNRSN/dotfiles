@@ -26,7 +26,13 @@ end)
 -- Suggested in https://www.reddit.com/r/neovim/comments/16e0l4o/how_to_hot_reload_highlightsscm_in_nvimtreesitter/
 add_cmd("TSReload", function()
   local bufnr = vim.api.nvim_get_current_buf()
-  require("vim.treesitter.highlighter").active[bufnr]:destroy()
+  local b = require("vim.treesitter.highlighter").active[bufnr]
+
+  if b then
+    b:destroy()
+  else
+    vim.notify("No active highlighter found for buffer " .. bufnr)
+  end
 end)
 
 -- Refresh/reload
