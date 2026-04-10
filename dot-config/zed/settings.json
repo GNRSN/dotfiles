@@ -7,6 +7,73 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "vim_mode": true,
+  "ui_font_size": 15,
+  "buffer_font_size": 13,
+  "theme": "zed-theme",
+  "buffer_font_family": "Hack Nerd Font Mono",
+  "relative_line_numbers": "enabled",
+  "colorize_brackets": true,
+  "soft_wrap": "editor_width",
+  "scroll_beyond_last_line": "off",
+  "vertical_scroll_margin": 0,
+  "command_aliases": {
+    "W": "w",
+    "Wa": "wa",
+    "WA": "wa",
+  },
+  "scrollbar": {
+    "show": "never",
+  },
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.9,
+  },
+  "indent_guides": {
+    "coloring": "indent_aware",
+  },
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true,
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "title_bar": {
+    "show_menus": true,
+  },
+  "toolbar": {
+    "selections_menu": false,
+    "quick_actions": false,
+    "code_actions": false,
+  },
+  "use_smartcase_search": true,
+  "git": {
+    "inline_blame": {
+      "enabled": false,
+    },
+  },
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 400,
+  },
+  "status_bar": {
+    // I'd like to hide this but I need it to see that file has diagnostics
+    "experimental.show": true,
+    "cursor_position_button": false,
+  },
+  "git_panel": {
+    "dock": "right",
+    "tree_view": true,
+    "collapse_untracked_diff": false,
+  },
+  "collaboration_panel": {
+    "dock": "right",
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "project_panel": {
+    "dock": "right",
+  },
   "agent": {
     "default_model": {
       "provider": "Cerebras",
@@ -53,9 +120,35 @@
       },
     },
   },
-  "vim_mode": true,
-  "ui_font_size": 15,
-  "buffer_font_size": 13,
-  "theme": "VSCode Dark Modern",
-  "buffer_font_family": "Hack Nerd Font Mono",
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "context_servers": {
+    "chrome-devtools-mcp-zed": {
+      "enabled": true,
+      "remote": false,
+      "settings": {
+        "browser_url": null,
+        "ws_endpoint": null,
+        "ws_headers": null,
+        "auto_connect": null,
+        "channel": null,
+        "headless": null,
+        "isolated": null,
+        "user_data_dir": null,
+        "viewport": null,
+        "executable_path": null,
+        "chrome_arg": [],
+        "proxy_server": null,
+        "accept_insecure_certs": null,
+        "category_emulation": null,
+        "category_performance": null,
+        "category_network": null,
+        "log_file": null,
+        "extra_args": [],
+      },
+    },
+  },
 }
