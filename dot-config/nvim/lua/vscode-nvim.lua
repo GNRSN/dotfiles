@@ -186,3 +186,5 @@ remap(
   "<Cmd>call VSCodeNotify('vscode-harpoon.gotoEditor8')<CR>",
   { noremap = true, desc = "Harpoon: Editor 8" }
 )
+
+remap("n", "<backspace>", "<Cmd>call VSCodeNotify('oil-code.open')<CR>", { noremap = true, desc = "Open oil" })
