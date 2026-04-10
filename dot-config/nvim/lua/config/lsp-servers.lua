@@ -10,6 +10,8 @@ return {
   "marksman",
   "mdx_analyzer",
   "nil_ls",
+  "oxfmt", -- Formatter but it runs as lsp through oxc
+  "oxlint",
   "prismals",
   "stylelint_lsp",
   "tailwindcss",

@@ -61,4 +61,8 @@ function M.is_work_dir()
   return vim.fn.getcwd():find(work_dir, 1, true) ~= nil
 end
 
+function M.is_prettier_enabled()
+  return require("neoconf").get("vscode.prettier.enable")
+end
+
 return M
