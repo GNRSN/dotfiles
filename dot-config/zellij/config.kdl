@@ -17,15 +17,11 @@ plugins {
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     tab-bar location="zellij:tab-bar"
-    zellij-vim-navigator location="https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
-
-    }
-    zjstatus location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
-
-    }
-    zellij-workspace location="https://github.com/vdbulcke/zellij-workspace/releases/download/v0.3.0/zellij-workspace.wasm" {
-
-    }
+    // Third party plugins
+    zellij-forgot location="https://github.com/karimould/zellij-forgot/releases/download/0.4.2/zellij_forgot.wasm"
+    zellij-vim-navigator location="https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm"
+    zellij-workspace location="https://github.com/vdbulcke/zellij-workspace/releases/download/v0.3.0/zellij-workspace.wasm"
+    zjstatus location="https://github.com/dj95/zjstatus/releases/download/v0.22.0/zjstatus.wasm"
 }
 keybinds clear-defaults=true {
     normal {
@@ -37,6 +33,26 @@ keybinds clear-defaults=true {
                 height "97%"
                 x "2%"
                 y "2%"
+            }
+            SwitchToMode "locked"
+        }
+        bind "?" {
+            LaunchOrFocusPlugin "zellij-forgot" {
+                LOAD_ZELLIJ_BINDINGS "false"
+                caller_cwd ""
+                P "plugin-manager"
+                Super+g "Lazygit"
+                a "zellij:about"
+                y "zellij-workspace"
+                "[Shared] Super+m" "Toggle Fullscreen (pane)"
+                "[Shared] Super+o" "Session Manager"
+                p "Pane"
+                o "Session"
+                m "Move"
+                t "Tab"
+                r "Resize"
+                s "Scroll"
+                floating true
             }
             SwitchToMode "locked"
         }
@@ -184,6 +200,19 @@ keybinds clear-defaults=true {
         }
     }
     pane {
+        bind "?" {
+            LaunchOrFocusPlugin "zellij-forgot" {
+                LOAD_ZELLIJ_BINDINGS "false"
+                caller_cwd ""
+                b "Toggle Frames"
+                r "Rename Pane"
+                f "Toggle Floating or Embed"
+                i "Toggle Pinned"
+                w "Toggle Floating Panes"
+                floating true
+            }
+            SwitchToMode "locked"
+        }
         bind "b" {
             TogglePaneFrames
             SwitchToMode "locked"
@@ -209,6 +238,16 @@ keybinds clear-defaults=true {
         }
     }
     tab {
+        bind "?" {
+            LaunchOrFocusPlugin "zellij-forgot" {
+                LOAD_ZELLIJ_BINDINGS "false"
+                caller_cwd ""
+                r "Rename Tab"
+                s "Toggle active sync tab"
+                floating true
+            }
+            SwitchToMode "locked"
+        }
         bind "r" {
             SwitchToMode "renametab"
             TabNameInput 0
@@ -269,6 +308,21 @@ keybinds clear-defaults=true {
         }
     }
     move {
+        bind "?" {
+            LaunchOrFocusPlugin "zellij-forgot" {
+                LOAD_ZELLIJ_BINDINGS "false"
+                caller_cwd ""
+                h "Move Pane Left"
+                j "Move Pane Down"
+                k "Move Pane Up"
+                l "Move Pane Right"
+                n "Move Pane"
+                p "Move Pane Backwards"
+                tab "Move Pane"
+                floating true
+            }
+            SwitchToMode "locked"
+        }
         bind "h" {
             MovePane "left"
         }
@@ -292,6 +346,28 @@ keybinds clear-defaults=true {
         }
     }
     scroll {
+        bind "?" {
+            LaunchOrFocusPlugin "zellij-forgot" {
+                LOAD_ZELLIJ_BINDINGS "false"
+                caller_cwd ""
+                e "Edit Scrollback"
+                f "Switch to Search Mode"
+                left "PageScrollUp"
+                down "ScrollDown"
+                up "PageScrollUp"
+                right "PageScrollDown"
+                "Ctrl u" "HalfPageScrollUp"
+                "Ctrl c" "exit"
+                d "HalfPageScrollDown"
+                h "PageScrollUp"
+                j "ScrollDown"
+                k "ScrollUp"
+                l "PageScrollDown"
+                u "HalfPageScrollUp"
+                floating true
+            }
+            SwitchToMode "locked"
+        }
         bind "e" {
             EditScrollback
             SwitchToMode "locked"
@@ -302,6 +378,31 @@ keybinds clear-defaults=true {
         }
     }
     search {
+        bind "?" {
+            LaunchOrFocusPlugin "zellij-forgot" {
+                LOAD_ZELLIJ_BINDINGS "false"
+                caller_cwd ""
+                c "Toggle Case Sensitivity"
+                n "Search Down"
+                o "Toggle Whole Word"
+                p "Search Up"
+                w "Toggle Wrap"
+                left "PageScrollUp"
+                down "ScrollDown"
+                up "PageScrollUp"
+                right "PageScrollDown"
+                "Ctrl u" "HalfPageScrollUp"
+                "Ctrl c" "exit"
+                d "HalfPageScrollDown"
+                h "PageScrollUp"
+                j "ScrollDown"
+                k "ScrollUp"
+                l "PageScrollDown"
+                u "HalfPageScrollUp"
+                floating true
+            }
+            SwitchToMode "locked"
+        }
         bind "c" {
             SearchToggleOption "CaseSensitivity"
         }
@@ -319,6 +420,12 @@ keybinds clear-defaults=true {
         }
     }
     session {
+        LaunchOrFocusPlugin "zellij-forgot" {
+            LOAD_ZELLIJ_BINDINGS "false"
+            caller_cwd ""
+            d "Detach"
+            floating true
+        }
         bind "d" {
             Detach
         }
