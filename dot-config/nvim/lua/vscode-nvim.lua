@@ -1,5 +1,3 @@
-print("Neovim: VScode specific config")
-
 local remap = vim.api.nvim_set_keymap
 
 -- We need to overwrite the default keymap which defaults to <next>
@@ -69,6 +67,26 @@ remap(
 )
 
 remap("n", "<leader>cr", "<Cmd>call VSCodeNotify('editor.action.rename')<CR>", { noremap = true, desc = "Open rename" })
+
+remap(
+  "n",
+  "gR",
+  "<Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>",
+  { noremap = true, desc = "Go to references" }
+)
+
+remap(
+  "n",
+  "<leader>cf",
+  "<Cmd>call VSCodeNotify('editor.action.format')<CR>",
+  { noremap = true, desc = "Format file or range" }
+)
+remap(
+  "x",
+  "<leader>cf",
+  "<Cmd>call VSCodeNotify('editor.action.format')<CR>",
+  { noremap = true, desc = "Format range" }
+)
 
 -- I likely have to disable the default mapping?
 -- remap(
