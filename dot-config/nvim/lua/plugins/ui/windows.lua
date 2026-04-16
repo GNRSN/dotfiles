@@ -1,5 +1,4 @@
 local BLACKLIST_FT = {
-  "neo-tree",
   "neotest",
   "neotest-summary",
   "neotest-output-panel",

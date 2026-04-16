@@ -209,7 +209,6 @@ return {
         desc = "Lazygit Log (cwd)",
       },
       { -- Maybe better as usercmd? How common is this?
-        -- Can also integrate with neo-tree, see docs
         "<leader>cR",
         function()
           Snacks.rename.rename_file()

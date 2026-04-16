@@ -86,7 +86,6 @@ return {
 
       -- DOC: Ignored filetypes (only while resizing)
       ignored_filetypes = {
-        "neo-tree",
         "neotest",
         "neotest-summary",
         "neotest-output-panel",

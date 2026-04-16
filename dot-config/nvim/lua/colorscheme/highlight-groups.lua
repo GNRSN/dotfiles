@@ -6,8 +6,6 @@ M.HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
   "NormalFloat",
   "Pmenu",
   "SignColumn",
-  "NeoTreeNormal",
-  "NeoTreeNormalNC",
   "NoiceMini",
   "NotifyBackground",
 }
@@ -361,60 +359,6 @@ function M.setup()
 
     OilGitStatusIndexUnmerged = { fg = palette.bright_red },
     OilGitStatusWorkingTreeUnmerged = { fg = palette.bright_red },
-
-    -- NeoTree
-    NeoTreeNormal = { fg = palette.fg, bg = palette.menu },
-    NeoTreeNormalNC = { fg = palette.fg, bg = palette.menu },
-    NeoTreeDirectoryName = { fg = palette.fg },
-    NeoTreeDirectoryIcon = { fg = palette.yellow_orange },
-    NeoTreeGitUnstaged = { fg = palette.bright_magenta },
-    NeoTreeGitModified = { fg = palette.yellow_sunflower },
-    NeoTreeGitUntracked = { fg = palette.bright_green },
-    NeoTreeIndentMarker = { fg = palette.fade },
-    NeoTreeDotfile = { fg = palette.text_ignored },
-    NeoTreeCursorLine = { bg = palette.visual_bg },
-
-    -- NeoTreeBufferNumber       The buffer number shown in the buffers source.
-    -- NeoTreeCursorLine         |hl-CursorLine| override in Neo-tree window.
-    -- NeoTreeDimText            Greyed out text used in various places.
-    -- NeoTreeDirectoryIcon      Directory icon.
-    -- NeoTreeDirectoryName      Directory name.
-    -- NeoTreeDotfile            Used for icons and names when dotfiles are filtered.
-    -- NeoTreeFileIcon           File icon, when not overridden by devicons.
-    -- NeoTreeFileName           File name, when not overwritten by another status.
-    -- NeoTreeFileNameOpened     File name when the file is open. Not used yet.
-    -- NeoTreeFilterTerm         The filter term, as displayed in the root node.
-    -- NeoTreeFloatBorder        The border for pop-up windows.
-    -- NeoTreeFloatTitle         Used for the title text of pop-ups when the border-style
-    --                           is set to another style than "NC". This is derived
-    --                           from NeoTreeFloatBorder.
-    -- NeoTreeTitleBar           Used for the title bar of pop-ups, when the border-style
-    --                           is set to "NC". This is derived from NeoTreeFloatBorder.
-    -- NeoTreeGitAdded           File name when the git status is added.
-    -- NeoTreeGitConflict        File name when the git status is conflict.
-    -- NeoTreeGitDeleted         File name when the git status is deleted.
-    -- NeoTreeGitIgnored         File name when the git status is ignored.
-    -- NeoTreeGitModified        File name when the git status is modified.
-    -- NeoTreeGitUnstaged        Used for git unstaged symbol.
-    -- NeoTreeGitUntracked       File name when the git status is untracked.
-    -- NeoTreeGitStaged          Used for git staged symbol.
-    -- NeoTreeHiddenByName       Used for icons and names when `hide_by_name` is used.
-    -- NeoTreeIndentMarker       The style of indentation markers (guides). By default,
-    --                           the "Normal" highlight is used.
-    -- NeoTreeExpander           Used for collapsed/expanded icons.
-    -- NeoTreeNormal             |hl-Normal| override in Neo-tree window.
-    -- NeoTreeNormalNC           |hl-NormalNC| override in Neo-tree window.
-    -- NeoTreeSignColumn         |hl-SignColumn| override in Neo-tree window.
-    -- NeoTreeStatusLine         |hl-StatusLine| override in Neo-tree window.
-    -- NeoTreeStatusLineNC       |hl-StatusLineNC| override in Neo-tree window.
-    -- NeoTreeVertSplit          |hl-VertSplit| override in Neo-tree window.
-    -- NeoTreeWinSeparator       |hl-WinSeparator| override in Neo-tree window.
-    -- NeoTreeEndOfBuffer        |hl-EndOfBuffer| override in Neo-tree window.
-    -- NeoTreeRootName           The name of the root node.
-    -- NeoTreeSymbolicLinkTarget Symbolic link target.
-    -- NeoTreeTitleBar           Used for the title bar of pop-ups, when the border-style
-    --                           is set to "NC". This is derived from NeoTreeFloatBorder.
-    -- NeoTreeWindowsHidden      Used for icons and names that are hidden on Windows.
 
     -- Noice
     NoiceMini = { bg = palette.bg },

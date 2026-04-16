@@ -1,5 +1,4 @@
 local BLACKLIST_FT = {
-  "neo-tree",
   "spectre_panel",
   "DiffviewFiles",
   "DiffviewFileHistory",
