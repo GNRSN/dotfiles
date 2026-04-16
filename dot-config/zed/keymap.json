@@ -27,23 +27,38 @@
       "backspace": "vim::ToggleProjectPanelFocus",
       // TODO: Can't manage to deploy without having word under cursor as prefilled search
       "space f s": ["pane::DeploySearch", {}],
-      "space f d": "diagnostics::Deploy",
+      "space f d": "diagnostics::DeployCurrentFile",
+      "space f D": "diagnostics::Deploy",
       "space a a": "agent::Toggle",
     },
   },
   {
     "bindings": {
       "cmd-g cmd-g": ["task::Spawn", { "task_name": "start lazygit" }],
+      "cmd-o": "projects::OpenRecent",
     },
   },
   {
     "context": "vim_mode == normal",
     "bindings": {
+      "space O": "outline_panel::Toggle",
+
       "space c a": "editor::ToggleCodeActions",
-      "space c d": "editor::ToggleInlineDiagnostics",
+      "space c f": "editor::Format",
+      "space c r": "editor::Rename",
+
+      "g d": "editor::GoToDefinition",
+      "g R": "editor::FindAllReferences",
+
       "space g b": "editor::BlameHover",
       "space g B": "git::Blame",
-      "space c f": "editor::Format",
+    },
+  },
+  {
+    "context": "multibuffer",
+    "bindings": {
+      // May need some context
+      "enter": "editor::OpenExcerpts",
     },
   },
   {
