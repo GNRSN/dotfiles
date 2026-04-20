@@ -1,18 +1,8 @@
 # @GNRSN dotfiles
 
-## 🚧 WIP: Setup
+## Setup
 
-- Prerequisite: Install homebrew
-
-- Clone this repo to `~/dotfiles` (note: This path is expected)
-
-- Install nix (multi user installation) through the determinate systems nix installer
-
-- Bootstrap nix-darwin, see documentation, something like
-  `nix run nix-darwin -- switch --flake ~/dotfiles/nix-darwin#GNRSN/MacBook`
-
-- Symlink dotfiles into .config using
-  `cd ~/dotfiles && stow .`
+See [[SETUP.md]]
 
 ## Docs
 
@@ -46,3 +36,16 @@ See discussion in `https://github.com/omerxx/dotfiles/issues/10`
 Requires to be installed for dependencies that compile from source.
 Rustup manages the rust entire rust toolchain, installing versioned cargo through nix seemed overkill for now.
 This approach requires installing the toolchain manually through: `rustup default stable`
+
+### JS Toolchains
+
+Node JS is installed through Mise, which also installs corepack automatically
+
+Corepack then manages the package-manager per JS project
+
+For global installs, e.g. global pnpm, use `corepack prepare`
+
+E.g. to install the latest verion of pnpm:
+`corepack prepare pnpm@latest --activate`
+
+To install JS packages globally
