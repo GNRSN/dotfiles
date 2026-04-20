@@ -3,10 +3,11 @@ result
 
 .repro
 
+# Used by work
 dot-config/gcp-iap
 
-dot-config/claude
-
+# Added by vscode-markdown extension
 dot-config/crossnote
 
+# Added by windsurf
 dot-config/devin
