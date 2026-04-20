@@ -12,6 +12,9 @@ return {
       outline_items = {
         show_symbol_lineno = true,
       },
+      outline_window = {
+        auto_jump = true,
+      },
     },
   },
 }
