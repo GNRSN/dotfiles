@@ -7,7 +7,11 @@
 \.pre-commit-config.yaml
 \.neoconf.json
 
+\.zed
+\.claude
+
 README.md
+docs
 
 flake.*
 modules

@@ -2,7 +2,7 @@
 
 ## Setup
 
-See [[SETUP.md]]
+See [Setup](docs/SETUP.md)
 
 ## Docs
 
