@@ -7,7 +7,6 @@ local BLACKLIST_FT = {
   "AvanteSelectedFiles",
   "DiffviewFiles",
   "DiffviewFileHistory",
-  "neo-tree",
   "neotest",
   "neotest-output-panel",
   "neotest-summary",

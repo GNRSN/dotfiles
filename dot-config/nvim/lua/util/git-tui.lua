@@ -3,9 +3,6 @@ local M = { utils = {} }
 function M.utils.refresh_git()
   -- Refresh git signs buffers
   require("gitsigns").refresh()
-  -- Refresh neo-tree
-  local neo_tree_events = require("neo-tree.events")
-  neo_tree_events.fire_event(neo_tree_events.GIT_EVENT)
 end
 
 local win_options = {
