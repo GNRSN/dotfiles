@@ -5,12 +5,18 @@
 .neoconf.json
 
 # Claude code
-**/.claude/settings.local.json
 CLAUDE.local.md
+**/.claude/settings.local.json
+**/.claude/worktrees
 
 # Mise toolchain manager project config
 **/.mise.local.toml
 
 # Project local zed config
 .zed
-#.zed/*
+
+# I add my own stuff into this, e.g. CLAUDE.local.md symlink
+.worktreeinclude
+
+# I Symlink ~/.t3/worktrees/[project] to path/to/project/.t3-worktrees 
+.t3-worktrees
