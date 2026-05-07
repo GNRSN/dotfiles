@@ -1,7 +1,7 @@
 alias cat=bat
 
 alias ".."="cd .."
-alias lg="$XDG_CONFIG_HOME/lazygit/lazygit-router.sh"
+alias lz="$XDG_CONFIG_HOME/lazygit/lazygit-router.sh"
 alias nv=nvim
 alias pn=pnpm
 alias px=pnpx
