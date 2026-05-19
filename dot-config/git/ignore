@@ -20,3 +20,6 @@ CLAUDE.local.md
 
 # I Symlink ~/.t3/worktrees/[project] to path/to/project/.t3-worktrees 
 .t3-worktrees
+
+# Project local cmux config
+.cmux
