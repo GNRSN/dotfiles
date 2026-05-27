@@ -56,7 +56,11 @@ return {
         "prettierd", -- js + more formatter
         "shfmt", -- shell formatter
         -- REVIEW: Pin to same version as work as I don't know how to use workspace version
-        { "stylelint", version = "15.4.0" }, -- css/less/scss linter
+        {
+          "stylelint",
+          -- version = "15.4.0", -- css/less/scss linter
+        },
+        { "stylelint-language-server" },
         "stylua", -- lua formatter
       },
     })
