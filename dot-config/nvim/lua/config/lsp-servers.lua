@@ -16,5 +16,6 @@ return {
   "stylelint_lsp",
   "tailwindcss",
   "ts_query_ls", -- Treesitter query language
+  "tsgo",
   "yamlls",
 }
