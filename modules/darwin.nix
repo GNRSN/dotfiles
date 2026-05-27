@@ -64,6 +64,10 @@
     jqp
     # Git compatible vcs
     jujutsu
+    # jujutsu tui 1
+    lazyjj
+    # jujutsu tui 2
+    jjui
     # Git TUI
     lazygit
     # Automatic merge tool
