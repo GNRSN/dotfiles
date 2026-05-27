@@ -20,6 +20,7 @@ local BLACKLIST_FT = {
   "Outline",
   "grug-far",
   "qf", -- Quickfix
+  "codediff-explorer",
 }
 
 local get_noice_mode = function()
