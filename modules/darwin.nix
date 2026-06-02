@@ -187,6 +187,12 @@
     {
       name = "malpern/tap/sketchybar-toggle";
     }
+    {
+      name = "neurosnap/tap/zmx";
+    }
+    {
+      name = "mosh";
+    }
   ];
 
   homebrew.casks = [
