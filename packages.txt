@@ -17,10 +17,12 @@ glow-2.1.2
 gnupg-2.4.9
 graphite-cli-1.7.20
 JankyBorders-1.8.4
+jjui-0.10.4
 jq-1.8.1-bin
 jqp-0.8.0
 jujutsu-0.40.0
 lazygit-0.61.1
+lazyjj-0.6.1
 mergiraf-0.16.3
 mise-2026.4.20
 mongodb-ce-8.2.6
