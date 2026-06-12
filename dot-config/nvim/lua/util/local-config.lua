@@ -108,7 +108,17 @@ function M.get_tsgo_tsdk_from_config()
     return nil
   end
 
-  return vscodeConfig or nil
+  if not vscodeConfig then
+    return nil
+  end
+
+  -- VS Code resolves a relative tsdk against the workspace root
+  if vscodeConfig:sub(1, 1) ~= "/" then
+    local root = require("neoconf.workspace").find_root({})
+    vscodeConfig = vim.fs.joinpath(root, vscodeConfig)
+  end
+
+  return vscodeConfig
 end
 
 function M.is_work_dir()
