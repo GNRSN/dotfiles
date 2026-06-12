@@ -3,6 +3,7 @@ vim.filetype.add({
     ["turbo.json"] = "jsonc",
     [".prettierignore"] = "gitignore",
     [".worktreeinclude"] = "gitignore",
+    ["config"] = "conf",
   },
   extension = {
     -- No mdx treesitter grammar available
