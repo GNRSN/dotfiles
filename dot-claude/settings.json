@@ -1,7 +1,9 @@
 {
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "model": "opus[1m]",
   "effortLevel": "high",
-  "defaultMode": "auto",
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
