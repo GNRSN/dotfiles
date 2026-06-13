@@ -6,6 +6,12 @@ result
 # Used by work
 dot-config/gcp-iap
 
+# Machine-local git config, included from dot-config/git/config
+dot-config/git/config.local
+
+# Machine-local jj config, loaded via JJ_CONFIG (set in zsh .zshenv)
+dot-config/jj/config.local.toml
+
 # Added by vscode-markdown extension
 dot-config/crossnote
 
