@@ -27,6 +27,7 @@ mergiraf-0.16.3
 mise-2026.4.20
 mongodb-ce-8.2.6
 mongosh-2.8.2
+mosh-1.4.0
 neovide-0.16.2
 neovim-0.12.2
 nix-2.28.6
