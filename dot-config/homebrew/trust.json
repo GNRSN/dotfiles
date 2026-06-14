@@ -1,0 +1,10 @@
+{
+  "trustedformulae": [
+    "felixkratz/formulae/sketchybar",
+    "malpern/tap/sketchybar-toggle",
+    "neurosnap/tap/zmx"
+  ],
+  "trustedcasks": [
+    "nikitabobko/tap/aerospace"
+  ]
+}
