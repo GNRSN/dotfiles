@@ -56,6 +56,8 @@
     gnupg
     # Graphite cli
     graphite-cli
+    # Cli benchmarking tool
+    hyperfine
     # MacOS border for active window
     jankyborders
     # json processor/query tool
