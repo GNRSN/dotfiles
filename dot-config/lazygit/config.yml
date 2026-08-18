@@ -28,8 +28,9 @@ gui:
   statusPanelView: allBranchesLog
 git:
   disableForcePushing: true
-  pagers:
-    - externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off --tab-width=2
+  diffRenderers:
+    - command: difft --color=always --display=inline --syntax-highlight=off --tab-width=2
+      type: extDiff
 # TODO: Disable tab/shift tab to cycle module.
 keybinding:
   universal:
