@@ -39,7 +39,7 @@ return {
       { "<leader>9", "<cmd>Grapple select index=9<cr>", desc = "which_key_ignore" },
     },
     config = function()
-      local project_uses_graphite = require("util.local-config").get_workspace_config().graphite
+      local project_uses_graphite = require("util.local-config").is_graphite()
       require("grapple").setup({
         -- Since graphite will mean we change branch a lot, default to scoping saved marks for the repo
         scope = project_uses_graphite and "git" or "git_branch",

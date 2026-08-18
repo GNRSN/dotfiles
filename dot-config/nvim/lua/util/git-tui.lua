@@ -2,7 +2,10 @@ local M = { utils = {} }
 
 function M.utils.refresh_git()
   -- Refresh git signs buffers
-  require("gitsigns").refresh()
+  -- gitsigns may be cond-disabled (prefer_jj), in which case it can't be required
+  if package.loaded["gitsigns"] then
+    require("gitsigns").refresh()
+  end
 end
 
 local win_options = {
@@ -13,23 +16,22 @@ local win_options = {
   end,
 }
 
----@param options? { force_graphite?: boolean }
-function M.utils.lazygit_smart_open(options)
-  local opts = options or {}
-  local project_uses_graphite = require("util.local-config").get_workspace_config().graphite
+function M.utils.lazygit_smart_open()
+  local local_config = require("util.local-config")
 
-  if project_uses_graphite or opts.force_graphite then
-    Snacks.terminal(
-      "lazygit --use-config-file \"$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/graphite.yml\"",
-      {
-        win = win_options,
-      }
-    )
-  else
-    Snacks.terminal("lazygit", {
+  if local_config.prefer_jj() then
+    Snacks.terminal("lazyjj", {
       win = win_options,
     })
+    return
   end
+
+  -- Delegate to the shared router: it aborts on non-git dirs (instead of
+  -- lazygit's repo picker) and selects the graphite config when a `.gt` dir
+  -- is present, keeping nvim and the shell binding in sync.
+  Snacks.terminal("$XDG_CONFIG_HOME/lazygit/lazygit-router.sh", {
+    win = win_options,
+  })
 end
 
 return M

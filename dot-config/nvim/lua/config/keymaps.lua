@@ -81,9 +81,6 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 if not require("util.ctx").is_zellij then
   map("n", "<leader>gg", require("util.git-tui").utils.lazygit_smart_open, { desc = "Lazygit (root dir)" })
 end
-map("n", "<leader>gt", function()
-  require("util.git-tui").utils.lazygit_smart_open({ force_graphite = true })
-end, { desc = "Lazygit with Graphite config (root dir)" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })

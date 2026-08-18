@@ -1,6 +1,9 @@
 return {
   {
     "refractalize/oil-git-status.nvim",
+    cond = function()
+      return not require("util.local-config").prefer_jj()
+    end,
     dependencies = {
       "stevearc/oil.nvim",
     },
@@ -73,6 +76,15 @@ return {
       },
     },
     config = function(_, opts)
+      -- jj repos aren't git-tracked (or only colocated), so the git-based
+      -- gitignore hiding below is irrelevant/noisy. Fall back to plain setup.
+      if require("util.local-config").prefer_jj() then
+        -- The 2-wide signcolumn only existed for oil-git-status; reclaim it.
+        opts.win_options.signcolumn = "no"
+        require("oil").setup(opts)
+        return
+      end
+
       -- Oil.nvim recipe for using git status for determining hidden files
       -- DOC: https://github.com/stevearc/oil.nvim/blob/master/doc/recipes.md#hide-gitignored-files-and-show-git-tracked-hidden-files
 
