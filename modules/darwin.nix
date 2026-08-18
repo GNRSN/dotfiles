@@ -12,6 +12,7 @@
     pkg:
     builtins.elem (pkgs.lib.getName pkg) [
       "graphite-cli"
+      "graphite-cli-unwrapped"
       "mongodb-ce"
       "mongosh"
     ];
@@ -133,8 +134,9 @@
   # programs.direnv.enable = true;
 
   # Set the version of nix we want to use
-  # REVIEW: Why are we not using unstable?
-  nix.package = pkgs.nixVersions.nix_2_28;
+  # As per the default config template but with pinned versions
+  # as upgrading nix versions can't be easily reverted
+  nix.package = pkgs.nixVersions.nix_2_31;
 
   # Write directly into the nix.conf, try to replicate what NixInstaller left there
   # Some discrepancies between installer and NixDarwin
@@ -193,9 +195,7 @@
     # }
     {
       name = "FelixKratz/formulae/sketchybar";
-      restart_service = "changed";
     }
-
     {
       name = "malpern/tap/sketchybar-toggle";
     }
