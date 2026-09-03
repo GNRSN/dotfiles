@@ -237,6 +237,8 @@
     "firefox"
     # Keyboard remapping
     "hhkb"
+    # Access gcloud
+    "gcloud-cli"
     # Terminal of choice
     "ghostty"
     # For frontend development

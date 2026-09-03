@@ -5,6 +5,8 @@ result
 
 # Used by work
 dot-config/gcp-iap
+dot-config/tea
+dot-config/gcloud
 
 # Machine-local git config, included from dot-config/git/config
 dot-config/git/config.local
