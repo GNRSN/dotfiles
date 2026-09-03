@@ -43,6 +43,7 @@ sketchybar --default "${defaults[@]}"
 # Integrate with Aerospace events
 sketchybar --add event aerospace_workspace_change
 sketchybar --add event aerospace_mode_change
+sketchybar --add event aerospace_focus_change
 sketchybar --add event refresh_workspaces
 
 ##### Adding Left Items #####
@@ -62,7 +63,14 @@ sketchybar --add item aerospace_monitors_group left \
 # Display name of active app
 sketchybar --add item front_app left \
   --set front_app icon.drawing=off padding_left=9 script="$PLUGINS_DIR/front_app.sh" \
-  --subscribe front_app front_app_switched
+  --subscribe front_app front_app_switched aerospace_focus_change
+
+# "(floating)" suffix for front_app, shown when Aerospace reports the focused
+# window as floating. Separate item since labels only support a single color.
+sketchybar --add item front_app_floating left \
+  --set front_app_floating drawing=off icon.drawing=off \
+  padding_left=0 label.padding_left=0 \
+  label="(floating)" label.color=$DIM_TEXT
 
 # TODO: Indicate camera on, recording mic and screen sharing
 
