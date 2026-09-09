@@ -1,0 +1,47 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion" : 1,
+  "shortcuts" : {
+    "bindings" : {
+      "openBrowser" : {
+        "first" : {
+          "command" : true,
+          "control" : false,
+          "key" : "b",
+          "keyCode" : 11,
+          "option" : false,
+          "shift" : false
+        }
+      },
+      "saveFilePreview" : {
+        "first" : {
+          "command" : false,
+          "control" : false,
+          "key" : "",
+          "option" : false,
+          "shift" : false
+        }
+      },
+      "toggleFileExplorer" : {
+        "first" : {
+          "command" : true,
+          "control" : false,
+          "key" : "s",
+          "keyCode" : 1,
+          "option" : false,
+          "shift" : true
+        }
+      },
+      "toggleSidebar" : {
+        "first" : {
+          "command" : true,
+          "control" : false,
+          "key" : "s",
+          "keyCode" : 1,
+          "option" : false,
+          "shift" : false
+        }
+      }
+    }
+  }
+}
