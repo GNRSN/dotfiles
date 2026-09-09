@@ -10,6 +10,9 @@ CLAUDE.local.md
 **/.claude/worktrees
 **/.claude/skills
 
+# Sentinel that stops the Claude desktop app from reaping a linked worktree
+.worktree-keep
+
 # Mise toolchain manager project config
 **/.mise.local.toml
 
