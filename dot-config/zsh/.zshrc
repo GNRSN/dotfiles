@@ -25,9 +25,9 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 ## Autostart a new zellij shell, if not already inside one
-if [ "$TERM_PROGRAM" = "ghostty" ] && [ "$ZELLIJ" != "0" ]; then
-  eval "zellij attach -c Dotfiles"
-fi
+# if [ "$TERM_PROGRAM" = "ghostty" ] && [ "$CMUX_WORKSPACE_ID" = "" ] && [ "$ZELLIJ" != "0" ]; then
+#   eval "zellij attach -c Dotfiles"
+# fi
 
 ## Autostart a new tmux session, if not already inside one
 # if [ "$TERM_PROGRAM" = "ghostty" ] && [ "$TMUX" != "0" ]; then
@@ -245,3 +245,15 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # bun completions
 [ -s "/Users/gnrsn/.bun/_bun" ] && source "/Users/gnrsn/.bun/_bun"
+
+# Turso
+export PATH="$PATH:/Users/gnrsn/.turso"
+
+# Workaround: cmux stopped exporting GHOSTTY_BIN_DIR, so its _cmux_fix_path
+# no-ops and the bundled CLI never lands on PATH.
+if [[ -n "${CMUX_BUNDLED_CLI_PATH:-}" && -x "$CMUX_BUNDLED_CLI_PATH" ]]; then
+  path=("${CMUX_BUNDLED_CLI_PATH:h}" $path)
+elif [[ -x /Applications/cmux.app/Contents/Resources/bin/cmux ]]; then
+  path=(/Applications/cmux.app/Contents/Resources/bin $path)
+fi
+typeset -U path
