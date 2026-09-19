@@ -70,7 +70,3 @@ cask "zed"
 cask "zen"
 # Keyboard-first, local-first Markdown notes with vim motions and live preview
 cask "zennotes/tap/zennotes", trusted: true
-npm "@google/gemini-cli"
-npm "@nubjs/nub"
-npm "corepack"
-npm "opencode-ai"

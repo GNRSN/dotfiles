@@ -272,6 +272,15 @@
     "zennotes/tap/zennotes"
   ];
 
+  # Log exact package versions to git after every switch. Activation runs as
+  # root so drop to the primary user, same as nix-darwin does for brew bundle.
+  # /run/current-system is only repointed after this hook, hence $systemConfig.
+  system.activationScripts.postActivation.text = ''
+    echo >&2 "Logging package versions..."
+    sudo --user=${config.system.primaryUser} --set-home \
+      ${config.users.users.gnrsn.home}/dotfiles/scripts/log-packages.sh "$systemConfig"
+  '';
+
   # Touch id for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 

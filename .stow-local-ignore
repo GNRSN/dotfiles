@@ -16,6 +16,7 @@ docs
 
 flake.*
 modules
+scripts
 
 packages.txt
 brew.txt
