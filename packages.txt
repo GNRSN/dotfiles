@@ -8,7 +8,7 @@ difftastic-0.70.0
 eza-0.23.5
 fastgron-0.7.7
 fd-10.5.0
-fzf-0.74.3
+fzf-0.74.4
 gh-2.100.0
 gh-dash-4.25.2
 git-2.55.0
@@ -19,11 +19,11 @@ graphite-cli-unwrapped-1.8.6
 herdr-0.9.0
 hyperfine-1.20.0
 JankyBorders-1.9.0
-jjui-0.10.9
+jjui-0.10.10
 jq-1.8.2-bin
 jqp-0.8.0
 jujutsu-0.45.1
-lazygit-0.65.0
+lazygit-0.65.1
 lazyjj-0.6.1
 mergiraf-0.19.0
 mise-2026.8.6
@@ -32,8 +32,8 @@ mongosh-2.10.0
 mosh-1.4.0
 neovide-0.16.2
 neovim-0.12.5
-nix-2.31.5
-nixfmt-1.4.0
+nix-2.31.5+1
+nixfmt-1.5.0
 oh-my-posh-30.9.0
 password-store-1.7.4
 pre-commit-4.6.2
