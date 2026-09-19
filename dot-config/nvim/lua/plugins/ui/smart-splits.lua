@@ -4,7 +4,9 @@ return {
     "mrjones2014/smart-splits.nvim",
     -- DOC: Lazy loading may cause issues
     lazy = false,
-    cond = require("util.ctx").is_zellij,
+    cond = require("util.ctx").is_zellij or require("util.ctx").is_herdr,
+    -- Registers the bundled herdr plugin used by the ctrl+hjkl binds in herdr/config.toml
+    build = "herdr plugin link .",
     keys = {
       -- moving between splits
       {
