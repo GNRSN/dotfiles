@@ -11,7 +11,6 @@ alias taze="pnpm dlx taze -r --include-locked"
 alias l='eza -l'
 alias tree='eza -T'
 alias nvide="neovide --frame=transparent --title-hidden"
-alias llama="ollama run llama3.1:latest"
 alias yz=yazi
 alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 alias gron='fastgron'
