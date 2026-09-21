@@ -50,6 +50,14 @@ key = "ctrl+alt+l"
 type = "shell"
 command = "~/.config/herdr/resize.sh right"
 
+[[keys.command]]
+key = "cmd+g"
+type = "popup"
+command = "cd \"$HERDR_ACTIVE_PANE_CWD\" && ~/.config/lazygit/lazygit-router.sh"
+description = "lazygit"
+width = "97%"
+height = "97%"
+
 [ui]
 pane_outer_borders = false
 pane_gaps = false
