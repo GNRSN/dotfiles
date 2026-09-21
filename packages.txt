@@ -32,14 +32,14 @@ mongosh-2.10.0
 mosh-1.4.0
 neovide-0.16.2
 neovim-0.12.5
-nix-2.31.5+1
+nix-2.34.8
 nixfmt-1.5.0
 oh-my-posh-30.9.0
 password-store-1.7.4
 pre-commit-4.6.2
 ripgrep-15.2.0
 rustup-1.29.0
-sqld-0.24.18
+sqld-0.24.33
 stow-2.4.1
 tea-0.15.1
 turso-cli-1.0.31
