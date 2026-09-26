@@ -214,4 +214,14 @@ function M.is_prettier_enabled()
   return require("neoconf").get("vscode.prettier.enable")
 end
 
+-- An explicit oxlint.enable wins, otherwise follow oxc.enable
+function M.use_oxlint()
+  local neoconf = require("neoconf")
+  local oxlint = neoconf.get("vscode.oxlint.enable")
+  if oxlint ~= nil then
+    return oxlint
+  end
+  return neoconf.get("vscode.oxc.enable") == true
+end
+
 return M

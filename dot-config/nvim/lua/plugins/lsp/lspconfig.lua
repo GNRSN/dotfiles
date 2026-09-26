@@ -79,13 +79,17 @@ return {
       on_attach = on_attach,
     })
 
-    local lsp_servers = { unpack(require("config.lsp-servers")) }
+    local local_config = require("util.local-config")
 
-    if not require("util.local-config").use_tsgo() then
-      lsp_servers = vim.tbl_filter(function(server)
-        return server ~= "tsc"
-      end, lsp_servers)
-    end
+    local disabled = {
+      tsc = not local_config.use_tsgo(),
+      oxlint = not local_config.use_oxlint(),
+      oxfmt = local_config.is_prettier_enabled(),
+    }
+
+    local lsp_servers = vim.tbl_filter(function(server)
+      return not disabled[server]
+    end, require("config.lsp-servers"))
 
     vim.lsp.enable(lsp_servers)
   end,
