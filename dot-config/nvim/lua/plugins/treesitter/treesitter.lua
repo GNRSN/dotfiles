@@ -84,13 +84,6 @@ return {
         -- DOC: No configuration is required, just install the plugin and it'll work!
         "RRethy/nvim-treesitter-endwise",
       },
-      { -- Incremental selection through treesitter
-        "daliusd/incr.nvim",
-        opts = {
-          incr_key = "<C-space>",
-          decr_key = "<C-bs>",
-        },
-      },
     }, vim.tbl_values(CUSTOM_PARSERS)),
     config = function(_, opts)
       vim.api.nvim_create_autocmd("User", {
@@ -152,6 +145,17 @@ return {
           vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
         end,
       })
+
+      -- Incremental AST selection
+      local keymap = vim.keymap.set
+      keymap("n", "<C-space>", ":normal van<cr>", opts)
+      keymap("v", "<C-space>", function()
+        vim.api.nvim_feedkeys("an", "v", false)
+      end)
+      keymap("n", "<C-bs>", ":normal vin<cr>", opts)
+      keymap("v", "<C-bs>", function()
+        vim.api.nvim_feedkeys("in", "v", false)
+      end)
     end,
   },
 }
