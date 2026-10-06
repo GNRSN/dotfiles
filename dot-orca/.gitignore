@@ -1,0 +1,5 @@
+# Orca writes app-managed state (agent-hooks, drops, worktrees, ...) into ~/.orca,
+# which is stowed as this directory. Whitelist only the files we deliberately own.
+*
+!.gitignore
+!keybindings.json
