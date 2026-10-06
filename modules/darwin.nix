@@ -33,7 +33,7 @@
     # Another, even smarter git diff visualisation tool, built on tree sitter
     difftastic
     # Manage nix-envs based on directory
-    direnv
+    # direnv
     # Better ls
     eza
     # Make json greppable (50x faster)
@@ -95,6 +95,8 @@
     # Libsql, better sqlite
     # NOTE: sqld is libsql including some extras
     sqld_pkgs.sqld
+    # Gitea cli
+    tea
     # Turso cli
     turso-cli
     # Cli file manager
