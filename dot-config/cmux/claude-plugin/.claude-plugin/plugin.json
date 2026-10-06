@@ -1,0 +1,4 @@
+{
+  "name": "cmux",
+  "description": "cmux skills, loaded per session via --plugin-dir only when running inside cmux (see zsh alias.zsh)"
+}
