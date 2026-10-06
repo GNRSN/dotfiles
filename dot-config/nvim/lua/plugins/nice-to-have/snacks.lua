@@ -1,5 +1,8 @@
 -- Bunch of great examples for customization https://github.com/folke/snacks.nvim/discussions/1768
 
+-- Filenames to always exclude from grep results
+local grep_exclude = { "pnpm-lock.yaml" }
+
 return {
   { -- Bunch of utils from Folke
     "folke/snacks.nvim",
@@ -83,6 +86,7 @@ return {
           Snacks.picker.grep({
             -- LATER: Maybe ignore .git and .ds_store
             hidden = true,
+            exclude = grep_exclude,
           })
         end,
         desc = "Grep (Snacks)",
@@ -182,7 +186,7 @@ return {
       {
         "<leader>fs",
         function()
-          Snacks.picker.grep_word()
+          Snacks.picker.grep_word({ exclude = grep_exclude })
         end,
         desc = "Visual selection",
         mode = { "x" },
