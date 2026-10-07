@@ -53,4 +53,5 @@ keybind = cmd+minus=decrease_font_size:1
 keybind = cmd+0=reset_font_size
 
 # Use https://enchanted.games/app/colour-converter/ to convert colours
-custom-shader = shaders/cursor_smear.glsl
+# TODO: disable since it doesn't work well in cmux
+# custom-shader = shaders/cursor_smear.glsl
