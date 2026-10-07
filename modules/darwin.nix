@@ -1,6 +1,5 @@
 {
   apple-fonts,
-  sqld_pkgs,
   system,
   self,
 }:
@@ -33,8 +32,6 @@
     delta
     # Another, even smarter git diff visualisation tool, built on tree sitter
     difftastic
-    # Manage nix-envs based on directory
-    # direnv
     # Better ls
     eza
     # Make json greppable (50x faster)
@@ -105,7 +102,7 @@
     stow
     # Libsql, better sqlite
     # NOTE: sqld is libsql including some extras
-    sqld_pkgs.sqld
+    sqld
     # Gitea cli
     tea
     # Turso cli
@@ -131,14 +128,15 @@
     apple-fonts.packages.${system}.ny-nerd
   ];
 
-  # TODO: How does this work? Should I remove it from systemPackages
-  # see https://daiderd.com/nix-darwin/manual/index.html#opt-programs.direnv.enable
-  # programs.direnv.enable = true;
-
   # Set the version of nix we want to use
   # As per the default config template but with pinned versions
   # as upgrading nix versions can't be easily reverted
-  nix.package = pkgs.nixVersions.nix_2_31;
+  nix.package = pkgs.nixVersions.nix_2_34;
+
+  # Keep the store from growing unbounded, generations older than 30d are dropped
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 30d";
+  nix.optimise.automatic = true;
 
   # Write directly into the nix.conf, try to replicate what NixInstaller left there
   # Some discrepancies between installer and NixDarwin
@@ -146,7 +144,6 @@
   nix.settings = {
     extra-nix-path = "nixpkgs=flake:nixpkgs";
     experimental-features = "nix-command flakes";
-    upgrade-nix-store-path-url = "https://install.determinate.systems/nix-upgrade/stable/universal";
     allowed-users = [ "*" ];
   };
 
@@ -161,7 +158,12 @@
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = 7;
+
+  # stateVersion >= 5 defaults the build group id to 350, but the nix installer
+  # created the nixbld group with 30000 before that change. Changing the real
+  # gid requires reinstalling nix, so keep the original.
+  ids.gids.nixbld = 30000;
 
   users.users = {
     gnrsn = {

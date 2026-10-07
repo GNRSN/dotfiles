@@ -5,12 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sqld_pkgs = {
-      url = "https://github.com/NixOS/nixpkgs/archive/4989a246d7a390a859852baddb1013f825435cee.tar.gz";
     };
 
     # Flake that downloads fonts from apples website + patches with nerdfonts. These are not installed system wide by default
@@ -23,7 +19,6 @@
       self,
       nix-darwin,
       nixpkgs,
-      sqld_pkgs,
       apple-fonts,
     }:
     let
@@ -38,7 +33,6 @@
         modules = [
           (import ./modules/darwin.nix {
             inherit system self apple-fonts;
-            sqld_pkgs = sqld_pkgs.legacyPackages.${system};
           })
         ];
       };
