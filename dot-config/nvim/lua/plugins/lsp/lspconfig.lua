@@ -83,7 +83,7 @@ return {
 
     if not require("util.local-config").use_tsgo() then
       lsp_servers = vim.tbl_filter(function(server)
-        return server ~= "tsgo"
+        return server ~= "tsc"
       end, lsp_servers)
     end
 
