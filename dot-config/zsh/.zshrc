@@ -248,12 +248,3 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Turso
 export PATH="$PATH:/Users/gnrsn/.turso"
-
-# Workaround: cmux stopped exporting GHOSTTY_BIN_DIR, so its _cmux_fix_path
-# no-ops and the bundled CLI never lands on PATH.
-if [[ -n "${CMUX_BUNDLED_CLI_PATH:-}" && -x "$CMUX_BUNDLED_CLI_PATH" ]]; then
-  path=("${CMUX_BUNDLED_CLI_PATH:h}" $path)
-elif [[ -x /Applications/cmux.app/Contents/Resources/bin/cmux ]]; then
-  path=(/Applications/cmux.app/Contents/Resources/bin $path)
-fi
-typeset -U path
