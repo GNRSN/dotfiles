@@ -57,6 +57,8 @@
     gnupg
     # Graphite cli
     graphite-cli
+    # Agent first multiplexer
+    herdr
     # Cli benchmarking tool
     hyperfine
     # MacOS border for active window
