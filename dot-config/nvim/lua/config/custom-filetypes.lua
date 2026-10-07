@@ -1,6 +1,7 @@
 vim.filetype.add({
   filename = {
     ["turbo.json"] = "jsonc",
+    [".oxlint.json"] = "jsonc",
     [".prettierignore"] = "gitignore",
     [".worktreeinclude"] = "gitignore",
     ["config"] = function(path, bufnr)
