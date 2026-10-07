@@ -217,6 +217,8 @@
     "nikitabobko/tap/aerospace"
     # (ex) Browser of choice, RIP
     "arc"
+    # OSS Slack
+    "block-buzz"
     # Still the best AI(?)
     "chatgpt"
     # I want to try out the experience

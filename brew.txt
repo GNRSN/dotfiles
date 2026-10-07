@@ -18,6 +18,8 @@ brew "neurosnap/tap/zmx", trusted: true
 cask "nikitabobko/tap/aerospace", trusted: true
 # Chromium based browser
 cask "arc"
+# Workspace for humans and AI agents
+cask "block-buzz"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Write, edit, and chat about your code with AI
