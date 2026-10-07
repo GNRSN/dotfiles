@@ -8,6 +8,7 @@
 CLAUDE.local.md
 **/.claude/settings.local.json
 **/.claude/worktrees
+**/.claude/skills
 
 # Mise toolchain manager project config
 **/.mise.local.toml
