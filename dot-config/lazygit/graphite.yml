@@ -15,25 +15,32 @@ customCommands:
     loadingText: creating stack...
 
   - key: P
+    context: global
     description: Graphite submit stack
     command: gt submit --stack --web=false --no-interactive --publish
-    context: global
     loadingText: "submitting stack..."
 
   - key: A
+    context: commits
+    description: Graphite modify selected commit
+    command: 'b="$(git branch --points-at {{.SelectedLocalCommit.Hash}} --format=''%(refname:short)'' | head -1)"; if [ -z "$b" ]; then echo "Selected commit is not a branch tip — nothing to modify into"; exit 1; fi; gt modify --into "$b"'
+    loadingText: Modifying into commit...
+
+  - key: A
+    context: files
     description: Graphite modify commit
-    command: gt modify
-    context: commits, files
+    command: gt modify (amend current branch)
+    loadingText: Amending into current branch...
 
   - key: f
+    context: localBranches, commits
     description: Graphite sync
     command: gt sync --no-interactive --restack
-    context: commits
 
   - key: r
+    context: commits, files
     description: Graphite rename commit
     command: gt modify -m "{{index .PromptResponses 0}}"
-    context: commits, files
     prompts:
       - type: input
         title: "Commit Message"
