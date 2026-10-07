@@ -3,6 +3,7 @@ vim.filetype.add({
     ["turbo.json"] = "jsonc",
     [".prettierignore"] = "gitignore",
     [".worktreeinclude"] = "gitignore",
+    ["config"] = "conf",
   },
   extension = {
     -- No mdx treesitter grammar available
@@ -12,4 +13,15 @@ vim.filetype.add({
     ["applescript"] = "applescript",
     ["osascript"] = "osascript",
   },
+})
+
+-- Map Bun shebang to typescript filetype
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = vim.api.nvim_create_augroup("bun_shebang_ft", { clear = true }),
+  callback = function(args)
+    local first = vim.api.nvim_buf_get_lines(args.buf, 0, 1, false)[1] or ""
+    if first:match("^#!.*%f[%a]bun%f[%A]") then
+      vim.bo[args.buf].filetype = "typescript"
+    end
+  end,
 })
