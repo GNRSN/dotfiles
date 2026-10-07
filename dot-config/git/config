@@ -23,9 +23,9 @@
   external = difft --tab-width=2 --display=inline --syntax-highlight=off
   tool = difftastic
 
-# Specify config for work that lives outside personal dotfiles
-[includeIf "gitdir:~/Yolean/"]
-  path = ~/Yolean/.gitconfig
+# Machine-local config, untracked. Relative path resolves next to this file. Missing file is ignored.
+[include]
+  path = config.local
 
 [alias]
   lg="log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"

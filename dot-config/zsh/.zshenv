@@ -46,6 +46,14 @@ export NEOVIDE_TABS=0
 
 source $XDG_CONFIG_HOME/fzf/fzf.zsh
 
+# === Jujutsu ===
+
+# Load the tracked config.toml first, then the untracked config.local.toml
+# that routes work repos to the work identity. Order is explicit (not
+# alphabetical) so the local scope wins over config.toml's plain user.email.
+# A missing local file is ignored. Mirrors git's config.local.
+export JJ_CONFIG="$XDG_CONFIG_HOME/jj/config.toml:$XDG_CONFIG_HOME/jj/config.local.toml"
+
 # === Misc ===
 
 # Delta git diff viewer also uses bat theme automatically
