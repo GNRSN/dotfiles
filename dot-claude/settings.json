@@ -1,14 +1,81 @@
 {
+  "env": {
+    "CLAUDE_CODE_ACCESSIBILITY": "1"
+  },
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "fable",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/gnrsn/.claude/hooks/worktree-cd-guard.sh",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/gnrsn/.claude/hooks/main-checkout-write-guard.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"/Users/gnrsn/.bun/bin/bun\" \"/Users/gnrsn/github/review-tool/hooks/iteration.ts\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"/Users/gnrsn/.bun/bin/bun\" \"/Users/gnrsn/github/review-tool/hooks/iteration.ts\""
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "hideVimModeIndicator": true
+  },
+  "enabledPlugins": {
+    "storybook@storybook": true
+  },
+  "extraKnownMarketplaces": {
+    "storybook": {
+      "source": {
+        "source": "github",
+        "repo": "storybookjs/mcp",
+        "ref": "main"
+      }
+    }
+  },
   "effortLevel": "high",
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
+  "autoMemoryEnabled": false,
+  "autoDreamEnabled": false,
+  "skipWorkflowUsageWarning": true,
   "theme": "dark",
   "editorMode": "vim",
   "voiceEnabled": true
