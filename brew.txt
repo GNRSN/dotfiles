@@ -3,33 +3,61 @@ tap "homebrew/services"
 tap "malpern/tap"
 tap "neurosnap/tap"
 tap "nikitabobko/tap"
-brew "felixkratz/formulae/sketchybar"
-brew "malpern/tap/sketchybar-toggle"
-brew "neurosnap/tap/zmx"
-cask "nikitabobko/tap/aerospace"
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar", trusted: true
+# Coordinates SketchyBar and the native macOS menu bar
+brew "malpern/tap/sketchybar-toggle", trusted: true
+# Session persistence for terminal processes
+brew "neurosnap/tap/zmx", trusted: true
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "nikitabobko/tap/aerospace", trusted: true
+# Chromium based browser
 cask "arc"
+# OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Write, edit, and chat about your code with AI
 cask "cursor"
+# AI-powered translator
 cask "deepl"
+# Voice and text chat software
 cask "discord"
+# Matrix collaboration client
 cask "element"
+# Collaborative team software
 cask "figma"
+# Web browser
 cask "firefox"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Web browser
 cask "google-chrome"
+# Web browser
 cask "google-chrome@canary"
+# Allows keymap customization on HHKB HYBRID Type-S and HYBRID models
 cask "hhkb"
+# Password manager app
 cask "keepassxc"
+# Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
+# Interactive tool for analyzing MongoDB data
 cask "mongodb-compass"
+# Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Replacement for Docker Desktop
 cask "orbstack"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
+# Web browser
 cask "thebrowsercompany-dia"
+# Open-source code editor
 cask "visual-studio-code"
+# Multiplayer code editor
 cask "zed"
+# Gecko based web browser
 cask "zen"
 npm "@google/gemini-cli"
 npm "corepack"

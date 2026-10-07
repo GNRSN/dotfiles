@@ -4,7 +4,7 @@
   system,
   self,
 }:
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   system.primaryUser = "gnrsn";
 
@@ -166,6 +166,14 @@
   homebrew.enable = true;
   # Uninstall anything not specified in nix, leaves associated files
   homebrew.onActivation.cleanup = "uninstall";
+  # Homebrew 6.0 enforces tap-trust. `brew trust` writes to
+  # $XDG_CONFIG_HOME/homebrew/trust.json, but activation runs under
+  # `sudo` which scrubs XDG_CONFIG_HOME, so brew falls back to
+  # ~/.homebrew/trust.json and treats trusted taps as untrusted.
+  # Pass XDG_CONFIG_HOME through so it reads the same trust file.
+  homebrew.onActivation.extraEnv = {
+    XDG_CONFIG_HOME = "${config.users.users.gnrsn.home}/.config";
+  };
 
   homebrew.taps = [
     # brew services subcommand, I think this is required for nix restart_service to work
