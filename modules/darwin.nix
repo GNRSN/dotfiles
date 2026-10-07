@@ -202,6 +202,14 @@
     {
       name = "neurosnap/tap/zmx";
     }
+    {
+      # Swift package manager
+      name = "cocoapods";
+    }
+    {
+      # Macos disk cleaning util
+      name = "mole";
+    }
   ];
 
   homebrew.casks = [
@@ -256,6 +264,8 @@
     "zed"
     # Try arc alternative
     "zen"
+    # Keybord centric note-taking app
+    "zennotes/tap/zennotes"
   ];
 
   # Touch id for sudo

@@ -5,6 +5,7 @@
     "neurosnap/tap/zmx"
   ],
   "trustedcasks": [
-    "nikitabobko/tap/aerospace"
+    "nikitabobko/tap/aerospace",
+    "zennotes/tap/zennotes"
   ]
 }

@@ -3,11 +3,16 @@ tap "homebrew/services"
 tap "malpern/tap"
 tap "neurosnap/tap"
 tap "nikitabobko/tap"
+tap "zennotes/tap"
+# Dependency manager for Cocoa projects
+brew "cocoapods"
+# Deep clean and optimize your Mac
+brew "mole"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar", trusted: true
 # Coordinates SketchyBar and the native macOS menu bar
 brew "malpern/tap/sketchybar-toggle", trusted: true
-# Session persistence for terminal processes
+# Session attach/detach for the terminal
 brew "neurosnap/tap/zmx", trusted: true
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "nikitabobko/tap/aerospace", trusted: true
@@ -59,5 +64,9 @@ cask "visual-studio-code"
 cask "zed"
 # Gecko based web browser
 cask "zen"
+# Keyboard-first, local-first Markdown notes with vim motions and live preview
+cask "zennotes/tap/zennotes", trusted: true
 npm "@google/gemini-cli"
+npm "@nubjs/nub"
 npm "corepack"
+npm "opencode-ai"
