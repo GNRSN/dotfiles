@@ -7,6 +7,7 @@ alias pn=pnpm
 alias px=pnpx
 alias pt="pnpm turbo"
 alias pi="pnpm dlx @antfu/nip"
+alias taze="pnpm dlx taze -r --include-locked"
 alias l='eza -l'
 alias tree='eza -T'
 alias nvide="neovide --frame=transparent --title-hidden"
