@@ -54,6 +54,10 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.schedule(function()
+      if not vim.api.nvim_buf_is_valid(event.buf) then
+        return
+      end
+
       vim.keymap.set("n", "q", function()
         vim.cmd("close")
 
@@ -72,6 +76,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_esc"),
   pattern = {
+    -- LATER: Always errors, then can't re-open
     -- "fyler",
     "lazy",
     "dap-float",
@@ -79,9 +84,16 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.schedule(function()
+      if not vim.api.nvim_buf_is_valid(event.buf) then
+        return
+      end
+
       vim.keymap.set("n", "<esc>", function()
         vim.cmd("close")
-        pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+
+        if vim.api.nvim_buf_is_valid(event.buf) then
+          pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+        end
       end, {
         buffer = event.buf,
         silent = true,
