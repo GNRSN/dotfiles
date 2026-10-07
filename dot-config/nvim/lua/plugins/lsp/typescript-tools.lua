@@ -24,6 +24,10 @@ return {
       "marilari88/twoslash-queries.nvim",
     },
     config = function()
+      if require("util.local-config").use_tsgo() then
+        return
+      end
+
       local tsserver_path = get_ts_server_path()
 
       local api = require("typescript-tools.api")

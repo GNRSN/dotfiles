@@ -52,6 +52,25 @@ function M.get_tsdk_from_config()
   return vscodeConfig or nil
 end
 
+function M.use_tsgo()
+  return require("neoconf").get("vscode.js/ts.experimental.useTsgo") == true
+end
+
+function M.get_tsgo_tsdk_from_config()
+  local vscodeConfig = require("neoconf").get("vscode.typescript.native-preview.tsdk")
+
+  if not M.get_workspace_config().allow_project_tsdk then
+    if vscodeConfig then
+      vim.notify(
+        "Project configuration contains custom typescript.native-preview.tsdk but allow_project_tsdk isn't set"
+      )
+    end
+    return nil
+  end
+
+  return vscodeConfig or nil
+end
+
 function M.is_work_dir()
   local work_dir = vim.env.WORK_DIR
   if not work_dir then
