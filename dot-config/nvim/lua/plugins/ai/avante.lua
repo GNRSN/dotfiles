@@ -155,7 +155,6 @@ return {
       rag_service = {
         enabled = false,
         host_mount = os.getenv("HOME"), -- Host mount path for the rag service
-        provider = "ollama", -- The provider to use for RAG service (e.g. openai or ollama)
         llm_model = "", -- The LLM model to use for RAG service
         embed_model = "", -- The embedding model to use for RAG service
         endpoint = "https://api.openai.com/v1", -- The API endpoint for RAG service
