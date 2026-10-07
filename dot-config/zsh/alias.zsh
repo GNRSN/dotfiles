@@ -24,6 +24,8 @@ alias timestamp='$ZDOTDIR/bin/ms-timestamp-to-readable.sh'
 # Zsh has a built in log command that may take precedence when simply calling `log`
 alias apple-log='/usr/bin/log'
 
+alias jb='jj bookmark create'
+
 # https://gist.github.com/akatrevorjay/9fc061e8371529c4007689a696d33c62
 git-commits() {
 	local g=(
