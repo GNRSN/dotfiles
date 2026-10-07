@@ -78,6 +78,8 @@
     mongodb-ce
     # Mongodb cli interface
     mongosh
+    # Roaming-friendly remote shell over UDP
+    mosh
     # Better Vim
     neovim
     # Neovim gui
@@ -189,9 +191,6 @@
     }
     {
       name = "neurosnap/tap/zmx";
-    }
-    {
-      name = "mosh";
     }
   ];
 
