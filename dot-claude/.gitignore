@@ -1,6 +1,2 @@
-# Skills we author are tracked; externally installed ones are not.
-skills/cmux
-skills/cmux-*
-
 # REVIEW: Apparently these are skills from claude.ai automatically synced in
 skills/synced

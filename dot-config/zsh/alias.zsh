@@ -46,3 +46,13 @@ git-commits() {
 	)
 	$g | $fzf
 }
+
+# cmux skills only make sense inside cmux: load them as a session-scoped plugin
+# instead of globally, so agents in Orca/Herdr/t3-code never see them.
+claude() {
+	if [[ -n $CMUX_WORKSPACE_ID ]]; then
+		command claude --plugin-dir "$XDG_CONFIG_HOME/cmux/claude-plugin" "$@"
+	else
+		command claude "$@"
+	fi
+}
