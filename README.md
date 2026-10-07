@@ -18,12 +18,10 @@ Nixpkgs has stable releases and an unstable branch which is essentially the late
 Acts as a glue between Nix and MacOS, allows declarative MacOS configuration inspired by NixOS. Manages itself after bootstrapping.
 
 ```
-sudo darwin-rebuild switch --flake .#GNRSN/MacBook && brew bundle dump --file=~/dotfiles/brew.txt --force && find /run/current-system/sw/bin/ -type l -exec readlink {} \; \
-  | sed -E 's|[^-]+-([^/]+)/.*|\1|g' \
-  | sort -u \
-  | grep -vE '^(bash-interactive-.*|darwin-help|darwin-rebuild|darwin-uninstaller|darwin-option|darwin-version|nix-info|texinfo-interactive-.*)$' \
-  > packages.txt
+sudo darwin-rebuild switch --flake .#GNRSN/MacBook
 ```
+
+Activation ends by running `scripts/log-packages.sh`, which dumps the exact installed versions to `packages.txt` and `brew.txt` so upgrades show up in git history. Exclusions are defined at the top of the script.
 
 ### GNU Stow
 
