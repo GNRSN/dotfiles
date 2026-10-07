@@ -1,0 +1,34 @@
+onboarding = false
+
+[keys]
+new_tab = "cmd+t"
+close_pane = "cmd+w"
+split_vertical = "cmd+d"
+split_horizontal = "cmd+shift+d"
+switch_tab = "cmd+1..9"
+
+# Pane navigation with nvim passthrough, requires the smart-splits herdr plugin
+# which is linked by the lazy.nvim build step (nvim/lua/plugins/ui/smart-splits.lua)
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "smart-splits.nvim.left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "smart-splits.nvim.down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "smart-splits.nvim.up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "smart-splits.nvim.right"
+
+[ui]
+pane_outer_borders = false
+pane_gaps = false
