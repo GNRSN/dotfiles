@@ -1,5 +1,8 @@
 return {
   "lewis6991/gitsigns.nvim",
+  cond = function()
+    return not require("util.local-config").prefer_jj()
+  end,
   event = { "BufReadPre", "BufNewFile" },
   keys = {
     { "<leader>gb", "<cmd>Gitsigns blame_line<CR>", { desc = "Blame Line" } },
