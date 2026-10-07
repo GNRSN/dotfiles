@@ -29,6 +29,27 @@ key = "ctrl+l"
 type = "plugin_action"
 command = "smart-splits.nvim.right"
 
+# Pane resizing with nvim passthrough, smart-splits ships no resize actions
+[[keys.command]]
+key = "ctrl+alt+h"
+type = "shell"
+command = "~/.config/herdr/resize.sh left"
+
+[[keys.command]]
+key = "ctrl+alt+j"
+type = "shell"
+command = "~/.config/herdr/resize.sh down"
+
+[[keys.command]]
+key = "ctrl+alt+k"
+type = "shell"
+command = "~/.config/herdr/resize.sh up"
+
+[[keys.command]]
+key = "ctrl+alt+l"
+type = "shell"
+command = "~/.config/herdr/resize.sh right"
+
 [ui]
 pane_outer_borders = false
 pane_gaps = false
