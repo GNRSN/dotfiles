@@ -53,6 +53,12 @@ version = 3
       cache_duration = 'none'
 
   [[blocks.segments]]
+    template = '{{ if .Env.ZMX_SESSION }} {{ .Env.ZMX_SESSION }}{{ end }}'
+    foreground = '#f9bf6a'
+    type = 'text'
+    style = 'plain'
+
+  [[blocks.segments]]
     alias = 'Path'
     template = '{{ .Path }} '
     foreground = '#4ca4ff'
