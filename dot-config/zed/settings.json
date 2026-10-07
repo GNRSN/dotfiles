@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "search": {
+    "button": false
+  },
+  "debugger": {
+    "button": false
+  },
   "vim_mode": true,
   "ui_font_size": 15,
   "buffer_font_size": 13,
@@ -58,8 +64,11 @@
     "delay_ms": 400,
   },
   "terminal": {
-    // With this, TUIs look reasonable (borders, "scrollbars", etc)
-    "line_height": { "custom": 1.19 },
+    "button": false,
+    "line_height": {
+      // With this, TUIs look reasonable (borders, "scrollbars", etc)
+      "custom": 1.19
+    },
   },
   "status_bar": {
     // I'd like to hide this but I need it to see that file has diagnostics
@@ -67,17 +76,21 @@
     "cursor_position_button": false,
   },
   "git_panel": {
+    "button": false,
     "dock": "right",
     "tree_view": true,
     "collapse_untracked_diff": false,
   },
   "collaboration_panel": {
+    "button": false,
     "dock": "right",
   },
   "outline_panel": {
+    "button": false,
     "dock": "right",
   },
   "project_panel": {
+    "button": false,
     "dock": "right",
   },
   "agent": {
