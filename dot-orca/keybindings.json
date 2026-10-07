@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "keybindings": {},
+  "platforms": {
+    "darwin": {
+      "workspace.selectByIndex": [
+        "Ctrl+1"
+      ],
+      "tab.selectByIndex": [
+        "Mod+1"
+      ],
+      "worktree.quickOpen": [],
+      "worktree.palette": [
+        "Mod+P"
+      ]
+    },
+    "linux": {},
+    "win32": {}
+  }
+}
