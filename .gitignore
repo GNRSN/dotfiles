@@ -30,8 +30,3 @@ dot-config/swiftpm
 
 dot-config/zennotes
 
-# ~/.claude/skills is a single stowed symlink to dot-claude/skills, so anything
-# Claude Code or another installer drops in there lands in this repo.
-# Skills we author live here and are tracked; externally installed ones are not.
-dot-claude/skills/cmux
-dot-claude/skills/cmux-*
