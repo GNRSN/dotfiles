@@ -16,6 +16,11 @@ function M.get_workspace_config()
   return require("neoconf").get("workspace-config", M.defaults)
 end
 
+function M.is_allow_project_tsdk()
+  return M.get_workspace_config().allow_project_tsdk
+end
+
+
 function M.init()
   if M.is_init then
     error("local-config: Already initialized")
@@ -37,12 +42,47 @@ function M.init()
 
   -- LATER: Also read vscode/settings.json files.associations field
   vim.filetype.add(workspace_config.custom_filetypes)
+
+  vim.api.nvim_create_user_command("AllowProjectTsdk", function(opts)
+    local arg = vim.trim(opts.args):lower()
+    local new_value
+    if arg == "" then
+      new_value = not M.is_allow_project_tsdk()
+    elseif arg == "true" then
+      new_value = true
+    elseif arg == "false" then
+      new_value = false
+    else
+      vim.notify(
+        "AllowProjectTsdk: expected true, false, or no argument (got " .. opts.args .. ")",
+        vim.log.levels.ERROR
+      )
+      return
+    end
+
+    local util = require("neoconf.util")
+    local Settings = require("neoconf.settings")
+    local file = vim.fn.getcwd() .. "/.neoconf.json"
+
+    local settings = Settings.new():load(file)
+    settings:set("workspace-config.allow_project_tsdk", new_value)
+    util.write_file(file, util.json_format(settings._settings))
+    Settings.clear(util.fqn(file))
+
+    vim.notify("allow_project_tsdk = " .. tostring(new_value) .. " (" .. file .. ")")
+  end, {
+    nargs = "?",
+    complete = function()
+      return { "true", "false" }
+    end,
+    desc = "Set/toggle allow_project_tsdk in the project's .neoconf.json",
+  })
 end
 
 function M.get_tsdk_from_config()
   local vscodeConfig = require("neoconf").get("vscode.typescript.tsdk")
 
-  if not M.get_workspace_config().allow_project_tsdk then
+  if not M.is_allow_project_tsdk() then
     if vscodeConfig then
       vim.notify("Project configuration contains custom typescript.tsdk but allow_project_tsdk isn't set")
     end
@@ -59,7 +99,7 @@ end
 function M.get_tsgo_tsdk_from_config()
   local vscodeConfig = require("neoconf").get("vscode.typescript.native-preview.tsdk")
 
-  if not M.get_workspace_config().allow_project_tsdk then
+  if not M.is_allow_project_tsdk() then
     if vscodeConfig then
       vim.notify(
         "Project configuration contains custom typescript.native-preview.tsdk but allow_project_tsdk isn't set"
