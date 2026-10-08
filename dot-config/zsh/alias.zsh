@@ -47,6 +47,9 @@ git-commits() {
 	$g | $fzf
 }
 
+alias opus="claude --model opus"
+alias fable="claude --model fable"
+
 # cmux skills only make sense inside cmux: load them as a session-scoped plugin
 # instead of globally, so agents in Orca/Herdr/t3-code never see them.
 # cmux replaces claude() with its own from a one-shot precmd hook that runs after this file
