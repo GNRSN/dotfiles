@@ -1,4 +1,5 @@
 {
   "name": "cmux",
-  "description": "cmux skills, loaded per session via --plugin-dir only when running inside cmux (see zsh alias.zsh)"
+  "description": "cmux end-user skills copied from manaflow-ai/cmux skills/ at the tag matching the installed app (version above). Loaded per session via --plugin-dir only when running inside cmux (see zsh alias.zsh).",
+  "version": "0.65.0"
 }
