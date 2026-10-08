@@ -49,10 +49,13 @@ git-commits() {
 
 # cmux skills only make sense inside cmux: load them as a session-scoped plugin
 # instead of globally, so agents in Orca/Herdr/t3-code never see them.
-claude() {
-	if [[ -n $CMUX_WORKSPACE_ID ]]; then
-		command claude --plugin-dir "$XDG_CONFIG_HOME/cmux/claude-plugin" "$@"
-	else
-		command claude "$@"
-	fi
-}
+# cmux replaces claude() with its own from a one-shot precmd hook that runs after this file
+# loads, so redefine it from a later one. No fallback: if cmux renames its function, fail loudly.
+if [[ -n $CMUX_WORKSPACE_ID ]]; then
+	_claude_cmux_plugin() {
+		add-zsh-hook -d precmd _claude_cmux_plugin
+		claude() { _cmux_claude_wrapper_command --plugin-dir "$XDG_CONFIG_HOME/cmux/claude-plugin" "$@"; }
+	}
+	autoload -Uz add-zsh-hook
+	add-zsh-hook precmd _claude_cmux_plugin
+fi
