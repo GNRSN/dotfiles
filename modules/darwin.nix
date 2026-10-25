@@ -172,8 +172,9 @@
   };
 
   homebrew.enable = true;
-  # Uninstall anything not specified in nix, leaves associated files
-  homebrew.onActivation.cleanup = "uninstall";
+  # "uninstall"/"check" treat formula deps of casks as extras (e.g. gcloud-cli's python),
+  # scripts/brew-cleanup.sh in postActivation does the cleanup instead
+  homebrew.onActivation.cleanup = "none";
   # Homebrew 6.0 enforces tap-trust. `brew trust` writes to
   # $XDG_CONFIG_HOME/homebrew/trust.json, but activation runs under
   # `sudo` which scrubs XDG_CONFIG_HOME, so brew falls back to
@@ -276,10 +277,15 @@
     "zennotes/tap/zennotes"
   ];
 
-  # Log exact package versions to git after every switch. Activation runs as
-  # root so drop to the primary user, same as nix-darwin does for brew bundle.
+  # Uninstall undeclared brew packages, then log exact package versions to git
+  # after every switch. Activation runs as root so drop to the primary user, same
+  # as nix-darwin does for brew bundle.
   # /run/current-system is only repointed after this hook, hence $systemConfig.
   system.activationScripts.postActivation.text = ''
+    echo >&2 "Cleaning up undeclared Homebrew packages..."
+    sudo --user=${config.system.primaryUser} --set-home \
+      ${config.users.users.gnrsn.home}/dotfiles/scripts/brew-cleanup.sh \
+      ${pkgs.writeText "Brewfile" config.homebrew.brewfile}
     echo >&2 "Logging package versions..."
     sudo --user=${config.system.primaryUser} --set-home \
       ${config.users.users.gnrsn.home}/dotfiles/scripts/log-packages.sh "$systemConfig"
