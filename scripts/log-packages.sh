@@ -29,7 +29,7 @@ EXCLUDE=(
   'nix-zsh-completions-.*'
 )
 
-# Global npm packages are managed through mise/corepack, not brew
+# JS tooling and global npm packages are managed through mise, not brew
 brew bundle dump --force --no-npm --no-vscode --file="$REPO/brew.txt"
 
 # $SYSTEM/sw links to the merged profile of environment.systemPackages,
