@@ -181,7 +181,8 @@
     "hideVimModeIndicator": true
   },
   "enabledPlugins": {
-    "storybook@storybook": true
+    "storybook@storybook": true,
+    "frontend-design@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "storybook": {
