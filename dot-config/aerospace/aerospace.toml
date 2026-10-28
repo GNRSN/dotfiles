@@ -1,3 +1,6 @@
+# See: https://nikitabobko.github.io/AeroSpace/guide#config-version
+config-version = 2
+
 # Start AeroSpace at login
 start-at-login = true
 
@@ -253,6 +256,21 @@ run = ['move-node-to-workspace Q']
 if.app-id = 'com.mitchellh.ghostty'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
+if.app-id = 'com.cmuxterm.app'
+if.during-aerospace-startup = true
+run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
+if.app-id = 'com.stablyai.orca'
+if.during-aerospace-startup = true
+run = ['move-node-to-workspace R']
+
+[[on-window-detected]]
+if.app-id = 'com.t3tools.t3code'
+if.during-aerospace-startup = true
+run = ['move-node-to-workspace W']
 
 # === Float certain apps by default ===
 
