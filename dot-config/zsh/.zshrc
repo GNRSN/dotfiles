@@ -236,7 +236,10 @@ export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
-# Load dev environment/toolchains through mise 
+# Load dev environment/toolchains through mise
+# Shims first: non-interactive shells (coding agents, hooks) inherit this PATH
+# without the precmd hook, so per-directory tools like go must resolve via shim
+eval "$(mise activate zsh --shims)"
 eval "$(mise activate zsh)"
 
 # === Bun ===
