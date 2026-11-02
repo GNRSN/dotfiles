@@ -1,0 +1,5 @@
+{
+  "name": "orca",
+  "description": "Orca ADE skills copied from stablyai/orca skills/ at the revisions pinned by the installed app's skills manifest (version above). Loaded per session via --plugin-dir only when running inside Orca (see zsh alias.zsh).",
+  "version": "1.4.222"
+}

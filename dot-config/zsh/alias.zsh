@@ -47,11 +47,17 @@ git-commits() {
 	$g | $fzf
 }
 
+# Wrapper-specific skills are vendored under $XDG_CONFIG_HOME/<wrapper>/claude-plugin and loaded as
+# session-scoped plugins only when that wrapper's env vars are present, so agents
+# in other wrappers never see them.
+claude() {
+	local -a plugins
+	[[ -n $ORCA_WORKSPACE_ID ]] && plugins+=(--plugin-dir "$XDG_CONFIG_HOME/orca/claude-plugin")
+	command claude "${plugins[@]}" "$@"
+}
 alias opus="claude --model opus"
 alias fable="claude --model fable"
 
-# cmux skills only make sense inside cmux: load them as a session-scoped plugin
-# instead of globally, so agents in Orca/Herdr/t3-code never see them.
 # cmux replaces claude() with its own from a one-shot precmd hook that runs after this file
 # loads, so redefine it from a later one. No fallback: if cmux renames its function, fail loudly.
 if [[ -n $CMUX_WORKSPACE_ID ]]; then
