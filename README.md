@@ -37,13 +37,10 @@ This approach requires installing the toolchain manually through: `rustup defaul
 
 ### JS Toolchains
 
-Node JS is installed through Mise, which also installs corepack automatically
+Node JS, nub and pnpm are installed through Mise (`dot-config/mise/config.toml`), bump them with `mise upgrade`
 
-Corepack then manages the package-manager per JS project
+nub and pnpm come from the mise registry as native binaries, avoiding the node bootstrap of npm globals and corepack
 
-For global installs, e.g. global pnpm, use `corepack prepare`
+pnpm switches to the version in a project's `packageManager` field by itself, so corepack is not needed
 
-E.g. to install the latest verion of pnpm:
-`corepack prepare pnpm@latest --activate`
-
-To install JS packages globally
+Global JS CLIs go in the same `[tools]` table through the npm backend, e.g. `"npm:<package>" = "latest"`
