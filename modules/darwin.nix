@@ -228,8 +228,6 @@
     "chatgpt"
     # I want to try out the experience
     "cursor"
-    # Translation
-    "deepl"
     # Arc 2
     "thebrowsercompany-dia"
     # Access communities
